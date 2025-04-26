@@ -49,7 +49,7 @@ const SignUpPage: React.FC = () => {
               <option value="+43">+44</option>
               <option value="+973">+44</option>
               <option value="+238">+44</option>
-              {/* Add more country codes if you want */}
+                <option value="+1">+1</option>
             </select>
             <input
               type="tel"
