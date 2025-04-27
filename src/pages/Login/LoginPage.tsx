@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './LoginPage.css'; 
-import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'; // Importing icons for password visibility toggle
+// import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'; 
+// use the icons from the design system instead
+import { LogoMain } from '../../components/icons/Icon';// Importing icons for password visibility toggle
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +20,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="login-container">
-        <img src="/src/components/icons/Logo.png" alt="" className="logo" />
+        <LogoMain className='logo' />
       <div className="login-card">
 
         <h1>Log in</h1>
@@ -50,7 +52,7 @@ const LoginPage: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
-              {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+              {/* {showPassword ? <FaRegEyeSlash /> : <FaRegEye />} */}
             </button>
           </div>
           <div className="forgot-password">
