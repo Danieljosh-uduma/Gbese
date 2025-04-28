@@ -20,7 +20,8 @@
     --header-text: #0E0E10;
     --white-text: #FEFEFE;
 
-    --font-family: Lato, sans-serif;
+    --body-font: Lato, sans-serif;
+    --header-font: Poppins, sans-serif;
 
     /* To be completed, do we need this?  */
     /* --h1-size: 
@@ -36,6 +37,11 @@
     font-family: Lato;
     src: url(/src//assets/fonts/Lato/Lato-Regular.ttf) format('truetype');
     src: url(/src//assets/fonts/Lato/Lato-Bold.ttf);
+}
+@font-face {
+    font-family: Poppins;
+    src: url(/src/assets/fonts/Poppins/Poppins-Regular.ttf) format('truetype');
+    src: url(/src/assets/fonts/Poppins/Poppins-Bold.ttf);
 }
 
 *, *::before, *::after {

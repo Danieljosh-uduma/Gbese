@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
 import './LoginPage.css'; 
-// import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'; 
-// use the icons from the design system instead
-import { LogoMain } from '../../components/icons/Icon';// Importing icons for password visibility toggle
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'; 
+// TODO: Replace FaRegEye and FaRegEyeSlash with design system icons later
+import { LogoMain } from '../../components/icons/Icon'; // Importing logo
 
-const LoginPage: React.FC = () => {
+function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
+  function togglePasswordVisibility() {
     setShowPassword(!showPassword);
-  };
+  }
 
-  const handleLogin = () => {
+  function handleLogin() {
     console.log(`Email: ${email}, Password: ${password}`);
-  };
+  }
 
   return (
-    <div className="login-container">
-        <LogoMain className='logo' />
-      <div className="login-card">
-
+    <div className="login-page-wrapper">
+      {/* Left Side */}
+      <div className="login-container">
+        <LogoMain className="logo" />
+        <div className="login-card">
           <div className="left-text">
-            <h2>Smart Management &<br/>Instant Notifications</h2>
+            <h2>Smart Management &<br />Instant Notifications</h2>
             <p>Get alerted immediately about account activities, anytime. Intuitive tools to manage your debts efficiently.</p>
           </div>
 
@@ -43,7 +44,6 @@ const LoginPage: React.FC = () => {
           </div>
 
           <h2>Welcome back</h2>
-          {/* Remove hard-coded username if not needed */}
 
           <div className="input-group">
             <label>Email</label>
@@ -53,9 +53,6 @@ const LoginPage: React.FC = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
-              {/* {showPassword ? <FaRegEyeSlash /> : <FaRegEye />} */}
-            </button>
           </div>
 
           <div className="input-group password-group">
@@ -67,10 +64,15 @@ const LoginPage: React.FC = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="toggle-password"
+              >
                 {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
               </button>
             </div>
+
             <div className="forgot-password">
               <a href="/forgot-password">Forgot Password?</a>
             </div>
@@ -85,12 +87,12 @@ const LoginPage: React.FC = () => {
           </p>
 
           <div className="footer-links">
-            <a href="/privacy">Privacy</a>  <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a> <a href="/terms">Terms</a>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default LoginPage;

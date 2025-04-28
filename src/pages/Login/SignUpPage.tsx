@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUpPage.css';
+// import { Button } from '../../components/common/button/Button'; // Importing Button component
 
 const SignUpPage: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -73,7 +74,7 @@ const SignUpPage: React.FC = () => {
           </div>
 
           <button type="submit" className="continue-button">
-            Continue
+            Continueg
           </button>
         </form>
 
