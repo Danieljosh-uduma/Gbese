@@ -58,10 +58,10 @@ const SignUpPage: React.FC = () => {
               <option value="+234">+234</option>
               <option value="+1">+1</option>
               <option value="+44">+44</option>
-              <option value="+297">+44</option>
-              <option value="+43">+44</option>
-              <option value="+973">+44</option>
-              <option value="+238">+44</option>
+              <option value="+297">+297</option>
+              <option value="+43">+43</option>
+              <option value="+973">+973</option>
+              <option value="+238">+238</option>
                 <option value="+1">+1</option>
             </select>
             <input

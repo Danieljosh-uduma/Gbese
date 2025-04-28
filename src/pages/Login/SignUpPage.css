@@ -1,7 +1,7 @@
 
 .signup-container {
   display: flex;
-  height: 100vh;
+ min-height: 100vh;
   /* padding: 20px;  */
 }
 
@@ -9,7 +9,6 @@
 .left-panel {
   background-color: #5D3FD3;
   color: white;
-  height: 100vh;
   width: 50%;
   padding: 40px 30px; 
   display: flex;
@@ -18,10 +17,12 @@
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .illustration-wrapper {
   margin-top: 40px;
+  width: 100%;
 }
 
 .illustration {
@@ -32,11 +33,10 @@
 .left-text {
   margin-top: 20px;
   /* padding: 0 20px; */
-  width: 350px;
+  width: 400px;
 }
 
 .left-text h2 {
-  width: 420px;
   font-size: 30px;
   font-weight: bold;
   line-height: 1.4;
@@ -47,24 +47,20 @@
 }
 
 .left-text p {
-  width: 400px;
   font-size: 16px;
   margin-top: 10px;
   line-height: 1.5;
 }
 
 .left-logo img {
-  width: 100px;
-  position: absolute;
-  left: 20px;
-
-
+  width: 100px
 }
+
+
 /* Right Form Section */
 .signup-panel {
   background-color: white;
   width: 50%;
-  height: 100vh;
   padding: 40px 30px;
   display: flex;
   flex-direction: column;
@@ -165,7 +161,9 @@
 .login-link {
   color: #008080;
   cursor: pointer;
-  border-bottom: 1px solid #008080;
+}
+.login-link:hover {
+  text-decoration: underline;
 }
 
 .terms-links {
@@ -177,15 +175,7 @@
   cursor: pointer;
   text-decoration: none;
 }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .signup-container {
-    flex-direction: column;
-  }
-
-  .left-panel,
-  .right-panel {
-    width: 100%;
-  }
+.terms-links a:hover {
+  text-decoration: underline;
 }
+
