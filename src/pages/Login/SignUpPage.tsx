@@ -9,18 +9,31 @@ const SignUpPage: React.FC = () => {
 
   const handleContinue = (e: React.FormEvent) => {
     e.preventDefault();
-    // Later: you can add phone number validation here
+  
     console.log(`Country Code: ${countryCode}, Phone: ${phoneNumber}`);
   };
 
   return (
     <div className="signup-container">
-      {/* Logo Top Left */}
-      <div className="logo">
-        <img src="/src/components/icons/Logo.png" alt="" />
-      </div>
-
-      {/* Centered Content */}
+    
+      <div className="left-panel">
+        <div className="illustration-wrapper">
+          <img src="/src/components/icons/Q and A about loan.png" alt="Illustration" className="illustration" />
+        </div>
+        <div className="left-text">
+          <h2>
+            Streamline Your <span className="highlight">Debt Transfers</span> Effortlessly and Effectively
+          </h2>
+          <p>
+            Easily manage debt payments, transfers, and more with Gbese. Enjoy a seamless experience that puts
+            convenience at your fingertips.
+          </p>
+        </div>
+        <div className="left-logo">
+          <img src="/src/components/icons/Logo-white.png" alt="" />
+        </div>
+</div>
+    <div className="signup-panel">
       <div className="signup-content">
         <h1>Sign Up</h1>
 
@@ -76,6 +89,7 @@ const SignUpPage: React.FC = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

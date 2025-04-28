@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LoginPage.css'; 
-import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'; // Importing icons for password visibility toggle
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'; 
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +13,7 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = () => {
     console.log(`Email: ${email}, Password: ${password}`);
-    // Add your login API logic here
+    
   };
 
   return (
@@ -24,7 +24,7 @@ const LoginPage: React.FC = () => {
         <h1>Log in</h1>
 
         <div className="avatar">
-          <img src="/src/components/icons/Frame 1.png" alt="" />
+          <img src="/src/components/icons/lady-1.png" alt="" />
         </div>
 
         <h2>Welcome back</h2>
