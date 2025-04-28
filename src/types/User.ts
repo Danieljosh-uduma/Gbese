@@ -7,4 +7,4 @@ type User = {
     createdAt: string
 }
 
-export type { User}
+export type { User }
