@@ -1,0 +1,17 @@
+button {
+    border: none;
+    background-color: var(--primary-200);
+    color: var(--white-text);
+    padding: 10px 20px;
+    border-radius: 4px;
+    height: 45px;
+}
+
+/* this can always be modified  */
+.large-btn {
+    width: 400px;
+}
+
+.small-btn {
+    width: 200px;
+}

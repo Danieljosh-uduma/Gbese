@@ -1,17 +1,22 @@
-import MainLogo from '../../assets/images/icons/Logo-main.png'
-import TextLogo from '../../assets/images/icons/Logo-text.png'
+import mainLogo from '../../assets/images/icons/logo-main.svg'
+import whiteLogo from '../../assets/images/icons/Logo-white.svg'
 
 
-function LogoMain({className}: { className?: string }) {
-    return (
-        <img src={MainLogo} alt="Logo" className={className} />
-    )
+// Logo component
+type LogoProps = {
+    type?: 'white' | 'green'
+    className?: string
+}
+function Logo(props: LogoProps) {
+    const { type, className } = props 
+
+    if (type === 'white') {
+        return <img src={whiteLogo} alt="Logo" className={className} />
+    } else if (type === 'green') {
+        return // This will be the green logo when available
+    } else {
+        return <img src={mainLogo} alt="Logo" className={className} />
+    }
 }
 
-function LogoText({className}: { className?: string }) {
-    return (
-        <img src={TextLogo} alt="Logo with text" className={className}/>
-    )
-}
-
-export { LogoMain, LogoText}
+export { Logo }
