@@ -5,11 +5,9 @@ import Dashboard from "../pages/Dashboard/Page";
 export default function MainRouter() {
   return (
     <BrowserRouter>
-      
         <Routes>
             <Route path="/" element={<Dashboard />} />
         </Routes>
-      
     </BrowserRouter>
   );
 }
