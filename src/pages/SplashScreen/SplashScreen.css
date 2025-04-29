@@ -1,0 +1,121 @@
+/* SplashScreen.css */
+.splash-container {
+    height: 100vh;
+    width: 100%;
+    background-color: #FEFEFE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .splash-content {
+    text-align: center;
+  }
+  
+  .splash-logo {
+    width: 120px;
+    margin-bottom: 1rem;
+  }
+  
+    .splash-logo img {
+        width: 154px;
+        height: 159px;
+
+    }
+  .splash-title {
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: #008080;;
+  }
+  
+  .splash-tagline {
+    width: 440;
+    height: 36;
+    margin-top: 40px;
+    margin-bottom:180px;
+    top: 265.69px;
+    left: 18px;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #2A2A2A;
+  }
+  
+  .splash-loader {
+    width: 680px;
+    height: 15px;
+    top: 445px;
+    background-color: #AE9FE9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .splash-loader-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #6a11cb 0%, #5D3FD3 100%);
+    animation: loading 2s infinite;
+  }
+
+  /* Media Queries for Responsiveness */
+  @keyframes loading {
+    0% {
+      width: 0%;
+    }
+
+    50% {
+      width: 95%;
+    }
+    100% {
+      width: 0%;
+    }
+  }
+  
+  /* MEDIA QUERIES */
+  @media screen and (max-width: 480px) {
+    .splash-logo {
+      width: 120px;
+    }
+  
+    .splash-title {
+      font-size: 1.8rem;
+    }
+  
+    .splash-tagline {
+      font-size: 1.1rem;
+    }
+  
+    .splash-loader {
+      width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .splash-logo {
+      width: 120px;
+    }
+  
+    .splash-title {
+      font-size: 28px;
+    }
+  
+    .splash-tagline {
+        width: 370px;
+        margin-bottom: 100px;
+        font-size: 18px;
+        font-family: Lato;
+    }
+  
+    .splash-loader {
+      width: 280px;
+      height: 8px;
+    }
+  }
