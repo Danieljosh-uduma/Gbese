@@ -1,18 +1,18 @@
 .mobile-screen {
     padding: 20px;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: var(--background-color);
     text-align: center;
-    font-family: var(--body-font);
+    width: 100%;
+    position: relative;
   }
   
   .skip-btn {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    position: absolute;
+    right: 20px;
     color: var(--primary-200);
     background: none;
     border: none;
@@ -23,30 +23,35 @@
   }
   
   .illustration {
-    width: 250px;
+    width: 200px; 
     max-width: 100%;
     margin: 20px auto;
   }
-  
-  .mobile-screen h2 {
-    font-size: 18px;
-    color: var(--header-text);
+  .illustration-text{
+   width: 100%;
+   margin-bottom: 80px;
+    
+  }
+  .illustration-text h2 {
+    width: 450px;
+    font-size: 35px;
     margin-bottom: 10px;
-    font-family: var(--header-font);
+    padding: 0 15px;
   }
   
-  .mobile-screen p {
-    font-size: 14px;
-    color: var(--body-text);
+  .illustration-text p {
+    width: 450px;
+    font-size: 19px;
     margin-bottom: 20px;
     padding: 0 15px;
+    line-height: 1.4;
   }
   
   .dots {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
   }
   
   .dot {
@@ -59,17 +64,32 @@
   .dot.active {
     background-color: var(--primary-200);
   }
-  
+  .backlink-mobile {
+    position: absolute;
+    bottom: 10px;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--primary-200);
+    font-weight: 500;
+    font-size: 0.95re
+  }
   .next-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
     background-color: var(--primary-200);
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 10px 30px;
+    padding: 14px 20px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     margin: 0 auto;
     width: fit-content;
+    
+    align-items: flex-end;
   }
   

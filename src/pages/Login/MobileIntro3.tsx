@@ -1,29 +1,36 @@
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import {  InterestIcon,} from '../../components/icons/Icon'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import {  ArrowRightIcon, ArrowLeftIcon, InterestIcon,} from '../../components/icons/Icon'
+import './MobileIntro.css'
+function MobileIntro3() {
+  const navigate = useNavigate();
 
-// export default function MobileIntro1() {
-//   const navigate = useNavigate();
+  return (
+    <div className="mobile-screen">
+      <button className="skip-btn" onClick={() => navigate('/signup')}>
+      <span>Skip</span> <ArrowRightIcon/>
 
-//   return (
-//     <div className="mobile-screen">
-//       <button className="skip-btn" onClick={() => navigate('/signup')}>
-//         Skip →
-//       </button>
-//        <InterestIcon className="illustration" width={300} />
-//       <h2>Streamline Your Debt, Transfers Effortlessly and Effectively.</h2>
-//       <p>
-//         Easily manage debt payments, transfers, and more with Gbese.
-//         Enjoy a seamless experience that puts convenience at your fingertips.
-//       </p>
-//       <div className="dots">
-//         <span className="dot active" />
-//         <span className="dot" />
-//         <span className="dot" />
-//       </div>
-//       <button className="next-btn" onClick={() => navigate('/mobile-intro-2')}>
-//         Next
-//       </button>
-//  </div>
-// );
-// }
+      </button>
+
+       <InterestIcon className="illustration" width={300} />
+       <div className="illustration-text">
+      <h2>Smart Management & Instant Notifications</h2>
+      <p>
+      Get Alerted immediately about account activities, anytime. Intuitive tools to manage your debts efficiently
+      </p>
+      </div>
+      <div className="dots">
+        <span className="dot" />
+        <span className="dot" />
+        <span className="dot active" />
+      </div>
+      <div className="backlink-mobile" onClick={() => navigate('/mobileintro2')} 
+          style={{cursor: 'pointer'}}><ArrowLeftIcon /> <span>Back</span>
+        </div>
+      <button className="next-btn" onClick={() => navigate('/signup')}>
+        Next
+      </button>
+ </div>
+);
+}
+export default MobileIntro3;
