@@ -7,20 +7,19 @@
 
 /* Left Purple Panel */
 .left-panel {
-  background-color: #5D3FD3;
-  color: white;
-  width: 50%;
-  padding: 40px 30px; 
-  display: flex;
-  flex-direction: column;
+  background-color: var(--primary-200);
+  color: var(--white-text);
   flex: 1;
-  justify-content: space-between;
+  padding: 3rem; 
+  flex: 1;
   align-items: center;
   text-align: center;
   position: relative;
 }
 
 .illustration-wrapper {
+  display: flex;
+  justify-content: center;
   margin-top: 40px;
   width: 100%;
 }
@@ -31,31 +30,41 @@
 }
 
 .left-text {
-  margin-top: 20px;
-  /* padding: 0 20px; */
-  width: 400px;
+  margin: 2rem auto;
+  width: 100%;
+  margin-bottom: 5rem;
+  max-width: 400px;
+  text-align: center;
 }
 
 .left-text h2 {
+  color: white;
   font-size: 30px;
   font-weight: bold;
   line-height: 1.4;
+  margin-top: 2rem;
 }
 
 .highlight {
-  color: #FFD700;
+  color: var(--accent-200);
 }
 
 .left-text p {
   font-size: 16px;
-  margin-top: 10px;
+  margin-top: 1rem;
   line-height: 1.5;
 }
 
-.left-logo img {
-  width: 100px
+.left-logo {
+  margin: 0;
+  left: 2rem;
+  bottom:  0.5rem;
+  position: absolute;
+  
 }
-
+.left-logo img{
+  width: 100px;
+}
 
 /* Right Form Section */
 .signup-panel {
@@ -67,8 +76,23 @@
   align-items: center;
   justify-content: center;
   flex: 1;
+  position: relative;
 }
-
+.backlink {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary-200);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.backlink :hover{
+  color:  #5b21b6;
+  ;
+}
 .signup-content {
   width: 100%;
   max-width: 400px;

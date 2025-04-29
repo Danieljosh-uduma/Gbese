@@ -1,184 +1,178 @@
+/* 1. Split-screen wrapper */
 .login-wrapper {
-  display: flex;
-  height: 100vh;
-}
-
-/* Left Purple Side */
-.login-container {
   display: flex;
   min-height: 100vh;
 }
 
+/* 2. Left panel */
 .login-left {
-  width: 50%;
-  background-color: #5D3FD3; /* Purple background */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center vertically */
-  align-items: center;     /* Center horizontally */
-  position: relative;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.left-content {
+  flex: 1;
+  background-color: #5D3FD3;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
+  position: relative;
 }
 
-.left-content img {
-  width: 100%;
+.login-left .illustration {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.login-left .left-text {
+  text-align: center;
   max-width: 350px;
-  margin-bottom: 20px;
+  line-height: 1.4;
+  margin-bottom: 6rem;
 }
 
-.left-content h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #FFD700; /* Yellow color for part of the text */
-  margin-bottom: 10px;
+.login-left .left-logo {
+  margin-top: auto;
 }
-
-.left-content p {
-  font-size: 16px;
-  color: white;
-  max-width: 300px;
+.txt-span {
+  color: #FFD700; 
 }
-
-/* Gbese logo at bottom left */
-.left-logo {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+.left-text p {
+font-size: 15px;
 }
-
-.left-logo img {
- width:120px;
-}
+/* 3. Right panel */
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    background-color: #ffffff;
-  }
-  
-  .login-card {
-    width: 100%;
-    text-align: center;
-    max-width: 400px;
-  }
-  
-  
-  .avatar img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 20px 0;
-  }
-  
-  h1 {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 10px;
-  }
-  
-  h2 {
-    font-size: 1.2rem;
-    margin: 10px 0;
-  }
-  
-  .user-name {
-    margin-bottom: 10px;
-    font-size: 0.8rem;
-  }
-  
-  .input-group {
-    text-align: left;
-    margin-bottom: 20px;
-  }
-  
-  .input-group label {
-    display: block;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  .input-group ::placeholder {
-    color: #CFCFCF;
-    font-size: 13px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  padding: 2rem;
+}
 
-  }
-  .password-wrapper {
-    position: relative;
-  }
-  
-  .toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 8px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-  }
-  
-  .forgot-password {
-    text-align: right;
-    margin-top: 5px;
-  }
-  
-  .forgot-password a {
-    font-size: 0.8rem;
-    color: #5D3FD3;
-    text-decoration: none;
-  }
-  
-  .login-button {
-    width: 425px;
-    padding: 12px;
-    margin-top: 10px;
-    background-color: #5D3FD3;
-    color: #ffffff;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .login-button:hover {
-    background-color: #5b21b6;
-  }
-  
-  .signup-text {
-    margin-top: 20px;
-    font-size: 0.9rem;
-  }
-  .signup-text a {
-    
-    color: #008080;
-    cursor: pointer;
-    text-decoration: none;
-    border-bottom: 1px solid #008080;
-  }
-  
-  .footer-links {
-    margin-top: 10px;
-    font-size: 0.8rem;
-  }
-  
-  .footer-links a {
-    color: #000;
-    text-decoration: underline;
-    margin: 0 5px;
-  }
-  
+/* 4. Card */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.login-card .avatar {
+  margin: 0 auto 1rem;
+}
+
+.login-card .avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px 0;
+}
+
+.login-card h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* 5. Form fields */
+.input-group {
+  margin-bottom: 1.25rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+   
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+.input-group ::placeholder{
+  color: #CFCFCF;
+  font-size: 14px;
+}
+.password-group .password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 10px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  top: 50%;
+  font-size: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* 6. Forgot link */
+.forgot-password {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.forgot-password a {
+  font-size: 0.875rem;
+  color: #5d3fd3;
+  text-decoration: none;
+}
+
+/* 7. Login button */
+.login-button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #5D3FD3;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.login-button:hover {
+  background-color: #5b21b6;
+}
+/* 8. Signup & footer links */
+.signup-text {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.signup-text a {
+  color: #008080;
+  cursor: pointer;
+  text-decoration: none;
+}
+.signup-text a:hover {
+  text-decoration: underline;
+}
+.footer-links {
+  margin-top: 15px;
+  font-size: 0.875rem;
+}
+
+.footer-links a {
+  color: #000; 
+  margin:0 0.5rem;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}

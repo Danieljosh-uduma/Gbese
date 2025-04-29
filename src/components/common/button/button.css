@@ -15,3 +15,15 @@ button {
 .small-btn {
     width: 200px;
 }
+
+.backlink {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--primary-200);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }

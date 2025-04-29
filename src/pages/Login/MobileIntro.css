@@ -1,0 +1,75 @@
+.mobile-screen {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: var(--background-color);
+    text-align: center;
+    font-family: var(--body-font);
+  }
+  
+  .skip-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--primary-200);
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 0;
+    gap: 6px;
+  }
+  
+  .illustration {
+    width: 250px;
+    max-width: 100%;
+    margin: 20px auto;
+  }
+  
+  .mobile-screen h2 {
+    font-size: 18px;
+    color: var(--header-text);
+    margin-bottom: 10px;
+    font-family: var(--header-font);
+  }
+  
+  .mobile-screen p {
+    font-size: 14px;
+    color: var(--body-text);
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+  
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 50%;
+  }
+  
+  .dot.active {
+    background-color: var(--primary-200);
+  }
+  
+  .next-btn {
+    background-color: var(--primary-200);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  
