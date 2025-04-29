@@ -1,12 +1,12 @@
-import MainRouter from './router/index'
 import './App.css'
+import Otp from './pages/Otp page/Otp'
 
 function App() {
     
   return (
     <>
-      <h1>Hello world</h1>
-      <MainRouter />
+     <Otp />
+
     </>
 
   )
