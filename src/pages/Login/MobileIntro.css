@@ -92,4 +92,16 @@
     
     align-items: flex-end;
   }
+  /* mobile intro default: show (for mobile) */
+.mobile-screen {
+  display: block;
+}
+
+/* on screens 768px and wider, hide all mobile intro pages */
+@media (min-width: 768px) {
+  .mobile-screen {
+    display: none;
+  }
+}
+
   

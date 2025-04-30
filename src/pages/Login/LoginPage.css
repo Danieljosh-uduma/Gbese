@@ -176,3 +176,14 @@ font-size: 15px;
 .footer-links a:hover {
   text-decoration: underline;
 }
+/* on screens narrower than 768px, hide the left/purple pane */
+@media (max-width: 767px) {
+  .login-left {
+    display: none;
+  }
+  /* let the login card fill the width */
+  .login-container {
+    width: 100%;
+    padding: 1rem;    /* adjust as needed */
+  }
+}

@@ -203,3 +203,18 @@
   text-decoration: underline;
 }
 
+/* on mobile, hide left panel and make form panel full-width */
+@media (max-width: 767px) {
+  .signup-container {
+    display: block;           /* stack panels */
+  }
+
+  .left-panel {
+    display: none;
+  }
+
+  .signup-panel {
+    width: 100%;
+    padding: 1rem;            /* adjust as needed */
+  }
+}
