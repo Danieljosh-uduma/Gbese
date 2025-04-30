@@ -1,10 +1,23 @@
-type User = {
-    id: string
-    name: string
-    email: string
+type UserType = {
     phoneNumber: string
-    address: string
-    createdAt: string
+    email?: string
 }
 
-export type { User}
+type ProfileType = {
+    firstName: string
+    lastName: string
+    address: string
+    city: string
+    state: string
+    country: string
+    user: UserType
+}
+
+type AuthContextType = {
+    user: UserType | null
+    signup: (phoneNumber: string, email?: string) => void
+    login: (email: string, password: string) => void
+    logout: () => void
+}
+
+export type { UserType, AuthContextType, ProfileType }
