@@ -9,7 +9,7 @@ const Otp = () => {
   useEffect(() => {
   inputRefs.current[0]?.focus();
 }, []);
-// const [error, setError] = useState<string | null>(null);
+const [error, setError] = useState<string | null>(null);
 
 
   // Countdown timer
@@ -30,6 +30,7 @@ const Otp = () => {
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
+    setError(null); // Clear error on change
 
     if (index < otp.length - 1) {
       inputRefs.current[index + 1]?.focus();
@@ -67,7 +68,15 @@ const Otp = () => {
 
   const handleSubmit = () => {
     const code = otp.join('');
-    console.log('Entered OTP:', code);
+  if (code !== '12345') {
+    setError('Invalid OTP. Please try again.');
+  } else {
+    setError(null);
+    console.log('OTP verified!');
+    // Proceed to next step or navigate
+  }
+    // const code = otp.join('');
+    // console.log('Entered OTP:', code);
     // Add API verification logic here
   };
 
@@ -106,6 +115,8 @@ const Otp = () => {
           <input
             key={index}
             type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
             maxLength={1}
             value={value}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -118,6 +129,12 @@ const Otp = () => {
           />
         ))}
       </div>
+      {error && (
+  <p className="otp-error">
+    {error}
+  </p>
+)}
+
 
       <p className="otp-countdown">
         Code Expires in <span>{formatTime(timer)}</span>

@@ -105,6 +105,14 @@ img {
   font-weight: 600;
   text-align: center;
 }
+.otp-error {
+  color: red;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Lato, sans-serif;
+}
 
 input {
   width: 100px;
@@ -156,4 +164,48 @@ span {
   font-weight: 600;
   line-height: 120%;
   color: #5d3fd3;
+}
+
+/* RESPONSIVE=============================== */
+@media screen and (max-width: 768px) {
+  .otp-container {
+    padding: 0 16px;
+  }
+
+  .otp-logo {
+    width: 80px;
+    margin: 100px auto 32px;
+  }
+
+  .otp-heading h1 {
+    font-size: 32px;
+  }
+
+  .otp-heading p {
+    font-size: 16px;
+  }
+
+  .otp-area {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .otp-area input {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  .otp-verify {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  .otp-resend {
+    font-size: 16px;
+  }
+
+  .otp-error {
+    font-size: 14px;
+  }
 }
