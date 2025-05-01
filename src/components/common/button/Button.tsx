@@ -27,7 +27,6 @@ export default function Button(props: ButtonProp) {
         return (
             <Link to={url? `/${url}`: '/'}>
                 <button className={style} type={type} onClick={onClick} disabled={disabled}>
-                    
                     {isLoading? <LoadingSpinner /> : children}
                 </button>
             </Link>
@@ -35,7 +34,6 @@ export default function Button(props: ButtonProp) {
     } else {
         return (
             <button className={style} type={type} onClick={onClick} disabled={disabled}>
-                
                 {isLoading? <LoadingSpinner /> : children}
             </button>
         )
