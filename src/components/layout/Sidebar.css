@@ -1,0 +1,19 @@
+.link {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.link img {
+  width: 24px;
+  color: #696969;
+}
+
+.link p,
+.switch-accounts {
+  color: #696969;
+  font-weight: 400;
+  font-size: 18px;
+}
