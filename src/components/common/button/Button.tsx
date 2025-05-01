@@ -3,22 +3,41 @@ import { Link } from "react-router"
 import './button.css'
 
 type ButtonProp = {
-    size?: 'large' | 'small'
     children: ReactNode
     url?: string
+    type?: 'button' | 'submit' | 'reset'
+    className?: string
+    disabled?: boolean
+    isLoading?: boolean
     onClick?: () => void
 }
 
-export default function Button(props: ButtonProp) {
-    const {  size, children, url, onClick } = props
-    const style = size === 'large'? 'large-btn': size === 'small'? 'small-btn': ''
-    
-
+function LoadingSpinner() {
     return (
-        <Link to={url? `/${url}`: '/'}>
-            <button className={style} type="button" onClick={onClick}>
-                {children}
-            </button>
-        </Link>
+        <div className="spinner"></div>
     )
+}
+
+export default function Button(props: ButtonProp) {
+    const { children, url, onClick, type, className, disabled, isLoading } = props
+    const loadingClass = isLoading ? 'loading' : ''
+    const style = `${className} ${loadingClass}`
+
+    if (url) {
+        return (
+            <Link to={url? `/${url}`: '/'}>
+                <button className={style} type={type} onClick={onClick} disabled={disabled}>
+                    
+                    {isLoading? <LoadingSpinner /> : children}
+                </button>
+            </Link>
+        )
+    } else {
+        return (
+            <button className={style} type={type} onClick={onClick} disabled={disabled}>
+                
+                {isLoading? <LoadingSpinner /> : children}
+            </button>
+        )
+    }
 }

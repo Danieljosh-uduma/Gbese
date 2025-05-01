@@ -1,0 +1,189 @@
+/* 1. Split-screen wrapper */
+.login-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* 2. Left panel */
+.login-left {
+  flex: 1;
+  background-color: #5D3FD3;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.login-left .illustration {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.login-left .left-text {
+  text-align: center;
+  max-width: 350px;
+  line-height: 1.4;
+  margin-bottom: 6rem;
+}
+
+.login-left .left-logo {
+  margin-top: auto;
+}
+.txt-span {
+  color: #FFD700; 
+}
+.left-text p {
+font-size: 15px;
+}
+/* 3. Right panel */
+.login-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  padding: 2rem;
+}
+
+/* 4. Card */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.login-card .avatar {
+  margin: 0 auto 1rem;
+}
+
+.login-card .avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px 0;
+}
+
+.login-card h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* 5. Form fields */
+.input-group {
+  margin-bottom: 1.25rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+   
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+.input-group ::placeholder{
+  color: #CFCFCF;
+  font-size: 14px;
+}
+.password-group .password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 10px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  top: 50%;
+  font-size: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* 6. Forgot link */
+.forgot-password {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.forgot-password a {
+  font-size: 0.875rem;
+  color: #5d3fd3;
+  text-decoration: none;
+}
+
+/* 7. Login button */
+.login-button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #5D3FD3;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.login-button:hover {
+  background-color: #5b21b6;
+}
+/* 8. Signup & footer links */
+.signup-text {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.signup-text a {
+  color: #008080;
+  cursor: pointer;
+  text-decoration: none;
+}
+.signup-text a:hover {
+  text-decoration: underline;
+}
+.footer-links {
+  margin-top: 15px;
+  font-size: 0.875rem;
+}
+
+.footer-links a {
+  color: #000; 
+  margin:0 0.5rem;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+/* on screens narrower than 768px, hide the left/purple pane */
+@media (max-width: 767px) {
+  .login-left {
+    display: none;
+  }
+  /* let the login card fill the width */
+  .login-container {
+    width: 100%;
+    padding: 1rem;    /* adjust as needed */
+  }
+}

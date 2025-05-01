@@ -1,31 +1,24 @@
-import { Route, BrowserRouter, Routes } from "react-router";
+import { Route,  BrowserRouter, Routes } from "react-router-dom";
 import Dashboard from "../pages/Dashboard/Page";
-import Button from "../components/common/button/Button";
-import { getOTP } from "../services/Api";
-// import { useEffect } from "react";
-
+import SignUpPage from "../pages/signup/SignUpPage";
+import LoginPage from "../pages/Login/LoginPage";
+import MobileIntro1 from "../pages/signup/MobileIntro1"; 
+import MobileIntro2 from "../pages/signup/MobileIntro2";
+import MobileIntro3 from "../pages/signup/MobileIntro3";
 
 export default function MainRouter() {
 
-  function handleClick() {
-    getOTP('08061542504')
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error))
-  }
-
   return (
     <BrowserRouter>
-        <Button size="large" onClick={handleClick}>
-          go to Google
-        </Button>
-        <Button>
-           jello
-        </Button>
         <Routes>
-            <Route path="/" element={dashboard} />
+            <Route path="/" element={<Dashboard/>} />
+            <Route path="/signup" element={<SignUpPage/>} />
+            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/mobileintro1" element={<MobileIntro1/>} />
+            <Route path="/mobileintro2" element={<MobileIntro2/>} />
+            <Route path="/mobileintro3" element={<MobileIntro3/>} />
         </Routes>
+    
     </BrowserRouter>
   );
 }
-
-const dashboard =  <Dashboard />// Removed redundant declaration of Dashboard
