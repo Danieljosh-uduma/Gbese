@@ -3,7 +3,6 @@ type UserType = {
     email?: string
 }
 
-<<<<<<< HEAD
 type ProfileType = {
     firstName: string
     lastName: string
@@ -22,6 +21,3 @@ type AuthContextType = {
 }
 
 export type { UserType, AuthContextType, ProfileType }
-=======
-export type { User }
->>>>>>> a97dc1e4386fa991c0f28383f700ea10abb2ee03
