@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SignUpPage.css'
 import { ArrowLeftIcon, Logo, QAIcon } from '../../components/icons/Icon'
-
+import Button from '../../components/common/button/Button'
 function SignUpPage() {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [countryCode, setCountryCode] = useState('+234')
@@ -77,9 +77,7 @@ function SignUpPage() {
               />
             </div>
 
-            <button type="submit" className="continue-button">
-              Continue
-            </button>
+           <Button size="large" >Continue </Button>
           </form>
 
           <div className="signup-footer">

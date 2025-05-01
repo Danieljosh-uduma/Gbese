@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import './LoginPage.css'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
 import { Logo, InterestIcon,Frame1 } from '../../components/icons/Icon'
-
+import Button from '../../components/common/button/Button'
 function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -73,9 +73,10 @@ function LoginPage() {
             </div>
           </div>
 
-          <button className="login-button" onClick={handleLogin}>
-            Log In
-          </button>
+                   {/* your new reusable Button */}
+                   <Button
+            size="large" onClick={handleLogin}>
+            Log In </Button>
 
           <p className="signup-text">
             Don’t have an account? <a href="/signup">Sign Up</a>

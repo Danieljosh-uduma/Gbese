@@ -4,7 +4,7 @@ import LoginPage from "../pages/Login/LoginPage";
 import MobileIntro1 from "../pages/Login/MobileIntro1"; 
 import MobileIntro2 from "../pages/Login/MobileIntro2";
 import MobileIntro3 from "../pages/Login/MobileIntro3";
-
+import CompleteProfileForm from "../pages/Login/CompleteProfile";
 export default function MainRouter() {
   return (
     <BrowserRouter>
@@ -14,6 +14,7 @@ export default function MainRouter() {
             <Route path="/mobileintro1" element={<MobileIntro1/>} />
             <Route path="/mobileintro2" element={<MobileIntro2/>} />
             <Route path="/mobileintro3" element={<MobileIntro3/>} />
+            <Route path="/completeprofile" element={<CompleteProfileForm/>} />
         </Routes>
     
     </BrowserRouter>
