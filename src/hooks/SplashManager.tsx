@@ -1,7 +1,7 @@
 
-import { useState, useEffect } from 'react';
-import LoginPage from '../pages/Login/Page'; 
+import { useState, useEffect } from 'react'; 
 import SplashScreen from '../pages/SplashScreen/SplashScreen';
+import Dashboard from '../pages/Dashboard/Page';
 
 
 export default function SplashManager() {
@@ -10,14 +10,14 @@ export default function SplashManager() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 5000); // show splash for 5 seconds
+    }, 7000); // show splash for 7seconds before loading the next page
 
     return () => clearTimeout(timer); 
   }, []);
 
   return (
     <div>
-      {loading ? <SplashScreen /> : <LoginPage /> }
+      {loading ? <SplashScreen /> : <Dashboard /> }
     </div>
   );
 

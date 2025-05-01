@@ -1,16 +1,16 @@
 import { Route, BrowserRouter, Routes } from "react-router";
 import Dashboard from "../pages/Dashboard/Page";
-import Button from "../components/common/button/Button";
+import SplashScreen from "../pages/SplashScreen/SplashScreen";
+import SplashManager from "../hooks/SplashManager";
 
 
 export default function MainRouter() {
   return (
     <BrowserRouter>
-        <Button size="large" url="signup">
-          go to Google
-        </Button>
         <Routes>
+            <Route path="/" element={<SplashManager />} />
             <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<SplashScreen />} />
         </Routes>
     </BrowserRouter>
   );
