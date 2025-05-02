@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {  ArrowRightIcon, ArrowLeftIcon, InterestIcon,} from '../../components/icons/Icon'
 import './MobileIntro.css'
