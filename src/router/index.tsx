@@ -5,6 +5,7 @@ import LoginPage from "../pages/Login/LoginPage";
 import MobileIntro1 from "../pages/signup/MobileIntro1"; 
 import MobileIntro2 from "../pages/signup/MobileIntro2";
 import MobileIntro3 from "../pages/signup/MobileIntro3";
+import NotFound from "../pages/NotFound/NotFound";
 
 export default function MainRouter() {
 
@@ -18,6 +19,7 @@ export default function MainRouter() {
             <Route path="/mobileintro1" element={<MobileIntro1/>} />
             <Route path="/mobileintro2" element={<MobileIntro2/>} />
             <Route path="/mobileintro3" element={<MobileIntro3/>} />
+            <Route path='*' element={<NotFound />} />
         </Routes>
     
     </BrowserRouter>
