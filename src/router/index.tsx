@@ -12,6 +12,7 @@ export default function MainRouter() {
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<Dashboard/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/signup" element={<SignUpPage/>} />
             <Route path="/login" element={<LoginPage/>} />
             <Route path="/mobileintro1" element={<MobileIntro1/>} />
