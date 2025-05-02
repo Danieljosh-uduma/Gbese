@@ -1,11 +1,10 @@
-import MainRouter from './router/index'
+import MainRouter from './router'
 import './App.css'
 
 function App() {
     
   return (
     <>
-      {/* <h1>Hello world</h1> */}
       <MainRouter />
     </>
 

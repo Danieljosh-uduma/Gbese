@@ -6,14 +6,16 @@
     --primary-100: #AE9FE9;
     --primary-200: #5D3FD3;
 
+    --secondary-100: #80BFBF;
     --secondary-200: #008080;
-    
+
+    --accent-100: #FFEB80;
     --accent-200: #FFD700;
 
     /* This not the correct colors, that's why it's commented  */
-    /* --danger: #FF0000; */
-    /* --warning: #FFCC00; */
-    /* --success: #00FF00; */
+    --danger: #DB0000;
+    --warning: #F59E0B;
+    --success: #008600;
 
     /* typography  */
     --body-text: #2A2A2A;
@@ -24,12 +26,13 @@
     --header-font: Poppins, sans-serif;
 
     /* To be completed, do we need this?  */
-    /* --h1-size: 
-    --h2-size:
-    --h3-size: 
-    --p-size: 
-    --sm-p-size: 
-    --lg-p-size: */
+    --h1-size: 4rem;
+    --h2-size: 3.5rem;
+    --h3-size: 3rem;
+    --lg-text: 1.5rem;
+    --sm-text: 1rem;
+    --md-text: 1.125rem;
+    --xs-text: 0.875rem: 
     
 }
 
