@@ -7,7 +7,7 @@ import { Logo } from '../../../components/icons/Icon';
 
 const Otp = () => {
   const [otp, setOtp] = useState<string[]>(new Array(5).fill(''));
-  const [timer, setTimer] = useState<number>(10); // countdown in seconds
+  const [timer, setTimer] = useState<number>(120); // countdown in seconds
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
