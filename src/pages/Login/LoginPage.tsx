@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import './LoginPage.css'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
-import { Logo, InterestIcon,Frame1 } from '../../components/icons/Icon'
+import { Logo, InterestIcon,Frame1,ArrowLeftIcon } from '../../components/icons/Icon'
 import Button from '../../components/common/button/Button'
 function LoginPage() {
   const [email, setEmail] = useState('')
@@ -36,7 +36,14 @@ function LoginPage() {
       </div>
 
       <div className="login-container">
+      <div className="backlink" onClick={() => navigate('/login')} 
+          style={{cursor: 'pointer'}}><ArrowLeftIcon /> <span>Back</span>
+
+
+        </div>
+       
         <div className="login-card">
+          
           <h1>Log in</h1>
 
           <div className="avatar">

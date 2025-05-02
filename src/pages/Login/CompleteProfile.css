@@ -7,7 +7,7 @@
     color: #696969;
   }
   .input-row label {
-    /* display: block; */
+    display: block;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
     text-align: left;
@@ -94,3 +94,27 @@
   .input-row select:focus {
     color: #000; /* user-selected text color */
   }
+  @media (max-width: 600px) {
+    .input-row {
+
+      gap: 1rem;
+    }
+  
+    .input-row .input-group2 {
+      margin-right: 0; 
+    }
+  
+    .custom-date-wrapper input[type="date"],
+    .input-row input,
+    .input-row select {
+      font-size: 1rem;
+      padding: 12px;
+    }
+  
+    .calendar-icon {
+      right: 10px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+  

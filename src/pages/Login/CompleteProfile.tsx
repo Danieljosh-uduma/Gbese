@@ -7,7 +7,7 @@ import { ArrowLeftIcon}  from '../../components/icons/Icon'; // style file
 import { CalendarIcon } from '../../components/icons/Icon';
 import './CompleteProfile.css'; // 
 
-const CompleteProfile = () => {
+function CompleteProfile() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();

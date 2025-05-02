@@ -2,6 +2,7 @@
 .login-wrapper {
   display: flex;
   min-height: 100vh;
+  height: auto;
 }
 
 /* 2. Left panel */
@@ -47,6 +48,7 @@ font-size: 15px;
   justify-content: center;
   background: #f9f9f9;
   padding: 2rem;
+  position: relative;
 }
 
 /* 4. Card */
@@ -178,13 +180,55 @@ font-size: 15px;
   text-decoration: underline;
 }
 /* on screens narrower than 768px, hide the left/purple pane */
+/* Responsive design for mobile screens */
 @media (max-width: 767px) {
+  /* Hide the left purple panel */
   .login-left {
     display: none;
   }
-  /* let the login card fill the width */
+
+  /* Make the right panel take full width */
   .login-container {
+    flex: 1;
     width: 100%;
-    padding: 1rem;    /* adjust as needed */
+    padding: 1rem;
+    justify-content: flex-start; /* Align form towards the top */
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  /* Adjust login card spacing and alignment */
+  .login-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .login-card h1,
+  .login-card h2 {
+    text-align: center;
+  }
+
+  .input-group,
+  .forgot-password,
+  .signup-text,
+  .footer-links {
+    width: 100%;
+  }
+
+  .forgot-password {
+    margin-top: 0.5rem;
+  }
+
+  
+  .login-button:hover {
+    background-color: #5b21b6;
+  }
+
+  .footer-links {
+    text-align: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
   }
 }
