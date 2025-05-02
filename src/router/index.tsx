@@ -1,12 +1,12 @@
 import { Route,  BrowserRouter, Routes } from "react-router-dom";
 import Dashboard from "../pages/Dashboard/Page";
-import SignUpPage from "../pages/signup/SignUpPage";
+import SignUpPage from "../pages/signup/getOtp/SignUpPage";
 import LoginPage from "../pages/Login/LoginPage";
-import MobileIntro1 from "../pages/signup/MobileIntro1"; 
-import MobileIntro2 from "../pages/signup/MobileIntro2";
-import MobileIntro3 from "../pages/signup/MobileIntro3";
+import MobileIntro1 from "../pages/signup/mobile/MobileIntro1"; 
+import MobileIntro2 from "../pages/signup/mobile/MobileIntro2";
+import MobileIntro3 from "../pages/signup/mobile/MobileIntro3";
 import NotFound from "../pages/NotFound/NotFound";
-import Otp from "../pages/Otp page/Otp";
+import Otp from "../pages/signup/verifyOtp/Otp";
 
 export default function MainRouter() {
 

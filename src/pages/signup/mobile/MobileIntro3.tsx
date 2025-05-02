@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import {  ArrowRightIcon, ArrowLeftIcon, LoanImageOne,} from '../../components/icons/Icon'
+import {  ArrowRightIcon, ArrowLeftIcon, InterestIcon,} from '../../../components/icons/Icon'
 import './MobileIntro.css'
-function MobileIntro2() {
+function MobileIntro3() {
   const navigate = useNavigate();
 
   return (
@@ -11,26 +11,25 @@ function MobileIntro2() {
 
       </button>
 
-       <LoanImageOne className="illustration" width={300} />
+       <InterestIcon className="illustration" width={300} />
        <div className="illustration-text">
-      <h2>Secure Transaction</h2>
+      <h2>Smart Management & Instant Notifications</h2>
       <p>
-      Gbese have Bank-level security for all your transactions
+      Get Alerted immediately about account activities, anytime. Intuitive tools to manage your debts efficiently
       </p>
       </div>
       <div className="dots">
         <span className="dot" />
-        <span className="dot active"  />
         <span className="dot" />
+        <span className="dot active" />
       </div>
-      <div className="backlink-mobile" onClick={() => navigate('/mobileintro1')} 
+      <div className="backlink-mobile" onClick={() => navigate('/mobileintro2')} 
           style={{cursor: 'pointer'}}><ArrowLeftIcon /> <span>Back</span>
         </div>
-
-      <button className="next-btn" onClick={() => navigate('/mobileintro3')}>
+      <button className="next-btn" onClick={() => navigate('/signup')}>
         Next
       </button>
  </div>
 );
 }
-export default MobileIntro2;
+export default MobileIntro3;

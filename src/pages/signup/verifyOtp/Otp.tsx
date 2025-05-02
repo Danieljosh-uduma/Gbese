@@ -1,16 +1,23 @@
 import { useState, useRef, useEffect, ChangeEvent, KeyboardEvent } from 'react';
-import Button from '../../components/common/button/Button';
-import '../../index.css';
+import { useLocation, useNavigate  } from 'react-router-dom';
+import { verifyOTP } from '../../../services/Api';
+import Button from '../../../components/common/button/Button';
 import './otp.css';
+import { Logo } from '../../../components/icons/Icon';
 
 const Otp = () => {
   const [otp, setOtp] = useState<string[]>(new Array(5).fill(''));
-  const [timer, setTimer] = useState<number>(120); // countdown in seconds
+  const [timer, setTimer] = useState<number>(10); // countdown in seconds
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string>('');
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const key = useLocation().state.key;
+  const navigate = useNavigate();
+
+
   useEffect(() => {
   inputRefs.current[0]?.focus();
-}, []);
-const [error, setError] = useState<string | null>(null);
+  }, []);
 
 
   // Countdown timer
@@ -22,7 +29,7 @@ const [error, setError] = useState<string | null>(null);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timer]);
+    }, [timer]);
 
   const handleChange = (element: HTMLInputElement, index: number) => {
     const value = element.value.replace(/\D/, '');
@@ -31,14 +38,14 @@ const [error, setError] = useState<string | null>(null);
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
-    setError(null); // Clear error on change
+    setError(''); // Clear error on change
 
     if (index < otp.length - 1) {
       inputRefs.current[index + 1]?.focus();
     }
   };
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>, index: number) => {
+  function handleKeyDown(e: KeyboardEvent<HTMLInputElement>, index: number) {
     if (e.key === 'Backspace') {
       if (otp[index]) {
         const newOtp = [...otp];
@@ -69,22 +76,30 @@ const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = () => {
     const code = otp.join('');
-  if (code !== '12345') {
-    setError('Invalid OTP. Please try again.');
-  } else {
-    setError(null);
-    console.log('OTP verified!');
-    // Proceed to next step or navigate
-  }
-    // const code = otp.join('');
-    // console.log('Entered OTP:', code);
-    // Add API verification logic here
+    setIsLoading(true);
+    setError('');
+    
+    verifyOTP(key, code)
+      .then(res => {
+        setIsLoading(false)
+
+        if (res.success) {
+          navigate('/', { state: { key: res.key}})
+        } else {
+          setError(res.message);
+          console.log('OTP verification failed:', res.message);
+        }
+      })
+      .catch(err => {
+        setIsLoading(false)
+        setError('Invalid OTP. Please try again.');
+        console.log(err.message)
+      })
   };
 
   const handleResend = () => {
     if (timer === 0) {
       // Call resend API here
-      console.log('Resending OTP...');
       setOtp(new Array(5).fill(''));
       setTimer(120);
       inputRefs.current[0]?.focus();
@@ -100,10 +115,11 @@ const [error, setError] = useState<string | null>(null);
     return `${m}:${s}`;
   };
 
+
   return (
     <div className="otp-container">
       <div className="otp-logo">
-        <img src="src/assets/images/icons/logo-main.svg" alt="Logo" />
+        <Logo />
       </div>
 
       <div className="otp-heading">
@@ -120,6 +136,7 @@ const [error, setError] = useState<string | null>(null);
             pattern="[0-9]*"
             maxLength={1}
             value={value}
+            title='Enter the OTP code'
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               handleChange(e.target, index)
             }
@@ -131,10 +148,9 @@ const [error, setError] = useState<string | null>(null);
         ))}
       </div>
       {error && (
-  <p className="otp-error">
-    {error}
-  </p>
-)}
+      <p className="otp-error">
+        {error}
+      </p> )}
 
 
       <p className="otp-countdown">
@@ -142,7 +158,7 @@ const [error, setError] = useState<string | null>(null);
       </p>
 
       <div className="otp-btn-div">
-        <Button className="otp-verify" onClick={handleSubmit}>
+        <Button className="otp-verify" onClick={handleSubmit} isLoading={isLoading} disabled={isLoading}>
           Verify
         </Button>
       </div>
