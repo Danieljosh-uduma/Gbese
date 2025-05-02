@@ -11,10 +11,30 @@ async function getOTP(phoneNumber: string) {
         headers: headers,
         body: JSON.stringify({"phone": phoneNumber}),
     })
-    const data = await res.json()
-    if (!res.ok) {
-        throw new Error(data.message || 'Failed to fetch OTP')
+    if (res.status === 500) {
+        throw new Error('Unable to fetch OTP, please try again')
     }
+    if (!res.ok) {
+        throw new Error('Invalid phone number, failed to send OTP')
+    }
+    const data = await res.json()
+    return data
+}
+
+async function verifyOTP(key: string, otp: string) {
+    const res = await fetch(`${BASE_URL}/v1/phone/verify`, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({"key": key, "otp": otp}),
+    })
+
+    if (res.status === 500) {
+        throw new Error('Unable to verify OTP, please try again')
+    }
+    if (!res.ok) {
+        throw new Error('Invalid OTP')
+    }
+    const data = await res.json()
     return data
 }
 
@@ -25,6 +45,9 @@ async function loginUser(email: string, password: string) {
         body: JSON.stringify({"email": email, "password": password}),
     })
     
+    if (res.status === 500) {
+        throw new Error('Login failed, please try again')
+    }
     if (!res.ok) {
         console.log("Error occurred", res.status)
         return { success: false, message: 'Login failed, invalid credentials' }
@@ -38,9 +61,12 @@ function validateEmail(email: string) {
     return regex.test(email);
 }
 
+// https://gbese.onrender.com/api/v2/user
+// https://gbese.onrender.com/api/v2/signup
 
 export { 
     getOTP,
+    verifyOTP,
     loginUser,
     validateEmail
 }

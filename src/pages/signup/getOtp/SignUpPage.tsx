@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getOTP } from '../../services/Api'
-import { ArrowLeftIcon, Logo, QAIcon } from '../../components/icons/Icon'
-import Button from '../../components/common/button/Button'
+import { getOTP } from '../../../services/Api'
+import { ArrowLeftIcon, Logo, QAIcon } from '../../../components/icons/Icon'
+import Button from '../../../components/common/button/Button'
 import './SignUpPage.css'
 
 
@@ -13,7 +13,6 @@ export default function SignUpPage() {
   const [countryCode, setCountryCode] = useState('+234')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  const [key, setKey] = useState('')
   const navigate = useNavigate()
 
 
@@ -37,19 +36,15 @@ export default function SignUpPage() {
           setError('')
           // Check if the response is successful
           if (res.success) {
-            console.log(res)
-            setKey(res.key)
-            navigate('/verify-otp', { state: { key } })
+            navigate('/verify-otp', { state: { key: res.key } })
           } else {
-            // Handle error response
             setError(res.message)
           }
         })
         .catch((err) => {
           // Handle network or other errors
           setIsLoading(false)
-          setError('Error sending OTP, try again')
-          console.error('Error:', err)
+          setError(err.message)
         })
     }
   }

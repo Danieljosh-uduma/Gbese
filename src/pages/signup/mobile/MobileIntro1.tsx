@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import {  ArrowRightIcon, QAIcon,} from '../../components/icons/Icon'
+import {  ArrowRightIcon, QAIcon,} from '../../../components/icons/Icon'
 import './MobileIntro.css'
 function MobileIntro1() {
   const navigate = useNavigate();
