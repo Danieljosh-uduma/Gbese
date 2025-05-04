@@ -7,21 +7,32 @@ import MobileIntro2 from "../pages/signup/mobile/MobileIntro2";
 import MobileIntro3 from "../pages/signup/mobile/MobileIntro3";
 import NotFound from "../pages/NotFound/NotFound";
 import Otp from "../pages/signup/verifyOtp/Otp";
+import CompleteProfile from "../pages/signup/userDetails/CompleteProfile";
 
 export default function MainRouter() {
 
   return (
     <BrowserRouter>
         <Routes>
+            {/* dashboard */}
             <Route path="/" element={<Dashboard/>} />
             <Route path="/dashboard" element={<Dashboard/>} />
-            <Route path="/signup" element={<SignUpPage/>} />
-            <Route path="/verify-otp" element={<Otp/>} />
+            
+            {/* login  */}
             <Route path="/login" element={<LoginPage/>} />
+            
+            {/* sign up  */}
+            <Route path="/signup" element={<SignUpPage/>} />
+            <Route path="/signup/verify-otp" element={<Otp/>} />
+            <Route path="/signup/completeprofile" element={<CompleteProfile/>} />
+
+            {/* mobile intro  */}
             <Route path="/mobileintro1" element={<MobileIntro1/>} />
             <Route path="/mobileintro2" element={<MobileIntro2/>} />
             <Route path="/mobileintro3" element={<MobileIntro3/>} />
-            <Route path='*' element={<NotFound />} />
+
+            {/* not found  */}
+            <Route path="*" element={<NotFound/>} />
         </Routes>
     
     </BrowserRouter>

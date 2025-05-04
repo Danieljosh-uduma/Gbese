@@ -3,12 +3,12 @@ import mainLogo from '../../assets/images/icons/logo-main.svg'
 import whiteLogo from '../../assets/images/icons/Logo-white.svg'
 import arrowLeft from '../../assets/images/icons/arrow-left.svg'
 import arrowRight from '../../assets/images/icons/arrow-right.svg'
-import interestImg from '../../assets/images/icons/Intrest-on-loan.png'
-import loanImg1 from '../../assets/images/icons/loan-img1.png'
+import interestImg from '../../assets/images/icons/Intrest-on-loan.svg'
+import loanImg1 from '../../assets/images/icons/loanImg.svg'
 import logoText from '../../assets/images/icons/Logo-text.png'
-import qAndAImage from '../../assets/images/icons/Q and A about loan.png'
+import qAndAImage from '../../assets/images/icons/Q and A about loan.svg'
 import frame1 from '../../assets/images/Frame-1.png'
-
+import Calendar from '../../assets/images/icons/calendar.svg'
 // --- types ---
 type LogoProps = {
   type?: 'white' | 'green'
@@ -67,6 +67,10 @@ function Frame1 (props: ImageProps) {
   const { className, width, height } = props
   return <img src={frame1} alt="Frame1" className={className} style={{ width, height }} />
 }
+function CalendarIcon(props: ImageProps) {
+  const { className, width, height } = props
+  return <img src={Calendar} alt="Calendar" className={className} style={{ width, height }} />
+}
 
 // --- export all components ---
 export {
@@ -78,4 +82,5 @@ export {
   LogoTextIcon,
   QAIcon,
   Frame1,
+  CalendarIcon
 }

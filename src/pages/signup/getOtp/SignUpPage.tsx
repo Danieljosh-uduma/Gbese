@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getOTP } from '../../../services/Api'
+import { getOTP } from '../../../services/Auth'
 import { ArrowLeftIcon, Logo, QAIcon } from '../../../components/icons/Icon'
 import Button from '../../../components/common/button/Button'
 import './SignUpPage.css'
@@ -36,7 +36,7 @@ export default function SignUpPage() {
           setError('')
           // Check if the response is successful
           if (res.success) {
-            navigate('/verify-otp', { state: { key: res.key } })
+            navigate('/signup/verify-otp', { state: { key: res.key } })
           } else {
             setError(res.message)
           }

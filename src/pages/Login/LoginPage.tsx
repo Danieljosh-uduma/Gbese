@@ -5,7 +5,7 @@ import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
 import { Logo, InterestIcon,Frame1 } from '../../components/icons/Icon'
 import Button from '../../components/common/button/Button'
 import { useNavigate } from 'react-router-dom'
-import { loginUser, validateEmail } from '../../services/Api'
+import { loginUser, validateEmail } from '../../services/Auth'
 
 function LoginPage() {
   const [email, setEmail] = useState('')
@@ -55,40 +55,13 @@ function LoginPage() {
             setIsLoading(false)
             console.error('Error:', err)
             setError('Unable to login, please try again')
+            setEmail('')
+            setPassword('')
           })
       }
     }
-
-    // validate email format
-
-    // 
-
-    
-    
-    console.log(`Email: ${email}, Password: ${password}`)
-    // setEmail('')
-    // setPassword('')
   }
 
-  // if (email.trim() === '' || password.trim() === '') {
-  //   setError('Please fill in all fields')
-  //   setIsLoading(false)
-  //   return
-  // } else (
-  //   loginUser(email, password)
-  //     .then(res => {
-  //       setIsLoading(false)
-  //       setError('')
-  //       if (res.success) {
-  //         navigate('/dashboard', { state})
-  //       } else {
-  //         setError(res.message)
-  //       }
-  //     })
-  //     .catch(err => {
-  //       setIsLoading(false)
-  //       console.log(err)
-  //     })
 
   return (
     <div className="login-wrapper">
@@ -148,7 +121,7 @@ function LoginPage() {
           {error && <p className="error1">{error}</p>}
           <br />
           <Button 
-            className='login-button' 
+            className='continue-button large-btn' 
             onClick={handleLogin}
             isLoading={isLoading}
             disabled={isLoading}>
