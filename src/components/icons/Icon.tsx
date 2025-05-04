@@ -8,7 +8,7 @@ import loanImg1 from '../../assets/images/icons/loanImg.svg'
 import logoText from '../../assets/images/icons/Logo-text.png'
 import qAndAImage from '../../assets/images/icons/Q and A about loan.svg'
 import frame1 from '../../assets/images/Frame-1.png'
-import Calendar from '../../assets/images/icons/Calendar.svg'
+import Calendar from '../../assets/images/icons/calendar.svg'
 // --- types ---
 type LogoProps = {
   type?: 'white' | 'green'
