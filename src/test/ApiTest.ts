@@ -1,4 +1,4 @@
-import { verifyOTP } from "../services/Api";
+import { verifyOTP } from "../services/Auth";
 
 
 const otp = '12345'

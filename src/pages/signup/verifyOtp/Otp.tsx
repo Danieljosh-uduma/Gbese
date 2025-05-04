@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, ChangeEvent, KeyboardEvent } from 'react';
 import { useLocation, useNavigate  } from 'react-router-dom';
-import { verifyOTP } from '../../../services/Api';
+import { verifyOTP } from '../../../services/Auth';
 import Button from '../../../components/common/button/Button';
 import './otp.css';
 import { Logo } from '../../../components/icons/Icon';
@@ -84,7 +84,7 @@ const Otp = () => {
         setIsLoading(false)
 
         if (res.success) {
-          navigate('/', { state: { key: res.key}})
+          navigate('/signup/completeprofile', { state: { key: res.key}})
         } else {
           setError(res.message);
           console.log('OTP verification failed:', res.message);

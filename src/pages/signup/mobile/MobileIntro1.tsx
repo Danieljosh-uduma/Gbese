@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import {  ArrowRightIcon, QAIcon,} from '../../../components/icons/Icon'
 import './MobileIntro.css'
+import Button from '../../../components/common/button/Button';
 function MobileIntro1() {
   const navigate = useNavigate();
 
@@ -24,10 +25,8 @@ function MobileIntro1() {
         <span className="dot" />
         <span className="dot" />
       </div>
-      <button className="next-btn" onClick={() => navigate('/mobileintro2')}>
-        Next
-      </button>
- </div>
+      <Button url="mobileintro2">Next</Button>
+</div>
 );
 }
 export default MobileIntro1;

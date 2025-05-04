@@ -4,13 +4,11 @@ type UserType = {
 }
 
 type ProfileType = {
-    firstName: string
-    lastName: string
-    address: string
-    city: string
-    state: string
-    country: string
-    user: UserType
+    fullName: string
+    email: string
+    password: string
+    dateOfBirth: string
+    gender: string
 }
 
 type AuthContextType = {
