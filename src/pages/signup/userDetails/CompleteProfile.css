@@ -58,9 +58,9 @@
     background-color: #fff;
   
     /* Hide default icon */
-    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
   }
   
   .custom-date-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
