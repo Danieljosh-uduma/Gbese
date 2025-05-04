@@ -1,3 +1,5 @@
+import { ProfileType } from "../types/User"
+
 const BASE_URL = "https://gbese.onrender.com/api"
 const headers = new Headers({
     "Content-Type": "application/json",
@@ -38,6 +40,22 @@ async function verifyOTP(key: string, otp: string) {
     return data
 }
 
+async function createUser(detail: {key: string} & ProfileType ) {
+    const res = await fetch(`${BASE_URL}/v2/User`, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(detail)
+    })
+    if (res.status === 500) {
+        throw new Error("unable to create user")
+    }
+    if (!res.ok) {
+        throw new Error("Invalid details, try again")
+    }
+    const data = res.json()
+    return data
+}
+
 async function loginUser(email: string, password: string) {
     const res = await fetch(`${BASE_URL}/v2/login`, {
         method: 'POST',
@@ -49,7 +67,6 @@ async function loginUser(email: string, password: string) {
         throw new Error('Login failed, please try again')
     }
     if (!res.ok) {
-        console.log("Error occurred", res.status)
         return { success: false, message: 'Login failed, invalid credentials' }
     }
     const data = await res.json()
@@ -67,6 +84,7 @@ function validateEmail(email: string) {
 export { 
     getOTP,
     verifyOTP,
+    createUser,
     loginUser,
     validateEmail
 }

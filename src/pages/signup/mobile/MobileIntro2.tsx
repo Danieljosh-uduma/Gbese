@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import {  ArrowRightIcon, ArrowLeftIcon, LoanImageOne,} from '../../../components/icons/Icon'
 import './MobileIntro.css'
+import Button from '../../../components/common/button/Button';
+
+
 function MobileIntro2() {
   const navigate = useNavigate();
 
@@ -25,12 +28,9 @@ function MobileIntro2() {
       </div>
       <div className="backlink-mobile" onClick={() => navigate('/mobileintro1')} 
           style={{cursor: 'pointer'}}><ArrowLeftIcon /> <span>Back</span>
-        </div>
-
-      <button className="next-btn" onClick={() => navigate('/mobileintro3')}>
-        Next
-      </button>
- </div>
+      </div>
+            <Button url="mobileintro3">Next</Button>
+      </div>
 );
 }
 export default MobileIntro2;
