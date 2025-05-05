@@ -1,5 +1,4 @@
 import { Route,  BrowserRouter, Routes } from "react-router-dom";
-import Dashboard from "../pages/Dashboard/Page";
 import SignUpPage from "../pages/signup/getOtp/SignUpPage";
 import LoginPage from "../pages/Login/LoginPage";
 import MobileIntro1 from "../pages/signup/mobile/MobileIntro1"; 
@@ -8,6 +7,8 @@ import MobileIntro3 from "../pages/signup/mobile/MobileIntro3";
 import NotFound from "../pages/NotFound/NotFound";
 import Otp from "../pages/signup/verifyOtp/Otp";
 import CompleteProfile from "../pages/signup/userDetails/CompleteProfile";
+import SplashManager from "../hooks/SplashManager";
+
 
 export default function MainRouter() {
 
@@ -15,8 +16,7 @@ export default function MainRouter() {
     <BrowserRouter>
         <Routes>
             {/* dashboard */}
-            <Route path="/" element={<Dashboard/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/" element={<SplashManager />} />
             
             {/* login  */}
             <Route path="/login" element={<LoginPage/>} />
@@ -33,6 +33,7 @@ export default function MainRouter() {
 
             {/* not found  */}
             <Route path="*" element={<NotFound/>} />
+            
         </Routes>
     
     </BrowserRouter>

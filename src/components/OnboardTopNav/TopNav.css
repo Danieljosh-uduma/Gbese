@@ -1,0 +1,21 @@
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+  }
+  
+  .back-btn {
+    background: none;
+    border: none;
+    color: #5f2ded;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .skip-link {
+    color: #008080; 
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
