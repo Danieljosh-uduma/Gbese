@@ -1,0 +1,98 @@
+.bvn-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .logo  {
+    margin-top: 80px;
+    margin-bottom: 18px;
+  }
+  .logo img {
+    width: 96px;
+    height: 96px;
+
+  }
+
+  .welcome-text {
+    width: 388;
+    height: 58;
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 10px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .welcome-sub-text {
+    font-family: Poppins;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    margin-bottom: 30px;
+    text-align: center;
+    vertical-align: middle;
+    
+  }
+
+  .bvn-container label {
+    display: flex;
+  }
+  
+  .bvn-input-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .bvn-input-wrapper input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 3rem;
+    font-size: 12px;
+  }
+  
+  .toggle-visibility {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    width: 18px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .continue-btn {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    background-color: #6c2bd9;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .footer-links  {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }
+
+  .footer-links a  {
+   padding-inline: 25px;
+   text-decoration: underline;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  
