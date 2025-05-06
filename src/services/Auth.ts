@@ -56,6 +56,24 @@ async function createUser(detail: {key: string} & ProfileType ) {
     return data
 }
 
+async function chooseRole(key: string, role: string) {
+    const res = await fetch(`${BASE_URL}/v2/signup`, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({"key": key, "type": role})
+    })
+
+    if (res.status === 500) {
+        throw new Error("An error occurred")
+    }
+    if (!res.ok) {
+        throw new Error('Invalid role, try again')
+    }
+
+    const data = await res.json()
+    return data
+}
+
 async function loginUser(email: string, password: string) {
     const res = await fetch(`${BASE_URL}/v2/login`, {
         method: 'POST',
@@ -85,6 +103,9 @@ export {
     getOTP,
     verifyOTP,
     createUser,
+    chooseRole,
     loginUser,
-    validateEmail
+    validateEmail,
+    BASE_URL,
+    headers
 }
