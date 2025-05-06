@@ -1,8 +1,8 @@
 import { useNavigate, useLocation } from 'react-router';
-import { ArrowLeftIcon, Logo } from '../../../components/icons/Icon';
-import { chooseRole } from '../../../services/Auth';
+import { ArrowLeftIcon, Logo } from '../../components/icons/Icon';
+import { chooseRole } from '../../services/Auth';
 import './Signup.css'
-import Button from '../../../components/common/button/Button';
+import Button from '../../components/common/button/Button';
 import { useState } from 'react';
 
 
