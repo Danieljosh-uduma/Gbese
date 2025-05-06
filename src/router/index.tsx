@@ -6,9 +6,9 @@ import MobileIntro2 from "../pages/signup/mobile/MobileIntro2";
 import MobileIntro3 from "../pages/signup/mobile/MobileIntro3";
 import NotFound from "../pages/NotFound/NotFound";
 import Otp from "../pages/signup/verifyOtp/Otp";
+import GetStarted from "../pages/signup/role/GetStarted";
 import CompleteProfile from "../pages/signup/userDetails/CompleteProfile";
 import SplashManager from "../hooks/SplashManager";
-import GetStarted from "../pages/signup/role/GetStarted";
 
 
 export default function MainRouter() {
