@@ -6,7 +6,7 @@ import Button from '../../../components/common/button/Button';
 import { useState } from 'react';
 
 
-export default function GetStarted() {
+export default function Role() {
     const [benefactor, setBenefactor] = useState(false)
     const [beneficiary, setBeneficiary] = useState(false)
     const key = useLocation().state.key 
