@@ -1,6 +1,6 @@
 
 import './App.css'
-import GetStarted from './pages/Signup/Signup'
+import Sidebar from './components/Sidebar/Sidebar'
 
 function App() {
     
@@ -8,7 +8,7 @@ function App() {
     <>
      
 
-      <GetStarted />
+      <Sidebar/>
     </>
 
   )
