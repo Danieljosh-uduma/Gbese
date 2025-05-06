@@ -62,7 +62,7 @@
     width: 0%;
     border-radius: 8px;
     background: linear-gradient(90deg, #6a11cb 0%, #5D3FD3 100%);
-    animation: loading 2s ease-in infinite;
+    animation: loading 7s infinite;
   }
 
   /* Media Queries for Responsiveness */
@@ -72,10 +72,10 @@
     }
 
     50% {
-      width: 100%;
+      width: 50%;
     }
     100% {
-      width: 0;
+      width: 100%;
     }
   }
   
