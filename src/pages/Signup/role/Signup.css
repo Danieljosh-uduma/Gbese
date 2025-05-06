@@ -1,0 +1,111 @@
+*{
+    font-family: Lato, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Poppins;
+}
+.container {
+    min-height: 100vh;
+    padding-top: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    position: static;
+  }
+  
+  .logo-container {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .selected {
+    background-color: #F0E9FF !important;
+    border: 2px solid var(--primary-100) !important;
+  }
+  .logo {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .title {
+    font-size:32px;
+    font-weight: 600;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    max-width: 640px;
+    padding-top: 1rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 640px) {
+    .card-container {
+      flex-direction: column;
+      gap: 2.5rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+
+    .back {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .text {
+      display: none;
+    }
+
+    .container {
+      padding-bottom: 1rem;
+    }
+  }
+  
+
+  
+  .card {
+    flex: 1;
+    border: 2px solid #d1d5db;
+    border-radius: 2rem;
+    padding: 2rem;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    background-color: #F0E9FF;
+    border: 2px solid var(--primary-50);
+  }
+  .card:active {
+    border: 2px solid var(--primary-200);
+  }
+  .card-title {
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+  
+  .card-text {
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  

@@ -48,7 +48,7 @@ function CompleteProfile() {
           setIsLoading(false)
           setError('')
           if (res.success) {
-            navigate('/', {state: {key: res.key}})
+            navigate('/signup/completeprofile/role', {state: {key: res.key}})
           } else {
             setError(res.message)
           }
