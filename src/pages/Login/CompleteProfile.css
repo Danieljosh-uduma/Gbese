@@ -2,13 +2,12 @@
     display: flex;
     gap: 1rem; /* space between the two fields */
     /* justify-content: space-between; */
-  }
+}
   .input-row1 label{
     color: #696969;
   }
   .input-row label {
     display: block;
-    margin-bottom: 0.5rem;
     font-size: 0.9rem;
     text-align: left;
     color: #696969;
@@ -40,6 +39,23 @@
   
   .input-row .input-group2:first-child {
     margin-right: 1rem;
+  }
+  .password-wrapper2 {
+    position: relative;
+  }
+  .password-wrapper2 input {
+    width: 100%;
+    padding: 10px;/* Add padding to the right for the icon */
+    border-radius: 8px;
+    border: 1px solid #D1D5DB;
+    font-size: 1rem;
+  }
+  .password-wrapper2 .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-20%);
+    cursor: pointer;
   }
   
   .custom-date-wrapper {
@@ -76,7 +92,6 @@
     position: absolute;
     right: 12px;
     top: 50%;
-    transform: translateY(-50%);
     width: 20px;
     height: 20px;
     pointer-events: none;
@@ -117,4 +132,4 @@
       height: 18px;
     }
   }
-  
+   
