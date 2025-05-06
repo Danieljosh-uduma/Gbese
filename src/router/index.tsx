@@ -8,6 +8,7 @@ import NotFound from "../pages/NotFound/NotFound";
 import Otp from "../pages/signup/verifyOtp/Otp";
 import CompleteProfile from "../pages/signup/userDetails/CompleteProfile";
 import SplashManager from "../hooks/SplashManager";
+import GetStarted from "../pages/signup/role/Signup";
 
 
 export default function MainRouter() {
@@ -25,6 +26,7 @@ export default function MainRouter() {
             <Route path="/signup" element={<SignUpPage/>} />
             <Route path="/signup/verify-otp" element={<Otp/>} />
             <Route path="/signup/completeprofile" element={<CompleteProfile/>} />
+            <Route path="/signup/completeprofile/role" element={<GetStarted />} />
 
             {/* mobile intro  */}
             <Route path="/mobileintro1" element={<MobileIntro1/>} />
