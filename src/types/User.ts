@@ -1,7 +1,65 @@
-type UserType = {
-    phoneNumber: string
-    email?: string
+type benefactorUser = {
+    fullname: string
+    acctNumber: string
+    coins: number
+    balance: number
+    type: 'benefactor'
+    _id: string
+    amountInvested: number
+    RIO: number
+    helped: number
 }
+
+type beneficiaryUser = {
+    fullname: string
+    acctNumber: string
+    coins: number
+    balance: number
+    type: 'benefactor'
+    _id: string
+    amountInvested: number
+    RIO: number
+    helped: number
+}
+
+type benefactorType = {
+    success: boolean
+    message: string
+    name: string
+    Account_Date: {
+        RIO: number
+        accNumber: string
+        amountInvested: number
+        balance: number
+        coins: number
+        createdAt: string
+        helped: number
+        type: "benefactor" | "benefactor"
+        updatedAt: string
+        _id: string
+    }
+}
+
+type beneficiaryType = {
+    success: boolean
+    message: string
+    name: string
+    Account_Date: {
+        RIO: number
+        accNumber: string
+        amountInvested: number
+        balance: number
+        coins: number
+        createdAt: string
+        helped: number
+        type: "benefactor" | "benefactor"
+        updatedAt: string
+        _id: string
+    }
+}
+
+type userType = benefactorUser | beneficiaryUser
+type loginType = benefactorType | beneficiaryType
 
 type ProfileType = {
     fullName: string
@@ -12,10 +70,9 @@ type ProfileType = {
 }
 
 type AuthContextType = {
-    user: UserType | null
-    signup: (phoneNumber: string, email?: string) => void
-    login: (email: string, password: string) => void
+    user: userType | null
+    login: (details: userType) => void
     logout: () => void
 }
 
-export type { UserType, AuthContextType, ProfileType }
+export type { userType, loginType, AuthContextType, ProfileType }

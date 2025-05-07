@@ -9,7 +9,7 @@ import { useState } from 'react';
 export default function Role() {
     const [benefactor, setBenefactor] = useState(false)
     const [beneficiary, setBeneficiary] = useState(false)
-    const key = useLocation().state.key 
+    const key = useLocation().state//.key 
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
@@ -28,25 +28,19 @@ export default function Role() {
         const role = benefactor? 'benefactor': beneficiary? 'beneficiary': ''
         setIsLoading(true)
         setError('')
-        console.log(role)
-        console.log(JSON.stringify({"key": key, "type": role}))
 
         if (role === '') {
             setIsLoading(false)
             setError("Please pick a role.")
         } else {
-            console.log(key, role)
             chooseRole(key, role)
                 .then(res => {
                     setIsLoading(false)
-
                     if (res.success) {
-                        
-                        console.log('great job')
+                        navigate('/dashboard')
                     } else {
-                        console.log(res.message, 'bad job')
+                        setError('Invalid Role, try again.')
                     }
-                    console.log(res)
                 })
                 .catch(err => {
                     setIsLoading(false)

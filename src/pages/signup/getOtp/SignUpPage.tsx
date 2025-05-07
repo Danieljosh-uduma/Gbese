@@ -36,7 +36,7 @@ export default function SignUpPage() {
           setError('')
           // Check if the response is successful
           if (res.success) {
-            navigate('/signup/verify-otp', { state: { key: res.key } })
+            navigate('/auth/signup/verify-otp', { state: { key: res.key } })
           } else {
             setError(res.message)
           }
@@ -71,7 +71,7 @@ export default function SignUpPage() {
       </div>
 
       <div className="signup-panel">
-        <div className="backlink" onClick={() => navigate('/login')} 
+        <div className="backlink" onClick={() => navigate('/auth/login')} 
           style={{cursor: 'pointer'}}><ArrowLeftIcon /> <span>Back</span>
         </div>
         <div className="signup-content">
@@ -122,7 +122,7 @@ export default function SignUpPage() {
           <div className="signup-footer">
             <p>
               Already have an account?
-              <span onClick={() => navigate('/login')} className="login-link">
+              <span onClick={() => navigate('/auth/login')} className="login-link">
                 Log in
               </span>
             </p>
