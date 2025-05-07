@@ -3,10 +3,8 @@ import SignUpPage from "../pages/Login/SignUpPage";
 import LoginPage from "../pages/Login/LoginPage";
 import CompleteProfileForm from "../pages/Login/CompleteProfile";
 import MobileIntroCarousel from "../pages/Login/MobileIntroCarousel";
-// import Layout from "../components/layout/layout";
-import DashboardNewBenefactor from "../pages/Dashboard/NewOldBenefactor";
+import DashboardNewBenefactor from "../pages/Dashboard/NewBenefactor";
 import DashboardOldBenefactor from "../pages/Dashboard/OldBenefactor";
-import RecentActivity from "../pages/Dashboard/RecentActivity"
 export default function MainRouter() {
   return (
     <BrowserRouter>
@@ -17,12 +15,6 @@ export default function MainRouter() {
            < Route path="/login" element={<LoginPage/>} />
             <Route path="/mobileintro" element={<MobileIntroCarousel/>} />
            <Route path="/completeprofile" element={<CompleteProfileForm/>} />
-           <Route path="/recentactivity" element={<RecentActivity/>} />
-           
-           
-            {/* <Route path="/" element={<Layout />}> */}
-                {/* <Route index element={<DashboardNewBenefactor />} /> */}
-            {/* </Route> */}
         </Routes>
           
            

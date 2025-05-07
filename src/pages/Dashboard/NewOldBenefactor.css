@@ -1,7 +1,6 @@
 .dashboard-newbenefactor {
   padding: 2rem;
   background-color: #f9fafb;
-  color: #1a1a1a;
 }
 
 .summary-section {
@@ -186,7 +185,7 @@
   text-align: end;
 }
 
-.recent-activities {
+.recent-activities-new {
   background-color: #fff;
   padding: 1.5rem;
   border-radius: 10px;
@@ -207,7 +206,7 @@
   font-size: 0.85rem;
   cursor: pointer;
   background-color: #AE9FE940;
-  color: #333;
+  color: #5D3FD3;
   margin-top: 20px;
   transition: background-color 0.2s ease;
 }
@@ -216,15 +215,7 @@
   background-color: #5D3FD3;
   color: white;
 }
-.tab.debt {
-  color: #008600;
-}
-.tab.upcoming {
-  color: #F59E0B;
-}
-.tab.schedule {
-  color: #5D3FD3;
-}
+
 .no-activity {
   color: #9e9e9e;
   font-size: 0.95rem;
@@ -234,7 +225,7 @@
 
 
 
-/* //////OLD BENEFACTOR'S STYLING */
+/* //////OLD BEN EFACTOR'S STYLING */
 
 .available-balance-box {
   flex: 1;
@@ -302,3 +293,253 @@
   justify-content: flex-end;
   margin-top: 90px;
 }
+.recent-activities {
+  width: 100%;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.filter-button{
+  border: none;
+  display: flex;
+  padding: 8px;
+  gap: 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s ease;
+}
+.filter.active{
+  background-color: #5D3FD3;
+  color: white;
+}
+
+.filter.active:hover {
+  background-color: #5D3FD3;
+  color: white;
+}
+
+ .activity-rows {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  font-size: 14px;
+} 
+.activity-statuss.accepted {
+  color: #008600;
+}
+
+.activity-statuss.upcoming {
+  color: #F59E0B
+}
+.activity-desc {
+  flex: 1;
+}
+.activity-statuss.scheduled{
+  color: #5D3FD3;
+}
+ 
+
+.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  z-index: 999;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ///////NEW BENEFACTOR MEDIA QUERY */
+/* REMOVE PROMO BOX */
+
+/* GENERAL RESPONSIVE STYLING FOR MOBILE */
+@media (max-width: 768px) {
+  .promo-box {
+    display: none !important;
+  }
+
+
+
+  .summary-card {
+    width: 100%;
+    padding: 1rem;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .summary-card strong {
+    font-size: 1.2rem;
+  }
+
+  /* ACTIONS - MAKE SCROLLABLE HORIZONTALLY */
+  .actions {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
+    scroll-padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .action-button {
+    flex: 0 0 auto;
+    min-width: 140px;
+    max-width: 160px;
+    background-color: transparent;
+    color: #008080;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .label {
+    background-color: transparent;
+    color: #008080;
+    border: none;
+    padding: 0;
+  }
+
+  .label:hover {
+    background-color: transparent;
+  }
+
+  /* REMOVE ACTIVITY TABS */
+  .activity-tabs {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ensure balance box is full width and not scrollable */
+  .available-balance-box {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+  }
+
+  /* Horizontal scrolling for summary section */
+  .summary-section {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scroll-padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .summary-card {
+    flex: 0 0 auto;
+    width: 160px;
+    padding: 1rem;
+    font-size: 0.85rem;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .summary-card strong {
+    font-size: 1.2rem;
+  }
+
+  /* Horizontal scroll for action buttons */
+  .actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    scroll-padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .action-button {
+    flex: 0 0 auto;
+    min-width: 140px;
+    max-width: 160px;
+    background-color: transparent;
+    color: #008080;
+    text-align: center;
+  }
+
+  .label {
+    background-color: transparent;
+    color: #008080;
+    padding: 0;
+  }
+
+  .label:hover {
+    background-color: transparent;
+  }
+
+  /* Featured Opportunities scrollable */
+  .opportunities-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scroll-padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .opportunity-card {
+    flex: 0 0 auto;
+    width: 220px;
+  }
+
+  
+  .recent-activities {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+
+  .activity-rows {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+
+  .activity-tabs {
+    display: none;
+  }
+}
+
+
+  
+
+

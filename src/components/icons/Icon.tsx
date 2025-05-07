@@ -1,165 +1,201 @@
-// src/components/Icon.tsx
-import mainLogo from '../../assets/images/icons/logo-main.svg'
-import whiteLogo from '../../assets/images/icons/Logo-white.svg'
-import arrowLeft from '../../assets/images/icons/arrow-left.svg'
-import arrowRight from '../../assets/images/icons/arrow-right.svg'
-import interestImg from '../../assets/images/icons/Intrest-on-loan.svg'
-import loanImg1 from '../../assets/images/icons/loanImg.svg'
-import logoText from '../../assets/images/icons/Logo-text.png'
-import qAndAImage from '../../assets/images/icons/Q and A about loan.svg'
-import frame1 from '../../assets/images/Frame-1.png'
-import calendar from '../../assets/images/icons/Calendar.svg'
-import adImage from '../../assets/images/icons/Ad-image.svg'
-import addSquare from '../../assets/images/icons/add-square.svg'
-import arrowDown from '../../assets/images/icons/arrow-down.svg'
-import arrowSwap from '../../assets/images/icons/arrow-swap-horizontal.svg'
-import coin from '../../assets/images/icons/coin.svg'
-import heartAdd from '../../assets/images/icons/heart-add.svg'
-import notification from '../../assets/images/icons/notification-bing.svg'
-import sendSquare from '../../assets/images/icons/send-sqaure-2.svg'
-import settings from '../../assets/images/icons/setting-2.svg'
-import shop from '../../assets/images/icons/shop.svg'
-import sidebarPics from '../../assets/images/icons/Side-Bar-Component.svg'
-import user from '../../assets/images/icons/user.svg'
-import lovely from '../../assets/images/icons/lovely.svg'
-import dashboard from '../../assets/images/icons/dasboard.svg'
-import emptyWallet from '../../assets/images/icons/empty-wallet.svg'
-import receiptext from '../../assets/images/icons/receipt-text.svg' 
-import add from '../../assets/images/icons/add.svg'
-import send from '../../assets/images/icons/send-2.svg'
-import copy from '../../assets/images/icons/copy.svg'
-import ticksquare  from'../../assets/images/icons/tick-square.svg'
+import mainLogo from '../../assets/images/icons/logo-main.svg';
+import whiteLogo from '../../assets/images/icons/Logo-white.svg';
+import arrowLeft from '../../assets/images/icons/arrow-left.svg';
+import arrowRight from '../../assets/images/icons/arrow-right.svg';
+import interestImg from '../../assets/images/icons/Intrest-on-loan.svg';
+import loanImg1 from '../../assets/images/icons/loanImg.svg';
+import logoText from '../../assets/images/icons/Logo-text.png';
+import qAndAImage from '../../assets/images/icons/Q and A about loan.svg';
+import frame1 from '../../assets/images/Frame-1.png';
+import calendar from '../../assets/images/icons/Calendar.svg';
+import adImage from '../../assets/images/icons/Ad-image.svg';
+import addSquare from '../../assets/images/icons/add-square.svg';
+import arrowDown from '../../assets/images/icons/arrow-down.svg';
+import arrowSwap from '../../assets/images/icons/arrow-swap-horizontal.svg';
+import coin from '../../assets/images/icons/coin.svg';
+import heartAdd from '../../assets/images/icons/heart-add.svg';
+import notification from '../../assets/images/icons/notification-bing.svg';
+import sendSquare from '../../assets/images/icons/send-sqaure-2.svg';
+// import settings from '../../assets/images/icons/setting-2.svg';
+import shop from '../../assets/images/icons/shop.svg';
+import sidebarPics from '../../assets/images/icons/Side-Bar-Component.svg';
+import user from '../../assets/images/icons/user.svg';
+import lovely from '../../assets/images/icons/lovely.svg';
+import dashboard from '../../assets/images/icons/dasboard.svg';
+import emptyWallet from '../../assets/images/icons/empty-wallet.svg';
+import receiptext from '../../assets/images/icons/receipt-text.svg';
+import add from '../../assets/images/icons/add.svg';
+import send from '../../assets/images/icons/send-2.svg';
+import copy from '../../assets/images/icons/copy.svg';
+import ticksquare from '../../assets/images/icons/tick-squar-Accepted.svg';
+import vector from '../../assets/images/icons/Vector.svg';
+import closecircle from '../../assets/images/icons/close-circle.svg';
+import ticksquareupcoming from '../../assets/images/icons/tick-square-upcomin.svg';
+import ticksquareschedule from '../../assets/images/icons/tick-square-schedule.svg';
+import mobileaccepted from '../../assets/images/icons/MobileIconAccepted.svg';
+import mobileupcoming from '../../assets/images/icons/Mobileiconupcoming.svg';
+import mobileschedule from '../../assets/images/icons/Mobileiconschedule.svg';
+
 // --- types ---
 type LogoProps = {
-  type?: 'white' | 'green'
-  className?: string
-}
+  type?: 'white' | 'green';
+  className?: string;
+};
 
 type ImageProps = {
-  className?: string
-  width?: number | string
-  height?: number | string
-}
+  className?: string;
+  width?: number | string;
+  height?: number | string;
+};
 
 // --- components ---
 function Logo({ type, className }: LogoProps) {
   if (type === 'white') {
-    return <img src={whiteLogo} alt="Logo" className={className} />
-  } else if (type === 'green') {
-    return <img src={mainLogo} alt="Green Logo" className={className} />
+    return <img src={whiteLogo} alt="Logo" className={className} />;
   } else {
-    return <img src={mainLogo} alt="Logo" className={className} />
+    return <img src={mainLogo} alt="Logo" className={className} />;
   }
 }
 
 function ArrowLeftIcon({ className, width, height }: ImageProps) {
-  return <img src={arrowLeft} alt="Arrow Left" className={className} style={{ width, height }} />
+  return <img src={arrowLeft} alt="Arrow Left" className={className} style={{ width, height }} />;
 }
 
 function ArrowRightIcon({ className, width, height }: ImageProps) {
-  return <img src={arrowRight} alt="Arrow Right" className={className} style={{ width, height }} />
+  return <img src={arrowRight} alt="Arrow Right" className={className} style={{ width, height }} />;
 }
 
 function InterestIcon({ className, width, height }: ImageProps) {
-  return <img src={interestImg} alt="Interest on Loan" className={className} style={{ width, height }} />
+  return <img src={interestImg} alt="Interest on Loan" className={className} style={{ width, height }} />;
 }
 
 function LoanImageOne({ className, width, height }: ImageProps) {
-  return <img src={loanImg1} alt="Loan Image" className={className} style={{ width, height }} />
+  return <img src={loanImg1} alt="Loan Image" className={className} style={{ width, height }} />;
 }
 
 function LogoTextIcon({ className, width, height }: ImageProps) {
-  return <img src={logoText} alt="Logo Text" className={className} style={{ width, height }} />
+  return <img src={logoText} alt="Logo Text" className={className} style={{ width, height }} />;
 }
 
 function QAIcon({ className, width, height }: ImageProps) {
-  return <img src={qAndAImage} alt="Q and A about Loan" className={className} style={{ width, height }} />
+  return <img src={qAndAImage} alt="Q and A about Loan" className={className} style={{ width, height }} />;
 }
 
 function Frame1({ className, width, height }: ImageProps) {
-  return <img src={frame1} alt="Frame 1" className={className} style={{ width, height }} />
+  return <img src={frame1} alt="Frame 1" className={className} style={{ width, height }} />;
 }
 
 function CalendarIcon({ className, width, height }: ImageProps) {
-  return <img src={calendar} alt="Calendar" className={className} style={{ width, height }} />
+  return <img src={calendar} alt="Calendar" className={className} style={{ width, height }} />;
 }
 
 function AdImageIcon({ className, width, height }: ImageProps) {
-  return <img src={adImage} alt="Ad Image" className={className} style={{ width, height }} />
+  return <img src={adImage} alt="Ad Image" className={className} style={{ width, height }} />;
 }
 
 function AddSquareIcon({ className, width, height }: ImageProps) {
-  return <img src={addSquare} alt="Add Square" className={className} style={{ width, height }} />
+  return <img src={addSquare} alt="Add Square" className={className} style={{ width, height }} />;
 }
+
 function ArrowSwapIcon({ className, width, height }: ImageProps) {
-  return <img src={arrowSwap} alt="Arrow Swap" className={className} style={{ width, height }} />
+  return <img src={arrowSwap} alt="Arrow Swap" className={className} style={{ width, height }} />;
 }
 
 function CoinIcon({ className, width, height }: ImageProps) {
-  return <img src={coin} alt="Coin" className={className} style={{ width, height }} />
+  return <img src={coin} alt="Coin" className={className} style={{ width, height }} />;
 }
 
 function HeartAddIcon({ className, width, height }: ImageProps) {
-  return <img src={heartAdd} alt="Heart Add" className={className} style={{ width, height }} />
+  return <img src={heartAdd} alt="Heart Add" className={className} style={{ width, height }} />;
 }
 
 function NotificationIcon({ className, width, height }: ImageProps) {
-  return <img src={notification} alt="Notification" className={className} style={{ width, height }} />
+  return <img src={notification} alt="Notification" className={className} style={{ width, height }} />;
 }
 
 function SendSquareIcon({ className, width, height }: ImageProps) {
-  return <img src={sendSquare} alt="Send Square" className={className} style={{ width, height }} />
+  return <img src={sendSquare} alt="Send Square" className={className} style={{ width, height }} />;
 }
 
-function SettingsIcon({ className, width, height }: ImageProps) {
-  return <img src={settings} alt="Settings" className={className} style={{ width, height }} />
-}
+// function SettingsIcon({ className, width, height }: ImageProps) {
+//   // return <img src={settings} alt="Settings" className={className} style={{ width, height }} />;
+// }
 
 function ShopIcon({ className, width, height }: ImageProps) {
-  return <img src={shop} alt="Shop" className={className} style={{ width, height }} />
+  return <img src={shop} alt="Shop" className={className} style={{ width, height }} />;
 }
 
 function SidebarPicsIcon({ className, width, height }: ImageProps) {
-  return <img src={sidebarPics} alt="Sidebar Pics" className={className} style={{ width, height }} />
+  return <img src={sidebarPics} alt="Sidebar Pics" className={className} style={{ width, height }} />;
 }
 
 function UserIcon({ className, width, height }: ImageProps) {
-  return <img src={user} alt="User" className={className} style={{ width, height }} />
+  return <img src={user} alt="User" className={className} style={{ width, height }} />;
 }
 
 function ArrowDownIcon({ className, width, height }: ImageProps) {
-  return <img src={arrowDown} alt="Arrow Down" className={className} style={{ width, height }} />
+  return <img src={arrowDown} alt="Arrow Down" className={className} style={{ width, height }} />;
 }
 
 function LovelyIcon({ className, width, height }: ImageProps) {
-  return <img src={lovely} alt="Lovely" className={className} style={{ width, height }} />
+  return <img src={lovely} alt="Lovely" className={className} style={{ width, height }} />;
 }
 
 function EmptyWalletIcon({ className, width, height }: ImageProps) {
-  return <img src={emptyWallet} alt="Empty Wallet" className={className} style={{ width, height }} />
+  return <img src={emptyWallet} alt="Empty Wallet" className={className} style={{ width, height }} />;
 }
 
 function DashboardIcon({ className, width, height }: ImageProps) {
-  return <img src={dashboard} alt="Dashboard" className={className} style={{ width, height }} />
+  return <img src={dashboard} alt="Dashboard" className={className} style={{ width, height }} />;
 }
 
 function ReceiptTextIcon({ className, width, height }: ImageProps) {
-  return <img src={receiptext} alt="Receipt Text" className={className} style={{ width, height }} />
-} 
+  return <img src={receiptext} alt="Receipt Text" className={className} style={{ width, height }} />;
+}
 
 function SendIcon({ className, width, height }: ImageProps) {
-  return <img src={send} alt="Receipt Text" className={className} style={{ width, height }} />
-}     
-function AddIcon({ className, width, height }: ImageProps) {
-  return <img src={add} alt="Receipt Text" className={className} style={{ width, height }} />
-}     
-function CopyIcon({ className, width, height }: ImageProps) {
-  return <img src={copy} alt="Receipt Text" className={className} style={{ width, height }} />
-}     
-function TickSquare({ className, width, height }: ImageProps) {
-  return <img src={ticksquare} alt="Receipt Text" className={className} style={{ width, height }} />
-}     
+  return <img src={send} alt="Send" className={className} style={{ width, height }} />;
+}
 
+function AddIcon({ className, width, height }: ImageProps) {
+  return <img src={add} alt="Add" className={className} style={{ width, height }} />;
+}
+
+function CopyIcon({ className, width, height }: ImageProps) {
+  return <img src={copy} alt="Copy" className={className} style={{ width, height }} />;
+}
+
+function TickSquareAccepted({ className, width, height }: ImageProps) {
+  return <img src={ticksquare} alt="Tick Square Accepted" className={className} style={{ width, height }} />;
+}
+
+function TickSquareUpcoming({ className, width, height }: ImageProps) {
+  return <img src={ticksquareupcoming} alt="Tick Square Upcoming" className={className} style={{ width, height }} />;
+}
+
+function TickSquareScheduled({ className, width, height }: ImageProps) {
+  return <img src={ticksquareschedule} alt="Tick Square Scheduled" className={className} style={{ width, height }} />;
+}
+
+function MobileIconAccepted({ className, width, height }: ImageProps) {
+  return <img src={mobileaccepted} alt="Mobile Icon Accepted" className={className} style={{ width, height }} />;
+}
+
+function MobileIconUpcoming({ className, width, height }: ImageProps) {
+  return <img src={mobileupcoming} alt="Mobile Icon Upcoming" className={className} style={{ width, height }} />;
+}
+
+function MobileIconScheduled({ className, width, height }: ImageProps) {
+  return <img src={mobileschedule} alt="Mobile Icon Scheduled" className={className} style={{ width, height }} />;
+}
+
+function VectorIcon({ className, width, height }: ImageProps) {
+  return <img src={vector} alt="Vector" className={className} style={{ width, height }} />;
+}
+
+function CloseCircle({ className, width, height }: ImageProps) {
+  return <img src={closecircle} alt="Close Circle" className={className} style={{ width, height }} />;
+}
 
 // --- export all components ---
 export {
@@ -179,7 +215,7 @@ export {
   HeartAddIcon,
   NotificationIcon,
   SendSquareIcon,
-  SettingsIcon,
+  // SettingsIcon,
   ShopIcon,
   SidebarPicsIcon,
   UserIcon,
@@ -191,5 +227,12 @@ export {
   SendIcon,
   AddIcon,
   CopyIcon,
-  TickSquare
-}
+  TickSquareAccepted,
+  TickSquareUpcoming,
+  TickSquareScheduled,
+  MobileIconAccepted,
+  MobileIconUpcoming,
+  MobileIconScheduled,
+  VectorIcon,
+  CloseCircle,
+};

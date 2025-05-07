@@ -1,12 +1,11 @@
 .modal-container {
-    width: 90%;
+    width: 100%;
     max-width: 700px;
     background: #fff;
     border-radius: 10px;
     padding: 20px;
-    margin: 40px auto;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    font-family: sans-serif;
+    /* margin: 40px auto; */
+    
   }
   
   .modal-header {
@@ -21,8 +20,17 @@
     font-size: 20px;
     font-weight: 600;
   }
-  
-  .icon-button {
+  .desktop-icon {
+    display: inline-block !important;
+  }
+
+  .mobile-icon {
+    display: none !important;
+  }
+  .mobile-icon-image {
+    display: none !important;
+  }
+.icon-button-activity {
     font-size: 20px;
     background: none;
     border: none;
@@ -36,9 +44,14 @@
   
   .filter-buttons {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     margin: 20px 0;
     flex-wrap: wrap;
+  }
+
+  .filter-buttons :hover {
+    background-color: #5D3FD3;
+    color: white;
   }
   
   .filter {
@@ -48,43 +61,43 @@
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    color: white;
+    color:  black ;
+    background: #AE9FE940;
   }
   
-  .filter.all {
-    background-color: #5D3FD3;
-  }
   
   .filter.accepted {
-    background-color: #AE9FE940;
     color: #008600;
   }
   
   .filter.upcoming {
-    background-color: #AE9FE940;
     color: #F59E0B;
   }
   
   .filter.scheduled {
-    background-color: #AE9FE940;
     color: #5D3FD3;
   }
   
   .activity-list {
     max-height: 400px;
     overflow-y: auto;
-    border-top: 1px solid #eee;
+
   }
   
   .activity-row {
+    max-width: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
     font-size: 14px;
   }
-  
+  .desktop-activity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
   .activity-date {
     width: 110px;
   }
@@ -109,30 +122,7 @@
     /* background-color: #e6f9ec; */
     color: #28a745; /* Green */
   }
-  
-  .status-square.upcoming {
-    background-color: #fff8e6;
-    color: #f0ad4e; /* Orange */
-  }
-  
-  .status-square.scheduled {
-    background-color: #ede8ff;
-    color: #6f42c1; /* Purple */
-  }
-  
-  /* Hover effect */
-  .status-square.accepted:hover {
-    background-color: #d4f3e0;
-  }
-  
-  .status-square.upcoming:hover {
-    background-color: #ffe9bd;
-  }
-  
-  .status-square.scheduled:hover {
-    background-color: #dcd0ff;
-  }
-  
+
   .tick-icon {
     width: 16px;
     height: 16px;
@@ -174,5 +164,111 @@
     box-shadow: 0 0 0 2px #444 inset;
     opacity: 0.9;
   }
+  .mobile-activity {
+    display: none;
+    
+  }
   
   
+  @media (max-width: 768px) {
+    
+      .modal-container {
+       border-radius: 0;
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        padding: 16px;
+      
+      }
+  
+    
+    .desktop-icon {
+      display: none !important;
+    }
+  
+    .mobile-icon {
+      display: inline-block !important;
+      
+    }
+    .mobile-icon-image {
+      display: inline-block !important;
+      filter: grayscale(100%) brightness(0);
+    }
+  
+
+    .desktop-activity {
+      display: none;
+    }
+     .icon-image {
+      display: none;
+     }
+    /* Show the mobile layout */
+    .mobile-activity {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .mobile-left {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      
+      font-size: 14px;
+    }
+    
+    .mobile-left .debt-from {
+      font-weight: 600;
+      color: #000;
+    }
+    
+    .mobile-left .debt-date {
+      font-size: 13px;
+      color: #666;
+    }
+    
+    .mobile-middle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* min-width: 80px; */
+    }
+    
+    .mobile-middle .amount {
+      font-size: 15px;
+      font-weight: 600;
+      color: #000;
+    }
+    
+    .mobile-middle .status {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    .status.accepted {
+      color: #008600;
+    }
+    
+    .status.upcoming {
+      color: #F59E0B;
+    }
+    
+    .status.scheduled {
+      color: #5D3FD3;
+    }
+    
+    .mobile-right .mobile-view-btn {
+      background-color: #5D3FD3;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    
+    .mobile-right .mobile-view-btn:hover {
+      background-color: #4b2ccf;
+    }
+  }
