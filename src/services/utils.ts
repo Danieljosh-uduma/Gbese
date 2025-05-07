@@ -6,7 +6,7 @@ function validateEmail(email: string) {
 }
 
 function getUser(): userType | null{
-    const user = localStorage.getItem("userDetail")
+    const user = localStorage.getItem("userDetails")
     if (!user) {
         return null
     }

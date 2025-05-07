@@ -9,18 +9,21 @@ import Role from "../pages/role/Role";
 import SignUpPage from "../pages/signup/getOtp/SignUpPage";
 import CompleteProfile from "../pages/signup/userDetails/CompleteProfile";
 import Otp from "../pages/signup/verifyOtp/Otp";
-import DashboardNewBenefactor from "../pages/Dashboard/NewOldBenefactor";
-import DashboardOldBenefactor from "../pages/Dashboard/OldBenefactor";
-import RecentActivity from "../pages/Dashboard/RecentActivity";
+import DashboardNewBenefactor from "../pages/Dashboard/version2/NewOldBenefactor";
+import DashboardOldBenefactor from "../pages/Dashboard/version2/OldBenefactor";
+import RecentActivity from "../pages/Dashboard/version2/RecentActivity";
 
+import DashboardPage from "../pages/Dashboard/version1/Page";
 
 export default function MainRouter() {
 
   return (
     <BrowserRouter>
+
         <Routes>
             {/* --- splash screen --- */}
             <Route path="/" element={<SplashManager />} />
+            <Route path="/da" element={<DashboardPage />} />
             
 
             {/* --- authentication --- */}

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TickSquare } from "../../components/icons/Icon";
+import { useState } from "react";
+import { TickSquare } from "../../../components/icons/Icon";
 import "./RecentActivity.css";
 
 type FilterType = "All" | "Accepted" | "Upcoming" | "Scheduled";

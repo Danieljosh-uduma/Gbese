@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "../components/layout/Sidebar";
-
+import Sidebar from "../components/Sidebar/Sidebar";
 
 
 export default function BenefactorRoute() {

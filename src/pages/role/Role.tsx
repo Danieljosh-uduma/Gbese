@@ -4,6 +4,8 @@ import { chooseRole } from '../../services/Auth';
 import './Signup.css'
 import Button from '../../components/common/button/Button';
 import { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { filterDetail } from '../../services/utils';
 
 
 export default function Role() {
@@ -13,6 +15,7 @@ export default function Role() {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
+    const { login } = useAuth()
 
     function chooseBenefactor() {
         setBenefactor(true)
@@ -37,7 +40,8 @@ export default function Role() {
                 .then(res => {
                     setIsLoading(false)
                     if (res.success) {
-                        navigate('/dashboard')
+                        login(filterDetail(res))
+                        navigate('/')
                     } else {
                         setError('Invalid Role, try again.')
                     }

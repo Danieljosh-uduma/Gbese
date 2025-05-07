@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router';
-import { SendSquareIcon, HeartAddIcon, AddSquareIcon, CopyIcon} from '../../components/icons/Icon';
-import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
+import { SendSquareIcon, HeartAddIcon, AddSquareIcon, AdImageIcon } from '../../../components/icons/Icon';
 // import Layout from './Layout';
 import './NewBenefactor.css'; 
-import '../../components/layout/Sidebar.css'// Assuming you have a CSS file for styling
+// import '../../components/layout/Sidebar.css'// Assuming you have a CSS file for styling
 
 interface FeaturedItem {
   amount: string;
@@ -12,61 +9,18 @@ interface FeaturedItem {
   description: string;
 }
 
-function DashboardOldBenefactor() {
-  const [showBalance, setShowBalance] = useState(true);
- 
-  function copyAccountNumber  () {
-    navigator.clipboard.writeText('28910376969');
-    alert('Account number copied!');
-  };
-   
-  function toggleBalance() {
-    setShowBalance(!showBalance);
-  };
-
-
+function DashboardNewBenefactor() {
   const featured: FeaturedItem[] = [
-    { amount: "₦40,000", return: '9.8%', description: "Supporting Jamal's teaching dream" },
-    { amount: "₦50,000", return: '12.2%', description: "Helping Maria fund surgery" },
-    { amount: "₦60,000", return: '13.6%', description: "Helping Luisa leave credit debt" },
-    { amount: "₦10,000", return: '4.2%', description: "Funding Ahmed's final semester" },
-    { amount: "₦50,000", return: '13.0%', description: "Backing Rachel's wellness clinic" },
+    { amount: '₦40,000', return: '9.8%', description: "Supporting Jamal's teaching dream" },
+    { amount: '₦50,000', return: '12.2%', description: "Helping Maria fund surgery" },
+    { amount: '₦60,000', return: '13.6%', description: "Helping Luisa leave credit debt" },
+    { amount: '₦10,000', return: '4.2%', description: "Funding Ahmed's final semester" },
+    { amount: '₦50,000', return: '13.0%', description: "Backing Rachel's wellness clinic" },
   ];
-
- 
 
   return (
     <div className="dashboard-newbenefactor">
       <div className="summary-section">
-     
-     <div className="available-balance-box">
-      <div className="balance-top">
-        <div className="balance-info">
-          <p className="labels">Available Balance <span className="eye-icon" onClick={toggleBalance} style={{ cursor: "pointer", marginLeft: "10px" }}>
-                  {showBalance ? <FaRegEye /> : <FaRegEyeSlash />}
-            </span></p>
-          < div className="amount">
-            {showBalance ? '₦225,200' : '****'}
-            
-          </div>
-        </div>
-          <div className="balance-side">
-            <button className="balance-btn">+ Add Money</button>
-          </div>
-          </div>
-          <div className="account-info">
-  <p>
-    Acc Number: 28910376969{' '}
-    <span onClick={copyAccountNumber} style={{ cursor: 'pointer' }}>
-      <CopyIcon className="copy-icon" width={20} />
-    </span>
-  </p>
-</div>
- 
-      </div>
-
-
-     
       <div className="summary-card-wrapper">
       <p className="summary-heading">Investment Summary</p>
         <div className="summary-cards">
@@ -79,7 +33,11 @@ function DashboardOldBenefactor() {
     
 
         
-        
+        <div className="promo-box">
+          <p>Help Someone Pay Their Debts Today!</p>
+          <AdImageIcon className="promo-image" width={200} />
+          </div>
+  
       </div>
 
   <div className="actions">
@@ -89,7 +47,9 @@ function DashboardOldBenefactor() {
   <div className="action-button">
     <HeartAddIcon className="icon" /> <span className="label">Help Someone</span>
   </div>
- 
+  <div className="action-button">
+    <AddSquareIcon className="icon" /> <span className="label">Fund Account</span>
+  </div>
   <div className="action-button">
     <AddSquareIcon className="icon" /> <span className="label">Request Money</span>
   </div>
@@ -117,8 +77,8 @@ function DashboardOldBenefactor() {
       <div className="recent-activities">
         <div className="section-header">
           <p>Recent Activities</p>
-          <Link to="/recentactivity">View Activities</Link>
-          </div>
+          <a href="#">View Activities</a>
+        </div>
         <div className="activity-tabs">
           <div className="tab active">All Activities</div>
           <div className="tab debt">Accepted debts</div>
@@ -131,4 +91,4 @@ function DashboardOldBenefactor() {
   );
 }
 
-export default DashboardOldBenefactor;
+export default DashboardNewBenefactor;
