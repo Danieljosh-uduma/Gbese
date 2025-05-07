@@ -1,6 +1,6 @@
 
 import './App.css'
-import Sidebar from './components/Sidebar/Sidebar'
+import Marketplace from './pages/Marketplace/Marketplace';
 
 function App() {
     
@@ -8,10 +8,11 @@ function App() {
     <>
      
 
-      <Sidebar/>
+    
+     <Marketplace/>
     </>
 
   )
 }
 
-export default App
+export default App;
