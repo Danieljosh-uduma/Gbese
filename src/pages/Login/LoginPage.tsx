@@ -2,10 +2,13 @@
 import { useState } from 'react'
 import './LoginPage.css'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
-import { Logo, InterestIcon,Frame1 } from '../../components/icons/Icon'
+import { Logo, InterestIcon,Frame1, ArrowLeftIcon } from '../../components/icons/Icon'
 import Button from '../../components/common/button/Button'
 import { useNavigate } from 'react-router-dom'
-import { loginUser, validateEmail } from '../../services/Auth'
+import { loginUser } from '../../services/Auth'
+import InputField from '../../components/Input/Input'
+import { filterDetail, validateEmail } from '../../services/utils'
+import { useAuth } from '../../hooks/useAuth'
 
 function LoginPage() {
   const [email, setEmail] = useState('')
@@ -14,9 +17,10 @@ function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   function togglePasswordVisibility() {
-    setShowPassword(!showPassword)
+    setShowPassword(!showPassword);
   }
 
   function handleLogin() {
@@ -44,9 +48,8 @@ function LoginPage() {
 
             // Check if the response is successful
             if (res.success) {
-              console.log(res)
-              localStorage.setItem('userName', res.name)
-              navigate('/')
+              login(filterDetail(res))
+              navigate('/dashboard/v1')
             } else {
               setError(res.message)
             }
@@ -70,8 +73,12 @@ function LoginPage() {
           <InterestIcon className="illustration" width={300} />
 
           <div className="left-text">
-            <h2> <span className="txt-span">Smart Management  </span> & Instant Notifications</h2>
-            <p>Get alerted immediately about account activities, anytime. Intuitive tools to manage your debts efficiently.</p>
+            <h2>
+              <span className="txt-span">Smart Management</span> & Instant Notifications
+            </h2>
+            <p>
+              Get alerted immediately about account activities, anytime. Intuitive tools to manage your debts efficiently.
+            </p>
           </div>
 
           <div className="left-logo">
@@ -81,64 +88,73 @@ function LoginPage() {
       </div>
 
       <div className="login-container">
+        <div className="backlink" onClick={() => navigate('/auth/signup')} style={{ cursor: 'pointer' }}>
+          <ArrowLeftIcon /> <span>Back</span>
+        </div>
+
         <div className="login-card">
           <h1>Log in</h1>
 
           <div className="avatar">
-          <Frame1 className="avatar-img" />
+            <Frame1 className="avatar-img" />
           </div>
 
           <h2>Welcome back</h2>
 
-          <div className="input-group">
-            <label>Email</label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          <form onSubmit={handleLogin} className="form-fields">
+            <div className="input-group">
+              <label htmlFor="email"></label>
+              <InputField
+              label="Email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
-          <div className="input-group password-group">
-            <label>Your Password</label>
-            <div className="password-wrapper">
+            <div className="input-group password-group">
+              <label htmlFor="password">Your Password</label>
+              <div className="password-wrapper">
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter 6-digit Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="input-field"
               />
-              <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
-                {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-              </button>
+                <button type="button" onClick={togglePasswordVisibility} className="toggle-password">
+                  {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                
+                </button>
+                </div>
+            
+              <div className="forgot-password">
+                <a href="/forgot-password">Forgot Password?</a>
+              </div>
             </div>
-            <div className="forgot-password">
-              <a href="/forgot-password">Forgot Password?</a>
-            </div>
-          </div>
-
-          {error && <p className="error1">{error}</p>}
-          <br />
-          <Button 
+            {error && <p className="error1">{error}</p>}
+            <Button 
             className='continue-button large-btn' 
             onClick={handleLogin}
             isLoading={isLoading}
             disabled={isLoading}>
               Log In
           </Button>
+            </form>
 
-          <p className="signup-text">
-            Don’t have an account? <a href="/signup">Sign Up</a>
-          </p>
+            <p className="signup-text">
+              Don’t have an account? <a href="/auth/signup">Sign Up</a>
+            </p>
 
-          <div className="footer-links">
-            <a href="/privacy">Privacy</a>  <a href="/terms">Terms</a>
+            <div className="footer-links">
+              <a href="/privacy">Privacy</a> <a href="/terms">Terms</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+  );
 }
 
-export default LoginPage
+export default LoginPage;

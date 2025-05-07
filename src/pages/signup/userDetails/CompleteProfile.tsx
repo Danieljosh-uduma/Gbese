@@ -6,7 +6,8 @@ import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { ArrowLeftIcon}  from '../../../components/icons/Icon';
 import { CalendarIcon } from '../../../components/icons/Icon';
 import { ProfileType } from '../../../types/User';
-import { createUser, validateEmail } from '../../../services/Auth';
+import { createUser } from '../../../services/Auth';
+import { validateEmail } from '../../../services/utils';
 import './CompleteProfile.css';
 
 
@@ -48,7 +49,7 @@ function CompleteProfile() {
           setIsLoading(false)
           setError('')
           if (res.success) {
-            navigate('/signup/completeprofile/role', {state: {key: res.key}})
+            navigate('/auth/signup/user-role', {state: {key: res.key}})
           } else {
             setError(res.message)
           }
@@ -64,7 +65,7 @@ function CompleteProfile() {
     <div className="login-wrapper">
       <div className="login-container">
         <div className="login-card">
-        <div className="backlink" onClick={() => navigate('/signup')} 
+        <div className="backlink" onClick={() => navigate('/auth/signup')} 
           style={{cursor: 'pointer'}}><ArrowLeftIcon /> <span>Back</span>
 
 
@@ -129,7 +130,7 @@ function CompleteProfile() {
               <div className="input-group2">
                 <label>Gender</label>
                 <select value={gender} title='gender' onChange={(e) => setGender(e.target.value)}>
-                  <option value=""></option>
+                  <option value="">Select gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                   <option value="other">Other</option>

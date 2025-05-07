@@ -11,7 +11,7 @@ const Otp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const key = useLocation().state.key;
+  const key = useLocation().state//.key;
   const navigate = useNavigate();
 
 
@@ -84,16 +84,14 @@ const Otp = () => {
         setIsLoading(false)
 
         if (res.success) {
-          navigate('/signup/completeprofile', { state: { key: res.key}})
+          navigate('/auth/signup/completeprofile', { state: { key: res.key}})
         } else {
           setError(res.message);
-          console.log('OTP verification failed:', res.message);
         }
       })
-      .catch(err => {
+      .catch( () => {
         setIsLoading(false)
-        setError('Invalid OTP. Please try again.');
-        console.log(err.message)
+        setError('Invalid OTP. Please try again.',);
       })
   };
 

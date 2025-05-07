@@ -91,10 +91,7 @@ async function loginUser(email: string, password: string) {
     return data
 }
 
-function validateEmail(email: string) {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return regex.test(email);
-}
+
 
 // https://gbese.onrender.com/api/v2/user
 // https://gbese.onrender.com/api/v2/signup
@@ -105,7 +102,6 @@ export {
     createUser,
     chooseRole,
     loginUser,
-    validateEmail,
     BASE_URL,
     headers
 }

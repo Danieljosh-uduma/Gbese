@@ -1,32 +1,27 @@
-// import { ReactNode, useState } from "react";
-// import { AuthContext } from "../../hooks/useAuth";
-// import { AuthContextType } from "../../types/User";
-// import { UserType, ProfileType } from "../../types/User";
+import { ReactNode, useState } from "react";
+import { AuthContext } from "../../hooks/useAuth";
+import { userType } from "../../types/User";
+import { getUser } from "../../services/utils";
 
 
 
-// export default function AuthProvider({children}: {children: ReactNode}) {
-//     const [user, setUser] = useState< AuthContextType | null>(null)
-//     const [profile, setProfile] = useState<ProfileType | null>(null)
+export default function AuthProvider({children}: {children: ReactNode}) {
+    const [user, setUser] = useState<userType | null>(getUser())
 
-//     function signup(phoneNumber: string, email?: string) {
-//         return
-//     }
-//     function login(email: string, password: string) {
-//         return
-//     }
+    
+    function login(detail: userType) {
+        localStorage.setItem('userDetails', JSON.stringify(detail))
+        setUser(detail)
+    }
 
-//     function logout() {
-//         return
-//     }
+    function logout() {
+        localStorage.clear()
+        setUser(null)
+    }
 
-//     // login function to set the user state
-
-//     // logout function to clear the user state
-
-//     return (
-//         <AuthContext.Provider value={{}}>
-//             {children}
-//         </AuthContext.Provider>
-//     )
-// }
+    return (
+        <AuthContext.Provider value={{user, login, logout}}>
+            {children}
+        </AuthContext.Provider>
+    )
+}

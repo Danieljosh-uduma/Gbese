@@ -1,14 +1,17 @@
 import { Route,  BrowserRouter, Routes } from "react-router-dom";
-import SignUpPage from "../pages/signup/getOtp/SignUpPage";
-import LoginPage from "../pages/Login/LoginPage";
-import MobileIntro1 from "../pages/signup/mobile/MobileIntro1"; 
-import MobileIntro2 from "../pages/signup/mobile/MobileIntro2";
-import MobileIntro3 from "../pages/signup/mobile/MobileIntro3";
 import NotFound from "../pages/NotFound/NotFound";
-import Otp from "../pages/signup/verifyOtp/Otp";
-import Role from "../pages/role/Role"; // Ensure this file exists at the specified path
-import CompleteProfile from "../pages/signup/userDetails/CompleteProfile";
 import SplashManager from "../hooks/SplashManager";
+import AuthRoute from "./authentication";
+import BenefactorRoute from "./benefactor";
+import BeneficiaryRoute from "./beneficiary";
+import LoginPage from "../pages/Login/LoginPage";
+import Role from "../pages/role/Role";
+import SignUpPage from "../pages/signup/getOtp/SignUpPage";
+import CompleteProfile from "../pages/signup/userDetails/CompleteProfile";
+import Otp from "../pages/signup/verifyOtp/Otp";
+import DashboardNewBenefactor from "../pages/Dashboard/NewOldBenefactor";
+import DashboardOldBenefactor from "../pages/Dashboard/OldBenefactor";
+import RecentActivity from "../pages/Dashboard/RecentActivity";
 
 
 export default function MainRouter() {
@@ -16,28 +19,43 @@ export default function MainRouter() {
   return (
     <BrowserRouter>
         <Routes>
-            {/* dashboard */}
+            {/* --- splash screen --- */}
             <Route path="/" element={<SplashManager />} />
             
-            {/* login  */}
-            <Route path="/login" element={<LoginPage/>} />
-            
-            {/* sign up  */}
-            <Route path="/signup" element={<SignUpPage/>} />
-            <Route path="/signup/verify-otp" element={<Otp/>} />
-            <Route path="/signup/completeprofile" element={<CompleteProfile/>} />
-            <Route path="/signup/completeprofile/role" element={<Role />} />
 
-            {/* mobile intro not done  */}
-            <Route path="/mobileintro1" element={<MobileIntro1/>} />
-            <Route path="/mobileintro2" element={<MobileIntro2/>} />
-            <Route path="/mobileintro3" element={<MobileIntro3/>} />
+            {/* --- authentication --- */}
+            <Route path="/auth/*" element={<AuthRoute />}>
+              {/* login  */}
+              <Route path="login" element={<LoginPage/>} />
+                
+              {/* sign up  */}
+              <Route path="signup" element={<SignUpPage/>} />
+              <Route path="signup/verify-otp" element={<Otp/>} />
+              <Route path="signup/completeprofile" element={<CompleteProfile/>} />
+              <Route path="signup/user-role" element={<Role/>} />
+            </Route>
+
+
+            {/* dashboards */}
+
+            {/* --- beneficiary --- */}
+            <Route path="/dashboard/v1" element={<BeneficiaryRoute/>}>
+              <Route path="" element={<DashboardNewBenefactor />} />
+              <Route path="oldbenefactor" element={<DashboardOldBenefactor />} />
+              <Route path="recentactivity" element={<RecentActivity/>} />
+            </Route>
+            
+            {/* -- benefactor -- */}
+            <Route path="/dashboard/v2" element={<BenefactorRoute/>}>
+              <Route path="" element={<DashboardNewBenefactor />} />
+              <Route path="oldbenefactor" element={<DashboardOldBenefactor />} />
+              <Route path="recentactivity" element={<RecentActivity/>} />
+            </Route>
+            
 
             {/* not found  */}
             <Route path="*" element={<NotFound/>} />
-            
         </Routes>
-    
     </BrowserRouter>
   );
 }
