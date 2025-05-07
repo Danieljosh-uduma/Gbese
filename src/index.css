@@ -4,11 +4,15 @@
 
     --primary-50: #E5DBFF;
     --primary-100: #AE9FE9;
+    --primary-150: #AE9FE940;
     --primary-200: #5D3FD3;
 
     --secondary-200: #008080;
     
     --accent-200: #FFD700;
+
+    --error-text: #DB0000;
+
 
     /* This not the correct colors, that's why it's commented  */
     /* --danger: #FF0000; */
@@ -59,3 +63,4 @@ img {
     height: 100%;
     border-radius: inherit;
 }
+

@@ -10,7 +10,7 @@ export default function SplashManager() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 7000); // show splash for 7seconds before loading the next page
+    }, 5000); // show splash for 5seconds before loading the next page
 
     return () => clearTimeout(timer); 
   }, []);

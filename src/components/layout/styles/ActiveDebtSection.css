@@ -1,0 +1,37 @@
+    .active-debts-section {
+        background-color: var(--primary-50) ;
+        height: 210px;
+        border-radius: 12px;
+        padding: 24px;
+        gap: 16px;
+        margin-bottom: 5rem;
+    }
+    
+    .section-title {
+        font-family: var(--body-font);
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 120%;
+        color: #0E0E10;
+        margin-bottom: 1rem;
+    }
+    
+    .empty-debts-message {
+        text-align: center;
+        padding: 1.5rem 0;
+        margin-top: 45px;
+
+        font-family: var(--body-font);
+        font-weight: 600;
+        font-size: 20px;
+        color: #696969; 
+    }
+
+    .empty-debts-message .error {
+        color: var(--error-text);
+        font-family: var(--body-font);
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+        letter-spacing: 0%;
+    }
