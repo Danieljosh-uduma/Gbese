@@ -1,4 +1,4 @@
-import Sidebar from '../../components/layout/Sidebar';
+import Sidebar from '../../components/Sidebar/Sidebar';
 import './MarketPlace.css'
 
 const MarketPlace = () => {
