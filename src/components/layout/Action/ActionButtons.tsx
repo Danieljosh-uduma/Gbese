@@ -2,9 +2,10 @@ import React from 'react';
 
 import ActionButton from '../../common/button/ActionButton';
 import SendSquare from '../../../assets/images/icons/Q and A about loan.svg';
-import SendIcon from '../../../assets/images/icons/send-2.svg';
-import AddSquare from '../../../assets/images/icons/add-square.svg';
+import SendIcon from '../../../assets/images/icons/send-sqaure.png';
+import AddSquare from '../../../assets/images/icons/add.svg';
 import Chart from '../../../assets/images/icons/chart.svg';
+import './ActionButtons.css'
 
 const ActionButtons: React.FC = () => {
     return (

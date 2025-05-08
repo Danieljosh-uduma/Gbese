@@ -3,9 +3,11 @@ import { ChevronDown } from 'lucide-react';
 import ProfileAvatar from '../../../assets/images/images/db51a0d15a178e33aa72ad690140b567642de318.png'
 import './Header.css';
 import { NotificationIcon } from '../../icons/Icon';
+import { useAuth } from '../../../hooks/useAuth';
 
     const Header: React.FC = () => {
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+    const { logout } = useAuth()
     
     const toggleProfileDropdown = () => {
         setShowProfileDropdown(!showProfileDropdown);
@@ -45,7 +47,7 @@ import { NotificationIcon } from '../../icons/Icon';
                     Notifications
                 </a>
                 <div className="dropdown-divider"></div>
-                <a href="#" className="dropdown-item sign-out">
+                <a href="#" className="dropdown-item sign-out" onClick={logout}>
                     Sign Out
                 </a>
                 </div>

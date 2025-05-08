@@ -1,4 +1,4 @@
-import { Route,  BrowserRouter, Routes } from "react-router-dom";
+import { Route,  BrowserRouter, Routes, Navigate } from "react-router-dom";
 import NotFound from "../pages/NotFound/NotFound";
 import SplashManager from "../hooks/SplashManager";
 import AuthRoute from "./authentication";
@@ -9,11 +9,11 @@ import Role from "../pages/role/Role";
 import SignUpPage from "../pages/signup/getOtp/SignUpPage";
 import CompleteProfile from "../pages/signup/userDetails/CompleteProfile";
 import Otp from "../pages/signup/verifyOtp/Otp";
-import DashboardNewBenefactor from "../pages/Dashboard/version2/NewOldBenefactor";
-import DashboardOldBenefactor from "../pages/Dashboard/version2/OldBenefactor";
-import RecentActivity from "../pages/Dashboard/version2/RecentActivity";
+import DashboardRoute from "./dashboardRoute";
+import DashboardBeneficiary from "../pages/Dashboard/version1/Page";
+import DashboardBenefactor from "../pages/Dashboard/version2/dashboard/Page";
 
-import DashboardPage from "../pages/Dashboard/version1/Page";
+
 
 export default function MainRouter() {
 
@@ -23,7 +23,6 @@ export default function MainRouter() {
         <Routes>
             {/* --- splash screen --- */}
             <Route path="/" element={<SplashManager />} />
-            <Route path="/da" element={<DashboardPage />} />
             
 
             {/* --- authentication --- */}
@@ -36,24 +35,19 @@ export default function MainRouter() {
               <Route path="signup/verify-otp" element={<Otp/>} />
               <Route path="signup/completeprofile" element={<CompleteProfile/>} />
               <Route path="signup/user-role" element={<Role/>} />
+              <Route path="*" element={<Navigate to='/' />} />
             </Route>
 
 
             {/* dashboards */}
-
-            {/* --- beneficiary --- */}
-            <Route path="/dashboard/v1" element={<BeneficiaryRoute/>}>
-              <Route path="" element={<DashboardNewBenefactor />} />
-              <Route path="oldbenefactor" element={<DashboardOldBenefactor />} />
-              <Route path="recentactivity" element={<RecentActivity/>} />
-            </Route>
-            
-            {/* -- benefactor -- */}
-            <Route path="/dashboard/v2" element={<BenefactorRoute/>}>
-              <Route path="" element={<DashboardNewBenefactor />} />
-              <Route path="oldbenefactor" element={<DashboardOldBenefactor />} />
-              <Route path="recentactivity" element={<RecentActivity/>} />
-            </Route>
+            <Route path="dashboard/*" element={<DashboardRoute />}>
+              <Route path="v1/" element={<BeneficiaryRoute />}>
+                <Route path="" element={<DashboardBeneficiary />} />
+              </Route>
+              <Route path="v2/" element={<BenefactorRoute />}>
+                <Route path="" element={<DashboardBenefactor />} />
+              </Route>
+            </Route>            
             
 
             {/* not found  */}
@@ -62,3 +56,17 @@ export default function MainRouter() {
     </BrowserRouter>
   );
 }
+
+
+{/* <Route path="/dashboard/v1" element={<BeneficiaryRoute/>}>
+              <Route path="" element={<DashboardNewBenefactor />} />
+              <Route path="oldbenefactor" element={<DashboardOldBenefactor />} />
+              {/* <Route path="recentactivity" element={<RecentActivity/>} /> */}
+            // </Route>
+            
+            {/* -- benefactor -- */}
+            // <Route path="/dashboard/v2" element={<BenefactorRoute/>}>
+              {/* <Route path="" element={<DashboardNewBenefactor />} /> */}
+              {/*  */}
+              {/* <Route path="recentactivity" element={<RecentActivity/>} /> */}
+            {/* </Route>  */}

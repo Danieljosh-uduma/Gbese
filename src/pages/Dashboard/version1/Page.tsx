@@ -8,13 +8,9 @@ import ActionButtons from '../../../components/layout/Action/ActionButtons';
 import TransactionsTable from '../../../components/layout/Transaction/TransactionTable';
 import '../../../components/layout/styles/MediaQuery.css'
 import './Page.css';
-import { useAuth } from '../../../hooks/useAuth';
-// import { Navigate } from 'react-router';
 
 const DashboardPage: React.FC = () => {
-    const { user } = useAuth()
-    console.log(user)
-    // user.type !== 'benefactor'?
+    
     return (
     <div className="dashboard-container">
     <Sidebar />
