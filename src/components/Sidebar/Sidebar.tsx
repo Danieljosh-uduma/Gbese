@@ -5,9 +5,32 @@ import "./Sidebar.css";
 function Sidebar() {
 
     const [activeTab, setActiveTab] = useState("dashboard");
+    const [isOpen, setIsOpen] = useState(false);
+    
+
+    function toggleSidebar() {
+      setIsOpen(!isOpen);
+    }
+  
+    function closeSidebar() {
+      setIsOpen(false);
+    }
+    
   return (
-    <div className="sidebar">
-      <div className="logo">
+    <>
+
+
+      <button className="hamburger-button" onClick={toggleSidebar}>
+        <img src="/src/assets/images/icons/menu.svg" alt="menu icon" className="icon-image" />
+      </button>
+
+      {/* Overlay */}
+      {isOpen && <div className="sidebar-overlay show" onClick={closeSidebar}></div>}
+
+
+    <div className={`sidebar ${isOpen ? 'show' : 'hidden'}`}>
+      
+    <div className="logo">
         <img src="/src/assets/images/icons/logo-main.svg" alt="Gbese Logo"  />
         <p>GBESE</p>
       </div>
@@ -117,6 +140,12 @@ function Sidebar() {
       </div>
 
     </div>
+
+
+
+      
+
+    </>
   );
 }
 

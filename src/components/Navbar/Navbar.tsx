@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Navbar.css';
 
 type NavbarProps = {
@@ -19,7 +19,7 @@ function Navbar(props: NavbarProps) {
 
   return (
     <div className="navbar">
-      {/* Top */}
+    
       <div className="navbar-top">
         <h1 className="title">Market Place</h1>
 
@@ -45,7 +45,7 @@ function Navbar(props: NavbarProps) {
         </div>
       </div>
 
-      {/* Bottom */}
+
       <div className="navbar-bottom">
         <div className="left-section">
           <h2 className="sub-title">Find Helper</h2>
