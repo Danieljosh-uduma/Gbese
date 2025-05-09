@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import './BalanceCard.css';
+import { useAuth } from '../../../hooks/useAuth';
 
 const BalanceCard: React.FC = () => {
   const [showBalance, setShowBalance] = useState(false);
+  const { user } = useAuth()
   
   const toggleBalance = () => {
     setShowBalance(!showBalance);
@@ -31,7 +33,7 @@ const BalanceCard: React.FC = () => {
       </div>
       
       <div className="balance-amount">
-        {showBalance ? '₦0.00' : '••••••••'}
+        {showBalance ? `₦${user?.balance}` : '••••••••'}
       </div>
       
       <div className="credit-progress">

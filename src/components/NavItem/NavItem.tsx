@@ -11,7 +11,6 @@
     const NavItem: React.FC<NavItemProps> = ({ icon, label, active = false, onClick }) => {
     return (
         <a 
-        href="#" 
         className={`nav-item ${active ? 'active' : ''}`}
         onClick={(e) => {
             e.preventDefault();
