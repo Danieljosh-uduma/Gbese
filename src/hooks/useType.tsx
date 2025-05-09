@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
+import { useHook } from "../types/User";
 
-const TypeContext = createContext<'benefactor'| 'beneficiary' | null>(null)
+const TypeContext = createContext<useHook>({} as useHook)
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useType() {

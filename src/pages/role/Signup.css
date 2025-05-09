@@ -7,7 +7,7 @@ h2,
 h3 {
   font-family: Poppins;
 }
-.container {
+#container {
     min-height: 100vh;
     padding-top: 4.5rem;
     display: flex;
@@ -15,7 +15,6 @@ h3 {
     align-items: center;
     background-color: #ffffff;
     position: static;
-  }
   
   .logo-container {
     margin-top: 2rem;
@@ -76,7 +75,7 @@ h3 {
   
 
   
-  .card {
+  .card-role {
     flex: 1;
     border: 2px solid #d1d5db;
     border-radius: 2rem;
@@ -85,11 +84,11 @@ h3 {
     cursor: pointer;
   }
 
-  .card:hover {
+  .card-role:hover {
     background-color: #F0E9FF;
     border: 2px solid var(--primary-50);
   }
-  .card:active {
+  .card-role:active {
     border: 2px solid var(--primary-200);
   }
   .card-title {
@@ -108,4 +107,8 @@ h3 {
   .footer-links a:hover {
     text-decoration: underline;
   }
+  
+  
+  }
+  
   

@@ -1,9 +1,9 @@
 import React from 'react';
 
 import ActionButton from '../../common/button/ActionButton';
-import SendSquare from '../../../assets/images/icons/Q and A about loan.svg';
-import SendIcon from '../../../assets/images/icons/send-sqaure.png';
-import AddSquare from '../../../assets/images/icons/add.svg';
+import SendSquare from '../../../assets/images/icons/send-sqaure.png';
+import SendIcon from '../../../assets/images/icons/add-icon.png';
+import AddSquare from '../../../assets/images/icons/add-icon.png';
 import Chart from '../../../assets/images/icons/chart.svg';
 import './ActionButtons.css'
 

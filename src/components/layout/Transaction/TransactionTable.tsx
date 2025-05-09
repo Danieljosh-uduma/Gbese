@@ -36,7 +36,7 @@ export default function TransactionsTable() {
                     <tbody>
                         <tr>
                             <td className="empty-transactions" colSpan={6}>
-                                No Recent Transactions Yet <span className='error'>!</span>
+                               <em> No Recent Transactions Yet </em>
                             </td>
                         </tr>
                     </tbody>
@@ -67,7 +67,7 @@ export default function TransactionsTable() {
                                 <tbody>
                                     <tr>
                                         <td className="empty-transactions" colSpan={7}>
-                                            No Transactions Available
+                                            <em>No Transactions Available</em>
                                         </td>
                                     </tr>
                                     {/* You can map your transaction data here when available */}

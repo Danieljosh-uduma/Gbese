@@ -11,7 +11,7 @@ import { filterDetail } from '../../services/utils';
 export default function Role() {
     const [benefactor, setBenefactor] = useState(false)
     const [beneficiary, setBeneficiary] = useState(false)
-    const key = useLocation().state//.key 
+    const key = useLocation().state.key 
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
@@ -39,9 +39,10 @@ export default function Role() {
             chooseRole(key, role)
                 .then(res => {
                     setIsLoading(false)
+                    console.log(res)
                     if (res.success) {
                         login(filterDetail(res))
-                        navigate('/')
+                        navigate('/dashboard/v1')
                     } else {
                         setError('Invalid Role, try again.')
                     }
@@ -54,8 +55,8 @@ export default function Role() {
     }
 
     return(
-        <div className="container">
-            <div className="backlink" onClick={() => navigate('/signup/completeprofile')} 
+        <div id="container">
+            <div className="backlink" onClick={() => navigate('/')} 
             style={{cursor: 'pointer'}}><ArrowLeftIcon /> <span>Back</span>
             </div>
 
@@ -67,14 +68,14 @@ export default function Role() {
 
             {error && <p className="error">{error}</p>}
             <div className="card-container">
-                <div className={benefactor? "card selected": "card"} onClick={chooseBenefactor}>
+                <div className={benefactor? "card-role selected": "card-role"} onClick={chooseBenefactor}>
                     <h2 className="card-title">Benefactor</h2>
                     <p className="card-text">
                         Someone who helps others pay off their debts. As a benefactor, you can browse debt opportunities, accept debt transfers, and earn incentives while making a positive impact on people's financial lives.
                     </p>
                 </div>
 
-                <div className={beneficiary? "card selected": "card"} onClick={chooseBeneficiary}>
+                <div className={beneficiary? "card-role selected": "card-role"} onClick={chooseBeneficiary}>
                     <h2 className="card-title">Beneficiary</h2>
                     <p className="card-text">
                         Someone who needs help managing their debt obligations. As a beneficiary, you can list your debts for transfer, request assistance from benefactors, and get relief from financial pressure when others accept your debt.

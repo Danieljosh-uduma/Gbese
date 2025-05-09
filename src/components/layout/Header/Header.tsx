@@ -7,7 +7,7 @@ import { useAuth } from '../../../hooks/useAuth';
 
     const Header: React.FC = () => {
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-    const { logout } = useAuth()
+    const { user, logout } = useAuth()
     
     const toggleProfileDropdown = () => {
         setShowProfileDropdown(!showProfileDropdown);
@@ -15,13 +15,13 @@ import { useAuth } from '../../../hooks/useAuth';
     
     return (
         <header className="header">
-        <h1 className="greeting">Hello Margaret,👋🏼</h1>
+        <h1 className="greeting">Hello {user?.fullname},👋🏼</h1>
         <div className="header-actions">
             <div className="coins">
                 <div className="coin-icon">
                     <span>G</span>
                 </div>
-                <span className="coin-amount">0 coins</span>
+                <span className="coin-amount">{user?.coins} coins</span>
             </div>
             <button className="notification-button" title='notification'>
                 <NotificationIcon />

@@ -50,6 +50,7 @@ function LoginPage() {
 
             // Check if the response is successful
             if (res.success) {
+              console.log(res)
               login(filterDetail(res))
               navigate('/dashboard/v1')
             } else {

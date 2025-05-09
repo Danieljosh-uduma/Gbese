@@ -1,5 +1,6 @@
     .active-debts-section {
         background-color: var(--primary-50) ;
+        width: 99%;
         height: 210px;
         border-radius: 12px;
         padding: 24px;

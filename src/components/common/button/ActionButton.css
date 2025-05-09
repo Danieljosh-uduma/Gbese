@@ -15,7 +15,9 @@
     }
     
     .icon-wrapper {
-        color: var(--primary-200)
+        color: var(--primary-200);
+        width: 24px;
+        height: 24px;
     }
     
     .action-button {

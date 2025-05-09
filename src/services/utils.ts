@@ -16,14 +16,14 @@ function getUser(): userType | null{
 function filterDetail(data: loginType ): userType {
     return {
         fullname: data.name,
-        acctNumber: data.Account_Date.accNumber,
-        coins: data.Account_Date.coins,
-        balance: data.Account_Date.balance,
-        type: data.Account_Date.type,
-        _id: data.Account_Date._id,
-        amountInvested: data.Account_Date.amountInvested,
-        RIO: data.Account_Date.RIO,
-        helped: data.Account_Date.helped
+        acctNumber: data.Account_Data.accNumber,
+        coins: data.Account_Data.coins,
+        balance: data.Account_Data.balance,
+        type: data.Account_Data.type,
+        _id: data.Account_Data._id,
+        amountInvested: data.Account_Data.amountInvested,
+        RIO: data.Account_Data.RIO,
+        helped: data.Account_Data.helped
     }
 }
 
