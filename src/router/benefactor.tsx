@@ -1,19 +1,19 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useType } from "../hooks/useType";
-import Sidebar from "../components/Sidebar/Sidebar";
 import '../App.css'
+import Sidebar from "../components/Sidebar/Sidebar";
 
 
 export default function BenefactorRoute() {
-    const userType = useType()
+    const user = useType()
 
-    return userType === 'benefactor'? (
+    return user?.userType === 'benefactor'? (
         <main className="ben-main">
-            <Sidebar />
             <section>
+                <Sidebar />
                 <Outlet />
             </section>
         </main>
-    ): userType !== null? <Navigate to='/dashboard/v2' />
+    ): user?.userType !== null? <Navigate to='/dashboard/v1' />
      : <Navigate to='/' />
 }

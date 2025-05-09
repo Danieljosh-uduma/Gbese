@@ -8,9 +8,11 @@ import TypeContext from "../hooks/useType";
 export default function DashboardRoute() {
     const { user } = useAuth()
     const userType = user? user.type : null
+    console.log(userType)
+    const BASE_URL = userType === 'benefactor'? '/dashboard/v2': userType === 'beneficiary'? '/dashboard/v1': '/'
 
     return (
-        <TypeContext.Provider value={userType}>
+        <TypeContext.Provider value={{userType, BASE_URL}}>
             {/* <SplashScreen /> */}
             <Outlet />
         </TypeContext.Provider>

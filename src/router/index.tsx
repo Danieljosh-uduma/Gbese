@@ -12,6 +12,7 @@ import Otp from "../pages/signup/verifyOtp/Otp";
 import DashboardRoute from "./dashboardRoute";
 import DashboardBeneficiary from "../pages/Dashboard/version1/Page";
 import DashboardBenefactor from "../pages/Dashboard/version2/dashboard/Page";
+import Marketplace from "../pages/Marketplace/Marketplace";
 
 
 
@@ -43,9 +44,12 @@ export default function MainRouter() {
             <Route path="dashboard/*" element={<DashboardRoute />}>
               <Route path="v1/" element={<BeneficiaryRoute />}>
                 <Route path="" element={<DashboardBeneficiary />} />
+                <Route path="marketplace" element={<Marketplace />}/>
+                <Route path="*" element={<NotFound />} />
               </Route>
               <Route path="v2/" element={<BenefactorRoute />}>
                 <Route path="" element={<DashboardBenefactor />} />
+                <Route path="marketplace" element={<Marketplace />}/>
               </Route>
             </Route>            
             

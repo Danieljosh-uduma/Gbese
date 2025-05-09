@@ -26,7 +26,7 @@ type benefactorType = {
     success: boolean
     message: string
     name: string
-    Account_Date: {
+    Account_Data: {
         RIO: number
         accNumber: string
         amountInvested: number
@@ -44,7 +44,7 @@ type beneficiaryType = {
     success: boolean
     message: string
     name: string
-    Account_Date: {
+    Account_Data: {
         RIO: number
         accNumber: string
         amountInvested: number
@@ -75,4 +75,15 @@ type AuthContextType = {
     logout: () => void
 }
 
-export type { userType, loginType, AuthContextType, ProfileType }
+type useHook = {
+    userType: 'beneficiary' | 'benefactor' | null
+    BASE_URL: string
+}
+
+export type { 
+    userType, 
+    loginType, 
+    AuthContextType, 
+    ProfileType,
+    useHook 
+}

@@ -5,13 +5,13 @@ import { useType } from "../hooks/useType";
 
 
 export default function BeneficiaryRoute() {
-    const userType = useType()
+    const user = useType()
 
-    return userType === 'beneficiary'? (
+    return user?.userType === 'beneficiary'? (
         <main>
             {/* <Sidebar /> */}
             <Outlet />
         </main>
-    ): userType !== null? <Navigate to='/dashboard/v2' />
+    ): user?.userType !== null? <Navigate to='/dashboard/v2' />
      : <Navigate to='/' />
 }
