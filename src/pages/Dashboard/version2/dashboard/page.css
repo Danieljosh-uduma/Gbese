@@ -199,6 +199,9 @@
   margin: 1rem 0;
   flex-wrap: wrap;
 }
+.view-activities-link {
+  color: #008600;
+}
 
 .tab {
   border: none;
@@ -224,9 +227,74 @@
   padding: 1rem 0;
 }
 
+/* //////MEDIA QUERY /////// */
+@media (max-width: 768px) {
+  .promo-box {
+    display: none !important;
+  }
+
+  .summary-card {
+    width: 100%;
+    padding: 1rem;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .summary-card strong {
+    font-size: 1.2rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
+    scroll-padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .action-button {
+    flex: 0 0 auto;
+    min-width: 140px;
+    max-width: 160px;
+    background-color: transparent;
+    color: #008080;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .label {
+    background-color: transparent;
+    color: #008080;
+    border: none;
+    padding: 0;
+  }
+
+  .label:hover {
+    background-color: transparent;
+  }
+
+  .activity-tabs {
+    display: none;
+  }
+}
 
 
 /* //////OLD BEN EFACTOR'S STYLING */
+
+
+.summary-sections {
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
 
 .available-balance-box {
   flex: 1;
@@ -376,90 +444,39 @@
   font-size: 1.2rem;
   cursor: pointer;
 }
-
-/* ///////NEW BENEFACTOR MEDIA QUERY */
-/* REMOVE PROMO BOX */
-
-/* GENERAL RESPONSIVE STYLING FOR MOBILE */
-@media (max-width: 768px) {
-  .promo-box {
-    display: none !important;
-  }
-
-
-
-  .summary-card {
-    width: 100%;
-    padding: 1rem;
-    font-size: 0.85rem;
-    text-align: center;
-  }
-
-  .summary-card strong {
-    font-size: 1.2rem;
-  }
-
-  /* ACTIONS - MAKE SCROLLABLE HORIZONTALLY */
-  .actions {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem;
-    padding: 1rem 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-
-    scroll-padding: 1rem;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .action-button {
-    flex: 0 0 auto;
-    min-width: 140px;
-    max-width: 160px;
-    background-color: transparent;
-    color: #008080;
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .label {
-    background-color: transparent;
-    color: #008080;
-    border: none;
-    padding: 0;
-  }
-
-  .label:hover {
-    background-color: transparent;
-  }
-
-  /* REMOVE ACTIVITY TABS */
-  .activity-tabs {
-    display: none;
-  }
+.desktop-activities {
+  display: block;
+}
+.mobile-activities {
+  display: none;
 }
 
-@media (max-width: 768px) {
-  /* Ensure balance box is full width and not scrollable */
+ /* //////OLD BENEFACTORE MEDIA QUERY */
+
+
+
+
+ @media (max-width: 768px) {
+
+  
   .available-balance-box {
-    width: 100%;
     box-sizing: border-box;
     padding: 1rem;
     border-radius: 12px;
+    min-width: 90%;
+    flex: 1;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 1rem;
   }
-
+   
   /* Horizontal scrolling for summary section */
-  .summary-section {
+  .summary-sections {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
     gap: 1rem;
     padding-bottom: 1rem;
     scroll-padding: 1rem;
-    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
   }
 
   .summary-card {
@@ -474,34 +491,12 @@
   .summary-card strong {
     font-size: 1.2rem;
   }
-
-  /* Horizontal scroll for action buttons */
-  .actions {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1rem;
-    padding: 1rem 0;
-    scroll-padding: 1rem;
-    -webkit-overflow-scrolling: touch;
+  .section-header a {
+    color: #5D3FD3;
+    text-decoration: none;
+    font-weight: 500;
   }
-
-  .action-button {
-    flex: 0 0 auto;
-    min-width: 140px;
-    max-width: 160px;
-    background-color: transparent;
-    color: #008080;
-    text-align: center;
-  }
-
-  .label {
-    background-color: transparent;
-    color: #008080;
-    padding: 0;
-  }
-
+  
   .label:hover {
     background-color: transparent;
   }
@@ -535,11 +530,69 @@
     padding: 12px 0;
     font-size: 14px;
   }
+  .view-activities-link {
+    color: #5D3FD3;
+  }
 
-  .activity-tabs {
+  .filter-button {
     display: none;
   }
+    .desktop-activities {
+    display: none;
+  }
+
+  .mobile-activities {
+    display: block;
+  }
+
+  .mobile-activity {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+
+  .status-icon {
+    margin-right: 10px;
+  }
+
+  .mobile-left,
+  .mobile-middle,
+  .mobile-right {
+    flex: 1;
+  }
+
+  .mobile-left .debt-from {
+    font-weight: 600;
+  }
+
+  .mobile-right {
+    text-align: right;
+  }
+
+  .mobile-view-btn {
+    background: none;
+    border: none;
+    color: #008600;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .status.accepted {
+    color: #008600;
+  }
+
+  .status.upcoming {
+    color: #FFA500;
+  }
+
+  .status.scheduled {
+    color: #0077cc;
+  }
 }
+
+
 
 
   

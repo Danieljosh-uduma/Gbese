@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {SendSquareIcon, HeartAddIcon, AddSquareIcon,CopyIcon, AdImageIcon,} from '../../../../components/icons/Icon';
+import {SendSquareIcon, HeartAddIcon, AddSquareIcon,CopyIcon, MobileIconAccepted, MobileIconUpcoming, MobileIconScheduled, AdImageIcon,} from '../../../../components/icons/Icon';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
 import RecentActivity from '../recent/RecentActivity';
 import DebtAcceptedModal from '../Modal/DebtAcceptedModal';
@@ -71,7 +71,7 @@ function DashboardOldBenefactor() {
     <>
       <Header />
       <div className={`dashboard-newbenefactor ${(showActivityModal || showDetailModal) ? 'blurred' : ''}`}>
-        <div className="summary-section">
+        <div className="summary-sections">
           <div className="available-balance-box">
             <div className="balance-top">
               <div className="balance-info">
@@ -150,7 +150,7 @@ function DashboardOldBenefactor() {
             <div
               onClick={() => setShowActivityModal(true)}
               className="view-activities-link"
-              style={{ cursor: 'pointer', color: '#008600' }}
+              style={{ cursor: 'pointer',  }}
             >
               View Activities
             </div>
@@ -170,28 +170,61 @@ function DashboardOldBenefactor() {
           </div>
 
           <div className="activity-list">
-            {filteredActivities.length === 0 ? (
-              <p className="no-activity">No activity found</p>
-            ) : (
-              filteredActivities.map((activity, index) => (
-                <div key={index} className="activity-rows">
-                  <span className="activity-dates">{activity.date}</span>
-                  <span className={`activity-statuss ${activity.status.toLowerCase()}`}>{activity.status}</span>
-                  <span className="activity-descs">{activity.amount} debt from {activity.from}</span>
-                  <span className="activity-tags">{activity.tag}</span>
-                  <button className="view-btn" onClick={() => {
-                    setSelectedActivity(activity);
-                    setShowDetailModal(true);
-                  }}>
-                    View Details
-                  </button>
-                </div>
+  {/* Desktop View */}
+  <div className="desktop-activities">
+    {filteredActivities.length === 0 ? (
+      <p className="no-activity">No activity found</p>
+    ) : (
+      filteredActivities.map((activity, index) => (
+        <div key={index} className="activity-rows">
+          <span className="activity-dates">{activity.date}</span>
+          <span className={`activity-statuss ${activity.status.toLowerCase()}`}>{activity.status}</span>
+          <span className="activity-descs">{activity.amount} debt from {activity.from}</span>
+          <span className="activity-tags">{activity.tag}</span>
+          <button className="view-btn" onClick={() => {
+            setSelectedActivity(activity);
+            setShowDetailModal(true);
+          }}>
+            View Details
+          </button>
+        </div>
+      ))
+    )}
+  </div>
 
-                
-              ))
-            )}
-            
-          </div>
+  {/* Mobile View */}
+  <div className="mobile-activities">
+    {filteredActivities.map((activity, index) => (
+      <div className="mobile-activity" key={index}>
+        <div className="status-icon">
+          {activity.status === "Accepted" && <MobileIconAccepted />}
+          {activity.status === "Upcoming" && <MobileIconUpcoming/>}
+          {activity.status === "Scheduled" && <MobileIconScheduled />}
+        </div>
+        <div className="mobile-left">
+          <div className="debt-from">Debt from {activity.from}</div>
+          <div className="debt-date">{activity.date}</div>
+        </div>
+        <div className="mobile-middle">
+          <div className="amount">{activity.amount}</div>
+          <div className={`status ${activity.status.toLowerCase()}`}>{activity.status}</div>
+        </div>
+        <div className="mobile-right">
+          <button
+            className="mobile-view-btn"
+            onClick={() => {
+              setSelectedActivity(activity);
+              setShowDetailModal(true);
+            }}
+          >
+            View
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
         </div>
       </div>
 
