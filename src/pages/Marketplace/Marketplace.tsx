@@ -6,19 +6,33 @@ import Card from '../../components/common/card/Card';
 import { benefactorList } from '../../services/marketplace';
 import './Marketplace.css'
 import { useEffect, useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { benefactorListProp, } from '../../types/helpers';
+import { useNavigate } from 'react-router';
+import { getInitials } from '../../services/utils';
 
 
 
 function Marketplace() {
-  const [benefactors, setBenefactors] = useState()
-  // const [refresh, setRefresh] = useState(0)
+  const [benefactors, setBenefactors] = useState<benefactorListProp[]>()
+  const [isLoading, setIsLoading] = useState(false)
+  const { user } = useAuth()
+  const token = user?.token
+  const navigate = useNavigate()
 
   useEffect( () => {
-    benefactorList().then(res => {
-      setBenefactors(res)
+    setIsLoading(true)
+    benefactorList(token).then(res => {
+      if (res.success) {
+        setBenefactors(res.data)
+        setIsLoading(false)
+      } else if (res.status === 401) {
+        navigate('/auth/login')
+      }
+    }).catch(err => {
+      console.log(err.message)
     })
-  }, [])
-
+  }, [token, navigate])
   
   return (
     <div className="marketplace-container">
@@ -29,88 +43,40 @@ function Marketplace() {
 
         <div className="marketplace-body">
 
-          {benefactors}
+          {/* {benefactors} */}
           <div className="card-grid">
-            <Card
-              initials="NC"
-              name="Ndive Chidera"
-              rating={4.8}
-              helped={111}
-              acceptance={97}
-              tags={["Fast Responder", "Top Helper"]}
+            
+            {!isLoading?
+            benefactors?.map(item => <Card key={item._id} initials={getInitials(item.user.fullName)} name={item.user.fullName} rating={item.successRate} helped={item.helped} acceptance={11} tags={['New user']}/>)
+              : <>
+                <Card
+              initials=""
+              name=""
+              rating={0}
+              helped={0}
+              acceptance={0}
+              tags={["", ""]}
             />
             <Card
-              initials="TA"
-              name="Tolutope Aina"
-              rating={3.7}
-              helped={23}
-              acceptance={65}
-              tags={["Reliable"]}
+              initials=""
+              name=""
+              rating={0}
+              helped={0}
+              acceptance={0}
+              tags={["", ""]}
             />
             <Card
-              initials="NO"
-              name="Nelson Odoh"
-              rating={4.5}
-              helped={65}
-              acceptance={79}
-              tags={["Gbese Legend", "Top Helper"]}
+              initials=""
+              name=""
+              rating={0}
+              helped={0}
+              acceptance={0}
+              tags={["", ""]}
             />
-            <Card
-              initials="UJ"
-              name="Uduma Josh"
-              rating={4.5}
-              helped={65}
-              acceptance={79}
-              tags={["Reliable", "Top Helper"]}
-            />
-            <Card
-              initials="MO"
-              name="Mary Okafor"
-              rating={4.5}
-              helped={65}
-              acceptance={79}
-              tags={["Top Helper"]}
-            />
-            <Card
-              initials="NJ"
-              name="Nelso Odoh"
-              rating={4.9}
-              helped={175}
-              acceptance={89}
-              tags={["Fast Responder", "Top Helper"]}
-            />
-            <Card
-              initials="CI"
-              name="Chuka Ifenu"
-              rating={4.9}
-              helped={145}
-              acceptance={99}
-              tags={["Top Helper"]}
-            />
-            <Card
-              initials="NJ"
-              name="Nelso Odoh"
-              rating={4.9}
-              helped={175}
-              acceptance={89}
-              tags={["Fast Responder", "Top Helper"]}
-            />
-            <Card
-              initials="NO"
-              name="Nelso Odoh"
-              rating={4.9}
-              helped={175}
-              acceptance={89}
-              tags={["Fast Responder", "Top Helper"]}
-            />
-            <Card
-              initials="NO"
-              name="Nelso Odoh"
-              rating={4.9}
-              helped={175}
-              acceptance={89}
-              tags={["Fast Responder", "Top Helper"]}
-            />
+              </>
+          }
+
+ 
             
           </div>
         </div>

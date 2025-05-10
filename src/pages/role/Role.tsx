@@ -39,7 +39,6 @@ export default function Role() {
             chooseRole(key, role)
                 .then(res => {
                     setIsLoading(false)
-                    console.log(res)
                     if (res.success) {
                         login(filterDetail(res))
                         navigate('/dashboard/v1')
@@ -49,7 +48,7 @@ export default function Role() {
                 })
                 .catch(err => {
                     setIsLoading(false)
-                    console.log(err)
+                    setError(err.message)
                 })
         }
     }

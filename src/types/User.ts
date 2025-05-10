@@ -1,5 +1,6 @@
 type benefactorUser = {
     fullname: string
+    token: string
     acctNumber: string
     coins: number
     balance: number
@@ -12,6 +13,7 @@ type benefactorUser = {
 
 type beneficiaryUser = {
     fullname: string
+    token: string
     acctNumber: string
     coins: number
     balance: number
@@ -25,6 +27,7 @@ type beneficiaryUser = {
 type benefactorType = {
     success: boolean
     message: string
+    token: string
     name: string
     Account_Data: {
         RIO: number
@@ -43,6 +46,7 @@ type benefactorType = {
 type beneficiaryType = {
     success: boolean
     message: string
+    token: string
     name: string
     Account_Data: {
         RIO: number

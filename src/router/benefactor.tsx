@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useType } from "../hooks/useType";
 import '../App.css'
-import Sidebar from "../components/Sidebar/Sidebar";
+// import Sidebar from "../components/Sidebar/Sidebar";
 
 
 export default function BenefactorRoute() {
@@ -10,7 +10,7 @@ export default function BenefactorRoute() {
     return user?.userType === 'benefactor'? (
         <main className="ben-main">
             <section>
-                <Sidebar />
+                {/* <Sidebar /> */}
                 <Outlet />
             </section>
         </main>
