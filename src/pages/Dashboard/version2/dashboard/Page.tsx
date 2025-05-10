@@ -6,6 +6,7 @@ import DebtAcceptedModal from '../Modal/DebtAcceptedModal';
 import './page.css';
 import Header from '../../../../components/layout/Header/Header';
 import { useAuth } from '../../../../hooks/useAuth';
+import Sidebar from '../../../../components/Sidebar/Sidebar';
 
 interface FeaturedItem {
   amount: string;
@@ -70,165 +71,168 @@ function DashboardOldBenefactor() {
   );
 
   return (
-    <>
-      <Header />
-      <div className={`dashboard-newbenefactor ${(showActivityModal || showDetailModal) ? 'blurred' : ''}`}>
-        <div className="summary-sections">
-          <div className="available-balance-box">
-            <div className="balance-top">
-              <div className="balance-info">
-                <p className="labels">
-                  Available Balance
-                  <span className="eye-icon" onClick={toggleBalance} style={{ cursor: "pointer", marginLeft: "10px" }}>
-                    {showBalance ? <FaRegEye /> : <FaRegEyeSlash />}
-                  </span>
-                </p>
-                <div className="amount">{showBalance ? `₦${user?.balance}` : '****'}</div>
+    <main className='main-ben'>
+    <Sidebar />
+      <section className='section-ben'>
+          <Header />
+          <div className={`dashboard-newbenefactor ${(showActivityModal || showDetailModal) ? 'blurred' : ''}`}>
+            <div className="summary-sections">
+              <div className="available-balance-box">
+                <div className="balance-top">
+                  <div className="balance-info">
+                    <p className="labels">
+                      Available Balance
+                      <span className="eye-icon" onClick={toggleBalance} style={{ cursor: "pointer", marginLeft: "10px" }}>
+                        {showBalance ? <FaRegEye /> : <FaRegEyeSlash />}
+                      </span>
+                    </p>
+                    <div className="amount">{showBalance ? `₦${user?.balance}` : '****'}</div>
+                  </div>
+                  <div className="balance-side">
+                    <button className="balance-btn">+ Add Money</button>
+                  </div>
+                </div>
+                <div className="account-info">
+                  <p>
+                    Acc Number: 28910376969{' '}
+                    <span onClick={copyAccountNumber} style={{ cursor: 'pointer' }}>
+                      <CopyIcon className="copy-icon" width={20} />
+                    </span>
+                  </p>
+                </div>
               </div>
-              <div className="balance-side">
-                <button className="balance-btn">+ Add Money</button>
+
+              <div className="summary-card-wrapper">
+                <p className="summary-heading">Investment Summary</p>
+                <div className="summary-cards">
+                  <div className="summary-card">Total Amount Invested <strong>0</strong></div>
+                  <div className="summary-card">Number of people helped <strong>0</strong></div>
+                  <div className="summary-card">ROI <strong>0</strong></div>
+                </div>
+              </div>
+
+              <div className="promo-box">
+                <p>Help Someone Pay Their Debts Today!</p>
+                <AdImageIcon className="promo-image" width={200} />
               </div>
             </div>
-            <div className="account-info">
-              <p>
-                Acc Number: 28910376969{' '}
-                <span onClick={copyAccountNumber} style={{ cursor: 'pointer' }}>
-                  <CopyIcon className="copy-icon" width={20} />
-                </span>
-              </p>
-            </div>
-          </div>
 
-          <div className="summary-card-wrapper">
-            <p className="summary-heading">Investment Summary</p>
-            <div className="summary-cards">
-              <div className="summary-card">Total Amount Invested <strong>0</strong></div>
-              <div className="summary-card">Number of people helped <strong>0</strong></div>
-              <div className="summary-card">ROI <strong>0</strong></div>
-            </div>
-          </div>
-
-          <div className="promo-box">
-            <p>Help Someone Pay Their Debts Today!</p>
-            <AdImageIcon className="promo-image" width={200} />
-          </div>
-        </div>
-
-        <div className="actions">
-          <div className="action-button">
-            <SendSquareIcon className="icon" /><span className="label">Send Money</span>
-          </div>
-          <div className="action-button">
-            <HeartAddIcon className="icon" /> <span className="label">Help Someone</span>
-          </div>
-          <div className="action-button">
-            <AddSquareIcon className="icon" /> <span className="label">Fund Account</span>
-          </div>
-          <div className="action-button">
-            <AddSquareIcon className="icon" /> <span className="label">Request Money</span>
-          </div>
-        </div>
-
-        <div className="featured-opportunities">
-          <div className="section-header">
-            <p>Featured Opportunities</p>
-            <a href="#">View All</a>
-          </div>
-          <div className="opportunities-list">
-            {featured.map((item, index) => (
-              <div key={index} className="opportunity-card">
-                <div className="amount">{item.amount}</div>
-                <div className="return">{item.return} return</div>
-                <div className="description">{item.description}</div>
-                <a href="#">View details</a>
+            <div className="actions">
+              <div className="action-button">
+                <SendSquareIcon className="icon" /><span className="label">Send Money</span>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="recent-activities">
-          <div className="section-header">
-            <p>Recent Activities</p>
-            <div
-              onClick={() => setShowActivityModal(true)}
-              className="view-activities-link"
-              style={{ cursor: 'pointer',  }}
-            >
-              View Activities
+              <div className="action-button">
+                <HeartAddIcon className="icon" /> <span className="label">Help Someone</span>
+              </div>
+              <div className="action-button">
+                <AddSquareIcon className="icon" /> <span className="label">Fund Account</span>
+              </div>
+              <div className="action-button">
+                <AddSquareIcon className="icon" /> <span className="label">Request Money</span>
+              </div>
             </div>
-          </div>
 
-          <div className="filter-button">
-            {["All", "Accepted", "Upcoming", "Scheduled"].map((filter) => (
-              <div
-                key={filter}
-                className={`filter ${filter.toLowerCase()} ${selectedFilter === filter ? "active" : ""}`}
-                onClick={() => setSelectedFilter(filter as FilterType)}
-                style={{ cursor: 'pointer' }}
+            <div className="featured-opportunities">
+              <div className="section-header">
+                <p>Featured Opportunities</p>
+                <a href="#">View All</a>
+              </div>
+              <div className="opportunities-list">
+                {featured.map((item, index) => (
+                  <div key={index} className="opportunity-card">
+                    <div className="amount">{item.amount}</div>
+                    <div className="return">{item.return} return</div>
+                    <div className="description">{item.description}</div>
+                    <a href="#">View details</a>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="recent-activities">
+              <div className="section-header">
+                <p>Recent Activities</p>
+                <div
+                  onClick={() => setShowActivityModal(true)}
+                  className="view-activities-link"
+                  style={{ cursor: 'pointer',  }}
+                >
+                  View Activities
+                </div>
+              </div>
+
+              <div className="filter-button">
+                {["All", "Accepted", "Upcoming", "Scheduled"].map((filter) => (
+                  <div
+                    key={filter}
+                    className={`filter ${filter.toLowerCase()} ${selectedFilter === filter ? "active" : ""}`}
+                    onClick={() => setSelectedFilter(filter as FilterType)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {filter === "All" ? "All Activities" : `${filter} `}
+                  </div>
+                ))}
+              </div>
+
+              <div className="activity-list">
+      {/* Desktop View */}
+      <div className="desktop-activities">
+        {filteredActivities.length === 0 ? (
+          <p className="no-activity">No activity found</p>
+        ) : (
+          filteredActivities.map((activity, index) => (
+            <div key={index} className="activity-rows">
+              <span className="activity-dates">{activity.date}</span>
+              <span className={`activity-statuss ${activity.status.toLowerCase()}`}>{activity.status}</span>
+              <span className="activity-descs">{activity.amount} debt from {activity.from}</span>
+              <span className="activity-tags">{activity.tag}</span>
+              <button className="view-btn" onClick={() => {
+                setSelectedActivity(activity);
+                setShowDetailModal(true);
+              }}>
+                View Details
+              </button>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Mobile View */}
+      <div className="mobile-activities">
+        {filteredActivities.map((activity, index) => (
+          <div className="mobile-activity" key={index}>
+            <div className="status-icon">
+              {activity.status === "Accepted" && <MobileIconAccepted />}
+              {activity.status === "Upcoming" && <MobileIconUpcoming/>}
+              {activity.status === "Scheduled" && <MobileIconScheduled />}
+            </div>
+            <div className="mobile-left">
+              <div className="debt-from">Debt from {activity.from}</div>
+              <div className="debt-date">{activity.date}</div>
+            </div>
+            <div className="mobile-middle">
+              <div className="amount">{activity.amount}</div>
+              <div className={`status ${activity.status.toLowerCase()}`}>{activity.status}</div>
+            </div>
+            <div className="mobile-right">
+              <button
+                className="mobile-view-btn"
+                onClick={() => {
+                  setSelectedActivity(activity);
+                  setShowDetailModal(true);
+                }}
               >
-                {filter === "All" ? "All Activities" : `${filter} `}
-              </div>
-            ))}
+                View
+              </button>
+            </div>
           </div>
-
-          <div className="activity-list">
-  {/* Desktop View */}
-  <div className="desktop-activities">
-    {filteredActivities.length === 0 ? (
-      <p className="no-activity">No activity found</p>
-    ) : (
-      filteredActivities.map((activity, index) => (
-        <div key={index} className="activity-rows">
-          <span className="activity-dates">{activity.date}</span>
-          <span className={`activity-statuss ${activity.status.toLowerCase()}`}>{activity.status}</span>
-          <span className="activity-descs">{activity.amount} debt from {activity.from}</span>
-          <span className="activity-tags">{activity.tag}</span>
-          <button className="view-btn" onClick={() => {
-            setSelectedActivity(activity);
-            setShowDetailModal(true);
-          }}>
-            View Details
-          </button>
-        </div>
-      ))
-    )}
-  </div>
-
-  {/* Mobile View */}
-  <div className="mobile-activities">
-    {filteredActivities.map((activity, index) => (
-      <div className="mobile-activity" key={index}>
-        <div className="status-icon">
-          {activity.status === "Accepted" && <MobileIconAccepted />}
-          {activity.status === "Upcoming" && <MobileIconUpcoming/>}
-          {activity.status === "Scheduled" && <MobileIconScheduled />}
-        </div>
-        <div className="mobile-left">
-          <div className="debt-from">Debt from {activity.from}</div>
-          <div className="debt-date">{activity.date}</div>
-        </div>
-        <div className="mobile-middle">
-          <div className="amount">{activity.amount}</div>
-          <div className={`status ${activity.status.toLowerCase()}`}>{activity.status}</div>
-        </div>
-        <div className="mobile-right">
-          <button
-            className="mobile-view-btn"
-            onClick={() => {
-              setSelectedActivity(activity);
-              setShowDetailModal(true);
-            }}
-          >
-            View
-          </button>
-        </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
+    </div>
 
-        </div>
-      </div>
+            </div>
+          </div>
+      </section>
 
       {showActivityModal && (
         <div className="modal-overlay">
@@ -245,7 +249,7 @@ function DashboardOldBenefactor() {
           </div>
         </div>
       )}
-    </>
+    </main>
   );
 }
 

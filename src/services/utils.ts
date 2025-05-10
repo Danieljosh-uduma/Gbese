@@ -16,6 +16,7 @@ function getUser(): userType | null{
 function filterDetail(data: loginType ): userType {
     return {
         fullname: data.name,
+        token: data.token,
         acctNumber: data.Account_Data.accNumber,
         coins: data.Account_Data.coins,
         balance: data.Account_Data.balance,
@@ -27,4 +28,11 @@ function filterDetail(data: loginType ): userType {
     }
 }
 
-export { validateEmail, getUser, filterDetail }
+function getInitials(name: string) {
+    const nameArray = name.split(" ");
+    const firstNameInitial = nameArray[0].charAt(0).toUpperCase();
+    const lastNameInitial = nameArray[nameArray.length - 1].charAt(0).toUpperCase();
+    return firstNameInitial + lastNameInitial;
+  }
+
+export { validateEmail, getUser, filterDetail, getInitials }
