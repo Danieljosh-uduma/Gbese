@@ -14,3 +14,13 @@ span {
 .due-date {
   color: #f59e0b;
 }
+
+@media (max-width: 768px) {
+  /* Styles for mobile view */
+  .profile-pic {
+    width: 48px;
+  }
+  .debt h2 {
+    font-size: 25px;
+  }
+}

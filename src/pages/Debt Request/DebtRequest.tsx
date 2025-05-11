@@ -1,13 +1,16 @@
 import './DebtRequest.css'
-import ActionButtons from './../../components/actionbuttons';
+import ActionButtons from './../../components/ActionButtons';
 const DebtRequest = () => {
  return(
-  <div className="container" style={{margin: '24px', border:'1px solid red'}}>
-  <div className="header">
+  <div className="container" style={{padding: '20px',}}>
+  <div className="header" style={{marginBottom: '16px',}}>
    <div className="debt-request-header">
     <h1>Debt Request</h1>
     </div>
     </div>
+    
+    <hr style={{color: '#CFCFCF'}}/>
+
 
     <div className="profile-debt" style={{display: 'flex', justifyContent: 'space-between', alignContent: 'center', marginTop: '24px', marginBottom: '16px' }}>
      <div className="profile" style={{display: 'flex', alignContent: 'center', gap: '12px'}}>
@@ -30,7 +33,7 @@ const DebtRequest = () => {
       </div>
      </div>
      <div className="debt">
-      <h2 style={{margin: '13px 24.5px 13px 104px', fontFamily: 'Poppins', fontSize: '48px', fontWeight: '500', lineHeight: '120%'}}>N45,000</h2>
+      <h2 style={{ fontFamily: 'Poppins', fontSize: '25px', fontWeight: '500', lineHeight: '120%'}}>N45,000</h2>
       </div>
 
     </div>
@@ -73,11 +76,11 @@ const DebtRequest = () => {
      </div>
     </div>
 
-    <div className="incentives" style={{marginTop: '24px', background: '#AE9FE91A', padding: '24px'}}>
+    <div className="incentives" style={{marginTop: '24px', background: '#AE9FE91A', padding: '24px', borderRadius: '8px'}}>
      <h3>Incentives</h3>
      <div className="returns-risks" style={{display: 'flex', justifyContent: 'space-between', marginTop: '16px'}}>
       <div className="returns">
-       <p>5% Returns</p>
+       <p style={{color: '#696969'}}>5% Returns</p>
       </div>
       <div className="risks" style={{background: '#E9FFF0', borderRadius:'12px', padding: '6px 12px'}}>
        <p>Moderate risks</p>
