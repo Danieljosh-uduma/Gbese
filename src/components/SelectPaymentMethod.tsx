@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SelectPaymentMethod.css";
 
-const paymentOptions = ["Credit Card", "PayPal", "Bank Transfer"];
+const paymentOptions = ["Debit Card",  "Bank Transfer"];
 
 const SelectPaymentMethod: React.FC = () => {
   const [selectedMethod, setSelectedMethod] = useState("");

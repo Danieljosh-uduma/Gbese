@@ -1,4 +1,5 @@
 import ActionButtons from "../../components/ActionButtons"
+import SchedulePayment from "../../components/SchedulePayment"
 import SelectPaymentMethod from "../../components/SelectPaymentMethod"
 
 const PayDebt = () => {
@@ -40,10 +41,12 @@ const PayDebt = () => {
       <SelectPaymentMethod />
      
 
+     <SchedulePayment />
+
     </div>
 
 
-     <ActionButtons />
+     <ActionButtons acceptText="Pay Debt"/>
 
     </div>
  )
