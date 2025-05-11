@@ -14,7 +14,7 @@ function App() {
       <Route path='/marketplace' element={<MarketPlace />} />
       <Route path='/debtrequest' element={<DebtRequest />} />
       <Route path='/paydebt' element={<PayDebt />} />
-      <Route path='/successul' element={<Successful />} />
+      <Route path='/successful' element={<Successful />} />
 
 
     </Routes>
