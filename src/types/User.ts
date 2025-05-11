@@ -9,6 +9,7 @@ type benefactorUser = {
     amountInvested: number
     RIO: number
     helped: number
+    creditLimit: number
 }
 
 type beneficiaryUser = {
