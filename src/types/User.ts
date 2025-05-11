@@ -17,11 +17,9 @@ type beneficiaryUser = {
     acctNumber: string
     coins: number
     balance: number
-    type: 'benefactor'
+    type: 'beneficiary'
     _id: string
-    amountInvested: number
-    RIO: number
-    helped: number
+    creditLimit: number
 }
 
 type benefactorType = {
@@ -37,7 +35,7 @@ type benefactorType = {
         coins: number
         createdAt: string
         helped: number
-        type: "benefactor" | "benefactor"
+        type: "benefactor"
         updatedAt: string
         _id: string
     }
@@ -49,20 +47,18 @@ type beneficiaryType = {
     token: string
     name: string
     Account_Data: {
-        RIO: number
         accNumber: string
-        amountInvested: number
         balance: number
         coins: number
         createdAt: string
-        helped: number
-        type: "benefactor" | "benefactor"
+        creditLimit: number
+        type: "beneficiary"
         updatedAt: string
         _id: string
     }
 }
 
-type userType = benefactorUser | beneficiaryUser
+type userType =  beneficiaryUser | benefactorUser
 type loginType = benefactorType | beneficiaryType
 
 type ProfileType = {
@@ -89,5 +85,7 @@ export type {
     loginType, 
     AuthContextType, 
     ProfileType,
-    useHook 
+    useHook,
+    benefactorType,
+    beneficiaryType,
 }
