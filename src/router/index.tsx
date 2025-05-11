@@ -49,7 +49,7 @@ export default function MainRouter() {
               </Route>
               <Route path="v2/" element={<BenefactorRoute />}>
                 <Route path="" element={<DashboardBenefactor />} />
-                <Route path="marketplace" element={<Marketplace />}/>
+                {/* <Route path="marketplace" element={<Marketplace />}/> */}
               </Route>
             </Route>            
             

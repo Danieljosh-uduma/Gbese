@@ -33,7 +33,7 @@ function DashboardOldBenefactor() {
   const { user } = useAuth()
 
   function copyAccountNumber() {
-    navigator.clipboard.writeText('28910376969');
+    navigator.clipboard.writeText(user? user.acctNumber : '');
     alert('Account number copied!');
   }
 
@@ -94,7 +94,7 @@ function DashboardOldBenefactor() {
                 </div>
                 <div className="account-info">
                   <p>
-                    Acc Number: 28910376969{' '}
+                    Acc Number: {user?.acctNumber}
                     <span onClick={copyAccountNumber} style={{ cursor: 'pointer' }}>
                       <CopyIcon className="copy-icon" width={20} />
                     </span>

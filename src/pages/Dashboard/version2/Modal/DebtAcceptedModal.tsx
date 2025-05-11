@@ -49,7 +49,7 @@ const DebtAcceptedModal: React.FC<DebtAcceptedModalProps> = ({ onClose }) => {
         </div>
 
         <div className="modal-actions">
-          <button className="btn-outline">Save</button>
+          <button className="btn-outline">Back</button>
           <button className="btn-filled">Delete</button>
         </div>
       </div>
