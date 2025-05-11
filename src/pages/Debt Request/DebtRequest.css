@@ -1,0 +1,16 @@
+.details p,
+.breakdown p {
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 120%;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 10px;
+}
+
+span {
+  color: #696969;
+}
+
+.due-date {
+  color: #f59e0b;
+}
