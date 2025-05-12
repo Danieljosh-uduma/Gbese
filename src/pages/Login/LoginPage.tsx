@@ -50,8 +50,8 @@ function LoginPage() {
 
             // Check if the response is successful
             if (res.success) {
-              console.log(res)
               login(filterDetail(res))
+              console.log(res)
               navigate('/dashboard/v1')
             } else {
               setError(res.message)
@@ -59,8 +59,7 @@ function LoginPage() {
           })
           .catch((err) => {
             setIsLoading(false)
-            console.error('Error:', err)
-            setError('Unable to login, please try again')
+            setError(err.message)
             setEmail('')
             setPassword('')
           })

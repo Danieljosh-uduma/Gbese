@@ -1,17 +1,7 @@
 
 import './Card.css'
+import { CardProps } from '../../../types/helpers';
 
-
-
-
-type CardProps = {
-    initials: string;
-    name: string;
-    rating: number;
-    helped: number;
-    acceptance: number;
-    tags: string[];
-  }
 
 function Card (props: CardProps) {
 

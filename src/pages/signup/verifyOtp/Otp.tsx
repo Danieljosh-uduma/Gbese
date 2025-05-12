@@ -79,7 +79,6 @@ const Otp = () => {
     setIsLoading(true);
     setError('');
     
-    console.log(key, code)
     verifyOTP(key, code)
       .then(res => {
         setIsLoading(false)
