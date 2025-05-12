@@ -70,6 +70,7 @@ body {
     background-color: var(--background-color);
     color: var(--body-text);
     font-family: var(--body-font);
+    
 
 }
 h1, h2, h3, h4, h5, h6 {
