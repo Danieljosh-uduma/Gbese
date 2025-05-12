@@ -11,7 +11,6 @@ import { benefactorListProp, } from '../../types/helpers';
 import { getInitials } from '../../services/utils';
 
 
-
 function Marketplace() {
   const [benefactors, setBenefactors] = useState<benefactorListProp[]>()
   const [isLoading, setIsLoading] = useState(false)
