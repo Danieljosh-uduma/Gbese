@@ -64,7 +64,13 @@ export default function MainRouter() {
                 <Route path="marketplace" element={<Marketplace />}/>
              
               </Route>
-            </Route>            
+            </Route>  
+
+            <Route path='debt2/' element={<DebtTransferForm />} />        
+            <Route path='debt1/' element={<DebtSourceStep />} />        
+            <Route path='debt3/' element={<DebtTransferStep3 />} />        
+            <Route path='debt4/' element={<TransferDebtStep3 />} />        
+            <Route path='debt/' element={<NoDebtTransfer />} />        
 
 
             {/* not found  */}
