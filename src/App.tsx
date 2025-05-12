@@ -1,11 +1,11 @@
 
 import './App.css'
-import MarketplaceList from './pages/Marketplace/MarketplaceList';
+import DebtorEmpty from './pages/EmptyState/DebtorEmpty';
 
 function App() {
     
   return (
-    <MarketplaceList/>
+    <DebtorEmpty/>
 
   )
 }
