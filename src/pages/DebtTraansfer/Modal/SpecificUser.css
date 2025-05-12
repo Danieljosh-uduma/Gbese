@@ -1,0 +1,154 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+
+.transfer-buttons {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.btn-method {
+  background-color: #AE9FE940;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #5D3FD3;
+  margin: 5px;
+}
+
+.btn-method.primary {
+  background-color: #d6d3fc;
+  color: #5D3FD3;
+}
+.btn-method.btn-method.primary:hover {
+    background-color: #5D3FD3;
+    color: #fff;
+}
+
+
+.btn-method.active {
+  background-color: #5D3FD3;
+  color: #fff;
+}
+.btn-method:hover {
+    background-color: #5D3FD3;
+    color: #fff;
+}
+
+.user-select-section {
+  margin-bottom: 1.5rem;
+}
+
+.dropdown-label {
+  font-size: 0.85rem;
+  color: #555;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.user-dropdown {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+
+.infoo-icon {
+  flex-shrink: 0;
+  color: #f8b400;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.infoo-text .infoo-header {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.info-sub {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.checkbox-group {
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.terms-text {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 0.25rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.cancel-btn {
+  border: 1px solid red;
+  background: transparent;
+  color: red;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.continue-btn {
+  background-color: #c9c9c9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  cursor: not-allowed;
+}
+
+.continue-btn:enabled {
+  background-color: #008000;
+  cursor: pointer;
+}
+
+/* MOBILE RESPONSIVENESS */

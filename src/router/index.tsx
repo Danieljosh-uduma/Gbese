@@ -13,8 +13,11 @@ import DashboardRoute from "./dashboardRoute";
 import DashboardBeneficiary from "../pages/Dashboard/version1/Page";
 import DashboardBenefactor from "../pages/Dashboard/version2/dashboard/Page";
 import Marketplace from "../pages/Marketplace/Marketplace";
-
-
+import NoDebtTransfer from "../pages/DebtTraansfer/NoDebtTransfer";
+import DebtSourceStep from "../pages/DebtTraansfer/DebtSourceStep";
+import DebtTransferForm from "../pages/DebtTraansfer/DebtTransferForm";
+import DebtTransferStep3 from "../pages/DebtTraansfer/DebtTransferStep3";
+import TransferDebtStep3 from "../pages/DebtTraansfer/TransferDebtStep3";
 
 export default function MainRouter() {
 
@@ -22,6 +25,15 @@ export default function MainRouter() {
     <BrowserRouter>
 
         <Routes>
+           
+            {/*Align later   */}
+             <Route path="nodebt" element={<NoDebtTransfer/>} />
+              <Route path="debtsource" element={<DebtSourceStep/>} />
+              <Route path="debtransfer" element={<DebtTransferForm/>} />
+              <Route path="debtstep3" element={<DebtTransferStep3/>} />
+              <Route path="transdebt3" element={<TransferDebtStep3/>} />
+
+
             {/* --- splash screen --- */}
             <Route path="/" element={<SplashManager />} />
             
@@ -50,9 +62,10 @@ export default function MainRouter() {
               <Route path="v2/" element={<BenefactorRoute />}>
                 <Route path="" element={<DashboardBenefactor />} />
                 <Route path="marketplace" element={<Marketplace />}/>
+             
               </Route>
             </Route>            
-            
+
 
             {/* not found  */}
             <Route path="*" element={<NotFound/>} />
