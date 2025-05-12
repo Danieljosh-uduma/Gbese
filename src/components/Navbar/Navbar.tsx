@@ -1,51 +1,29 @@
 import { useState } from 'react';
 import './Navbar.css';
+import { benefactorListProp } from '../../types/helpers';
 
-type NavbarProps = {
-  coinCount: number;
-};
+type NavProp = {
+  list: benefactorListProp[] | undefined
+  setList: () => void
+  setGrid: () => void
+}
 
-function Navbar(props: NavbarProps) {
+function Navbar(props: NavProp) {
   const [activeView, setActiveView] = useState('grid');
-  const [showDropdown, setShowDropdown] = useState(false);
+  const { setList, setGrid } = props
 
   const handleViewChange = (view: string) => {
     setActiveView(view);
+    if (view === 'grid') {
+      setGrid()
+    } else {
+      setList()
+    }
   };
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-
+  
   return (
     <div className="navbar">
-    
-      <div className="navbar-top">
-        <h1 className="title">Market Place</h1>
-
-        <div className="navbar-top-right">
-          <div className="coin-display">
-            <img src="/src/assets/images/icons/coin.svg" alt="coin" className="coin-icon" />
-            <span>{props.coinCount} coins</span>
-          </div>
-
-          <button className="icon-button">
-            <img src="/src/assets/images/icons/notification-bing.svg" alt="notifications" className="icon-image" />
-          </button>
-
-          <div className="avatar-wrapper" onClick={toggleDropdown}>
-            <img src="/src/assets/images/icons/nav-img.svg" alt="avatar" className="avatar" />
-            <img src="/src/assets/images/icons/dropdown.svg" alt="dropdown" className="dropdown-icon" />
-            {showDropdown && (
-              <div className="dropdown-menu">
-                <a href="#">Profile</a>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
-
       <div className="navbar-bottom">
         <div className="left-section">
           <h2 className="sub-title">Find Helper</h2>
@@ -56,6 +34,7 @@ function Navbar(props: NavbarProps) {
                 type="text"
                 placeholder="Search for helpers..."
                 className="search-input"
+                onChange={(e) => {console.log(e.target.value)}}
               />
             </div>
           </form>
