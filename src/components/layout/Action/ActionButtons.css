@@ -1,0 +1,9 @@
+.action-buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  /* background-color: brown; */
+  margin-bottom: 5rem;
+  }

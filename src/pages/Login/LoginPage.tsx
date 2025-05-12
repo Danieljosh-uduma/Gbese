@@ -23,7 +23,9 @@ function LoginPage() {
     setShowPassword(!showPassword);
   }
 
-  function handleLogin() {
+  function handleLogin(e: React.FormEvent) {
+    e.preventDefault()
+    
     setIsLoading(true)
     setError('')
 
@@ -56,8 +58,7 @@ function LoginPage() {
           })
           .catch((err) => {
             setIsLoading(false)
-            console.error('Error:', err)
-            setError('Unable to login, please try again')
+            setError(err.message)
             setEmail('')
             setPassword('')
           })
@@ -137,7 +138,6 @@ function LoginPage() {
             {error && <p className="error1">{error}</p>}
             <Button 
             className='continue-button large-btn' 
-            onClick={handleLogin}
             isLoading={isLoading}
             disabled={isLoading}>
               Log In

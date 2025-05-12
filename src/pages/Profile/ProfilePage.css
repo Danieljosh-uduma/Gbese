@@ -1,0 +1,745 @@
+/* Main Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.sidebar-container {
+  width: 270px;
+  transition: all 0.3s ease;
+  background-color: white;
+  z-index: 1000;
+}
+
+.sidebar-container.collapsed {
+  margin-left: -270px;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.main-content {
+  margin-left: 0;
+  /* padding: 1rem; */
+  width: 100%;
+}
+
+
+/* Mobile Header */
+.mobile-header {
+  display: none;
+  align-items: center;
+  padding: 1rem;
+  background-color: inherit;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+}
+
+.mobile-logo {
+  margin-left: 1rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #00787A;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Profile Header */
+.profile-header {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.profile-banner {
+  /* width: 100%; */
+  max-width: 1140px;
+  height: 100px;
+  padding-block: 45px;
+  background: linear-gradient(135deg, #8e4aff, #4a68ff);
+  border-radius: 8px 8px 0 0;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: -60px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid white;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  margin-bottom: 2rem;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-details {
+  padding-top: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-name {
+  font-family: Lato;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.profile-username {
+  color: #000000;
+  margin: 1rem;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.profile-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.star {
+  width: 18px;
+  height: 17px;
+  margin-right: 0.25rem;
+}
+
+.profile-badge  {
+  margin-top: 10px;
+  font-family: Lato;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: var(--primary-50);
+  color: #000000;
+}
+
+
+/* Statistics Section */
+.statistics-section {
+  width: 984px;
+  height: 213px;
+  top: 491.25px;
+  padding-top: 8px;
+  padding-right: 24px;
+  padding-bottom: 12px;
+  border-radius: 24px;
+
+}
+
+.section-title {
+  margin-bottom: 1rem;
+font-family: Lato;
+font-weight: 600;
+font-size: 24px;
+line-height: 120%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+}
+
+.statistics-grid {
+width: 900px;
+height: 120px;
+gap: 2px;
+padding-top: 8px;
+padding-bottom: 5px;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+}
+
+.statistic-card {
+  width: 135px;
+  height: 90px;
+  border-radius: 16px;
+  border-width: 1px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #CFCFCF
+
+}
+
+.statistic-value {
+
+  font-size:24px;
+  font-family: Lato;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.statistic-label {
+  font-family: Poppins;
+  font-size: 12px;
+}
+
+/* Achievements Section */
+.achievements-section {
+  width: 960px;
+  height: 226px;
+  top: 728px;
+  left: 386.64px;
+  gap: 16px;
+}
+
+.section-header {
+  width: 400px;
+  height: 50px;
+  gap: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.section-header-2 {
+  display: none;
+}
+
+.section-connector {
+  margin: 0 12px;
+  font-size: 24px;
+  color: #000000;
+}
+
+.medal-icon {
+  margin-right: 0.5rem;
+}
+
+.medal-icon img{
+  width: 48px;
+  height: 48px;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 110px;
+  height: 66px;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0px 4px 12px 0px #10182814;
+}
+
+.badge-icon {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon img {
+  width: 32px;
+  height: 32px;
+}
+
+
+.badge-label {
+  font-family: Lato;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.mobile-archive {
+  display: none;
+}
+
+
+.achievements-carousel {
+  width: 100%;
+  overflow: hidden;
+  height: 40px;
+  position: relative;
+}
+
+.achievements-track {
+  display: flex;
+  gap: 12px;
+  animation: scroll-left 20s linear infinite;
+  height: 40px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.achievement-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  width: 220px;
+  height: 40px;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 24px;
+  box-shadow: 0px 4px 12px 0px #10182814;
+}
+
+.achievement-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievement-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.achievement-label {
+  font-family: Lato;
+  font-weight: 400;
+  font-size: 10px;
+  text-align: center;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+   .sidebar-container {
+    position: relative;
+    height: 100vh;
+  }
+  
+  .mobile-header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .statistics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .profile-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-details {
+    margin-left: 0;
+    margin-top: 1rem;
+    } 
+  }
+  
+@media (max-width: 460px) {
+/* Main Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.sidebar-container {
+  width: 200px;
+  transition: all 0.3s ease;
+  background-color: var(--primary-50);
+  z-index: 1000;
+  display: none;
+}
+
+
+.sidebar-container.collapsed {
+  margin-left: -200px;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.main-content {
+  margin-left: 0;
+  /* padding: 1rem; */
+  width: 100%;
+}
+
+
+/* Mobile Header */
+.mobile-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color:inherit;
+  box-shadow:none;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+}
+
+
+.profile-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  top: 0.17px;
+}
+
+/* Profile Header */
+.profile-header {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.profile-banner {
+  width: 100vw;
+  height: 30px;
+  background:var(--primary-200);
+  border-radius: 5px
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 39.6px;
+  border-width: 0.8px;
+  border: 1px solid white;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  margin-bottom: 0.7rem;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-details {
+  padding-top: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-name {
+font-family: Poppins;
+font-weight: 500;
+font-size: 18px;
+line-height: 120%;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+}
+
+.profile-username {
+font-family: Lato;
+font-weight: 400;
+font-size: 12px;
+line-height: 120%;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+
+
+}
+
+.profile-rating {
+  width: 76px;
+  height: 12px;
+  gap: 2px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.star {
+  width: 12px;
+  height: 12px;
+  margin-right: 0.25rem;
+}
+
+.profile-badge  {
+  margin-top: 10px;
+  font-family: Lato;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  padding: 8px 13px;
+  border-radius: 5px;
+  background: var(--primary-50);
+}
+
+
+/* Statistics Section */
+.statistics-section {
+  width: 343px;
+  height: 266px;
+  top: 304.17px;
+  left: 16px;
+  gap: 10px;
+  border-radius: 24px;
+  padding: 16px;
+  background: #80BFBF1A;
+}
+
+.section-title {
+font-family: Lato;
+font-weight: 600;
+font-size: 16px;
+line-height: 120%;
+letter-spacing: 0%;
+vertical-align: middle;
+}
+
+.statistics-grid {
+width: 311px;
+height: 205px;
+gap: 10px;
+display: flex;
+flex-direction: column;
+}
+
+.statistic-card {
+width: 311px;
+height: 33px;
+display: flex;
+flex-direction: row-reverse;
+justify-content: space-between;
+padding-top: 8px;
+padding-bottom: 8px; 
+border: none;
+border-bottom-left-radius: 0%;
+border-bottom-right-radius: 0%;
+border-bottom: 1px solid #CFCFCF;
+}
+
+.statistic-value {
+font-family: Lato;
+font-weight: 400;
+font-size: 14px;
+line-height: 120%;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+color: #0E0E10;
+
+}
+
+.statistic-label {
+font-family: Lato;
+font-weight: 400;
+font-size: 14px;
+line-height: 120%;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+color: #0E0E10;
+}
+
+/* Achievements Section */
+
+
+.section-header {
+  display: none;
+  flex-direction: row-reverse;
+}
+
+.section-header-2 {
+  width: 343px;
+  height: 44px;
+  margin-top: 25px;
+  display:inline-flex;
+}
+
+.section-header-2 .badge-2 {
+margin-left: 130px;
+}
+
+.section-header-2 .medal-icon img {
+  width: 24px;
+  height: 24px;
+  gap: 10px;
+}
+
+
+.achievements-carousel {
+display: none;
+}
+.achievements-track {
+  display: none;
+}
+
+.badges-grid {
+  display: none;
+}
+
+.mobile-archive {
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ 
+}
+
+.achievement-item-2{
+width: 200px;
+gap: 12px;
+display: flex;
+align-items: start;
+border-radius: 24px;
+padding-top: 8px;
+padding-right: 12px;
+padding-bottom: 8px;
+padding-left: 12px;
+box-shadow: 0px 4px 12px 0px #10182814;
+}
+
+.achievement-icon-2 img {
+  width: 14px;
+  height: 14px;
+}
+
+.achievement-label-2 {
+font-family: Lato;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.mobile-archive .badges-grid-2 {
+  margin-left: 35px;
+}
+
+.badge-item-2 {
+width: 81px;
+height: 52px;
+gap: 4px;
+text-align: center;
+border-radius: 12px;
+padding-top: 8px;
+padding-right: 4px;
+padding-bottom: 8px;
+padding-left: 4px;
+box-shadow: 0px 4px 12px 0px #10182814;
+}
+
+.badge-icon-2 {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon-2 img {
+  width: 20px;
+  height: 20px;
+}
+
+
+.badge-label-2 {
+font-family: Lato;
+font-weight: 400;
+font-size: 10px;
+line-height: 120%;
+letter-spacing: 0%;
+text-align: center;
+vertical-align: middle;
+}
+}

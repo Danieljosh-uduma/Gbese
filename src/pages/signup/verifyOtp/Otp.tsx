@@ -11,7 +11,7 @@ const Otp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const key = useLocation().state//.key;
+  const key = useLocation().state.key;
   const navigate = useNavigate();
 
 
