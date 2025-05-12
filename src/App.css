@@ -11,4 +11,16 @@
     margin: 0;
 }
 
+.debt-main {
+    display: flex;
+    height: 100vh;
+    gap: 20px;
+    overflow-y: hidden;
+
+    section {
+        width: 80%;
+        overflow-x: auto;
+    }
+}
+
 

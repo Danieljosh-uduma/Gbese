@@ -97,7 +97,7 @@ function LoginPage() {
         <div className="login-card">
           <h1>Log in</h1>
 
-          <div className="avatar">
+          <div className="avatar-login">
             <Frame1 className="avatar-img" />
           </div>
 

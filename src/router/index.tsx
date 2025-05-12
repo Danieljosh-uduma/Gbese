@@ -13,11 +13,11 @@ import DashboardRoute from "./dashboardRoute";
 import DashboardBeneficiary from "../pages/Dashboard/version1/Page";
 import DashboardBenefactor from "../pages/Dashboard/version2/dashboard/Page";
 import Marketplace from "../pages/Marketplace/Marketplace";
-import NoDebtTransfer from "../pages/DebtTraansfer/NoDebtTransfer";
 import DebtSourceStep from "../pages/DebtTraansfer/DebtSourceStep";
 import DebtTransferForm from "../pages/DebtTraansfer/DebtTransferForm";
 import DebtTransferStep3 from "../pages/DebtTraansfer/DebtTransferStep3";
 import TransferDebtStep3 from "../pages/DebtTraansfer/TransferDebtStep3";
+import DTRoute from "./debtTransferRoute";
 
 export default function MainRouter() {
 
@@ -25,15 +25,6 @@ export default function MainRouter() {
     <BrowserRouter>
 
         <Routes>
-           
-            {/*Align later   */}
-             <Route path="nodebt" element={<NoDebtTransfer/>} />
-              <Route path="debtsource" element={<DebtSourceStep/>} />
-              <Route path="debtransfer" element={<DebtTransferForm/>} />
-              <Route path="debtstep3" element={<DebtTransferStep3/>} />
-              <Route path="transdebt3" element={<TransferDebtStep3/>} />
-
-
             {/* --- splash screen --- */}
             <Route path="/" element={<SplashManager />} />
             
@@ -57,6 +48,14 @@ export default function MainRouter() {
               <Route path="v1/" element={<BeneficiaryRoute />}>
                 <Route path="" element={<DashboardBeneficiary />} />
                 <Route path="marketplace" element={<Marketplace />}/>
+
+                <Route path='debt-transfer/*' element={<DTRoute />}>
+                  <Route path='' element={<DebtSourceStep />} />
+                  <Route path='form' element={<DebtTransferForm />} />
+                  <Route path='incentives' element={<DebtTransferStep3 />} />
+                  <Route path='payment-method' element={<TransferDebtStep3 />} />
+                </Route>
+
                 <Route path="*" element={<NotFound />} />
               </Route>
               <Route path="v2/" element={<BenefactorRoute />}>
@@ -65,12 +64,7 @@ export default function MainRouter() {
              
               </Route>
             </Route>  
-
-            <Route path='debt2/' element={<DebtTransferForm />} />        
-            <Route path='debt1/' element={<DebtSourceStep />} />        
-            <Route path='debt3/' element={<DebtTransferStep3 />} />        
-            <Route path='debt4/' element={<TransferDebtStep3 />} />        
-            <Route path='debt/' element={<NoDebtTransfer />} />        
+       
 
 
             {/* not found  */}
