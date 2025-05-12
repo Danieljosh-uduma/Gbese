@@ -26,7 +26,8 @@ function filterDetail(data: loginType ): userType {
             _id: data.Account_Data._id,
             amountInvested: data.Account_Data.amountInvested,
             RIO: data.Account_Data.RIO,
-            helped: data.Account_Data.helped
+            helped: data.Account_Data.helped,
+            creditLimit: 0
         }
         } else {
             return {
