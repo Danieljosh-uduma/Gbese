@@ -8,7 +8,6 @@ import './Marketplace.css'
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { benefactorListProp, } from '../../types/helpers';
-import { useNavigate } from 'react-router';
 import { getInitials } from '../../services/utils';
 
 
@@ -16,9 +15,8 @@ import { getInitials } from '../../services/utils';
 function Marketplace() {
   const [benefactors, setBenefactors] = useState<benefactorListProp[]>()
   const [isLoading, setIsLoading] = useState(false)
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
   const token = user?.token
-  const navigate = useNavigate()
 
   useEffect( () => {
     setIsLoading(true)
@@ -27,12 +25,12 @@ function Marketplace() {
         setBenefactors(res.data)
         setIsLoading(false)
       } else if (res.status === 401) {
-        navigate('/auth/login')
+        logout()
       }
     }).catch(err => {
       console.log(err.message)
     })
-  }, [token, navigate])
+  }, [token, logout])
   
   return (
     <div className="marketplace-container">
@@ -47,7 +45,7 @@ function Marketplace() {
           <div className="card-grid">
             
             {!isLoading?
-            benefactors?.map(item => <Card key={item._id} initials={getInitials(item.user.fullName)} name={item.user.fullName} rating={item.successRate} helped={item.helped} acceptance={11} tags={['New user']}/>)
+            benefactors?.map(item => <Card key={item._id} initials={getInitials(item.user.fullName)} name={item.user.fullName} rating={item.successRate} helped={item.helped} acceptance={item.responseTime} tags={['New user']}/>)
               : <>
                 <Card
               initials=""
