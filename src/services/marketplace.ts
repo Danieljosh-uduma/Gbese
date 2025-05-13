@@ -46,14 +46,6 @@ async function getUserDetails(token: string | undefined) {
             },
             credentials: 'include'
         })
-        // const res = await fetch(`${BASE_URL}/v5/user/account`)
-        // const res = await fetch(`${BASE_URL}/v6/notifications`)
-        // const res = await fetch(`${BASE_URL}/v6/transactions`)
-
-        // POST 
-        // /v4/debt/upload 
-        // /v4/debt/transfer/:debtId
-        // "transferMethod": "marketplace"
 
         const data = res.json()
         if (!res.ok) {
