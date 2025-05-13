@@ -1,0 +1,178 @@
+.form-page {
+  padding: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Container for everything below the header */
+.form-container {
+  background-color: #f9fafc;
+  padding: 0 16px 40px;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Box holding the actual form */
+.form-box {
+  background: #fff;
+  padding: 32px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  margin-top: 24px; /* Gives spacing below the progress bar */
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Form text elements */
+.form-heading {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+}
+.form-title{
+    margin-bottom: 20px;
+    line-height: 1.7;
+    border-bottom: 1px solid #B0B0B0;
+
+}
+.form-subtext {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-weight: lighter;
+  margin-bottom: 6px;
+  color: #696969;
+}
+
+/* Inputs, selects, and textareas */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  color: var(--body-text);
+  box-sizing: border-box;
+}
+
+/* Textarea behavior */
+textarea {
+  resize: vertical;
+}
+
+/* Date input with icon styling */
+.icon-input {
+  position: relative;
+}
+
+.icon-input input[type="date"] {
+  padding-left: 40px;
+  
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+
+.icons {
+  position: absolute;
+  top: 38px;
+  left: 12px;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  
+}
+
+/* Upload buttons */
+.upload-controls {
+  display: flex;
+  gap: 10px;
+  
+}
+
+.upload-controls button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.upload-controls button:hover {
+  background-color: #CFCFCF;
+}
+#camera-btn {
+    color: #CFCFCF;
+}
+#upload-btn {
+    color: #CFCFCF;
+}
+
+/* MOBILE RESPONSIVENESS*/
+
+@media (max-width: 600px) {
+  .form-page {
+    padding: 1rem;
+  }
+
+  .form-container {
+    padding: 0 12px 24px;
+    align-items: stretch;
+  }
+
+  .form-box {
+    padding: 20px;
+    margin-top: 16px;
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  .form-heading {
+    font-size: 18px;
+  }
+
+  .form-subtext {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .upload-controls {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .upload-controls button {
+    flex: 1 1 48%;
+    justify-content: center;
+  }
+
+  .icons {
+    top: 36px;
+    left: 10px;
+  }
+}

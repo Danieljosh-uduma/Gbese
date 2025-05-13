@@ -3,11 +3,9 @@
     display: flex;
     flex-direction: column;
     background-color: #FEFEFE;
-    width: 347px;
-    height: 389px;
-    border-radius: 8px;
-    padding: 16px;
-    gap: 20px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    gap: 1.25rem;
     box-shadow: 0px 4px 12px 0px #10182814;
 }
   
@@ -15,25 +13,23 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
+    align-items: center;
     background: #F0F0F0;
-    width: 79px;
-    height: 72px;
-    gap: 10px;
-    border-radius: 48px;
-    padding: 24px;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
     font-family: 'Poppins';
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #5D3FD3;
 }
 
 
 .name {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1rem;
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 24px;
-    line-height: 120%;
+    font-size: 1.5rem;
 }
   
 
@@ -68,8 +64,7 @@
     border-radius: 20px;
     text-align: center;
 
-
-    padding: 8px 32px;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
     background: #F0F0F0;
 
@@ -79,7 +74,7 @@
   .stat-number{
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #0E0E10;
 }
 
@@ -129,3 +124,32 @@
 
 }
   
+
+@media (max-width:700px) {
+    .card {
+        align-items: center;
+    }
+    
+    .button {
+        width: 100%;
+    }
+    .name {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .button {
+        font-weight: 400;
+        font-size: 0.75rem;
+    }
+    .stat-label {
+        font-size: 0.625rem;
+        font-weight: 400;
+    }
+    .stat-number {
+        font-size: 0.75rem;
+        font-weight: 400;
+}
+.tag {
+    white-space: nowrap;
+}
+}
