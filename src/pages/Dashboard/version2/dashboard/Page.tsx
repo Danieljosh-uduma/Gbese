@@ -7,6 +7,7 @@ import './page.css';
 import Header from '../../../../components/layout/Header/Header';
 import { useAuth } from '../../../../hooks/useAuth';
 import Sidebar from '../../../../components/Sidebar/Sidebar';
+import { getUserDetails } from '../../../../services/marketplace';
 
 interface FeaturedItem {
   amount: string;
@@ -30,10 +31,23 @@ function DashboardOldBenefactor() {
   const [showDetailModal, setShowDetailModal] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState<FilterType>("All");
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
-  const { user } = useAuth()
+  const { user, login, logout } = useAuth()
+
+  useEffect(() => {
+        getUserDetails(user?.token)
+            .then(res => {
+                if (res.success) {
+                    const data = res.data
+                    login({token: user?.token, fullname: user?.fullname, ...data})
+                } else if (res.status === 401) {
+                    logout()
+                }
+            })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [showBalance])
 
   function copyAccountNumber() {
-    navigator.clipboard.writeText('28910376969');
+    navigator.clipboard.writeText(user? user.acctNumber : '');
     alert('Account number copied!');
   }
 
@@ -94,7 +108,7 @@ function DashboardOldBenefactor() {
                 </div>
                 <div className="account-info">
                   <p>
-                    Acc Number: 28910376969{' '}
+                    Acc Number: {user?.acctNumber}
                     <span onClick={copyAccountNumber} style={{ cursor: 'pointer' }}>
                       <CopyIcon className="copy-icon" width={20} />
                     </span>
