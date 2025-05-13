@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu } from 'lucide-react';
 import ProfileAvatar from '../../../assets/images/images/db51a0d15a178e33aa72ad690140b567642de318.png'
 import './Header.css';
 import { NotificationIcon } from '../../icons/Icon';
@@ -15,6 +15,9 @@ import { useAuth } from '../../../hooks/useAuth';
     
     return (
         <header className="header">
+        <div id="menu">
+            <Menu />
+        </div>
         <h1 className="greeting">Hello {user?.fullname},👋🏼</h1>
         <div className="header-actions">
             <div className="coins">

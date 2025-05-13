@@ -138,3 +138,6 @@
     .sign-out {
         color: #dc2626 !important;
     }
+    #menu {
+        display: none;
+    }

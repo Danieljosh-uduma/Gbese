@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, InformationGreen,StashCoinIcon, MoneyDebt, MoneyRecieve } from '../../components/icons/Icon'
+import { ArrowLeftIcon, InformationGreen,StashCoinIcon, MoneyDebt, MoneyRecieve } from '../../../components/icons/Icon'
 import './DebtTransferStep3.css'
-import { useType } from '../../hooks/useType';
+import { useType } from '../../../hooks/useType';
 
 function DebtTransferStep3() {
 const navigate = useNavigate();

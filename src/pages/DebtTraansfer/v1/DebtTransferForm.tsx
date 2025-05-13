@@ -3,7 +3,7 @@ import { CalendarDaysIcon, CameraIcon, LinkIcon, ArrowLeftIcon } from 'lucide-re
 import { useNavigate } from 'react-router-dom';
 
 import './DebtTransferForm.css';
-import { useType } from '../../hooks/useType';
+import { useType } from '../../../hooks/useType';
 
 function DebtTransferForm() {
   const navigate = useNavigate();
