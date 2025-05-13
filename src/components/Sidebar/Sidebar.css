@@ -1,32 +1,39 @@
-/* .sidebar {
-    height: auto;
-    background-color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    /* Sidebar CSS with Responsive Features */
+
+    /* Existing styles */
+    .sidebar {
     width: 270px;
-    top: 0.14px;
-    left: -0.02px; 
+    background-color: #f4f4f4;
+    height: 100vh;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    z-index: 1000; /* Ensure sidebar appears above content */
+    transition: all 0.3s ease; 
+    }
+
+    .sidebar-header {
+    padding: 1rem;
     display: flex;
-    flex-direction: column;
-}
+    justify-content: space-between;
+    align-items: center;
+    }
 
-.sidebar-header {
-    padding: 1rem;
-}
-
-.logo {
+    .logo {
     gap: 18px;
     padding-top: 6px;
     padding-right: 12px;
     padding-bottom: 6px;
     padding-left: 12px;
-    
-}
-.logo-image {
+    }
+
+    .logo-image {
     width: 160px;
     height: 65px;
-}
+    }
 
-.sidebar-nav {
+    .sidebar-nav {
     margin-top: 1.5rem;
     flex: 1;
     border-radius: 8px;
@@ -35,71 +42,95 @@
     padding-right: 16px;
     padding-bottom: 12px;
     padding-left: 16px;
-    
-}
+    }
 
-
-.sidebar-footer {
+    .sidebar-footer {
     padding-top: 1rem;
-}
+    }
 
-.support-section {
+    .support-section {
     margin-top: 2rem;
     padding-top: 12px;
     padding-right: 16px;
     padding-bottom: 12px;
     padding-left: 16px;
-} */
+    }
 
+    /* New responsive styles */
+    .toggle-sidebar-btn {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-.sidebar {
-  width: 270px;
-  background-color: #f4f4f4;
-  height: 100vh;
-  position: sticky; /* Steady on screen */
-  top: 0;
-  left: 0;
-  padding: 1rem;
-   /* Hidden by default for mobile */
-}
-.sidebar-header {
-    padding: 1rem;
-}
+    .close-sidebar {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    }
 
-.logo {
-    gap: 18px;
-    padding-top: 6px;
-    padding-right: 12px;
-    padding-bottom: 6px;
-    padding-left: 12px;
+    .sidebar-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    }
+
+    /* Main content area should shift when sidebar is visible */
+    .main-content {
+    margin-left: 270px; /* Should match sidebar width */
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+    .sidebar {
+        left: -270px; /* Hide sidebar by default on mobile */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
     
-}
-.logo-image {
-    width: 160px;
-    height: 65px;
-}
-
-.sidebar-nav {
-    margin-top: 1.5rem;
-    flex: 1;
-    border-radius: 8px;
-    gap: 10px;
-    padding-top: 12px;
-    padding-right: 16px;
-    padding-bottom: 12px;
-    padding-left: 16px;
+    .sidebar.open {
+        left: 0; /* Show sidebar when open class is applied */
+    }
     
-}
-
-
-.sidebar-footer {
-    padding-top: 1rem;
-}
-
-.support-section {
-    margin-top: 2rem;
-    padding-top: 12px;
-    padding-right: 16px;
-    padding-bottom: 12px;
-    padding-left: 16px;
-}
+    .toggle-sidebar-btn {
+        display: block; /* Show toggle button on mobile */
+    }
+    
+    .close-sidebar {
+        display: block; /* Show close button on mobile */
+    }
+    
+    .sidebar-overlay {
+        display: none; /* Hidden by default */
+    }
+    
+    .sidebar-overlay.open {
+        display: block; /* Show overlay when sidebar is open */
+    }
+    
+    .main-content {
+        margin-left: 0; /* No margin on mobile */
+    }
+    
+    /* When sidebar is open, show overlay */
+    .sidebar.open + .sidebar-overlay {
+        display: block;
+    }
+    }

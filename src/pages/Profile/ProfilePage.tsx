@@ -1,211 +1,164 @@
-import { useState, useEffect } from 'react';
-import { Menu } from 'lucide-react';
+
 import './ProfilePage.css';
+// Import the Sidebar component
+import Sidebar from '../../components/Sidebar/Sidebar';
+
+// Import icons from react-icons
+import { 
+  FaMedal, 
+  FaTrophy, 
+  FaCrown, 
+  FaUsers, 
+  FaBolt, 
+  FaRedo, 
+  FaCheckCircle,
+  FaStar, 
+  FaStarHalfAlt 
+} from 'react-icons/fa';
 
 const ProfilePage: React.FC = () => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  // Component for profile picture
+  const ProfilePicture: React.FC = () => {
+    return (
+      <div className="profile-pic-container">
+        <img 
+          src="/api/placeholder/100/100" 
+          className="profile-pic" 
+          alt="Profile Picture" 
+        />
+      </div>
+    );
+  };
 
-  // Check if screen is mobile size on initial load and when window resizes
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth <= 768) {
-        setIsSidebarCollapsed(true);
-      } else {
-        setIsSidebarCollapsed(false);
-      }
-    };
+  // Component for the star rating
+  interface RatingProps {
+    score: number;
+  }
 
-    // Set initial state
-    checkIfMobile();
+  const Rating: React.FC<RatingProps> = ({ score }) => {
+    const stars = [];
+    const fullStars = Math.floor(score);
+    const hasHalfStar = score % 1 >= 0.5;
     
-    // Add event listener
-    window.addEventListener('resize', checkIfMobile);
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<FaStar key={`star-${i}`} />);
+    }
     
-    // Clean up
-    return () => window.removeEventListener('resize', checkIfMobile);
-  }, []);
+    if (hasHalfStar) {
+      stars.push(<FaStarHalfAlt key="half-star" />);
+    }
+    
+    const emptyStars = 5 - stars.length;
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<FaStar key={`empty-star-${i}`} style={{ opacity: 0.3 }} />);
+    }
+    
+    return <div className="rating">{stars}</div>;
+  };
 
-  const toggleSidebar = () => {
-    setIsSidebarCollapsed(!isSidebarCollapsed);
+  // Component for stat boxes
+  interface StatBoxProps {
+    number: string;
+    label: string;
+  }
+
+  const StatBox: React.FC<StatBoxProps> = ({ number, label }) => {
+    return (
+      <div className="stat-box">
+        <div className="stat-number">{number}</div>
+        <div className="stat-label">{label}</div>
+      </div>
+    );
+  };
+
+  // Component for badge items
+  interface BadgeItemProps {
+    icon: React.ReactNode;
+    name: string;
+  }
+
+  const BadgeItem: React.FC<BadgeItemProps> = ({ icon, name }) => {
+    return (
+      <div className="badge-item">
+        <div className="badge-img">
+          {icon}
+        </div>
+        <div className="badge-name">{name}</div>
+      </div>
+    );
+  };
+
+  // Component for achievement items
+  interface AchievementItemProps {
+    text: string;
+  }
+
+  const AchievementItem: React.FC<AchievementItemProps> = ({ text }) => {
+    return (
+      <div className="achievement-item">
+        <FaTrophy className="achievement-icon" />
+        <span>{text}</span>
+      </div>
+    );
   };
 
   return (
-    <div className="app-container">
-      {/* Overlay for mobile when sidebar is open */}
-      {isMobile && !isSidebarCollapsed && (
-        <div className="sidebar-overlay" onClick={toggleSidebar}></div>
-      )}
-      
-      <div className={`sidebar-container ${isSidebarCollapsed ? 'collapsed' : ''}`}>
-      </div>
-      
-      <div className="main-content">
-        <div className="mobile-header">
-          <button className="menu-toggle" onClick={toggleSidebar}>
-            <Menu size={24} />
-          </button>
+    <div className="container">
+      {/* Use the imported Sidebar component */}
+      <Sidebar isMobile={window.innerWidth <= 992} />
+
+      {/* Main Content */}
+      <div className="content">
+        <div className="header">
+          <div className="header-title">Profile</div>
+          <div className="header-actions">
+            {/* Header actions can go here */}
+          </div>
         </div>
 
-        <div className="profile-container">
+        <div className="profile-section">
+          {/* Profile Header */}
           <div className="profile-header">
-            <div className="profile-banner"></div>
-            <div className="profile-info">
-              <div className="profile-avatar">
-                <img src="/src/assets/images/images/db51a0d15a178e33aa72ad690140b567642de318.png" alt="Profile avatar" />
-              </div>
-              <div className="profile-details">
-                <h1 className="profile-name">Margaret Okoye</h1>
-                <div className="profile-badge">
-                  <span>Beneficiary</span>
-                </div>
-                <p className="profile-username">@User234567</p>
-                <div className="profile-rating">
-                  <img src='/src/assets/images/icons/Star.png'alt='full star' className="star" />
-                  <img src='/src/assets/images/icons/Star.png'alt='full star' className="star" />
-                  <img src='/src/assets/images/icons/Star.png'alt='full star' className="star" />
-                  <img src='/src/assets/images/icons/Star.png'alt='full star' className="star" />
-                  <img src='/src/assets//images/icons/Star Half.png' alt='half star' className="star" />
-                </div>
-              </div>
-            </div>
+            <ProfilePicture />
+            <h2 className="profile-name">Margaret Okoye</h2>
+            <p className="profile-username">@User234567</p>
+            <Rating score={4.5} />
+            <div className="user-type">Beneficiary</div>
           </div>
 
-          <div className="profile-body">
-            <div className="statistics-section">
-              <h2 className="section-title">Statistics</h2>
-              <div className="statistics-grid">
-                <div className="statistic-card">
-                  <div className="statistic-value">42</div>
-                  <div className="statistic-label">Debt Transfers</div>
-                </div>
-                <div className="statistic-card">
-                  <div className="statistic-value">40</div>
-                  <div className="statistic-label">Helpers</div>
-                </div>
-                <div className="statistic-card">
-                  <div className="statistic-value">92%</div>
-                  <div className="statistic-label">Success Rate</div>
-                </div>
-                <div className="statistic-card">
-                  <div className="statistic-value">2h</div>
-                  <div className="statistic-label">Response Time</div>
-                </div>
-                <div className="statistic-card">
-                  <div className="statistic-value">10</div>
-                  <div className="statistic-label">Repeat Cases</div>
-                </div>
-              </div>
+          {/* Statistics Section */}
+          <h3 className="statistics-header">Statistics</h3>
+          <div className="stats-container">
+            <StatBox number="42" label="Debt Transfers" />
+            <StatBox number="40" label="Helpers" />
+            <StatBox number="92%" label="Success Rate" />
+            <StatBox number="2h" label="Response Time" />
+            <StatBox number="10" label="Repeat Cases" />
+          </div>
+
+          {/* Badges Section */}
+          <div className="badges-section">
+            <div className="badges-header">
+              <FaMedal className="badge-icon" />
+              <span className="badges-title">Badges</span>
+              <span>&</span>
+              <FaTrophy className="badge-icon" style={{ marginLeft: '10px' }} />
+              <span className="badges-title">Achievements</span>
             </div>
 
-            <div className="achievements-section">
-              <div className="section-header">
-                <h2 className="section-title">Badges</h2>
-                  <div className="medal-icon">
-                  <img src='/src/assets/images/icons/badges/badge icon.png'/>
-                </div>
-                <span className="section-connector">&</span>
-                <div className="medal-icon">
-                  <img src='/src/assets/images/icons/achievement icon.png'/>
-                </div>
-                <h2 className="section-title">Achievements</h2>
-              </div>
+            <div className="badges-container">
+              <BadgeItem icon={<FaCrown />} name="Key Beneficiary" />
+              <BadgeItem icon={<FaUsers />} name="Social Climber" />
+              <BadgeItem icon={<FaBolt />} name="Fast Reply" />
+              <BadgeItem icon={<FaRedo />} name="Repeat Beneficiary" />
+              <BadgeItem icon={<FaCheckCircle />} name="100% Success" />
+            </div>
 
-              <div className="section-header-2">
-                <div className="medal-icon">
-                  <img src='/src/assets/images/icons/achievement icon.png'/>
-                </div>
-                <h2 className="section-title">Achievements</h2>
-
-                <h2 className="section-title badge-2">Badges</h2>
-                  <div className="medal-icon">
-                  <img src='/src/assets/images/icons/badges/badge icon.png'/>
-                </div>
-
-              </div>
-
-
-              
-              <div className="badges-grid">
-                <div className="badge-item">
-                  <div className="badge-icon "><img src="/src/assets/images/icons/badges/Frame (2).png" alt="" /> </div>
-                  <span className="badge-label">Key Beneficiary</span>
-                </div>
-                <div className="badge-item">
-                  <div className="badge-icon"> <img src="/src/assets/images/icons/badges/Frame (3).png" alt="" /> </div>
-                  <span className="badge-label">Social Climber</span>
-                </div>
-                <div className="badge-item">
-                  <div className="badge-icon "> <img src="/src/assets/images/icons/badges/Frame (4).png" alt="" />  </div>
-                  <span className="badge-label">Fast Reply</span>
-                </div>
-                <div className="badge-item">
-                  <div className="badge-icon "> <img src="/src/assets/images/icons/badges/Frame (5).png" alt="" />  </div>
-                  <span className="badge-label">Repeat Beneficiary</span>
-                </div>
-                <div className="badge-item">
-                  <div className="badge-icon "> <img src="/src/assets/images/icons/badges/Frame (6).png" alt="" />  </div>
-                  <span className="badge-label">100% Success</span>
-                </div>
-              </div>
-
-
-
-              <div className="achievements-carousel">
-                <div className="achievements-track">
-                    {[...Array(2)].flatMap(() => [
-                      <div className="achievement-item">
-                        <div className="achievement-icon"><img src="/src/assets/images/icons/achievement icon.png" alt="" /></div>
-                        <span className="achievement-label">Got Help From 40 People</span>
-                      </div>,
-                      <div className="achievement-item">
-                        <div className="achievement-icon"><img src="/src/assets/images/icons/achievement icon.png" alt="" /></div>
-                        <span className="achievement-label">Gotten ₦200,000 total</span>
-                      </div>,
-                      <div className="achievement-item">
-                        <div className="achievement-icon"><img src="/src/assets/images/icons/achievement icon.png" alt="" /></div>
-                        <span className="achievement-label">Gotten Help from 5 users more than once</span>
-                      </div>,
-                      <div className="achievement-item">
-                        <div className="achievement-icon"><img src="/src/assets/images/icons/achievement icon.png" alt="" /></div>
-                        <span className="achievement-label">Fast Response</span>
-                      </div>,
-                    ])}
-                </div>
-              </div>
-
-              <div className="mobile-archive">
-                    <div className="achievement-grid-2">
-                      <div className="achievement-item-2">
-                        <div className="achievement-icon-2"><img src="/src/assets/images/icons/achievement icon.png" alt="" /></div>
-                        <span className="achievement-label-2">Got Help From 40 People</span>
-                      </div>,
-                      <div className="achievement-item-2">
-                        <div className="achievement-icon-2"><img src="/src/assets/images/icons/achievement icon.png" alt="" /></div>
-                        <span className="achievement-label-2">Gotten ₦200,000 total</span>
-                      </div>,
-                      <div className="achievement-item-2">
-                        <div className="achievement-icon-2"><img src="/src/assets/images/icons/achievement icon.png" alt="" /></div>
-                        <span className="achievement-label-2">Gotten Help from 5 users more than once</span>
-                      </div>
-                    </div>
-              
-              <div className="badges-grid-2">
-                <div className="badge-item-2">
-                  <div className="badge-icon-2 "><img src="/src/assets/images/icons/badges/Frame (2).png" alt="" /> </div>
-                  <span className="badge-label-2">Key Beneficiary</span>
-                </div>
-                <div className="badge-item-2">
-                  <div className="badge-icon-2"> <img src="/src/assets/images/icons/badges/Frame (3).png" alt="" /> </div>
-                  <span className="badge-label-2">Social Climber</span>
-                </div>
-                <div className="badge-item-2">
-                  <div className="badge-icon-2 "> <img src="/src/assets/images/icons/badges/Frame (4).png" alt="" />  </div>
-                  <span className="badge-label-2">Fast Reply</span>
-                </div>
-              </div>
-              </div>
+            <div className="achievements-list">
+              <AchievementItem text="Got Help From 40 People" />
+              <AchievementItem text="Gotten ₦20,000 total" />
+              <AchievementItem text="Gotten Help from 5 users more than once" />
+              <AchievementItem text="Fast Responder" />
             </div>
           </div>
         </div>
