@@ -6,7 +6,6 @@ type CardListProps = {
   rating: number;
   helped: number;
   acceptance: number;
-  coinLevel: string;
 };
 
 function CardList(props: CardListProps) {
@@ -32,10 +31,7 @@ function CardList(props: CardListProps) {
             <span className="stat-label-list">Acceptance</span>
             <span className="stat-value-list">{props.acceptance}%</span>
           </div>
-          <div className="stat-item-list">
-            <span className="stat-label-list">Coin Level</span>
-            <span className="stat-value-list">{props.coinLevel}</span>
-          </div>
+          
         </div>
 
         <button className="request-button-list">Request help</button>

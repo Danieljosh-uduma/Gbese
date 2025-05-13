@@ -12,12 +12,13 @@ import Otp from "../pages/signup/verifyOtp/Otp";
 import DashboardRoute from "./dashboardRoute";
 import DashboardBeneficiary from "../pages/Dashboard/version1/Page";
 import DashboardBenefactor from "../pages/Dashboard/version2/dashboard/Page";
-import Marketplace from "../pages/Marketplace/Marketplace";
+import Marketplace from "../pages/Marketplace/v1/Marketplace";
 import DebtSourceStep from "../pages/DebtTraansfer/DebtSourceStep";
 import DebtTransferForm from "../pages/DebtTraansfer/DebtTransferForm";
 import DebtTransferStep3 from "../pages/DebtTraansfer/DebtTransferStep3";
 import TransferDebtStep3 from "../pages/DebtTraansfer/TransferDebtStep3";
 import DTRoute from "./debtTransferRoute";
+import NoDebtTransfer from "../pages/DebtTraansfer/v2/NoDebtTransfer";
 
 export default function MainRouter() {
 
@@ -60,6 +61,7 @@ export default function MainRouter() {
               </Route>
               <Route path="v2/" element={<BenefactorRoute />}>
                 <Route path="" element={<DashboardBenefactor />} />
+                <Route path="debt-transfer" element={<NoDebtTransfer />} />
                 <Route path="marketplace" element={<Marketplace />}/>
              
               </Route>

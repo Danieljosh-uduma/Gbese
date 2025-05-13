@@ -77,9 +77,9 @@ function TransferDebtStep3() {
 
         {/* PROGRESS */}
         <div className="progress-sections">
-          <p>Step 3/4</p>
+          <p>Step 4/4</p>
           <div className="progress-bars">
-            <div className="progress-fills" style={{ width: '75%' }} />
+            <div className="progress-fills" style={{ width: '100%' }} />
           </div>
         </div>
 
