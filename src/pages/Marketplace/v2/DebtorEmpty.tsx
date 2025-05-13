@@ -1,21 +1,36 @@
 
+import Header from '../../../components/layout/Header/Header';
+import Sidebar from '../../../components/Sidebar/Sidebar';
+import Img from "../../../assets/images/icons/profile.svg"
 import './DebtorEmpty.css'
+import Navbar from '../../../components/Navbar/Navbar';
+// import DebtRequest from './DebtRequest/DebtRequest';
+// import PayDebt from './PayDebt/PayDebt';
+// import SuccessModal from '../../DebtTraansfer/Modal/SuccessModal';
+// import Successful from './Successful/Successful';
 
-import { Sidebar } from 'lucide-react';
 
 
 
 function DebtorEmpty () {
     return (
-        <div className='empty-page'>
-            <Sidebar/>
+        <div className='debt-main'>
+            <Sidebar />
 
-            <div className="content">
+            <section className="content">
+                <Header />
+                <Navbar list={[]} setGrid={() => {}} setList={() => {}} />
 
+                    {/* <Successful /> */}
+
+                    {/* <PayDebt /> */}
+
+
+                {/* <DebtRequest /> */}
                 <div className="empty">
-                    <img src="/Gbese/src/assets/images/icons/profile.svg" alt="" />
+                    <img src={Img} alt="" />
                     <p className="titlee">
-                        No helpers found
+                        No debt Opportunities found
                     </p>
                     <p className="text">
                         We couldn't find any helpers matching your criteria. Try adjusting <br /> your filters to check back later
@@ -30,7 +45,7 @@ function DebtorEmpty () {
                         </button>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     )
 }

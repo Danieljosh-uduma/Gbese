@@ -8,7 +8,7 @@ type NavProp = {
   setGrid: () => void
 }
 
-function Navbar(props: NavProp) {
+function  Navbar(props: NavProp) {
   const [activeView, setActiveView] = useState('grid');
   const { setList, setGrid } = props
 

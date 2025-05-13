@@ -50,4 +50,9 @@ function getInitials(name: string) {
     return firstNameInitial + lastNameInitial;
   }
 
-export { validateEmail, getUser, filterDetail, getInitials }
+export { 
+    validateEmail, 
+    getUser, 
+    filterDetail, 
+    getInitials
+}

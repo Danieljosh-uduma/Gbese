@@ -19,6 +19,7 @@ import DebtTransferStep3 from "../pages/DebtTraansfer/DebtTransferStep3";
 import TransferDebtStep3 from "../pages/DebtTraansfer/TransferDebtStep3";
 import DTRoute from "./debtTransferRoute";
 import NoDebtTransfer from "../pages/DebtTraansfer/v2/NoDebtTransfer";
+import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
 
 export default function MainRouter() {
 
@@ -62,7 +63,7 @@ export default function MainRouter() {
               <Route path="v2/" element={<BenefactorRoute />}>
                 <Route path="" element={<DashboardBenefactor />} />
                 <Route path="debt-transfer" element={<NoDebtTransfer />} />
-                <Route path="marketplace" element={<Marketplace />}/>
+                <Route path="marketplace" element={<DebtorEmpty />}/>
              
               </Route>
             </Route>  
