@@ -1,11 +1,11 @@
 
 import './App.css'
-import BenefactorEmpty from './pages/EmptyState/BenefactorEmpty';
+import FundAccount from './pages/FundAccount/FundAccount';
 
 function App() {
     
   return (
-    <BenefactorEmpty/>
+    <FundAccount/>
 
   )
 }
