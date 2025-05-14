@@ -9,10 +9,10 @@ import ProfilePage from './pages/Profile/ProfilePage';
 function App() {
     
   return (
-    // <AuthProvider>
-    //   <MainRouter />
-    // </AuthProvider>
-    <ProfilePage />
+    <AuthProvider>
+      <MainRouter />
+    </AuthProvider>
+    // <ProfilePage />
   )
 }
 
