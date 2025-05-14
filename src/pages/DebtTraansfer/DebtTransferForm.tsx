@@ -134,17 +134,52 @@ function DebtTransferForm() {
             </div>
 
             {/* Attach Bill/Statement */}
-            <div className="form-group">
-              <label>Attach Bill/Statement (Optional)</label>
-              <div className="upload-controls">
-                <button type="button" id="camera-btn">
-                  <CameraIcon /> Camera
-                </button>
-                <button type="button" id="upload-btn">
-                  <LinkIcon /> Upload
-                </button>
-              </div>
-            </div>
+           {/* Attach Bill/Statement */}
+<div className="form-group">
+  <label>Attach Bill/Statement (Optional)</label>
+  <div className="upload-controls">
+    <button
+      type="button"
+      id="camera-btn"
+      onClick={() => document.getElementById('camera-input')?.click()}
+    >
+      <CameraIcon /> Camera
+    </button>
+    <button
+      type="button"
+      id="upload-btn"
+      onClick={() => document.getElementById('file-input')?.click()}
+    >
+      <LinkIcon /> Upload
+    </button>
+  </div>
+
+  {/* Hidden input for camera */}
+  <input
+    type="file"
+    accept="image/*"
+    capture="environment"
+    id="camera-input"
+    style={{ display: 'none' }}
+    onChange={(e) => {
+      if (e.target.files?.[0]) {
+        console.log('Camera file selected:', e.target.files[0]);
+      }
+    }}
+  />
+
+  {/* Hidden input for file upload */}
+  <input
+    type="file"
+    id="file-input"
+    style={{ display: 'none' }}
+    onChange={(e) => {
+      if (e.target.files?.[0]) {
+        console.log('Uploaded file:', e.target.files[0]);
+      }
+    }}
+  />
+</div>
 
             {/* Notes */}
             <div className="form-group">

@@ -45,6 +45,10 @@ import coindebt  from '../../assets/images/icons/stash-coin.svg'
 import receivemoney from '../../assets/images/icons/money-recive.svg'
 import money from '../../assets/images/icons/money-4.svg'
 import tickcirlcle from '../../assets/images/icons/tick-circle.svg'
+import filter from '../../assets/images/icons/filter.svg'
+import screenshot from '../../assets/images/icons/screenshot.svg'
+import maximize from '../../assets/images/icons/maximize-4.svg'
+import receipt from '../../assets/images/icons/Receipt.svg'
 
 // --- types ---
 type LogoProps = {
@@ -234,6 +238,18 @@ function MoneyDebt({ className, width, height }: ImageProps) {
 function TickCircleIcon({ className, width, height }: ImageProps) {
   return <img src={tickcirlcle} alt="Close Circle" className={className} style={{ width, height }} />;
 }
+function FilterIcon({ className, width, height }: ImageProps) {
+  return <img src={filter} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function ScreenShotIcon({ className, width, height }: ImageProps) {
+  return <img src={screenshot} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function MaximizeIcon({ className, width, height }: ImageProps) {
+  return <img src={maximize} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function ReceiptIcon({ className, width, height }: ImageProps) {
+  return <img src={receipt} alt="Close Circle" className={className} style={{ width, height }} />;
+}
 
 
 // --- export all components ---
@@ -282,6 +298,10 @@ export {
   StashCoinIcon,
   MoneyRecieve,
   MoneyDebt,
-  TickCircleIcon
+  TickCircleIcon,
+  FilterIcon,
+  ScreenShotIcon,
+  MaximizeIcon,
+  ReceiptIcon
 
 };

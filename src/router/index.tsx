@@ -18,6 +18,7 @@ import DebtSourceStep from "../pages/DebtTraansfer/DebtSourceStep";
 import DebtTransferForm from "../pages/DebtTraansfer/DebtTransferForm";
 import DebtTransferStep3 from "../pages/DebtTraansfer/DebtTransferStep3";
 import TransferDebtStep3 from "../pages/DebtTraansfer/TransferDebtStep3";
+import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
 
 export default function MainRouter() {
 
@@ -32,6 +33,7 @@ export default function MainRouter() {
               <Route path="debtransfer" element={<DebtTransferForm/>} />
               <Route path="debtstep3" element={<DebtTransferStep3/>} />
               <Route path="transdebt3" element={<TransferDebtStep3/>} />
+              <Route path="transpage" element={<TransactionsPage/>} />
 
 
             {/* --- splash screen --- */}
