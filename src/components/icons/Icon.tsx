@@ -39,7 +39,6 @@ import mobileschedule from '../../assets/images/icons/Mobileiconschedule.svg';
 import information from '../../assets/images/icons/information.svg'
 import Search from '../../assets/images/icons/search.svg'
 import camera from '../../assets/images/icons/camera.svg'
-import  link  from '../../assets/images/icons/link.svg'
 import informationgreen   from '../../assets/images/icons/information-green.svg'
 import coindebt  from '../../assets/images/icons/stash-coin.svg'
 import receivemoney from '../../assets/images/icons/money-recive.svg'
@@ -220,9 +219,7 @@ function SearchIcon({ className, width, height }: ImageProps) {
 function CameraIcon ({ className, width, height }: ImageProps) {
   return <img src={camera} alt="Close Circle" className={className} style={{ width, height }} />;
 }
-function LinkIcon({ className, width, height }: ImageProps) {
-  return <img src={link} alt="Close Circle" className={className} style={{ width, height }} />;
-}
+
 function InformationGreen({ className, width, height }: ImageProps) {
   return <img src={informationgreen} alt="Close Circle" className={className} style={{ width, height }} />;
 }
@@ -293,7 +290,6 @@ export {
   InformationIcon,
   SearchIcon,
   CameraIcon,
-  LinkIcon,
   InformationGreen,
   StashCoinIcon,
   MoneyRecieve,

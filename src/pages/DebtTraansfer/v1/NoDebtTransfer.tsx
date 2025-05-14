@@ -1,6 +1,6 @@
 import React from 'react';
 import './NoDebtTransfer.css';
-import { ArrowLeftIcon, InformationIcon } from '../../components/icons/Icon';
+import { ArrowLeftIcon, InformationIcon } from '../../../components/icons/Icon';
 import { useNavigate } from 'react-router-dom';
 
 const NoDebtTransfer: React.FC = () => {

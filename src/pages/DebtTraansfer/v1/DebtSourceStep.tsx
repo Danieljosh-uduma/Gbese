@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, AddIcon, ArrowDownIcon,SearchIcon } from '../../components/icons/Icon';
+import { ArrowLeftIcon, AddIcon, ArrowDownIcon,SearchIcon } from '../../../components/icons/Icon';
 import './DebtSourceStep.css';
-import '../../components/Sidebar/Sidebar'
-import '../../components/NavItem/NavItem'
+import '../../../components/Sidebar/Sidebar'
+import '../../../components/NavItem/NavItem'
+import { useType } from '../../../hooks/useType';
 const SOURCES = ['Fairmoney', 'Opay', 'Lendsafe', 'Ikedc', 'Quickcredit'];
 
 const DebtSourceStep: React.FC = () => {
   const navigate = useNavigate();
+  const { BASE_URL } = useType()
   const [selectedSource, setSelectedSource] = useState('');
   const [customSource, setCustomSource] = useState('');
   const [showOptions, setShowOptions] = useState(false);
@@ -15,7 +17,7 @@ const DebtSourceStep: React.FC = () => {
   const handleContinue = () => {
     if (selectedSource || customSource) {
       console.log('Proceeding with:', selectedSource || customSource);
-      // navigate('/next-step');
+      navigate(`${BASE_URL}/debt-transfer/form`);
     }
   };
 

@@ -67,7 +67,7 @@ textarea {
   border-radius: 6px;
   font-size: 14px;
   outline: none;
-  color: #B0B0B0;
+  color: var(--body-text);
   box-sizing: border-box;
 }
 

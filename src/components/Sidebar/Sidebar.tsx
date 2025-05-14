@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {  
     LayoutGrid,
     User,
@@ -11,27 +10,26 @@ import {
 
  } from 'lucide-react';
 import NavItem from '../NavItem/NavItem';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LOGO from '../../assets/images/icons/Logo-text.png'
 import './Sidebar.css';
 import { useType } from '../../hooks/useType';
 
 function Sidebar() {
-const [activeNavItem, setActiveNavItem] = useState('Dashboard');
 const navigate = useNavigate()
+const location = useLocation()
 const { BASE_URL } = useType()
 
 
-const handleNavItemClick = (label: string, url: string) => {
+const handleNavItemClick =  (url: string) => {
     navigate(BASE_URL+url)
-    setActiveNavItem(label);
 };
 
 return (
     <div className="sidebar">
     <div className="sidebar-header">
         <div className="logo">
-            <Link to="/">
+            <Link to={`${BASE_URL}/`}>
                 <img src={LOGO} alt="Logo" className="logo-image" />
             </Link>
         </div>
@@ -41,38 +39,38 @@ return (
         <NavItem 
         icon={<LayoutGrid size={20} />}
         label="Dashboard" 
-        active={activeNavItem === 'Dashboard'} 
-        onClick={() => handleNavItemClick('Dashboard', '/')}
+        active={location.pathname === `${BASE_URL}/`} 
+        onClick={() => handleNavItemClick('/')}
         />
         <NavItem 
         icon={<RepeatIcon size={20} />} 
         label="Debt Transfer" 
-        active={activeNavItem === 'Debt Transfer'} 
-        onClick={() => handleNavItemClick('Debt Transfer', '/debt-transfer')}
+        active={location.pathname === `${BASE_URL}/debt-transfer`} 
+        onClick={() => handleNavItemClick('/debt-transfer')}
         />
         <NavItem 
         icon={<WalletIcon size={20} />} 
         label="Request" 
-        active={activeNavItem === 'Request'} 
-        onClick={() => handleNavItemClick('Request', '/request')}
+        active={location.pathname === `${BASE_URL}/request`} 
+        onClick={() => handleNavItemClick('/request')}
         />
         <NavItem 
         icon={<ClipboardList size={20} />} 
         label="Transaction History" 
-        active={activeNavItem === 'Transaction History'} 
-        onClick={() => handleNavItemClick('Transaction History', '/history')}
+        active={location.pathname === `${BASE_URL}/history`} 
+        onClick={() => handleNavItemClick('/history')}
         />
         <NavItem 
         icon={<ShoppingBag size={20} />} 
         label="Market Place" 
-        active={activeNavItem === 'Market Place'} 
-        onClick={() => handleNavItemClick('Market Place', '/marketplace')}
+        active={location.pathname === `${BASE_URL}/marketplace`} 
+        onClick={() => handleNavItemClick('/marketplace')}
         />
         <NavItem 
         icon={<User size={20} />} 
         label="Profile" 
-        active={activeNavItem === 'Profile'} 
-        onClick={() => handleNavItemClick('Profile', '/profile')}
+        active={location.pathname === `${BASE_URL}/profile`} 
+        onClick={() => handleNavItemClick('/profile')}
         />
     </nav>
     
@@ -82,14 +80,14 @@ return (
         <NavItem 
             icon={<Heart size={20} />} 
             label="Help & Support" 
-            active={activeNavItem === 'Help & Support'} 
-            onClick={() => handleNavItemClick('Help & Support', '/support')}
+            active={location.pathname === `${BASE_URL}/support`} 
+            onClick={() => handleNavItemClick('/support')}
         />
         <NavItem 
             icon={<Settings size={20} />} 
             label="Settings" 
-            active={activeNavItem === 'Settings'} 
-            onClick={() => handleNavItemClick('Settings', '/setting')}
+            active={location.pathname === `${BASE_URL}/setting`} 
+            onClick={() => handleNavItemClick('/setting')}
         />
         </div>
     </div>

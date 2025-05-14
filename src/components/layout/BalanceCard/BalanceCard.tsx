@@ -2,11 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import './BalanceCard.css';
 import { useAuth } from '../../../hooks/useAuth';
+import { getUserDetails } from '../../../services/marketplace';
 
 const BalanceCard: React.FC = () => {
   const [showBalance, setShowBalance] = useState(false);
   const [percent, setPercent] = useState(0)
-  const { user } = useAuth()
+  const { user, login, logout } = useAuth()
+
+  useEffect(() => {
+        getUserDetails(user?.token)
+            .then(res => {
+                if (res.success) {
+                    const data = res.data
+                    login({token: user?.token, fullname: user?.fullname, ...data})
+                } else if (res.status === 401) {
+                    logout()
+                }
+            })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [showBalance])
   
   const toggleBalance = () => {
     setShowBalance(!showBalance);

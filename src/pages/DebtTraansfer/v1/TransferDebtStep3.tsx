@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, InformationIcon } from '../../components/icons/Icon';
+import { ArrowLeftIcon, InformationIcon } from '../../../components/icons/Icon';
 import './TransfeDebtStep3.css';
-import SpecificUserModal from './Modal/SpecificUsers';
-import ShareLinkModal from './Modal/ShareLinkModal';
-import SuccessModal from './Modal/SuccessModal';
+import SpecificUserModal from '../Modal/SpecificUsers';
+import ShareLinkModal from '../Modal/ShareLinkModal';
+import SuccessModal from '../Modal/SuccessModal';
 
 function TransferDebtStep3() {
   const navigate = useNavigate();
@@ -77,9 +77,9 @@ function TransferDebtStep3() {
 
         {/* PROGRESS */}
         <div className="progress-sections">
-          <p>Step 3/4</p>
+          <p>Step 4/4</p>
           <div className="progress-bars">
-            <div className="progress-fills" style={{ width: '75%' }} />
+            <div className="progress-fills" style={{ width: '100%' }} />
           </div>
         </div>
 

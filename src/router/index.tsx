@@ -12,14 +12,16 @@ import Otp from "../pages/signup/verifyOtp/Otp";
 import DashboardRoute from "./dashboardRoute";
 import DashboardBeneficiary from "../pages/Dashboard/version1/Page";
 import DashboardBenefactor from "../pages/Dashboard/version2/dashboard/Page";
-import Marketplace from "../pages/Marketplace/Marketplace";
-import NoDebtTransfer from "../pages/DebtTraansfer/NoDebtTransfer";
-import DebtSourceStep from "../pages/DebtTraansfer/DebtSourceStep";
-import DebtTransferForm from "../pages/DebtTraansfer/DebtTransferForm";
-import DebtTransferStep3 from "../pages/DebtTraansfer/DebtTransferStep3";
-import TransferDebtStep3 from "../pages/DebtTraansfer/TransferDebtStep3";
+import Marketplace from "../pages/Marketplace/v1/Marketplace";
+import DebtSourceStep from "../pages/DebtTraansfer/v1/DebtSourceStep";
+import DebtTransferForm from "../pages/DebtTraansfer/v1/DebtTransferForm";
+import DebtTransferStep3 from "../pages/DebtTraansfer/v1/DebtTransferStep3";
+import TransferDebtStep3 from "../pages/DebtTraansfer/v1/TransferDebtStep3";
+import DTRoute from "./debtTransferRoute";
+import NoDebtTransfer from "../pages/DebtTraansfer/v2/NoDebtTransfer";
+import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
+import ProfilePage from "../pages/profile/Page";
 import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
-
 export default function MainRouter() {
 
   return (
@@ -59,14 +61,25 @@ export default function MainRouter() {
               <Route path="v1/" element={<BeneficiaryRoute />}>
                 <Route path="" element={<DashboardBeneficiary />} />
                 <Route path="marketplace" element={<Marketplace />}/>
+
+                <Route path='debt-transfer/*' element={<DTRoute />}>
+                  <Route path='' element={<DebtSourceStep />} />
+                  <Route path='form' element={<DebtTransferForm />} />
+                  <Route path='incentives' element={<DebtTransferStep3 />} />
+                  <Route path='payment-method' element={<TransferDebtStep3 />} />
+                </Route>
+
+                <Route path="profile" element={<ProfilePage />} />
                 <Route path="*" element={<NotFound />} />
               </Route>
               <Route path="v2/" element={<BenefactorRoute />}>
                 <Route path="" element={<DashboardBenefactor />} />
-                <Route path="marketplace" element={<Marketplace />}/>
+                <Route path="debt-transfer" element={<NoDebtTransfer />} />
+                <Route path="marketplace" element={<DebtorEmpty />}/>
              
               </Route>
-            </Route>            
+            </Route>  
+       
 
 
             {/* not found  */}

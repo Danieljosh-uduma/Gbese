@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, InformationGreen,StashCoinIcon, MoneyDebt, MoneyRecieve } from '../../components/icons/Icon'
+import { ArrowLeftIcon, InformationGreen,StashCoinIcon, MoneyDebt, MoneyRecieve } from '../../../components/icons/Icon'
 import './DebtTransferStep3.css'
+import { useType } from '../../../hooks/useType';
+
 function DebtTransferStep3() {
 const navigate = useNavigate();
+const { BASE_URL } = useType()
 
   const [selectedOffer, setSelectedOffer] = useState('');
   const [coinAmount, setCoinAmount] = useState('');
@@ -133,6 +136,7 @@ const isCoinValid = selectedOffer === 'gieese' && coinAmount.trim() !== '' && !i
             onClick={() => {
               // Proceed to next step logic here
               console.log('Continue clicked');
+              navigate(`${BASE_URL}/debt-transfer/payment-method`)
             }}
           >
             Continue
