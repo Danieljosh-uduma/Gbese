@@ -9,7 +9,7 @@ import {
   FaStarHalfAlt 
 } from 'react-icons/fa';
 
-const ProfilePage: React.FC = () => {
+export default function BeneficiaryProfile(){
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 992);
 
   useEffect(() => {
@@ -201,5 +201,3 @@ const ProfilePage: React.FC = () => {
     </div>
   );
 };
-
-export default ProfilePage;
