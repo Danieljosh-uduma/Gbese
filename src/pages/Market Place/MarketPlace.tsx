@@ -3,9 +3,14 @@ import './MarketPlace.css'
 
 const MarketPlace = () => {
  return(
-  <div>
+  <div className='container' style={{display: 'flex'}}>
    <Sidebar />
+   <div className='main'>
+  <header></header>
+ </div>
   </div>
+ 
+
  );
 }
 
