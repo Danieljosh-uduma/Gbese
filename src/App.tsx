@@ -6,6 +6,9 @@ import DebtRequest from './pages/Debt Request/DebtRequest'
 import PayDebt from './pages/Pay debt/PayDebt'
 import Successful from './pages/Successful/Successful'
 import RequestMoney from './pages/Request Money/RequestMoney'
+import ReviewRequestModal from './pages/Request Money/ReviewRequestModal'
+import RequestSentModal from './pages/Request Money/RequestSentModal'
+import PaymentNotifications from './pages/PaymentNotifications'
 
 function App() {
     
@@ -17,6 +20,10 @@ function App() {
       <Route path='/paydebt' element={<PayDebt />} />
       <Route path='/successful' element={<Successful />} />
       <Route path='/requestmoney' element={<RequestMoney />} />
+      <Route path='/reviewrequest' element={<ReviewRequestModal />} />
+      <Route path='/requestsent' element={<RequestSentModal />} />
+      <Route path='/notification' element={<PaymentNotifications />} />
+
 
 
     </Routes>

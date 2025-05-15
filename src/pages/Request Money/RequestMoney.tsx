@@ -2,7 +2,7 @@ import './RequestMoney.css'
 
 export default function RequestMoney() {
   return (
-    <div>
+    <div className='resquest-money-container'>
       <div className="recent-section">
        <h2 className="recent">Recent</h2>
        <div className="recent-profiles" style={{display: 'flex',  alignItems: 'center', gap: '24px', borderRadius: '20px', background: '#AE9FE940', padding: '24px', marginTop: '16px'}} >
@@ -66,7 +66,7 @@ export default function RequestMoney() {
       </div>
 
      <div className="request-money-form">
-  <form>
+  <form className='request-form'>
     <div className="top-row">
       <div className="form-group">
         <label htmlFor="currency">Currency</label>
@@ -78,12 +78,12 @@ export default function RequestMoney() {
       </div>
 
       <div className="form-group">
-        <label htmlFor="amount">Amount</label>
+        <label className='labels' htmlFor="amount">Amount</label>
         <input className="amount" type="text" id="amount" placeholder="0.00" />
       </div>
 
       <div className="form-group">
-        <label htmlFor="reason">Purpose/Reason</label>
+        <label className='labels' htmlFor="reason">Purpose/Reason</label>
         <input
           className="reason"
           type="text"
@@ -95,12 +95,12 @@ export default function RequestMoney() {
 
     <div className="second-row">
       <div className="form-group">
-        <label htmlFor="date">Due Date</label>
+        <label className='labels' htmlFor="date">Due Date</label>
         <input className="request-date" type="date" id="date" placeholder="mm/dd/yy" />
       </div>
 
       <div className="form-group">
-        <label htmlFor="note">Notes (Optional)</label>
+        <label className='labels' htmlFor="note">Notes (Optional)</label>
         <input
           className="note"
           type="text"
@@ -112,18 +112,23 @@ export default function RequestMoney() {
 
     <div className="priority-row">
       <div className="checkbox-options">
-        <label>
-          <input type="checkbox" name="priority" value="urgent" /> Urgent
+        <label className='labels'>
+          <input className='radio-inputs' type="radio" name="priority" value="urgent" /> Urgent
         </label>
         <label>
-          <input type="checkbox" name="priority" value="normal" /> Normal
+          <input className='radio-inputs' type="radio" name="priority" value="normal" /> Normal
         </label>
       </div>
     </div>
   </form>
+
+  
 </div>
 
-
+<div className="request-button">
+          <button className="continue-btn">continue</button>
+         
+        </div>
       </div>
     
   )
