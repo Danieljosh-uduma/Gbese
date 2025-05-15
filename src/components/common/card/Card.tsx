@@ -1,13 +1,17 @@
 
 import './Card.css'
 import { CardProps } from '../../../types/helpers';
+import { useNavigate } from 'react-router';
+import { useType } from '../../../hooks/useType';
 
 
 function Card (props: CardProps) {
+    const navigate = useNavigate()
+    const { BASE_URL } = useType()
 
     return(
         <div className='card'>
-            <div className="initials">{props.initials}</div>
+            <div className="initials" onClick={() => navigate(`${BASE_URL}/profile`, {state: {id: props.id, name: props.name}})}>{props.initials}</div>
             <div className="name">{props.name}</div>
             <div className="rating">
                 <img src="/src/assets/images/icons/rating.svg" alt="" />

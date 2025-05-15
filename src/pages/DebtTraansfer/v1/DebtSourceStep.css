@@ -229,12 +229,12 @@
   }
   
   .continue-btn:enabled {
-    background-color: #008080;
+    background-color: #5D3FD3 !important;
     cursor: pointer;
   }
   
   .continue-btn:enabled:hover {
-    background-color: #006b6b;
+    background-color: #5D3FD3af !important;
   }
 
 /* MOBILE RESPONSIVENESS */

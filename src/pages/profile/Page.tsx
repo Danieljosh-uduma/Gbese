@@ -17,8 +17,40 @@ import {
   FaStarHalfAlt 
 } from 'react-icons/fa';
 import Header from '../../components/layout/Header/Header';
+import { useEffect, useState } from 'react';
+import { getProfileStat, getProfileStatForUser } from '../../services/marketplace';
+import { useAuth } from '../../hooks/useAuth';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Stat } from '../../types/helpers';
 
 const ProfilePage: React.FC = () => {
+  const [stat, setStat] = useState({} as Stat)
+  const { user, logout } = useAuth()
+  const token = user?.token
+  const location = useLocation()
+  const id = location.state? location.state.id: undefined
+  const navigate = useNavigate()
+  
+  
+  useEffect(() => {
+    if (!id) {
+      getProfileStat(token).then(res => {
+      if (res.success) {
+        setStat(res.data)
+      } else if (res.status === 401) {
+        logout()
+      }
+    }).catch(err => console.log(err))
+    } else if (id) {
+      getProfileStatForUser(token, id).then(res => {
+        if (res.success) {
+        setStat(res.data)
+        } else if (res.status === 401) {
+          navigate('/')
+        }
+      })
+    }
+  }, [])
   // Component for profile picture
   const ProfilePicture: React.FC = () => {
     return (
@@ -60,7 +92,7 @@ const ProfilePage: React.FC = () => {
 
   // Component for stat boxes
   interface StatBoxProps {
-    number: string;
+    number: number;
     label: string;
   }
 
@@ -117,22 +149,22 @@ const ProfilePage: React.FC = () => {
           {/* Profile Header */}
           <div className="profile-header">
             <ProfilePicture />
-            <h2 className="profile-name">Margaret Okoye</h2>
-            <p className="profile-username">@User234567</p>
+            <h2 className="profile-name">{id? (location.state.name).toUpperCase() : user?.fullname.toUpperCase()}</h2>
+            <p className="profile-username">{user?.acctNumber}</p>
             <div className='profile-rating'>
                 <Rating score={4.5} />
             </div>
-            <div className="user-type">Beneficiary</div>
+            <div className="user-type">{id? "Benefactor" : "Beneficiary"}</div>
           </div>
 
           {/* Statistics Section */}
           <h3 className="statistics-header">Statistics</h3>
           <div className="stats-container">
-            <StatBox number="42" label="Debt Transfers" />
-            <StatBox number="40" label="Helpers" />
-            <StatBox number="92%" label="Success Rate" />
-            <StatBox number="2h" label="Response Time" />
-            <StatBox number="10" label="Repeat Cases" />
+            <StatBox number={stat?.debtTransfers} label="Debt Transfers" />
+            <StatBox number={stat?.helped} label="Helped" />
+            <StatBox number={stat?.successRate} label="Success Rate" />
+            <StatBox number={stat?.responseTime} label="Response Time" />
+            <StatBox number={stat?.repeatCase} label="Repeat Cases" />
           </div>
 
           {/* Badges Section */}
