@@ -109,7 +109,7 @@ function TransferDebtStep3() {
           </div>
 
           <div className="transfer-buttons">
-            <button className="btn-method primary">List on marketplace</button>
+            <button className="btn-method active">List on marketplace</button>
             <button className="btn-method primary" onClick={() => setShowSpecificUserModal(true)}>Send to specific users</button>
             <button className="btn-method primary" onClick={() => setShowShareLinkModal(true)}>Share payment link</button>
           </div>
