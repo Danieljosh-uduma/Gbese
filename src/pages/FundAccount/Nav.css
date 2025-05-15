@@ -68,3 +68,11 @@ background: #AE9FE940;
     height: 24px;
     width: 24px;
 }
+
+@media (max-width: 750px) {
+    .icon-button, .coins {
+        display: none;
+    }
+    
+
+}

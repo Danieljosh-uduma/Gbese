@@ -1,0 +1,221 @@
+.review-container {
+  max-width: 680px;
+  margin: 5rem auto;
+  padding: 1.5rem;
+  position: fixed;
+  
+}
+
+.review-title {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 120%;
+    color: #0E0E10;
+    margin-bottom: 0.3rem;
+}
+
+.review-subtext {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #696969;
+    margin-bottom: 1.5rem;
+}
+
+.review {
+    background: #FAFAFA;
+    padding: 0.8rem;
+    border-radius: 1rem;
+}
+.review-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px 0px #10182814;
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    
+}
+
+
+.review-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: #696969;
+}
+
+.review-value {
+  color: #0E0E10;
+}
+
+.click-icon {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    margin-left: 0.4rem;
+}
+.copied {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  background: #AE9FE940;
+  color:  #4228aa;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+
+
+.review-warning,
+.review-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.88rem;
+}
+
+.review-info {
+    margin-top: 2.5rem;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #696969;
+
+}
+.review-info p {
+    padding-top: 0.5rem;
+}
+
+.review-warning {
+
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #696969;
+}
+
+.gb {
+    white-space: nowrap;
+}
+
+
+.review-warning a {
+  color: #008080;
+
+}
+
+
+
+.countdown {
+  color: #008600;
+}
+
+.c-icon, .w-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+.c-icon {
+    background: #F59E0B26;
+}
+.w-icon {
+    background: #DB000026;
+}
+
+.review-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.btn-cancel,
+.btn-send {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  width: 48%;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-cancel {
+  border: 1px solid #DB0000;
+  background: #FFFFFF;
+  color: #DB0000;
+  font-size: 1.2rem;
+
+}
+
+.btn-send {
+  background: #5D3FD3;
+  color: #FEFEFE;
+  font-size: 0.95rem;
+}
+
+
+@media screen and (max-width: 600px) {
+  .review-container {
+    max-width: 95%;
+    padding: 0.7rem 1rem;
+  }
+
+  .review-card {
+    padding: 0.9rem 1rem;
+  }
+
+  .review-title {
+    font-size: 1rem;
+  }
+
+  .review-subtext {
+    font-size: 0.9rem;
+  }
+
+  .review-row {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1rem;
+  }
+
+  .review-value {
+    margin-top: 0.2rem;
+  }
+
+.c-icon, .w-icon {
+    width: 30px;
+    height: 30px;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+  .review-info,
+  .review-warning {
+    font-size: 0.85rem;
+  }
+
+  .review-buttons {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .btn-cancel,
+  .btn-send {
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  .copied-message {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+  }
+  .gb {
+    white-space: wrap;
+  }
+}
