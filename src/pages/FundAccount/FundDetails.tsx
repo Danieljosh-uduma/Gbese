@@ -7,6 +7,8 @@ import Nav from './Nav';
 function FundDetails (props: {amount: number; accountNumber: string}) {
     const [timeLeft, setTimeLeft] = useState(1800);
     const [copied, setCopied] = useState(false);
+    const [transactionStatus, setTransactionStatus] = useState<"success" | "error" | null>(null);
+
 
     useEffect(() => {
     const timer = setInterval(() => {
@@ -28,6 +30,24 @@ function FundDetails (props: {amount: number; accountNumber: string}) {
         setTimeout(() => setCopied(false), 700)
     });
   }
+
+  function handleSendMoney() {
+  try {
+    // Your transaction logic
+    const success = false; // replace with actual result
+
+    if (success) {
+      setTransactionStatus("success");
+    } else {
+      setTransactionStatus("error");
+    }
+  } catch {
+    setTransactionStatus("error");
+  }
+}
+
+
+  
 
     return(
         <div className="container">
@@ -83,10 +103,44 @@ function FundDetails (props: {amount: number; accountNumber: string}) {
 
                     <div className="review-buttons">
                         <button className="btn-cancel">Cancel</button>
-                        <button className="btn-send">I've sent the money</button>
+                        <button className="btn-send" onClick={handleSendMoney}>I've sent the money</button>
                     </div>
                 </div>
             </div>
+
+            {transactionStatus === "success" && (
+  <div className="modal">
+    <div className="modal-content">
+      <div className="icon success">
+        <img src="/src/assets/images/icons/success.svg" alt="" />
+      </div>
+      <p className='successful'>Account Successfully Funded!</p>
+      <p className='s-text'>₦{props.amount.toLocaleString()} has been added to your account</p>
+      <div className="status-modal">
+        <button className="btn-primary">Share Receipt</button>
+      <button className="btn-link" onClick={() => setTransactionStatus(null)}>Back to Dashboard</button>
+      </div>
+    </div>
+  </div>
+)}
+
+{transactionStatus === "error" && (
+  <div className="modal">
+    <div className="modal-content">
+      <div className="icon error">
+        <img src="/src/assets/images/icons/error.svg" alt="" />
+      </div>
+      <p className='failed'>Transaction Failed</p>
+      <p className='f-text'>We couldn't complete your Top-up because your card failed.</p>
+      <div className="status-modal">
+        <button className="btn-primary">Try Again</button>
+      <button className="btn-link" onClick={() => setTransactionStatus(null)}>Use a Different Method</button>
+      </div>
+      
+    </div>
+  </div>
+)}
+
 
 
         </div>

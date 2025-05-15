@@ -219,3 +219,85 @@
     white-space: wrap;
   }
 }
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  max-width: 90%;
+  text-align: center;
+  align-content: center;
+}
+
+
+.icon.success, .icon.error{
+    height: 100px;
+    margin-top: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+
+.successful {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 1.5rem;
+color: #0E0E10;
+
+}
+
+.failed {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #0E0E10;
+}
+
+.s-text, .f-text {
+font-weight: 600;
+font-size: 1rem;
+color: #696969;
+margin: 0.5rem 0;
+
+
+}
+
+
+
+.status-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+  background-color: #5e2bff; 
+  color: white;
+  padding: 0.75rem 8rem;
+  margin: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-link {
+  background: none;
+  color: #5e2bff;
+  border: none;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
