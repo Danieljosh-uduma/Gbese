@@ -1,0 +1,26 @@
+.person-name {
+  text-align: center;
+}
+
+.request-money-form {
+  border: 1px solid red;
+}
+
+.request-money-form form {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* min-width: 150px; */
+}

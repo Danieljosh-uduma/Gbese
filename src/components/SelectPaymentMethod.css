@@ -1,4 +1,4 @@
-label {
+.payment-method {
   display: block;
   margin-bottom: 8px;
   font-weight: 400;
@@ -7,7 +7,7 @@ label {
   font-size: 14px;
 }
 
-select {
+#payment-method {
   width: 100%;
   padding: 16px 12px;
   border-radius: 4px;

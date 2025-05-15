@@ -112,7 +112,7 @@ const [error, setError] = useState<string | null>(null);
 
       <div className="otp-area" onPaste={handlePaste}>
         {otp.map((value, index) => (
-          <input
+          <input className='otp-input'
             key={index}
             type="text"
             inputMode="numeric"

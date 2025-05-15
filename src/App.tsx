@@ -5,6 +5,7 @@ import MarketPlace from './pages/Market Place/MarketPlace'
 import DebtRequest from './pages/Debt Request/DebtRequest'
 import PayDebt from './pages/Pay debt/PayDebt'
 import Successful from './pages/Successful/Successful'
+import RequestMoney from './pages/Request Money/RequestMoney'
 
 function App() {
     
@@ -15,6 +16,7 @@ function App() {
       <Route path='/debtrequest' element={<DebtRequest />} />
       <Route path='/paydebt' element={<PayDebt />} />
       <Route path='/successful' element={<Successful />} />
+      <Route path='/requestmoney' element={<RequestMoney />} />
 
 
     </Routes>

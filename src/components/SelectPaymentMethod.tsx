@@ -12,8 +12,8 @@ const SelectPaymentMethod: React.FC = () => {
 
   return (
     <div className="payment-method-container">
-      <label htmlFor="payment-method">Payment Method</label>
-      <select
+      <label className="payment-method" htmlFor="payment-method">Payment Method</label>
+      <select 
         id="payment-method"
         value={selectedMethod}
         onChange={handleChange}
