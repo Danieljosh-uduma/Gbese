@@ -65,31 +65,66 @@ export default function RequestMoney() {
        </div>
       </div>
 
-      <div className="request-money-form">
-       <form action="">
+     <div className="request-money-form">
+  <form>
+    <div className="top-row">
+      <div className="form-group">
         <label htmlFor="currency">Currency</label>
-        <select className='currencies' name="" id="">
-         <option className='currency-options'>NGN</option>
-         <option className='currency-options'>USD</option>
-         <option className='currency-options'>EUR</option>
+        <select className="currencies" id="currency">
+          <option>NGN</option>
+          <option>USD</option>
+          <option>EUR</option>
         </select>
+      </div>
 
-       <label htmlFor="amount">Amount</label>
-       <input className="amount" type="text" placeholder='0.00' />
+      <div className="form-group">
+        <label htmlFor="amount">Amount</label>
+        <input className="amount" type="text" id="amount" placeholder="0.00" />
+      </div>
 
+      <div className="form-group">
         <label htmlFor="reason">Purpose/Reason</label>
-       <input className="reason" type="text" placeholder='Dinner, rent, school fees, e.t.c' />
-
-<div className="second-row">
- <label htmlFor="date">Due Date</label>
-       <input className="due-date" type="text" placeholder='mm/dd/yy' />
-
-        <label htmlFor="note">Notes(Optional)</label>
-       <input className="reason" type="text" placeholder='Add any additional information' />
-</div>
-       
-       </form>
+        <input
+          className="reason"
+          type="text"
+          id="reason"
+          placeholder="Dinner, rent, school fees, e.t.c"
+        />
       </div>
     </div>
+
+    <div className="second-row">
+      <div className="form-group">
+        <label htmlFor="date">Due Date</label>
+        <input className="request-date" type="date" id="date" placeholder="mm/dd/yy" />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="note">Notes (Optional)</label>
+        <input
+          className="note"
+          type="text"
+          id="note"
+          placeholder="Add any additional information"
+        />
+      </div>
+    </div>
+
+    <div className="priority-row">
+      <div className="checkbox-options">
+        <label>
+          <input type="checkbox" name="priority" value="urgent" /> Urgent
+        </label>
+        <label>
+          <input type="checkbox" name="priority" value="normal" /> Normal
+        </label>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+      </div>
+    
   )
 }

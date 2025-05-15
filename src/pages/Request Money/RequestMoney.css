@@ -3,24 +3,183 @@
 }
 
 .request-money-form {
-  border: 1px solid red;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  /* border: 1px solid #ddd; */
+  border-radius: 10px;
+  /* background-color: #f9f9f9; */
+  font-family: sans-serif;
 }
 
-.request-money-form form {
+form {
   display: flex;
-  /* flex-direction: column; */
-  gap: 1rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.row {
+.top-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.top-row .form-group:nth-child(1) {
+  flex: 0 0 auto;
+  min-width: 100px;
+}
+
+.top-row .form-group:nth-child(2),
+.top-row .form-group:nth-child(3) {
+  flex: 1;
+}
+
+.second-row {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
+.second-row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
+}
+
+label {
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  color: #696969;
+}
+
+input,
+select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+.priority-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-options {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.checkbox-options input[type="checkbox"] {
+  margin-right: 0.4rem;
+}
+
+/* === Responsive Behavior === */
+@media (max-width: 600px) {
+  .top-row,
+  .second-row {
+    flex-direction: column;
+  }
+
+  .top-row .form-group:nth-child(1) {
+    flex: 1;
+  }
+}
+
+.request-money-form {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  font-family: sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* === Flex Rows === */
+.top-row,
+.second-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.top-row .form-group:nth-child(1) {
+  flex: 0 0 100px; /* Currency - smallest */
+}
+
+.top-row .form-group:nth-child(2),
+.top-row .form-group:nth-child(3),
+.second-row .form-group {
   flex: 1;
-  /* min-width: 150px; */
+  min-width: 180px;
+}
+
+/* === Form Group === */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+input,
+select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* === Priority Section === */
+.priority-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-options {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.checkbox-options input[type="checkbox"] {
+  margin-right: 0.4rem;
+}
+
+/* === Responsive Behavior === */
+@media (max-width: 600px) {
+  .top-row,
+  .second-row {
+    flex-direction: column;
+  }
+
+  .top-row .form-group:nth-child(1) {
+    flex: 1;
+  }
 }
