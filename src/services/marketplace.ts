@@ -18,6 +18,11 @@ async function benefactorList(token: string | undefined) {
         // /v4/debt/upload  upload debt detail. statement file
         // /v4/debt/transfer/:debtId
         // "transferMethod": "marketplace"
+        // v4/debt/transfer/:debtId
+        // body : {transferMethod: 'marketplace'}
+        // {transfermethod:specific, receiverId: id}
+        // transfermethod: sharedLink 
+        // bankCode, debtSource, accountNumber, description, amount, dueDate, interestRate, incentive 
 
         const data = res.json()
         if (!res.ok) {

@@ -15,14 +15,14 @@ const DebtSourceStep: React.FC = () => {
   const { BASE_URL } = useType()
   const [selectedSource, setSelectedSource] = useState('');
   const [bank, setBank] = useState([] as Bank[]);
+  const [bankCode, setBankCode] = useState('')
   const [showOptions, setShowOptions] = useState(false);
   const { user } = useAuth()
   const token = user?.token
 
   const handleContinue = () => {
     if (selectedSource) {
-      console.log('Proceeding with:', selectedSource);
-      navigate(`${BASE_URL}/debt-transfer/form`);
+      navigate(`${BASE_URL}/debt-transfer/form`, {state: {'bankCode': bankCode, 'bankName': selectedSource}});
     }
   };
 
@@ -105,6 +105,7 @@ const DebtSourceStep: React.FC = () => {
                 key={source.code}
                 onClick={() => {
                   setSelectedSource(source.name);
+                  setBankCode(source.code)
                   setShowOptions(false);
                 }}
               >

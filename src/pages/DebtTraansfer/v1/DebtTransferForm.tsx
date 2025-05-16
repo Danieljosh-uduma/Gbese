@@ -27,6 +27,7 @@ function DebtTransferForm() {
  const handleContinue = (e: React.MouseEvent<HTMLButtonElement>) => {
   e.preventDefault();
   console.log('Form submitted:', formValues);
+  // uploadDetail(user?.token, {bankCode, bankName, statementFile, ...formValues})
   navigate(`${BASE_URL}/debt-transfer/incentives`)
 };
 
@@ -100,7 +101,7 @@ function DebtTransferForm() {
 
             {/* Account / Reference Number */}
             <div className="form-group">
-              <label htmlFor="account-ref">Account/Reference Number</label>
+              <label htmlFor="account-ref">Account Number</label>
               <input
                 type="text"
                 id="account-ref"
@@ -166,6 +167,7 @@ function DebtTransferForm() {
     style={{ display: 'none' }}
     onChange={(e) => {
       if (e.target.files?.[0]) {
+        
         console.log('Camera file selected:', e.target.files[0]);
       }
     }}
@@ -178,6 +180,7 @@ function DebtTransferForm() {
     style={{ display: 'none' }}
     onChange={(e) => {
       if (e.target.files?.[0]) {
+        setStatementFile(e.target.files[0])
         console.log('Uploaded file:', e.target.files[0]);
       }
     }}
