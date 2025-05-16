@@ -1,18 +1,53 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, InformationGreen,StashCoinIcon, MoneyDebt, MoneyRecieve } from '../../../components/icons/Icon'
 import './DebtTransferStep3.css'
 import { useType } from '../../../hooks/useType';
+import { useAuth } from '../../../hooks/useAuth';
+import { uploadDetail } from '../../../services/debtTransfer';
 
 function DebtTransferStep3() {
-const navigate = useNavigate();
-const { BASE_URL } = useType()
+  const navigate = useNavigate();
+  const { BASE_URL } = useType()
+  const location = useLocation()
+  const formData = location?.state.formData
+  const { user } = useAuth()
+  const [error, setError] = useState('')
 
   const [selectedOffer, setSelectedOffer] = useState('');
   const [coinAmount, setCoinAmount] = useState('');
 
-const isCoinValid = selectedOffer === 'gieese' && coinAmount.trim() !== '' && !isNaN(Number(coinAmount));
-  const isFormValid = selectedOffer && (selectedOffer !== 'gieese' || isCoinValid);
+const isCoinValid = selectedOffer === 'gbese' && coinAmount.trim() !== '' && !isNaN(Number(coinAmount));
+  const isFormValid = selectedOffer && (selectedOffer === 'gbese' || isCoinValid)&& !error;
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setCoinAmount(e.target.value)
+    const coin = user? user.coins : 0
+    if (Number(e.target.value) > coin) {
+      setError('Insufficient coin balance')
+    } else {
+      setError('')
+    }
+  }
+  function handleSubmit() {
+      // Proceed to next step logic here
+      const token = user? user.token : ''
+      const data = {
+        ...formData,
+        incentives: coinAmount
+      }
+      console.log(data)
+      // Pass the plain object to uploadDetail, not FormData
+      uploadDetail(token, data).then(res => {
+        if (res.success) {
+          console.log(res)
+          navigate(`${BASE_URL}/debt-transfer/payment-method`, {state: {response: res.data}})
+        }
+      })
+
+      
+    
+  }
 
   return (
     <div className="form-page">
@@ -111,9 +146,11 @@ const isCoinValid = selectedOffer === 'gieese' && coinAmount.trim() !== '' && !i
               className="coin-input"
               placeholder="0"
               value={coinAmount}
-              onChange={(e) => setCoinAmount(e.target.value)}
+              onChange={handleChange}
             />
+            {error && <p className="error coin-err">{error}</p>}
             <p className="coin-tip">Recommended 10–15 Gbese coins (10% of debt amount).</p>
+           
           </div>
         )}
 
@@ -133,11 +170,7 @@ const isCoinValid = selectedOffer === 'gieese' && coinAmount.trim() !== '' && !i
           <button
             className="continue-btn"
             disabled={!isFormValid}
-            onClick={() => {
-              // Proceed to next step logic here
-              console.log('Continue clicked');
-              navigate(`${BASE_URL}/debt-transfer/payment-method`)
-            }}
+            onClick={handleSubmit}
           >
             Continue
           </button>

@@ -21,13 +21,24 @@ import DTRoute from "./debtTransferRoute";
 import NoDebtTransfer from "../pages/DebtTraansfer/v2/NoDebtTransfer";
 import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
 import ProfilePage from "../pages/profile/Page";
-
+import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
+import FundAccount from "../pages/FundAccount/FundAccount";
 export default function MainRouter() {
 
   return (
     <BrowserRouter>
 
         <Routes>
+           
+            {/*Align later   */}
+             <Route path="nodebt" element={<NoDebtTransfer/>} />
+              <Route path="debtsource" element={<DebtSourceStep/>} />
+              <Route path="debtransfer" element={<DebtTransferForm/>} />
+              <Route path="debtstep3" element={<DebtTransferStep3/>} />
+              <Route path="transdebt3" element={<TransferDebtStep3/>} />
+              <Route path="transpage" element={<TransactionsPage/>} />
+
+
             {/* --- splash screen --- */}
             <Route path="/" element={<SplashManager />} />
             
@@ -51,6 +62,7 @@ export default function MainRouter() {
               <Route path="v1/" element={<BeneficiaryRoute />}>
                 <Route path="" element={<DashboardBeneficiary />} />
                 <Route path="marketplace" element={<Marketplace />}/>
+                <Route path="fund-account" element={<FundAccount />} />
 
                 <Route path='debt-transfer/*' element={<DTRoute />}>
                   <Route path='' element={<DebtSourceStep />} />

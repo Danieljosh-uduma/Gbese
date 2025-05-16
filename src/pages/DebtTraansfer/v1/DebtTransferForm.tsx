@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { CalendarDaysIcon, CameraIcon, LinkIcon, ArrowLeftIcon } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import './DebtTransferForm.css';
 import { useType } from '../../../hooks/useType';
+import { BankDetails } from '../../../types/debtTransfer';
 
 function DebtTransferForm() {
   const navigate = useNavigate();
   const { BASE_URL } = useType()
+  const location = useLocation()
+  const [statementFile, setStatementFile] = useState<File | undefined>(undefined)
+  
+
 
   const [formValues, setFormValues] = useState({
-    debtAmount: '',
-    debtType: '',
-    accountRef: '',
+    amount: '',
+    accountNumber: '',
     dueDate: '',
+    description: '',
+    incentives: '',
+    interestRate: '',
+    debtSource: ''
   });
 
  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -26,14 +34,19 @@ function DebtTransferForm() {
 
  const handleContinue = (e: React.MouseEvent<HTMLButtonElement>) => {
   e.preventDefault();
-  console.log('Form submitted:', formValues);
-  navigate(`${BASE_URL}/debt-transfer/incentives`)
+  // console.log('Form submitted:', formValues);
+  const formData: BankDetails = {
+    bankCode: location.state.bankCode,
+    bankName: location.state.bankName,
+    statementFile: statementFile as File,
+    ...formValues
+  }
+  navigate(`${BASE_URL}/debt-transfer/incentives`, {state: {formData: formData}})
 };
 
   const isFormValid =
-    formValues.debtAmount &&
-    formValues.debtType &&
-    formValues.accountRef &&
+    formValues.amount &&
+    formValues.accountNumber &&
     formValues.dueDate;
 
   return (
@@ -74,9 +87,9 @@ function DebtTransferForm() {
               <input
                 type="number"
                 id="debt-amount"
-                name="debtAmount"
+                name="amount"
                 placeholder="Enter amount"
-                value={formValues.debtAmount}
+                value={formValues.amount}
                 onChange={handleInputChange}
               />
             </div>
@@ -86,8 +99,8 @@ function DebtTransferForm() {
               <label htmlFor="debt-type">Debt Type</label>
               <select
                 id="debt-type"
-                name="debtType"
-                value={formValues.debtType}
+                name="debtSource"
+                value={formValues.debtSource}
                 onChange={handleInputChange}
               >
                 <option value="">Select a debt type</option>
@@ -100,13 +113,13 @@ function DebtTransferForm() {
 
             {/* Account / Reference Number */}
             <div className="form-group">
-              <label htmlFor="account-ref">Account/Reference Number</label>
+              <label htmlFor="account-ref">Account Number</label>
               <input
                 type="text"
                 id="account-ref"
-                name="accountRef"
+                name="accountNumber"
                 placeholder="Enter account or reference number"
-                value={formValues.accountRef}
+                value={formValues.accountNumber}
                 onChange={handleInputChange}
               />
             </div>
@@ -130,33 +143,74 @@ function DebtTransferForm() {
               <input
                 type="number"
                 step="0.01"
-                id="interest-rate"
+                id="interestRate"
                 name="interestRate"
                 placeholder="0.00"
+                value={formValues.interestRate}
+                onChange={handleInputChange}
               />
             </div>
 
             {/* Attach Bill/Statement */}
-            <div className="form-group">
-              <label>Attach Bill/Statement (Optional)</label>
-              <div className="upload-controls">
-                <button type="button" id="camera-btn">
-                  <CameraIcon /> Camera
-                </button>
-                <button type="button" id="upload-btn">
-                  <LinkIcon /> Upload
-                </button>
-              </div>
-            </div>
+           {/* Attach Bill/Statement */}
+<div className="form-group">
+  <label>Attach Bill/Statement (Optional)</label>
+  <div className="upload-controls">
+    <button
+      type="button"
+      id="camera-btn"
+      onClick={() => document.getElementById('camera-input')?.click()}
+    >
+      <CameraIcon /> Camera
+    </button>
+    <button
+      type="button"
+      id="upload-btn"
+      onClick={() => document.getElementById('file-input')?.click()}
+    >
+      <LinkIcon /> Upload
+    </button>
+  </div>
+
+  {/* Hidden input for camera */}
+  <input
+    type="file"
+    accept="image/*"
+    capture="environment"
+    id="camera-input"
+    style={{ display: 'none' }}
+    onChange={(e) => {
+      if (e.target.files?.[0]) {
+        
+        console.log('Camera file selected:', e.target.files[0]);
+      }
+    }}
+  />
+
+  {/* Hidden input for file upload */}
+  <input
+    type="file"
+    id="file-input"
+    style={{ display: 'none' }}
+    onChange={(e) => {
+      if (e.target.files?.[0]) {
+        setStatementFile(e.target.files[0])
+        console.log('Uploaded file:', e.target.files[0]);
+      }
+    }}
+  />
+</div>
 
             {/* Notes */}
             <div className="form-group">
               <label htmlFor="notes">Notes (Optional)</label>
               <textarea
                 id="notes"
-                name="notes"
+                name="description"
                 rows={3}
                 placeholder="Additional details about this debt"
+                value={formValues.description}
+                onChange={handleInputChange}
               ></textarea>
             </div>
 
