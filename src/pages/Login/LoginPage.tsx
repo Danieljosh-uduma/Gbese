@@ -51,7 +51,6 @@ function LoginPage() {
             // Check if the response is successful
             if (res.success) {
               login(filterDetail(res))
-              console.log(res)
               navigate('/dashboard/v1')
             } else {
               setError(res.message)
@@ -97,7 +96,7 @@ function LoginPage() {
         <div className="login-card">
           <h1>Log in</h1>
 
-          <div className="avatar">
+          <div className="avatar-login">
             <Frame1 className="avatar-img" />
           </div>
 
