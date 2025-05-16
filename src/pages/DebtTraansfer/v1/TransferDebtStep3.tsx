@@ -21,7 +21,7 @@ function TransferDebtStep3() {
   const response = location.state? location.state.response: {}
   const { user } = useAuth()
   const date = new Date(response.dueDate)
-  
+
 
 
   // SUBMIT HANDLER

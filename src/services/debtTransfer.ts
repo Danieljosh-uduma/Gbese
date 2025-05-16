@@ -72,21 +72,15 @@ async function uploadDetail(token: string | undefined, bankDetail: BankDetails) 
 }
 
 async function setTransferMethod(token: string | undefined, type: string, debtId: string, userId?: string) {
-    let body;
-    if (userId) {
-        body = {
-            transferMethod: type,
-            receiverId: userId
-        }
-    } else {
-        body = {
-            transferMethod: type
-        }
-    }
+    const body = {
+        transferMethod: type,
+        ...(type === 'specific' && {receiverId: userId})
+    };
+     
     try {
         // console.log(body, debtId)
         const res = await fetch(`${BASE_URL}/v4/debt/transfer/68278b15309ee48f6f84f6ee`, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 ...headers,
                 "Authorization": `Bearer ${token}`
