@@ -5,7 +5,7 @@ import './TransfeDebtStep3.css';
 import SpecificUserModal from '../Modal/SpecificUsers';
 import ShareLinkModal from '../Modal/ShareLinkModal';
 import SuccessModal from '../Modal/SuccessModal';
-import { setTransferMethod } from '../../../services/debtTransfer';
+import { setTransferMethod, uploadDetail } from '../../../services/debtTransfer';
 import { useAuth } from '../../../hooks/useAuth';
 
 function TransferDebtStep3() {
@@ -18,9 +18,9 @@ function TransferDebtStep3() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [selectedUser, setSelectedUser] = useState('');
   const location = useLocation()
-  const response = location.state? location.state.response: {}
+  const response = location.state? location.state.data: {}
   const { user } = useAuth()
-  const date = new Date(response.dueDate)
+  // const date = new Date(response.dueDate)
   
 
 
@@ -41,6 +41,11 @@ function TransferDebtStep3() {
       setShowSuccess(true); // fallback (e.g. marketplace)
       method = 'marketplace'
     }
+    uploadDetail(user?.token, response).then(res => {
+        if (res.success) {
+          console.log(res)
+        }
+      })
     setTransferMethod(user?.token, method, response._id, selectedUser)
         .then(res => console.log(res))
   };
@@ -106,12 +111,12 @@ function TransferDebtStep3() {
 
           <div className="debt-summary-card">
             <p>Debt Summary</p>
-            <div className="summary-row"><span className="labels">Source</span><span className="value">{response.bankName}</span></div>
-            <div className="summary-row"><span className="labels">Debt Amount</span><span className="value">₦{response.amount}</span></div>
-            <div className="summary-row"><span className="labels">Status</span><span className="value">{response.status}</span></div>
-            <div className="summary-row"><span className="labels">Account Number</span><span className="value">{response.accountNumber}</span></div>
-            <div className="summary-row"><span className="labels">Due Date</span><span className="value">{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}</span></div>
-            <div className="summary-row"><span className="labels">Incentive</span><span className="value">{response.incentives} Gbese Coins</span></div>
+            <div className="summary-row"><span className="labels">Source</span><span className="value"></span></div>
+            <div className="summary-row"><span className="labels">Debt Amount</span><span className="value">₦</span></div>
+            <div className="summary-row"><span className="labels">Status</span><span className="value"></span></div>
+            <div className="summary-row"><span className="labels">Account Number</span><span className="value"></span></div>
+            <div className="summary-row"><span className="labels">Due Date</span><span className="value">{}</span></div>
+            <div className="summary-row"><span className="labels">Incentive</span><span className="value">Gbese Coins</span></div>
           </div>
         </div>
 

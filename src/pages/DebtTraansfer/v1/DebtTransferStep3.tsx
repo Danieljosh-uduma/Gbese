@@ -4,7 +4,6 @@ import { ArrowLeftIcon, InformationGreen,StashCoinIcon, MoneyDebt, MoneyRecieve 
 import './DebtTransferStep3.css'
 import { useType } from '../../../hooks/useType';
 import { useAuth } from '../../../hooks/useAuth';
-import { uploadDetail } from '../../../services/debtTransfer';
 
 function DebtTransferStep3() {
   const navigate = useNavigate();
@@ -31,22 +30,13 @@ const isCoinValid = selectedOffer === 'gbese' && coinAmount.trim() !== '' && !is
   }
   function handleSubmit() {
       // Proceed to next step logic here
-      const token = user? user.token : ''
       const data = {
         ...formData,
         incentives: coinAmount
       }
       console.log(data)
       // Pass the plain object to uploadDetail, not FormData
-      uploadDetail(token, data).then(res => {
-        if (res.success) {
-          console.log(res)
-          navigate(`${BASE_URL}/debt-transfer/payment-method`, {state: {response: res.data}})
-        }
-      })
-
-      
-    
+      navigate(`${BASE_URL}/debt-transfer/payment-method`, {state: {response: data}})
   }
 
   return (
