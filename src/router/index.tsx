@@ -22,6 +22,7 @@ import NoDebtTransfer from "../pages/DebtTraansfer/v2/NoDebtTransfer";
 import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
 import ProfilePage from "../pages/profile/Page";
 import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
+import BvnVerification from "../pages/KycVerification/BvnVerification";
 export default function MainRouter() {
 
   return (
@@ -36,6 +37,7 @@ export default function MainRouter() {
               <Route path="debtstep3" element={<DebtTransferStep3/>} />
               <Route path="transdebt3" element={<TransferDebtStep3/>} />
               <Route path="transpage" element={<TransactionsPage/>} />
+              <Route path="Bvn" element={<BvnVerification/>} />
 
 
             {/* --- splash screen --- */}

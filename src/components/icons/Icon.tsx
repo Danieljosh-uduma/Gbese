@@ -48,7 +48,12 @@ import filter from '../../assets/images/icons/filter.svg'
 import screenshot from '../../assets/images/icons/screenshot.svg'
 import maximize from '../../assets/images/icons/maximize-4.svg'
 import receipt from '../../assets/images/icons/Receipt.svg'
-
+import arrowback from '../../assets/images/icons/arrow-left-black.svg'
+import house from '../../assets/images/icons/house-2.svg'
+import documenextext from '../../assets/images/icons/document-text.svg'
+import infocircle from '../../assets/images/icons/info-circle.svg'
+import frametier from '../../assets/images/icons/Frame-tier.svg'
+import edit from '../../assets/images/icons/edit.svg'
 // --- types ---
 type LogoProps = {
   type?: 'white' | 'green';
@@ -247,6 +252,24 @@ function MaximizeIcon({ className, width, height }: ImageProps) {
 function ReceiptIcon({ className, width, height }: ImageProps) {
   return <img src={receipt} alt="Close Circle" className={className} style={{ width, height }} />;
 }
+function ArrowBackLeft({ className, width, height }: ImageProps) {
+  return <img src={arrowback} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function HouseIcon({ className, width, height }: ImageProps) {
+  return <img src={house} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function DocuementTextIcon({ className, width, height }: ImageProps) {
+  return <img src={documenextext} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function InfoCirclIcon({ className, width, height }: ImageProps) {
+  return <img src={infocircle} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function FrameTierIcon({ className, width, height }: ImageProps) {
+  return <img src={frametier} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function EditIcon({ className, width, height }: ImageProps) {
+  return <img src={edit} alt="Close Circle" className={className} style={{ width, height }} />;
+}
 
 
 // --- export all components ---
@@ -298,6 +321,12 @@ export {
   FilterIcon,
   ScreenShotIcon,
   MaximizeIcon,
-  ReceiptIcon
+  ReceiptIcon,
+  ArrowBackLeft,
+  HouseIcon,
+  DocuementTextIcon,
+  InfoCirclIcon,
+  FrameTierIcon,
+  EditIcon
 
 };

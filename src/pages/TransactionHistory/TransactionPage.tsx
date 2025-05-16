@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './TransactionPage.css';
-import { CalendarIcon,  ArrowLeftIcon,SearchIcon, MobileIconAccepted, MobileIconUpcoming } from '../../components/icons/Icon';
+import { CalendarIcon,  ArrowBackLeft, SearchIcon, MobileIconAccepted, MobileIconUpcoming } from '../../components/icons/Icon';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TransactionDetails from './Modal/TransactionDetails';
+import { MdError } from 'react-icons/md';
 
 type Transaction = {
   type: string;
@@ -271,13 +272,13 @@ function TransactionsPage() {
           <div className="mobile-transactions-container">
 
   <div className="mobile-header">
-    <ArrowLeftIcon className="back-icon" />
+    <ArrowBackLeft className="mobile-back-icon" />
     <h2 className="mobile-title">Transfer History</h2>
   </div>
     
 
-    {/* Mobile Filters - Horizontal */}
 <div className="mobile-filters-row">
+    {/* Mobile Filters - Horizontal */}
   <div className="mobile-search-wrapper">
     <SearchIcon className="search-icon" />
     <input
@@ -318,11 +319,13 @@ function TransactionsPage() {
     {filteredTransactions.map((item, index) => (
       <div className="mobile-transaction-card" key={index}>
        <div className="mobile-left-section">
-  {item.status === 'Complete' ? (
+  {item.status === "Complete" ? (
     <MobileIconAccepted />
   ) : (
-    item.status === 'Pending' ? (
+    item.status === "Pending" ? (
       <MobileIconUpcoming />
+    ) : item.status === "Failed" ? (
+      <MdError color="red" size={40} />
     ) : null
   )}
 </div>
@@ -334,11 +337,10 @@ function TransactionsPage() {
           </div>
           <div className="mobile-date-row">
             <span className="mobile-date">{item.date}</span>
-            <div className="mobile-status-view">
               <span className={`mobile-status ${item.status.toLowerCase()}`}>{item.status}</span>
-              <button onClick={() => handleViewDetails(item)} className="mobile-view-btn">View</button>
+             <button onClick={() => handleViewDetails(item)} className="mobile-view-btn">View</button>
+
             </div>
-          </div>
         </div>
       </div>
     ))}
