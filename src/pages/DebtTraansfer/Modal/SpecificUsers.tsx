@@ -1,6 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { InformationIcon } from '../../../components/icons/Icon';
 import './SpecificUser.css';
+import { benefactorList } from '../../../services/marketplace';
+import { useAuth } from '../../../hooks/useAuth';
+import { benefactorListProp } from '../../../types/helpers';
 
 type ModalProps = {
   isOpen: boolean;
@@ -29,7 +32,9 @@ function SendToSpecificUsersModal({
 
   
 }: ModalProps) {
-  const userOptions = ['John Doe', 'Jane Smith', 'Ndive Chidera', 'Amadi Mary'];
+  const [users, setUsers] = useState<benefactorListProp[]>()
+  const { user, logout} = useAuth()
+
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
     return () => {
@@ -38,6 +43,18 @@ function SendToSpecificUsersModal({
   }, [isOpen]);
 
   if (!isOpen) return null;
+
+  function handleClick() {
+    benefactorList(user?.token).then(res => {
+        if (res.success) {
+          setUsers(res.data)
+        } else if (res.status === 401) {
+          logout()
+        }
+      }).catch(err => {
+        throw new Error(err.message)
+      })
+  }
 
   return (
     <div className="modal-overlay">
@@ -67,13 +84,16 @@ function SendToSpecificUsersModal({
             id="user-select"
             value={selectedUser}
             onChange={(e) => setSelectedUser(e.target.value)}
+            onClick={handleClick}
           >
             <option value="">Search users</option>
-            {userOptions.map((user, idx) => (
-              <option key={idx} value={user}>
-                {user}
+            {users? users.map((user) => (
+              <option key={user.user._id} value={user.user._id}>
+                {user.user.fullName}
               </option>
-            ))}
+            )): 
+              <option value="">Loading</option>
+            }
           </select>
         </div>
 

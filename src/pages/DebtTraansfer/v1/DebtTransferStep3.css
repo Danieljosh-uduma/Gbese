@@ -12,6 +12,11 @@
   border-bottom: 1px solid #B0B0B0;
 
 }
+.coin-err {
+  text-align: start;
+  margin: 0;
+  top: 0;
+}
 .incentives-header1 p{
   color: #696969;
   font-size: 14px;

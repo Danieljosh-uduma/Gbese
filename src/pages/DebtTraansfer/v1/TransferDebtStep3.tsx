@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, InformationIcon } from '../../../components/icons/Icon';
 import './TransfeDebtStep3.css';
 import SpecificUserModal from '../Modal/SpecificUsers';
 import ShareLinkModal from '../Modal/ShareLinkModal';
 import SuccessModal from '../Modal/SuccessModal';
+import { setTransferMethod } from '../../../services/debtTransfer';
+import { useAuth } from '../../../hooks/useAuth';
 
 function TransferDebtStep3() {
   const navigate = useNavigate();
@@ -15,20 +17,32 @@ function TransferDebtStep3() {
   const [showShareLinkModal, setShowShareLinkModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [selectedUser, setSelectedUser] = useState('');
+  const location = useLocation()
+  const response = location.state? location.state.response: {}
+  const { user } = useAuth()
+  const date = new Date(response.dueDate)
+  
+
 
   // SUBMIT HANDLER
   const handleSubmit = () => {
     if (!agreed) return;
+    let method;
 
     if (showSpecificUserModal && selectedUser) {
       setShowSpecificUserModal(false);
-      setShowSuccess(true);
+      setShowSuccess(true)
+      method = 'specific'
     } else if (showShareLinkModal) {
       setShowShareLinkModal(false);
       setShowSuccess(true);
+      method = 'sharedLink'
     } else {
       setShowSuccess(true); // fallback (e.g. marketplace)
+      method = 'marketplace'
     }
+    setTransferMethod(user?.token, method, response._id, selectedUser)
+        .then(res => console.log(res))
   };
 
  React.useEffect(() => {
@@ -92,12 +106,12 @@ function TransferDebtStep3() {
 
           <div className="debt-summary-card">
             <p>Debt Summary</p>
-            <div className="summary-row"><span className="labels">Source</span><span className="value">Fairmoney</span></div>
-            <div className="summary-row"><span className="labels">Debt Amount</span><span className="value">₦50,000</span></div>
-            <div className="summary-row"><span className="labels">Type</span><span className="value">Loan</span></div>
-            <div className="summary-row"><span className="labels">Account Number</span><span className="value">2094294381</span></div>
-            <div className="summary-row"><span className="labels">Due Date</span><span className="value">01/05/2025</span></div>
-            <div className="summary-row"><span className="labels">Incentive</span><span className="value">10% cash bonus</span></div>
+            <div className="summary-row"><span className="labels">Source</span><span className="value">{response.bankName}</span></div>
+            <div className="summary-row"><span className="labels">Debt Amount</span><span className="value">₦{response.amount}</span></div>
+            <div className="summary-row"><span className="labels">Status</span><span className="value">{response.status}</span></div>
+            <div className="summary-row"><span className="labels">Account Number</span><span className="value">{response.accountNumber}</span></div>
+            <div className="summary-row"><span className="labels">Due Date</span><span className="value">{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}</span></div>
+            <div className="summary-row"><span className="labels">Incentive</span><span className="value">{response.incentives} Gbese Coins</span></div>
           </div>
         </div>
 

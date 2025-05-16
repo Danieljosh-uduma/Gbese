@@ -143,6 +143,9 @@
 .phone-input {
   display: flex;
 }
+.select-sup {
+  width: 80px;
+}
 
 .phone-input select,
 .phone-input input {

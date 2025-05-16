@@ -3,11 +3,12 @@ type BankDetails = {
     bankName: string
     accountNumber: string
     description: string
+    debtSource: string
     amount: string
     dueDate: string
-    interestRate?: string
-    incentives?: string
-    statementFile?: File
+    interestRate: string
+    incentives: string
+    statementFile: File
 }
 
 export type {
