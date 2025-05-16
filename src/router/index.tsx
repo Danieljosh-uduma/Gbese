@@ -22,6 +22,7 @@ import NoDebtTransfer from "../pages/DebtTraansfer/v2/NoDebtTransfer";
 import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
 import ProfilePage from "../pages/profile/Page";
 import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
+import FundAccount from "../pages/FundAccount/FundAccount";
 export default function MainRouter() {
 
   return (
@@ -61,6 +62,7 @@ export default function MainRouter() {
               <Route path="v1/" element={<BeneficiaryRoute />}>
                 <Route path="" element={<DashboardBeneficiary />} />
                 <Route path="marketplace" element={<Marketplace />}/>
+                <Route path="fund-account" element={<FundAccount />} />
 
                 <Route path='debt-transfer/*' element={<DTRoute />}>
                   <Route path='' element={<DebtSourceStep />} />
