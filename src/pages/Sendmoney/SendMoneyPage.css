@@ -1,0 +1,609 @@
+    * {
+        outline: none;
+    }
+
+
+    /* Main container */
+    .send-money-container {
+    max-width: 995px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: var(--white-text);
+    min-height: 100vh;
+    }
+
+ /* Toggle section */
+    .toggle-container {
+    display: flex;
+    width: 280px;
+    height: 24px;
+    top: 112px;
+    left: 332px;
+    gap: 28px;
+    margin-bottom: 20px;
+    }
+
+    .toggle-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    }
+
+    .toggle-input {
+    display: none;
+    }
+
+    .toggle-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    width: 140px; 
+    gap: 8px;
+    font-family: Lato;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    border-radius: 8px;
+    color: var(--body-text);
+    }
+
+    .toggle-button.active {
+    background-color: var(--white-text);
+    }
+
+    .toggle-button.inactive {
+    background-color: inherit;
+    }
+
+    .toggle-checkbox {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    }
+
+    .toggle-checkbox.active {
+    background-color: var(--primary-200);
+    }
+
+    .toggle-checkbox.inactive {
+    border: 1px solid #5E5E60;
+    background-color: var(--white-text);
+    }
+
+
+    /* Search section */
+
+    .search-container {
+    position: relative;
+    height: 56px;
+    margin-top: 34px;
+    margin-bottom: 20px;
+    }
+
+    .search-input-wrapper {
+    position: relative;
+    width: 100%;
+    }
+
+    .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    pointer-events: none;
+    color: #9ca3af;
+    transform: translateY(-50%);
+    z-index: 2;
+    }
+
+    .search-icon img {
+        width: 20px;
+    }
+
+    .search-input {
+    width: 970px;
+    padding: 14px 6px 14px 40px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+        max-width: 995px;
+        font-family: Lato;
+        font-weight: 400;
+        font-size: 12px;
+        color: #9ca3af;
+    }
+
+
+
+    /* Contacts section */
+    .contacts-container {
+    margin-bottom: 1.5rem;
+    }
+
+    .contacts-title {
+        font-family: Lato;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 120%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        margin-bottom: 20px;
+         color: var(--body-text);
+    }
+
+    .contacts-grid {
+        background: var(--primary-50);
+        width: auto;
+        height: 160px;
+        border-radius: 20px;
+        padding: 24px;
+        gap: 10px;
+
+    }
+
+    .contacts-list {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    }
+
+    .contact-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: max-content;
+        width: 78px;
+        height: 115px;
+        gap: 15px;
+        cursor: pointer;
+    }
+
+    .contact-image {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 0.25rem;
+    }
+
+    .contact-name {
+    font-family: Lato;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+
+    }
+
+
+    /* Hide scrollbar */
+    .contacts-list.recent-slider {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+    }
+
+    .contacts-list.recent-slider::-webkit-scrollbar {
+    display: none;
+    }
+
+    /* Form inputs */
+    .input-container {
+    margin-block: 2rem;
+    }
+
+    .input-container .form-input {
+        display: block;
+        width: 100%;
+        max-width: 970px;
+        border-radius: 8px;
+        justify-content: space-between;
+        padding-top: 16px;
+        padding-right: 12px;
+        padding-bottom: 16px;
+        padding-left: 12px;
+        font-family: Lato;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 120%;
+        letter-spacing: 0%;
+        background-color: white;
+        border: 1px solid #d1d5db;
+    }
+
+    .select-wrapper {
+    position: relative;
+    }
+
+    .form-select {
+        display: block;
+        width: 100%;
+        max-width: 995px;
+        border-radius: 8px;
+        justify-content: space-between;
+        padding-top: 16px;
+        padding-right: 1px;
+        padding-bottom: 16px;
+        padding-left: 12px;
+        font-family: Lato;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 120%;
+        letter-spacing: 0%;
+        background-color: white;
+        border: 1px solid #d1d5db;
+    /* appearance: none; */
+    }
+
+    /* Form row layout */
+    .form-row {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 970px;
+        height: 81px;
+        top: 570px;
+        left: 324px;
+    }
+
+    .form-group {
+    margin-bottom: 0;
+    }
+
+    .form-input {
+        font-family: Lato;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 120%;
+        letter-spacing: 0%;
+
+    }
+
+    .input-label {
+    margin-bottom: 0.25rem;
+
+    }
+
+    .form-group label  {
+        display: block;
+        font-family: Lato;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 120%;
+        letter-spacing: 0%;
+         color: var(--body-text);
+    }
+
+    .currency-group select {
+        width: 68px;
+        border-radius: 8px;
+        border-width: 1px;
+        justify-content: space-between;
+        padding-top: 16px;
+        padding-right: 12px;
+        padding-bottom: 16px;
+        padding-left: 12px;
+    }
+
+    .amount-group input{
+        flex: 1;
+        width: 360px;
+        justify-content: space-between;
+        border-radius: 8px;
+        border-width: 1px;
+        padding-top: 16px;
+        padding-right: 12px;
+        padding-bottom: 16px;
+        padding-left: 12px;
+    }
+
+    .note-group input{
+        flex: 1;
+        width: 470px;
+        border-radius: 8px;
+        border-width: 1px;
+        justify-content: space-between;
+        padding-top: 16px;
+        padding-right: 12px;
+        padding-bottom: 16px;
+        padding-left: 12px;
+
+    }
+
+    /* Payment Options styling for functional panels */
+    .payment-title {
+        font-family: Lato;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 120%;
+        letter-spacing: 0%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .payment-options {
+        border-radius: 8px;
+        padding: 1px ;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 24px;
+    }
+
+    .payment-option {
+        width: 457px;
+    height: 90px;
+    gap: 10px;
+    border-radius: 8px;
+    padding: 16px;
+
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    background: var(--primary-150);
+
+    }
+
+    .payment-option:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-option.active {
+        border: 1px solid var(--primary-200);
+    background-color: var(--primary-100)
+    }
+
+    .payment-option-icon img{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    }
+
+    .payment-option-info p:first-child {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 120%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        margin-bottom: 4px;
+        color: var(--primary-200);
+
+    }
+
+    .payment-option-info p:last-child {
+        font-family: Lato;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 120%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #696969;
+    }
+
+    /* Bank panel styling */
+    .bank-panel {
+    display: none;
+    padding: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    }
+
+    .bank-panel.active {
+    display: block;
+    }
+
+    .bank-panel input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    }
+
+    .bank-panel label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    }
+
+    /* Card panel styling */
+    .card-panel {
+    display: none;
+    padding: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    }
+
+    .card-panel.active {
+    display: block;
+    }
+
+    .card-panel input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    }
+
+    .card-panel label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    }
+
+    /* Button styling for panels */
+    .use-payment-button {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: background-color 0.2s ease;
+    }
+
+    .use-payment-button:hover {
+    background-color: #4338ca;
+    }
+
+
+    /* Primary and secondary buttons */
+    .primary-button {
+    width: 100%;
+    background-color: #4f46e5;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    }
+
+    .secondary-button {
+    width: 100%;
+    background-color: white;
+    color: #4f46e5;
+    border: 1px solid #4f46e5;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    }
+
+    .continue-button {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 564px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    gap: 8px;
+    border-radius: 8px;
+    padding-top: 16px;
+    padding-right: 24px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+    background-color:var(--primary-200);
+    }
+
+    .continue-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    }
+
+    /* Confirmation modal */
+    .confirmation-modal {
+    max-width: 28rem;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    }
+
+    .modal-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    }
+
+    .modal-subtitle {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+    }
+
+    /* Success modal */
+    .success-modal {
+    max-width: 28rem;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    }
+
+    .success-icon {
+    width: 4rem;
+    height: 4rem;
+    background-color: #dcfce7;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+    }
+
+    .success-icon span {
+    color: #22c55e;
+    font-size: 1.5rem;
+    }
+
+    .success-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0.25rem;
+    }
+
+    .success-subtitle {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    }
+
+    /* Transaction details */
+    .transaction-details {
+    margin-bottom: 1.5rem;
+    }
+
+    .transaction-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    }
+
+    .transaction-label {
+    color: #4b5563;
+    }
+
+    .transaction-value {
+    font-weight: 500;
+    }
+
+    .total-row {
+    font-weight: 500;
+    }
+
+    .send-another-button {
+    margin-bottom: 0.75rem;
+    }
+
+    /* Form container */
+    .form-container {
+    background-color: white;
+    color: #1f2937;
+    }
