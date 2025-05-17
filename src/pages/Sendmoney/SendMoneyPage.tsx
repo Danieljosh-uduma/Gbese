@@ -6,7 +6,7 @@ import '../../pages/Sendmoney/Mediaquery.css';
 
 
 export default function SendMoney() {
-// Form state
+    // Form state
     const [viewMode, setViewMode] = useState<'internal' | 'external'>('internal');
     const [searchQuery, setSearchQuery] = useState('');
     const [accountNumber, setAccountNumber] = useState('');
@@ -15,10 +15,9 @@ export default function SendMoney() {
     const [currency, setCurrency] = useState('₦');
     const [note, setNote] = useState('');
 
-// Transaction flow state
+    // Transaction flow state
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
-
     // Payment methods state
     const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([
         { type: 'card', lastFour: '4567', selected: true },
@@ -28,53 +27,53 @@ export default function SendMoney() {
     const [showNewCardForm, setShowNewCardForm] = useState(false);
     const [showNewBankForm, setShowNewBankForm] = useState(false);
 
-// Contacts state
-const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
-const [allContacts, setAllContacts] = useState<Contact[]>([
-    { id: '1', name: 'Gladys', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 1.png', phoneNumber: '07012345678' },
-    { id: '2', name: 'Chuka', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 2.png', phoneNumber: '07023456789' },
-    { id: '3', name: 'Marylane', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 3.png', phoneNumber: '07034567890' },
-    { id: '4', name: 'Chukwuka', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 4.png', phoneNumber: '07045678901' },
-    { id: '5', name: 'Maria', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 5.png', phoneNumber: '07056789012' },
-    { id: '6', name: 'Promise', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 6.png', phoneNumber: '07067890123' },
-    { id: '7', name: 'Sarah', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 7.png', phoneNumber: '07078901234' },
-    { id: '8', name: 'John', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 8.png', phoneNumber: '07089012345' },
-    { id: '9', name: 'Martin', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 9.png', phoneNumber: '07090123456' },
-    { id: '10', name: 'Jude', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 10.png', phoneNumber: '07001234567' },
-    { id: '11', name: 'Loveth', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 11.png', phoneNumber: '07112345678' },
-]);
+    // Contacts state
+    const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
+    const [allContacts, setAllContacts] = useState<Contact[]>([
+        { id: '1', name: 'Gladys', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 1.png', phoneNumber: '07012345678' },
+        { id: '2', name: 'Chuka', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 2.png', phoneNumber: '07023456789' },
+        { id: '3', name: 'Marylane', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 3.png', phoneNumber: '07034567890' },
+        { id: '4', name: 'Chukwuka', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 4.png', phoneNumber: '07045678901' },
+        { id: '5', name: 'Maria', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 5.png', phoneNumber: '07056789012' },
+        { id: '6', name: 'Promise', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 6.png', phoneNumber: '07067890123' },
+        { id: '7', name: 'Sarah', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 7.png', phoneNumber: '07078901234' },
+        { id: '8', name: 'John', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 8.png', phoneNumber: '07089012345' },
+        { id: '9', name: 'Martin', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 9.png', phoneNumber: '07090123456' },
+        { id: '10', name: 'Jude', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 10.png', phoneNumber: '07001234567' },
+        { id: '11', name: 'Loveth', image: '/src/assets/images/images/recent users avatar/Send Money/Ellipse 11.png', phoneNumber: '07112345678' },
+    ]);
 
-// Filter contacts based on search query
-useEffect(() => {
-    if (!searchQuery) {
-    setFilteredContacts(allContacts);
-    } else {
-    const filtered = allContacts.filter(contact => 
-        contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        contact.phoneNumber.includes(searchQuery)
-    );
-    setFilteredContacts(filtered);
-    }
-}, [searchQuery, allContacts]);
+    // Filter contacts based on search query
+    useEffect(() => {
+            if (!searchQuery) {
+            setFilteredContacts(allContacts);
+        } else {
+            const filtered = allContacts.filter(contact => 
+                contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                contact.phoneNumber.includes(searchQuery)
+            );
+            setFilteredContacts(filtered);
+        }
+    }, [searchQuery, allContacts]);
 
-// Toggle view mode function
-const toggleViewMode = (mode: 'internal' | 'external') => {
-    setViewMode(mode);
-};
+    // Toggle view mode function
+    const toggleViewMode = (mode: 'internal' | 'external') => {
+        setViewMode(mode);
+    };
 
-// Payment method selection
-const selectPaymentMethod = (type: 'card' | 'bank', lastFour: string) => {
+    // Payment method selection
+    const selectPaymentMethod = (type: 'card' | 'bank', lastFour: string) => {
     const updatedMethods = paymentMethods.map(method => ({
-    ...method,
-    selected: method.type === type && method.lastFour === lastFour
-    }));
-    setPaymentMethods(updatedMethods);
-};
+            ...method,
+            selected: method.type === type && method.lastFour === lastFour
+        }));
+        setPaymentMethods(updatedMethods);
+    };
 
-// Form submission handling
-const handleContinue = () => {
-    setShowConfirmation(true);
-};
+    // Form submission handling
+    const handleContinue = () => {
+      setShowConfirmation(true);
+    };
 
 const handleConfirm = () => {
     setShowConfirmation(false);
@@ -220,7 +219,7 @@ return (
     onChange={() => toggleViewMode('internal')}
     />
     <span className={`toggle-button ${viewMode === 'internal' ? 'active' : 'inactive'}`}>
-    <span className={`toggle-checkbox ${viewMode === 'internal' ? 'active' : 'inactive'}`}></span>
+    <span className={`toggle-checkbox ${viewMode === 'internal' ? 'active' : 'inactive'}`}><img src="/src/assets/images/icons/Vector.png"/></span>
     Internal
     </span>
 </label>
@@ -233,7 +232,7 @@ return (
     onChange={() => toggleViewMode('external')}
     />
     <span className={`toggle-button ${viewMode === 'external' ? 'active' : 'inactive'}`}>
-    <span className={`toggle-checkbox ${viewMode === 'external' ? 'active' : 'inactive'}`}></span>
+    <span className={`toggle-checkbox ${viewMode === 'external' ? 'active' : 'inactive'}`}><img src="/src/assets/images/icons/Vector.png"/></span>
     External
     </span>
 </label>
