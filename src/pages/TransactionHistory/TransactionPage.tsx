@@ -237,36 +237,33 @@ function TransactionsPage() {
         </div>
 
         {/* Table for desktop */}
-        <div className="desktop-only">
-        <table className="transaction-table ">
-          <thead>
-            <tr>
-              <th>Transaction Type</th>
-              <th>Amount</th>
-              <th>Date/Time</th>
-              <th>Recipient</th>
-              <th>Status</th>
-              <th className="action-cell">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredTransactions.map((item, idx) => (
-              <tr key={idx}>
-                <td>{item.type}</td>
-                <td>{item.amount}</td>
-                <td>{item.date}</td>
-                <td>{item.recipient}</td>
-                <td className={getStatusClass(item.status)}>{item.status}</td>
-                <td>
-                  <button className="view-button" onClick={() => handleViewDetails(item)}>
-                    View Details
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        </div>
+       <div className="desktop-only transaction-list">
+  {/* Header row */}
+  <div className="transaction-row transaction-header">
+    <div className="transaction-cells">Transaction Type</div>
+    <div className="transaction-cells">Amount</div>
+    <div className="transaction-cells">Date/Time</div>
+    <div className="transaction-cells">Recipient</div>
+    <div className="transaction-cells">Status</div>
+    <div className="transaction-cells action-cell">Action</div>
+  </div>
+
+  {/* Transaction rows */}
+  {filteredTransactions.map((item, idx) => (
+    <div className="transaction-row" key={idx}>
+      <div className="transaction-cell">{item.type}</div>
+      <div className="transaction-cell">{item.amount}</div>
+      <div className="transaction-cell">{item.date}</div>
+      <div className="transaction-cell">{item.recipient}</div>
+      <div className={`transaction-cell ${getStatusClass(item.status)}`}>{item.status}</div>
+      <div className="transaction-cell action-cell">
+        <button className="view-button" onClick={() => handleViewDetails(item)}>
+          View Details
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
 
         <div className="mobile-view">
           <div className="mobile-transactions-container">
@@ -280,7 +277,7 @@ function TransactionsPage() {
 <div className="mobile-filters-row">
     {/* Mobile Filters - Horizontal */}
   <div className="mobile-search-wrapper">
-    <SearchIcon className="search-icon" />
+    <SearchIcon className="mobile-search-icon" />
     <input
       type="text"
       value={search}
@@ -317,32 +314,33 @@ function TransactionsPage() {
  
   <div className="mobile-transactions">
     {filteredTransactions.map((item, index) => (
-      <div className="mobile-transaction-card" key={index}>
-       <div className="mobile-left-section">
-  {item.status === "Complete" ? (
-    <MobileIconAccepted />
-  ) : (
-    item.status === "Pending" ? (
+   <div className="mobile-transaction-card" key={index}>
+  <div className="mobile-icon-section">
+    {item.status === "Complete" ? (
+      <MobileIconAccepted />
+    ) : item.status === "Pending" ? (
       <MobileIconUpcoming />
     ) : item.status === "Failed" ? (
       <MdError color="red" size={40} />
-    ) : null
-  )}
+    ) : null}
+  </div>
+
+  <div className="mobile-info-section">
+    <div className="mobile-description">
+      <div className="mobile-title">Debt from {item.recipient}</div>
+      <div className="mobile-date">{item.date}</div>
+    </div>
+
+    <div className="mobile-right-section">
+      <div className="mobile-amount">{item.amount}</div>
+      <div className="mobile-bottom-row">
+        <div className={`mobile-status ${item.status.toLowerCase()}`}>{item.status}</div>
+        <button onClick={() => handleViewDetails(item)} className="mobile-view-btn">View</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-        <div className="mobile-middle-section">
-          <div className="mobile-recipient-row">
-            <span className="mobile-recipient-name">Debt from {item.recipient}</span>
-            <span className="mobile-amount">{item.amount}</span>
-          </div>
-          <div className="mobile-date-row">
-            <span className="mobile-date">{item.date}</span>
-              <span className={`mobile-status ${item.status.toLowerCase()}`}>{item.status}</span>
-             <button onClick={() => handleViewDetails(item)} className="mobile-view-btn">View</button>
-
-            </div>
-        </div>
-      </div>
     ))}
   </div>
 </div>

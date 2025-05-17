@@ -28,130 +28,113 @@ function SidebarCard() {
     <>
       {/* Desktop View */}
       <div className="desktop-only">
-      <div className="sidebar-card ">
-        <div className="profile-pics-wrapper">
-          <div className="profile-pics">
-            <Frame1 />
+        <div className="sidebar-card">
+          <div className="profile-pics-wrapper">
+            <div className="profile-pics">
+              <Frame1 />
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              id="camera-upload-desktop"
+              style={{ display: 'none' }}
+              onChange={handleImageUpload}
+            />
+            <label htmlFor="camera-upload-desktop" className="camera-icon">
+              <CameraIcon />
+            </label>
           </div>
-          <input
-            type="file"
-            accept="image/*"
-            capture="environment"
-            id="camera-upload-desktop"
-            style={{ display: 'none' }}
-            onChange={handleImageUpload}
-          />
-          <label htmlFor="camera-upload-desktop" className="camera-icon">
-            <CameraIcon />
-          </label>
-        </div>
 
-        <h3 className="center-name">{formData.name}</h3>
+          <h3 className="center-name">{formData.name}</h3>
 
-        <p className="tier">
-          <FrameTierIcon className="icon" />
-          Tier
-        </p>
+          <p className="tier">
+            <FrameTierIcon className="icon" />
+            Tier
+          </p>
 
-        <button className="edit-btn" onClick={() => setIsEditing(!isEditing)}>
-          {!isEditing && <EditIcon className="edit-icon" />}
-          {isEditing ? 'Save' : 'Edit'}
-        </button>
+          <button className="edit-btn" onClick={() => setIsEditing(!isEditing)}>
+            {!isEditing && <EditIcon className="edit-icon" />}
+            {isEditing ? 'Save' : 'Edit'}
+          </button>
 
-        <div className="personal-info">
-          <p>Personal Information</p>
-          <div className="info-row">
-            <strong>Name:</strong>
-            {isEditing ? (
-              <input name="name" value={formData.name} onChange={handleChange} />
-            ) : (
-              <span>{formData.name}</span>
-            )}
-          </div>
-          <div className="info-row">
-            <strong>Email:</strong>
-            {isEditing ? (
-              <input name="email" value={formData.email} onChange={handleChange} />
-            ) : (
-              <span>{formData.email}</span>
-            )}
-          </div>
-          <div className="info-row">
-            <strong>Number:</strong>
-            {isEditing ? (
-              <input name="number" value={formData.number} onChange={handleChange} />
-            ) : (
-              <span>{formData.number}</span>
-            )}
-          </div>
-          <div className="info-row">
-            <strong>BVN:</strong>
-            {isEditing ? (
-              <input name="bvn" value={formData.bvn} onChange={handleChange} />
-            ) : (
-              <span>{formData.bvn}</span>
-            )}
-          </div>
-          <div className="info-row">
-            <strong>KYC Status:</strong>
-            <div className="status pending">
-              <MdAccessTime className="status-icon" />
-              <span>Pending</span>
+          <div className="personal-info">
+            <p>Personal Information</p>
+            {['name', 'email', 'number', 'bvn'].map((field) => (
+              <div className="info-row" key={field}>
+                <strong>{field.charAt(0).toUpperCase() + field.slice(1)}:</strong>
+                {isEditing ? (
+                  <input name={field} value={formData[field as keyof typeof formData]} onChange={handleChange} />
+                ) : (
+                  <span>{formData[field as keyof typeof formData]}</span>
+                )}
+              </div>
+            ))}
+            <div className="info-row">
+              <strong>KYC Status:</strong>
+              <div className="status pending">
+                <MdAccessTime className="status-icon" />
+                <span>Pending</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
 
       {/* Mobile View */}
       <div className="mobile-only">
-        {/* Toggle button (only visible before menu is open) */}
         {!menuOpen && (
           <button className="menu-toggle" onClick={() => setMenuOpen(true)}>
             ☰
           </button>
         )}
 
-        {/* Slide-in menu (only visible when menu is open) */}
         <div className={`sidebar-card slide-menu ${menuOpen ? 'open' : ''}`}>
           <button className="close-btn" onClick={() => setMenuOpen(false)}>
             ✕
           </button>
 
+          <div className="profile-pics-wrapper">
+            <div className="profile-pics">
+              <Frame1 />
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              id="camera-upload-mobile"
+              style={{ display: 'none' }}
+              onChange={handleImageUpload}
+            />
+            <label htmlFor="camera-upload-mobile" className="camera-icon">
+              <CameraIcon />
+            </label>
+          </div>
+
+          <h3 className="center-name">{formData.name}</h3>
+
+          <p className="tier">
+            <FrameTierIcon className="icon" />
+            Tier
+          </p>
+
+          <button className="edit-btn" onClick={() => setIsEditing(!isEditing)}>
+            {!isEditing && <EditIcon className="edit-icon" />}
+            {isEditing ? 'Save' : 'Edit'}
+          </button>
+
           <div className="personal-info">
             <p>Personal Information</p>
-            <div className="info-row">
-              <strong>Name:</strong>
-              {isEditing ? (
-                <input name="name" value={formData.name} onChange={handleChange} />
-              ) : (
-                <span>{formData.name}</span>
-              )}
-            </div>
-            <div className="info-row">
-              <strong>Email:</strong>
-              {isEditing ? (
-                <input name="email" value={formData.email} onChange={handleChange} />
-              ) : (
-                <span>{formData.email}</span>
-              )}
-            </div>
-            <div className="info-row">
-              <strong>Number:</strong>
-              {isEditing ? (
-                <input name="number" value={formData.number} onChange={handleChange} />
-              ) : (
-                <span>{formData.number}</span>
-              )}
-            </div>
-            <div className="info-row">
-              <strong>BVN:</strong>
-              {isEditing ? (
-                <input name="bvn" value={formData.bvn} onChange={handleChange} />
-              ) : (
-                <span>{formData.bvn}</span>
-              )}
-            </div>
+            {['name', 'email', 'number', 'bvn'].map((field) => (
+              <div className="info-row" key={field}>
+                <strong>{field.charAt(0).toUpperCase() + field.slice(1)}:</strong>
+                {isEditing ? (
+                  <input name={field} value={formData[field as keyof typeof formData]} onChange={handleChange} />
+                ) : (
+                  <span>{formData[field as keyof typeof formData]}</span>
+                )}
+              </div>
+            ))}
             <div className="info-row">
               <strong>KYC Status:</strong>
               <div className="status pending">

@@ -26,6 +26,7 @@ import BvnVerification from "../pages/KycVerification/BvnVerification";
 import AddressVerification from "../pages/KycVerification/AddressVerification";
 import ReviewAndSubmit from "../pages/KycVerification/ReviewAndSubmit";
 import ReviewAndSubmit2 from "../pages/KycVerification/R&S2";
+import ReviewAndSubmit3 from "../pages/KycVerification/R&S3";
 export default function MainRouter() {
 
   return (
@@ -44,6 +45,7 @@ export default function MainRouter() {
               <Route path="address" element={<AddressVerification/>} />
               <Route path="review" element={<ReviewAndSubmit/>} />
               <Route path="review2" element={<ReviewAndSubmit2/>} />
+              <Route path="review3" element={<ReviewAndSubmit3/>} />
 
 
 

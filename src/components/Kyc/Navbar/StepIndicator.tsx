@@ -14,7 +14,7 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ activeStep }) => {
   const steps = [
     { label: 'BVN Verification', icon: <UserIcon className="icon-stepindicator" />, path: '/bvn' },
     { label: 'Address Verification', icon: <HouseIcon className="icon-stepindicator" />, path: '/address' },
-    { label: 'Review and submit', icon: <DocuementTextIcon className="icon-stepindicator" />, path: '/review-submit' },
+    { label: 'Review and submit', icon: <DocuementTextIcon className="icon-stepindicator" />, path: '/review' },
   ];
 
   return (

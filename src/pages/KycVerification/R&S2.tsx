@@ -32,7 +32,7 @@ const ReviewAndSubmit2 = () => {
   <p className="section-title">BVN Verification</p>
   <div className="section-box">
     <div className="status-row">
-      <p>BVN: 624******832</p>
+      <p className="bvn-number">BVN: 624******832</p>
       <div className="status verified">
         <TickCircleGreen className="status-icon" />
         <span>Verified</span>
@@ -45,8 +45,7 @@ const ReviewAndSubmit2 = () => {
   <p className="section-title">Address Verification</p>
   <div className="section-box">
     <div className="status-row">
-      <p>Address: 12 Example Lane</p>
-      <div className="status not-verified">
+      <div className="statuss not-verified">
         <InfoCircleRed className="status-icon" />
         <span>Not Verified</span>
       </div>
