@@ -23,6 +23,9 @@ import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
 import ProfilePage from "../pages/profile/Page";
 import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
 import BvnVerification from "../pages/KycVerification/BvnVerification";
+import AddressVerification from "../pages/KycVerification/AddressVerification";
+import ReviewAndSubmit from "../pages/KycVerification/ReviewAndSubmit";
+import ReviewAndSubmit2 from "../pages/KycVerification/R&S2";
 export default function MainRouter() {
 
   return (
@@ -38,6 +41,10 @@ export default function MainRouter() {
               <Route path="transdebt3" element={<TransferDebtStep3/>} />
               <Route path="transpage" element={<TransactionsPage/>} />
               <Route path="Bvn" element={<BvnVerification/>} />
+              <Route path="address" element={<AddressVerification/>} />
+              <Route path="review" element={<ReviewAndSubmit/>} />
+              <Route path="review2" element={<ReviewAndSubmit2/>} />
+
 
 
             {/* --- splash screen --- */}

@@ -1,0 +1,26 @@
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.verified {
+  color: green;
+}
+
+.not-verified {
+  color: red;
+}
+
+.status-icon {
+  width: 16px;
+  height: 16px;
+}

@@ -54,6 +54,10 @@ import documenextext from '../../assets/images/icons/document-text.svg'
 import infocircle from '../../assets/images/icons/info-circle.svg'
 import frametier from '../../assets/images/icons/Frame-tier.svg'
 import edit from '../../assets/images/icons/edit.svg'
+import documentupload from '../../assets/images/icons/document-upload.svg'
+import tickcirclegreen from '../../assets/images/icons/tick-circle-green.svg'  
+import infocirclered from "../../assets/images/icons/info-circle-red.svg";
+
 // --- types ---
 type LogoProps = {
   type?: 'white' | 'green';
@@ -270,7 +274,15 @@ function FrameTierIcon({ className, width, height }: ImageProps) {
 function EditIcon({ className, width, height }: ImageProps) {
   return <img src={edit} alt="Close Circle" className={className} style={{ width, height }} />;
 }
-
+function DocumentUpload({ className, width, height }: ImageProps) {
+  return <img src={documentupload} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function TickCircleGreen({ className, width, height }: ImageProps) {
+  return <img src={tickcirclegreen} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function InfoCircleRed({ className, width, height }: ImageProps) {
+  return <img src={infocirclered} alt="Close Circle" className={className} style={{ width, height }} />;
+}
 
 // --- export all components ---
 export {
@@ -327,6 +339,9 @@ export {
   DocuementTextIcon,
   InfoCirclIcon,
   FrameTierIcon,
-  EditIcon
+  EditIcon,
+  DocumentUpload,
+  TickCircleGreen,
+  InfoCircleRed,
 
 };

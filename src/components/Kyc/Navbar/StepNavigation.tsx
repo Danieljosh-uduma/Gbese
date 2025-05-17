@@ -6,7 +6,7 @@ function Navbar() {
   <div className="navbar">
     <h2>Advanced KYC Verification</h2>
   </div>
-  )
+  );
 };
 
 export default Navbar;
