@@ -89,6 +89,7 @@ export default function SignUpPage() {
             <label className="phone-num">Phone Number</label>
             <div className="phone-input">
               <select
+                className='select-sup'
                 title='Select your country code'
                 value={countryCode}
                 onChange={(e) => setCountryCode(e.target.value)}>

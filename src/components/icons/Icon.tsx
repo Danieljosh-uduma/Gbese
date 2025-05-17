@@ -36,6 +36,19 @@ import ticksquareschedule from '../../assets/images/icons/tick-square-schedule.s
 import mobileaccepted from '../../assets/images/icons/MobileIconAccepted.svg';
 import mobileupcoming from '../../assets/images/icons/Mobileiconupcoming.svg';
 import mobileschedule from '../../assets/images/icons/Mobileiconschedule.svg';
+import information from '../../assets/images/icons/information.svg'
+import Search from '../../assets/images/icons/search.svg'
+import camera from '../../assets/images/icons/camera.svg'
+import informationgreen   from '../../assets/images/icons/information-green.svg'
+import coindebt  from '../../assets/images/icons/stash-coin.svg'
+import receivemoney from '../../assets/images/icons/money-recive.svg'
+import money from '../../assets/images/icons/money-4.svg'
+import tickcirlcle from '../../assets/images/icons/tick-circle.svg'
+import filter from '../../assets/images/icons/filter.svg'
+import screenshot from '../../assets/images/icons/screenshot.svg'
+import maximize from '../../assets/images/icons/maximize-4.svg'
+import receipt from '../../assets/images/icons/Receipt.svg'
+
 // --- types ---
 type LogoProps = {
   type?: 'white' | 'green';
@@ -197,6 +210,45 @@ function CloseCircle({ className, width, height }: ImageProps) {
   return <img src={closecircle} alt="Close Circle" className={className} style={{ width, height }} />;
 }
 
+function InformationIcon({ className, width, height }: ImageProps) {
+  return <img src={information} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function SearchIcon({ className, width, height }: ImageProps) {
+  return <img src={Search} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function CameraIcon ({ className, width, height }: ImageProps) {
+  return <img src={camera} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+
+function InformationGreen({ className, width, height }: ImageProps) {
+  return <img src={informationgreen} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function StashCoinIcon({ className, width, height }: ImageProps) {
+  return <img src={coindebt} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function MoneyRecieve({ className, width, height }: ImageProps) {
+  return <img src={receivemoney} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function MoneyDebt({ className, width, height }: ImageProps) {
+  return <img src={money} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function TickCircleIcon({ className, width, height }: ImageProps) {
+  return <img src={tickcirlcle} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function FilterIcon({ className, width, height }: ImageProps) {
+  return <img src={filter} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function ScreenShotIcon({ className, width, height }: ImageProps) {
+  return <img src={screenshot} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function MaximizeIcon({ className, width, height }: ImageProps) {
+  return <img src={maximize} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+function ReceiptIcon({ className, width, height }: ImageProps) {
+  return <img src={receipt} alt="Close Circle" className={className} style={{ width, height }} />;
+}
+
+
 // --- export all components ---
 export {
   Logo,
@@ -235,4 +287,17 @@ export {
   MobileIconScheduled,
   VectorIcon,
   CloseCircle,
+  InformationIcon,
+  SearchIcon,
+  CameraIcon,
+  InformationGreen,
+  StashCoinIcon,
+  MoneyRecieve,
+  MoneyDebt,
+  TickCircleIcon,
+  FilterIcon,
+  ScreenShotIcon,
+  MaximizeIcon,
+  ReceiptIcon
+
 };

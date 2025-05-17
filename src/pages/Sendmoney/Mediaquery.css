@@ -1,0 +1,252 @@
+/* Base Mobile Styles - These will apply to all screens and be overridden for larger screens */
+
+/* Main container */
+.send-money-container {
+    max-width: 100%;
+    padding: 16px;
+    margin: 0;
+    min-height: auto;
+    background-color: var(--white-text);
+}
+
+/* Toggle section */
+.toggle-container {
+    width: 100%;
+    max-width: 240px;
+    margin-bottom: 16px;
+    gap: 12px;
+}
+
+.toggle-button {
+    width: 110px;
+    font-size: 16px;
+}
+
+/* Search section */
+.search-container {
+    margin-top: 20px;
+    margin-bottom: 16px;
+    height: 48px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 6px 12px 36px;
+    font-size: 12px;
+}
+
+/* Contacts section */
+.contacts-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.contacts-grid {
+    height: auto;
+    min-height: 140px;
+    padding: 16px;
+}
+
+.contact-item {
+    width: 60px;
+    height: 95px;
+    gap: 8px;
+}
+
+.contact-image {
+    width: 60px;
+    height: 60px;
+}
+
+.contact-name {
+    font-size: 12px;
+}
+
+/* Form inputs */
+.input-container {
+    margin-block: 1rem;
+}
+
+.input-container .form-input,
+.form-select {
+    padding: 12px 10px;
+    font-size: 12px;
+}
+
+/* Form row layout */
+.form-row {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1rem;
+    height: auto;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.currency-group select {
+    width: 100%;
+}
+
+.amount-group input,
+.note-group input {
+    width: 100%;
+}
+
+/* Payment Options styling */
+.payment-title {
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+.payment-options {
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.payment-option {
+    width: 100%;
+    height: 70px;
+    padding: 12px;
+}
+
+.payment-option-icon img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.payment-option-info p:first-child {
+    font-size: 14px;
+}
+
+.payment-option-info p:last-child {
+    font-size: 12px;
+}
+
+/* Continue button */
+.continue-button {
+    margin-top: 2rem;
+    padding: 14px 20px;
+    max-width: 100%;
+}
+
+/* Modals */
+.confirmation-modal,
+.success-modal {
+    max-width: 90%;
+    padding: 1.25rem;
+}
+
+/* Transaction details */
+.transaction-row {
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+}
+
+/* Media Queries for larger screens */
+@media (min-width: 768px) {
+    /* Tablet styles */
+    .send-money-container {
+        padding: 20px;
+    }
+
+    .toggle-container {
+        max-width: 280px;
+        gap: 20px;
+    }
+
+    .toggle-button {
+        width: 130px;
+    }
+
+    .form-row {
+        flex-direction: row;
+        height: 81px;
+    }
+
+    .currency-group select {
+        width: 68px;
+    }
+
+    .amount-group input {
+        width: 200px;
+    }
+
+    .note-group input {
+        width: 100%;
+    }
+
+    .payment-options {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .continue-button {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Desktop styles - revert to original */
+    .send-money-container {
+        max-width: 995px;
+        padding: 24px;
+    }
+
+    .toggle-container {
+        width: 280px;
+        gap: 28px;
+    }
+
+    .toggle-button {
+        width: 140px;
+        font-size: 20px;
+    }
+
+    .search-input {
+        width: 970px;
+    }
+
+    .contacts-grid {
+        height: 160px;
+    }
+
+    .contact-item {
+        width: 78px;
+        height: 115px;
+        gap: 15px;
+    }
+
+    .contact-image {
+        width: 78px;
+        height: 78px;
+    }
+
+    .contact-name {
+        font-size: 14px;
+    }
+
+    .amount-group input {
+        width: 360px;
+    }
+
+    .note-group input {
+        width: 470px;
+    }
+
+    .payment-option {
+        width: 457px;
+        height: 90px;
+    }
+
+    .continue-button {
+        max-width: 564px;
+    }
+
+    .confirmation-modal,
+    .success-modal {
+        max-width: 28rem;
+    }
+}

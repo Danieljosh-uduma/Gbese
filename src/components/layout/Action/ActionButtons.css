@@ -2,8 +2,8 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 3rem;
+  justify-content: center !important;
+  gap: 50px !important;
   /* background-color: brown; */
   margin-bottom: 5rem;
   }

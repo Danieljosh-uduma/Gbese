@@ -54,6 +54,7 @@
     padding-right: 16px;
     padding-bottom: 12px;
     padding-left: 16px;
+<<<<<<< HEAD
     }
 
     /* New responsive styles */
@@ -132,3 +133,15 @@
         display: block;
     }
     }
+=======
+}
+
+@media screen and (max-width: 760px) {
+    #menu {
+        display: block !important;
+    }
+    .sidebar {
+        display: none !important;
+    }
+}
+>>>>>>> 4b91565a0f0d1db580048b9658454faa0c2fbb3a

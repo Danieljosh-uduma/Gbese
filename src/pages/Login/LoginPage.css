@@ -65,11 +65,11 @@ font-size: 15px;
   margin-bottom: 1rem;
 }
 
-.login-card .avatar {
+.login-card .avatar-login {
   margin: 0 auto 1rem;
 }
 
-.login-card .avatar img {
+.login-card .avatar-login img {
   width: 80px;
   height: 80px;
   border-radius: 50%;

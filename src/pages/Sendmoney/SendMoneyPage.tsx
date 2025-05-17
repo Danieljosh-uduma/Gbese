@@ -1,41 +1,32 @@
 import { useState, useEffect } from 'react';
+import {Contact }from '../../types/sendmoney';
+import { PaymentMethod } from '../../types/sendmoney';
 import '../../pages/Sendmoney/SendMoneyPage.css';
+import '../../pages/Sendmoney/Mediaquery.css';
 
-type Contact = {
-id: string;
-name: string;
-image: string;
-phoneNumber: string;
-};
-
-type PaymentMethod = {
-type: 'card' | 'bank';
-lastFour: string;
-selected: boolean;
-};
 
 export default function SendMoney() {
 // Form state
-const [viewMode, setViewMode] = useState<'internal' | 'external'>('internal');
-const [searchQuery, setSearchQuery] = useState('');
-const [accountNumber, setAccountNumber] = useState('');
-const [selectedBank, setSelectedBank] = useState('');
-const [amount, setAmount] = useState('');
-const [currency, setCurrency] = useState('₦');
-const [note, setNote] = useState('');
+    const [viewMode, setViewMode] = useState<'internal' | 'external'>('internal');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [accountNumber, setAccountNumber] = useState('');
+    const [selectedBank, setSelectedBank] = useState('');
+    const [amount, setAmount] = useState('');
+    const [currency, setCurrency] = useState('₦');
+    const [note, setNote] = useState('');
 
 // Transaction flow state
-const [showConfirmation, setShowConfirmation] = useState(false);
-const [showSuccess, setShowSuccess] = useState(false);
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
 
-// Payment methods state
-const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([
-    { type: 'card', lastFour: '4567', selected: true },
-    { type: 'bank', lastFour: '8901', selected: false }
-]);
+    // Payment methods state
+    const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([
+        { type: 'card', lastFour: '4567', selected: true },
+        { type: 'bank', lastFour: '8901', selected: false }
+    ]);
 
-const [showNewCardForm, setShowNewCardForm] = useState(false);
-const [showNewBankForm, setShowNewBankForm] = useState(false);
+    const [showNewCardForm, setShowNewCardForm] = useState(false);
+    const [showNewBankForm, setShowNewBankForm] = useState(false);
 
 // Contacts state
 const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
@@ -250,18 +241,18 @@ return (
     
     {/* Search Input */}
 <div className="search-container">
-<div className="search-input-wrapper">
-<div className="search-icon">
-<img src="/src/assets/images/images/recent users avatar/Send Money/search-normal.png" alt="" />
-</div>
-<input
-type="text"
-className="search-input"
-placeholder="Search by phone number"
-value={searchQuery}
-onChange={(e) => setSearchQuery(e.target.value)}
-/>
-</div>
+    <div className="search-input-wrapper">
+        <div className="search-icon">
+        <img src="/src/assets/images/images/recent users avatar/Send Money/search-normal.png" alt="" />
+        </div>
+        <input
+        type="text"
+        className="search-input"
+        placeholder="Search by phone number"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        />
+    </div>
 </div>
 
     
@@ -297,20 +288,20 @@ onChange={(e) => setSearchQuery(e.target.value)}
     {viewMode === 'external' && (
         <div className="input-container">
         <div className="select-wrapper">
-            <select 
-            className="form-select option"
-            value={selectedBank}
-            onChange={(e) => setSelectedBank(e.target.value)}
-            >
-            <option value="">Select Bank</option>
-            <option value="bank-a">Opay</option>
-            <option value="bank-c">Kuda</option>
-            <option value="bank-c">Palmpay</option>
-            <option value="bank-c">Wema</option>
-            <option value="bank-b">Polaris</option>
-            </select>
-            <div className="select-arrow"></div>
-        </div>
+                <select 
+                className="form-select option"
+                value={selectedBank}
+                onChange={(e) => setSelectedBank(e.target.value)}
+                >
+                <option value="">Select Bank</option>
+                <option value="bank-a">Opay</option>
+                <option value="bank-c">Kuda</option>
+                <option value="bank-c">Palmpay</option>
+                <option value="bank-c">Wema</option>
+                <option value="bank-b">Polaris</option>
+                </select>
+                <div className="select-arrow"></div>
+            </div>
         </div>
     )}
     
@@ -347,17 +338,17 @@ onChange={(e) => setSearchQuery(e.target.value)}
         />
         </div>
         
-        <div className="form-group note-group">
+    <div className="form-group note-group">
         <div className="input-label">
             <label>Note (Optional)</label>
         </div>
-        <input
-            type="text"
-            className="form-input"
-            placeholder="What's it for"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-        />
+            <input
+                type="text"
+                className="form-input"
+                placeholder="What's it for"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+            />
         </div>
     </div>
     
@@ -365,86 +356,84 @@ onChange={(e) => setSearchQuery(e.target.value)}
 
         <div className="payment-section">
         <h2 className="payment-title">Payment Method</h2>
-                <div className="payment-options">
-<div 
-    className={`payment-option ${paymentMethods.some(m => m.type === 'card' && m.selected) ? 'active' : ''}`}
-    onClick={() => selectPaymentMethod('card', '4567')}
->
-    <div className="payment-option-icon">
-    <span><img src="/src/assets/images/images/recent users avatar/Send Money/bank.png" alt="" /></span>
+                    <div className="payment-options">
+    <div 
+        className={`payment-option ${paymentMethods.some(m => m.type === 'card' && m.selected) ? 'active' : ''}`}
+        onClick={() => selectPaymentMethod('card', '4567')}>
+        <div className="payment-option-icon">
+            <span><img src="/src/assets/images/images/recent users avatar/Send Money/bank.png" alt="" /></span>
+            </div>
+            <div className="payment-option-info">
+            <p>Debit Card ****4567</p>
+            <p>No Fees</p>
+        </div>
     </div>
-    <div className="payment-option-info">
-    <p>Debit Card ****4567</p>
-    <p>No Fees</p>
-    </div>
-</div>
 
-{/* Bank Payment Option */}
-<div 
-    className={`payment-option ${paymentMethods.some(m => m.type === 'bank' && m.selected) ? 'active' : ''}`}
-    onClick={() => selectPaymentMethod('bank', '8901')}
->
-    <div className="payment-option-icon">
-            <span><img src="/src/assets/images/images/recent users avatar/Send Money/card.png" alt="" /></span>
-    </div>
-    <div className="payment-option-info">
-    <p>Bank Account **** 8901</p>
-    <p>1.5% fees applies</p>
-    </div>
-</div>
+        {/* Bank Payment Option */}
+        <div 
+            className={`payment-option ${paymentMethods.some(m => m.type === 'bank' && m.selected) ? 'active' : ''}`}
+            onClick={() => selectPaymentMethod('bank', '8901')}>
+                
+                <div className="payment-option-icon">
+                    <span><img src="/src/assets/images/images/recent users avatar/Send Money/card.png" alt="" /></span>
+                </div>
+                <div className="payment-option-info">
+                    <p>Bank Account **** 8901</p>
+                    <p>1.5% fees applies</p>
+                </div>
+        </div>
 </div>
 
 {/* Bank Panel that appears when bank is selected */}
 {paymentMethods.some(m => m.type === 'bank' && m.selected) && showNewBankForm && (
-<div className="bank-panel active">
-    <label>Bank Name</label>
-    <input type="text" placeholder="Enter bank name" />
-    <label>Account Number</label>
-    <input type="text" placeholder="Enter account number" />
-    <button 
-    className="use-payment-button"
-    onClick={() => {
-        selectPaymentMethod('bank', '8901');
-        setShowNewBankForm(false);
-    }}
-    >
-    Use This Bank
-    </button>
-</div>
-)}
-
-{/* Card Panel that appears when card is selected */}
-{paymentMethods.some(m => m.type === 'card' && m.selected) && showNewCardForm && (
-<div className="card-panel active">
-    <label>Card Number</label>
-    <input type="text" placeholder="Enter card number" />
-    <label>Expiry Date</label>
-    <input type="text" placeholder="MM/YY" />
-    <label>CVV</label>
-    <input type="text" placeholder="Enter CVV" />
-    <button 
-    className="use-payment-button"
-    onClick={() => {
-        selectPaymentMethod('card', '4567');
-        setShowNewCardForm(false);
-    }}
-    >
-    Use This Card
-    </button>
-</div>
-)}
-        </div>
-
-        {/* Continue Button */}
+    <div className="bank-panel active">
+        <label>Bank Name</label>
+        <input type="text" placeholder="Enter bank name" />
+        <label>Account Number</label>
+        <input type="text" placeholder="Enter account number" />
         <button 
-            onClick={handleContinue}
-            className="primary-button continue-button"
-            disabled={!accountNumber || !amount || (viewMode === 'external' && !selectedBank)}
+        className="use-payment-button"
+        onClick={() => {
+            selectPaymentMethod('bank', '8901');
+            setShowNewBankForm(false);
+        }}
         >
-            Continue
+        Use This Bank
         </button>
-        </div>
+    </div>
     )}
+
+    {/* Card Panel that appears when card is selected */}
+    {paymentMethods.some(m => m.type === 'card' && m.selected) && showNewCardForm && (
+    <div className="card-panel active">
+        <label>Card Number</label>
+        <input type="text" placeholder="Enter card number" />
+        <label>Expiry Date</label>
+        <input type="text" placeholder="MM/YY" />
+        <label>CVV</label>
+        <input type="text" placeholder="Enter CVV" />
+        <button 
+        className="use-payment-button"
+        onClick={() => {
+            selectPaymentMethod('card', '4567');
+            setShowNewCardForm(false);
+        }}
+        >
+        Use This Card
+        </button>
+    </div>
+)}
+    </div>
+        {/* Continue Button */}
+            <button 
+                onClick={handleContinue}
+                className="primary-button continue-button"
+                disabled={!accountNumber || !amount || (viewMode === 'external' && !selectedBank)}
+            >
+                Continue
+            </button>
+            </div>
+        )}
     </div>
 );
 }
