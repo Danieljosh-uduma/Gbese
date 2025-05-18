@@ -9,10 +9,9 @@ import { getTransactionHistory } from '../../services/debtTransfer';
 import { useAuth } from '../../hooks/useAuth';
 
 type Transaction = {
-  [x: string]: { date: string; };
   type: string;
   amount: string;
-  date: string;
+  createdAt: string
   recipient: string;
   status: string;
   purpose?: string;
@@ -67,7 +66,7 @@ function TransactionsPage() {
     setShowModal(false);
   };
 
-  const filteredTransactions = transactionsData.filter((item) => {
+  const filteredTransactions = transactionsData.filter((item: Transaction) => {
     const itemDateStr = item.createdAt.split(' - ')[0];
     const [day, month, year] = itemDateStr.split('/');
     const fullYear = `20${year}`;
@@ -188,7 +187,7 @@ function TransactionsPage() {
     <div className="transaction-row" key={idx}>
       <div className="transaction-cell">{item.type}</div>
       <div className="transaction-cell">{item.amount}</div>
-      <div className="transaction-cell">{typeof item.createdAt === 'string' ? item.createdAt : item.date}</div>
+      <div className="transaction-cell">{item.createdAt}</div>
       <div className="transaction-cell">{item.recipient}</div>
       <div className={`transaction-cell ${getStatusClass(item.status)}`}>{item.status}</div>
       <div className="transaction-cell action-cell">
@@ -248,9 +247,9 @@ function TransactionsPage() {
    
  
   <div className="mobile-transactions">
-    {filteredTransactions.map((item, index) => (
-   <div className="mobile-transaction-card" key={index}>
-  <div className="mobile-icon-section">
+    {filteredTransactions.map((item: Transaction, index: number) => (
+     <div className="mobile-transaction-card" key={index}>
+    <div className="mobile-icon-section">
     {item.status === "Complete" ? (
       <MobileIconAccepted />
     ) : item.status === "Pending" ? (
@@ -258,23 +257,23 @@ function TransactionsPage() {
     ) : item.status === "Failed" ? (
       <MdError color="red" size={40} />
     ) : null}
-  </div>
+    </div>
 
-  <div className="mobile-info-section">
+    <div className="mobile-info-section">
     <div className="mobile-description">
       <div className="mobile-title">Debt from {item.recipient}</div>
-      <div className="mobile-date">{item.date}</div>
+      <div className="mobile-date">{(item as { date?: string }).date}</div>
     </div>
 
     <div className="mobile-right-section">
       <div className="mobile-amount">{item.amount}</div>
       <div className="mobile-bottom-row">
-        <div className={`mobile-status ${item.status.toLowerCase()}`}>{item.status}</div>
-        <button onClick={() => handleViewDetails(item)} className="mobile-view-btn">View</button>
+      <div className={`mobile-status ${item.status.toLowerCase()}`}>{item.status}</div>
+      <button onClick={() => handleViewDetails(item)} className="mobile-view-btn">View</button>
       </div>
     </div>
+    </div>
   </div>
-</div>
 
     ))}
   </div>

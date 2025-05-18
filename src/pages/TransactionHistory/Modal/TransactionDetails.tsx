@@ -11,7 +11,7 @@ import './TransactionDetails.css';
 interface Transaction {
   type: string;
   amount: string;
-  date: string;
+  createdAt: string;
   recipient: string;
   status: string;
   purpose?: string;
@@ -75,7 +75,7 @@ function TransferDetailsModal({ onClose, transaction }: TransferDetailsModalProp
           </div>
         </div>
 
-        <p className="modal-date">{transaction.date}</p>
+        <p className="modal-date">{transaction.createdAt}</p>
 
         <div className="info-grid">
           {[
