@@ -37,7 +37,7 @@ const ActionButtons: React.FC = () => {
             icon={<img src={Chart} alt="Send Icon" width={20} height={20} />}
             label="History"
             color="var(--primary-200)" 
-            onClick={() => navigate(`${BASE_URL}/fund-account`)}
+            onClick={() => navigate(`${BASE_URL}/history`)}
         />
         </div>
     );

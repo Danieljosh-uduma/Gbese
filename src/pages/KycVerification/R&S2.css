@@ -1,0 +1,35 @@
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ .status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  font-size: 14px;
+} 
+
+.review-address{
+    display: flex;
+    justify-content: space-between;
+}
+.verified {
+  color: green;
+}
+
+.not-verified {
+  color: red;
+}
+
+.status-icon {
+  width: 16px;
+  height: 16px;
+}
+.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}

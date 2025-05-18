@@ -6,7 +6,9 @@
   background: #FEFEFE;
 
 }
-
+.modal-content-amount {
+  max-width: 650px;
+}
 .funding-header {
 
   font-family: 'Poppins';
@@ -21,6 +23,10 @@
     font-weight: 400;
     font-size: 0.9rem;
     color: #696969;
+}
+#account-ref-modal {
+  height: 50px;
+  border-color: #5D3FD3;
 }
 
 .funding {

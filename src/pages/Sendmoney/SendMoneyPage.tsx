@@ -3,6 +3,9 @@ import {Contact }from '../../types/sendmoney';
 import { PaymentMethod } from '../../types/sendmoney';
 import '../../pages/Sendmoney/SendMoneyPage.css';
 import '../../pages/Sendmoney/Mediaquery.css';
+import { getBankList, sendMoneyInternal } from '../../services/debtTransfer';
+import { useAuth } from '../../hooks/useAuth';
+import { useNavigate } from 'react-router';
 
 
 const allContacts = [
@@ -28,6 +31,7 @@ export default function SendMoney() {
     const [amount, setAmount] = useState('');
     const [currency, setCurrency] = useState('₦');
     const [note, setNote] = useState('');
+    const { user, logout } = useAuth()
 
     // Transaction flow state
     const [showConfirmation, setShowConfirmation] = useState(false);
@@ -46,6 +50,8 @@ export default function SendMoney() {
     
 
     // Filter contacts based on search query
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [data, setData] = useState({} as any)
     useEffect(() => {
             if (!searchQuery) {
             setFilteredContacts(allContacts);
@@ -78,8 +84,18 @@ export default function SendMoney() {
     };
 
 const handleConfirm = () => {
-    setShowConfirmation(false);
-    setShowSuccess(true);
+            console.log(data)
+
+    sendMoneyInternal(user?.token, accountNumber, amount).then(res => {
+        if (res.success) {
+            setShowConfirmation(false);
+            setShowSuccess(true);
+            setData(res.data)
+        } else if (res.status === 401) {
+            logout()
+        }
+    })
+    // 
 };
 
 const handleFinish = () => {
@@ -109,6 +125,44 @@ const resetForm = () => {
 const amountValue = parseFloat(amount) || 0;
 const fee = paymentMethods.find(m => m.selected)?.type === 'bank' ? amountValue * 0.015 : 0;
 const total = amountValue + fee;
+const date = new Date(Date.now())
+const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const formattedDate = `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+
+const navigate = useNavigate()
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const [bank, setBank] = useState({} as any)
+
+function handleClick(e: React.MouseEvent<HTMLSelectElement>) {
+    e.stopPropagation();
+    getBankList(user?.token).then(res => {
+      if (res.success) {
+        setBank(res.data)
+      } else if (res.status === 401) {
+        navigate('/auth/login')
+      }
+    })
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+      setSelectedBank(e.target.value)
+      getBankList(user?.token).then(res => {
+        if (res.success) {
+          setBank(res.data);
+        } else if (res.status === 401) {
+          navigate('/auth/login');
+        }
+      }).then(() => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          setBank((prevBank: any[]) => 
+          prevBank.filter((item: { name: string; }) => 
+            item.name.toLowerCase().includes(selectedBank.toLowerCase())
+        )
+      );
+      });
+  
+      
+    }
 
 return (
 <div className="send-money-container">
@@ -119,20 +173,16 @@ return (
     
     <div className="transaction-details">
         <div className="transaction-row">
-        <span className="transaction-label">To:</span>
-        <span className="transaction-value">Martins Vincent</span>
+        <span className="transaction-label">Account Number:</span>
+        <span className="transaction-value">{accountNumber}</span>
         </div>
         <div className="transaction-row">
         <span className="transaction-label">Date:</span>
-        <span className="transaction-value">May 20,2025</span>
+        <span className="transaction-value">{formattedDate}</span>
         </div>
         <div className="transaction-row">
         <span className="transaction-label">Amount:</span>
         <span className="transaction-value">{currency}{amountValue.toLocaleString()}</span>
-        </div>
-        <div className="transaction-row">
-        <span className="transaction-label">Reference:</span>
-        <span className="transaction-value">INV-2025-0438</span>
         </div>
         <div className="transaction-row">
         <span className="transaction-label">Fee:</span>
@@ -170,27 +220,27 @@ return (
     <div className="transaction-details">
         <div className="transaction-row">
         <span className="transaction-label">To:</span>
-        <span className="transaction-value">Martins Vincent</span>
+        <span className="transaction-value">{data.to}</span>
         </div>
         <div className="transaction-row">
         <span className="transaction-label">Date:</span>
-        <span className="transaction-value">May 20,2025</span>
+        <span className="transaction-value">{data.date}</span>
         </div>
         <div className="transaction-row">
         <span className="transaction-label">Amount:</span>
-        <span className="transaction-value">{currency}{amountValue.toLocaleString()}</span>
+        <span className="transaction-value">{currency}{data.amount}</span>
         </div>
         <div className="transaction-row">
         <span className="transaction-label">Reference:</span>
-        <span className="transaction-value">INV-2025-0438</span>
+        <span className="transaction-value">{data.reference}</span>
         </div>
         <div className="transaction-row">
         <span className="transaction-label">Fee:</span>
-        <span className="transaction-value">{currency}{fee.toLocaleString()}</span>
+        <span className="transaction-value">{data.fee}</span>
         </div>
         <div className="transaction-row total-row">
         <span>Total</span>
-        <span>{currency}{total.toLocaleString()}</span>
+        <span>{data.total}</span>
         </div>
     </div>
     
@@ -293,14 +343,14 @@ return (
                 title='banks'
                 className="form-select option"
                 value={selectedBank}
-                onChange={(e) => setSelectedBank(e.target.value)}
+                onChange={handleChange}
+                onClick={handleClick}
                 >
                 <option value="">Select Bank</option>
-                <option value="bank-a">Opay</option>
-                <option value="bank-c">Kuda</option>
-                <option value="bank-c">Palmpay</option>
-                <option value="bank-c">Wema</option>
-                <option value="bank-b">Polaris</option>
+                {bank.map((item: {name: string}, idx: number) => (
+                    <option value="bank-a" key={idx}>{item.name}</option>
+                ))}
+                
                 </select>
                 <div className="select-arrow"></div>
             </div>

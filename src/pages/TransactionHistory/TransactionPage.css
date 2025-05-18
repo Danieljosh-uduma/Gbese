@@ -41,6 +41,9 @@
   gap: 15px;
   margin-bottom: 20px;
   width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 6px;
 }
 
 /* Row 1: Search */
@@ -174,52 +177,77 @@ select option.failed {
   box-sizing: border-box;
 }
 
-.transaction-table {
+.transaction-list {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 24px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.transaction-table thead {
-  font-size: 30px;
+.transaction-row {
+  display: flex;
+  width: 100%;
+  padding: 12px 16px;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-.transaction-table thead th {
-  text-align: center;
-  padding: 14px 18px;
+.transaction-header {
   font-size: 16px;
+  font-weight: bold;
+  background-color: #f9f9f9;
 }
 
-.transaction-table tbody td {
-  padding: 14px 18px;
+.transaction-cell {
+  flex: 1;
   font-size: 14px;
-  text-align: center;
+  padding: 0 8px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+.transaction-cells {
+  flex: 1;
+  font-size: 16px;
+  padding: 0 8px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+.action-cell {
+  flex: 0 0 auto;
+}
+
+.view-button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.view-button:hover {
+  background-color: #0056b3;
+}
+
+/* Optional: status-specific classes */
 .status-complete {
   color: green;
-  font-weight: 500;
 }
 
 .status-pending {
   color: orange;
-  font-weight: 500;
 }
 
 .status-failed {
   color: red;
-  font-weight: 500;
 }
 
-.action-cell {
-  /* text-align: center; */
-}
+
 
 .view-button {
   background-color: transparent;
@@ -241,7 +269,7 @@ select option.failed {
 .desktop-only {
   display: block;
 }
-.mobile-transactions {
+.mobile-view{
   display: none;
 }
 
@@ -250,6 +278,9 @@ select option.failed {
 @media screen and (max-width: 768px) {
   .desktop-only {
     display: none !important;
+  }
+  .mobile-view {
+    display: block;
   }
 
 
@@ -260,10 +291,32 @@ select option.failed {
 }
 
 .mobile-header {
+  position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
+
+  .mobile-header .mobile-back-icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .mobile-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .mobile-back-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
 
 .mobile-filters-row {
   display: flex;
@@ -277,15 +330,11 @@ select option.failed {
 .mobile-search-wrapper {
   /* flex: 1.8; */
   display: flex;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  min-width: 20px;
-}
 
-.mobile-search-wrapper .search-icon {
-  margin-right: 6px;
-  font-size: 16px;
-  color: #888;
+  align-items: center;
+  gap: 8px;
+  min-width: 20px;
+  position: relative;
 }
 
 .mobile-search-input {
@@ -322,11 +371,21 @@ select option.failed {
 .mobile-search-input {
   width: 100%;
   padding: 10px 12px;
-  margin-bottom: 16px;
+  padding-left: 36px;
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 14px;
 }
+
+.mobile-search-icon {
+  position: absolute;
+  gap: 8px;
+  width: 20px;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 
 /* Transaction card */
 .mobile-transactions {
@@ -336,74 +395,77 @@ select option.failed {
 }
 
 .mobile-transaction-card {
+  margin-top: 10px;
   display: flex;
   align-items: flex-start;
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-/* Icon section */
-.mobile-transactions {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: flex-start;
+  gap: 12px;
 }
 
-.mobile-transaction-card {
-  display: flex;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 12px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+.mobile-icon-section {
+  flex-shrink: 0;
+  margin-right: 8px;
 }
 
-.mobile-left-section {
-  margin-right: 12px;
-  display: flex;
-  align-items: center;
-}
-
-.mobile-middle-section {
-  flex: 1;
-}
-
-.mobile-recipient-row {
+.mobile-info-section {
   display: flex;
   justify-content: space-between;
+  flex-grow: 1;
+  gap: 8px;
+}
+
+.mobile-title {
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 4px;
 }
 
-.mobile-amount {
-  font-weight: bold;
-  font-size: 14px;
-  color: #000;
+.mobile-date {
+  font-size: 12px;
+  color: #777;
 }
 
-.mobile-date-row {
+.mobile-right-section {
+    min-width: 150px;
+}
+
+.mobile-amount {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.mobile-bottom-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
-  color: #666;
+  gap: 8px;
+  width: 100%;
 }
 
 .mobile-status {
-  font-weight: 500;
+  font-size: 12px;
   text-transform: capitalize;
 }
 
 .mobile-status.complete {
-  color: #00a86b;
+  color: green;
 }
 
 .mobile-status.pending {
-  color: #f5a623;
+  color: orange;
 }
 
 .mobile-status.failed {
   color: red;
+}
+
+.mobile-view-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 13px;
+  padding: 0;
+  cursor: pointer;
 }
 }
