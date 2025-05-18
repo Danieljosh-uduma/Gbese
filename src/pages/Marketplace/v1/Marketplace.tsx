@@ -32,7 +32,7 @@ function Marketplace() {
         logout()
       }
     }).catch(err => {
-      console.log(err.message)
+      throw new Error(err.message)
     })
   }, [token, logout, refresh])
 
@@ -81,10 +81,10 @@ function Marketplace() {
             
                 type === 'grid'?
                   <div className="card-grid">
-                {benefactors?.map(item => <Card key={item._id} initials={getInitials(item.user.fullName)} name={item.user.fullName} rating={item.successRate} helped={item.helped} acceptance={item.responseTime} tags={['New user']}/>)}
+                {benefactors?.map(item => <Card key={item._id} id={item.user._id} initials={getInitials(item.user.fullName)} name={item.user.fullName.toUpperCase()} rating={item.successRate} helped={item.helped} acceptance={item.responseTime} tags={['New user']}/>)}
                   </div>:
                   
-                   benefactors?.map(item => <CardList key={item._id} initials={getInitials(item.user.fullName)} name={item.user.fullName} rating={item.successRate} helped={item.helped} acceptance={item.responseTime} />)
+                   benefactors?.map(item => <CardList key={item._id} id={item.user._id} initials={getInitials(item.user.fullName)} name={item.user.fullName.toUpperCase()} rating={item.successRate} helped={item.helped} acceptance={item.responseTime} />)
               }
 
           </div>

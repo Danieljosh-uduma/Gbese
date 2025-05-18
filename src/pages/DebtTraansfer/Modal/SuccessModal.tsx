@@ -1,6 +1,8 @@
 import React from 'react';
 import { TickCircleIcon } from '../../../components/icons/Icon'; // Update this import path if needed
 import './SuccessModal.css';
+import { useNavigate } from 'react-router';
+import { useType } from '../../../hooks/useType';
 
 interface SuccessModalProps {
   isOpen: boolean;
@@ -11,24 +13,60 @@ interface SuccessModalProps {
   onFindBenefactor: () => void;
   onShareRequest: () => void;
   onBackToDashboard: () => void;
+  isLoading: boolean
+  link: string
 }
 
 const SuccessModal: React.FC<SuccessModalProps> = ({
   isOpen,
-  onClose,
   transactionId,
   amount,
   expectedResponse,
-  onFindBenefactor,
-  onShareRequest,
+  isLoading,
+  link
 //   onBackToDashboard,
 }) => {
+  const navigate = useNavigate()
+  const { BASE_URL } = useType()
   if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
       <div className="success-modal">
-        <div className="success-icon">
+        {isLoading ? (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '250px',
+            }}
+          >
+            <div
+              style={{
+                border: '12px solid #E5DBFF',
+                borderTop: '12px solid #5D3FD3',
+                borderRadius: '50%',
+                width: '80px',
+                height: '80px',
+                animation: 'spin 1s linear infinite',
+              }}
+            />
+            <style>
+              {`
+                @keyframes spin {
+                  0% { transform: rotate(0deg);}
+                  100% { transform: rotate(360deg);}
+                }
+              `}
+            </style>
+            <span style={{ marginTop: '24px', color: 'purple', fontWeight: 600, fontSize: '1.2rem' }}>
+              Processing...
+            </span>
+          </div>
+        ) : <>
+            <div className="success-icon">
           <TickCircleIcon />
         </div>
 
@@ -44,17 +82,29 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
           </div>
           <div className="detail-row">
             <span className="labels">Amount:</span>
-            <span className="value">{amount}</span>
+            <span className="value">₦{amount}</span>
           </div>
           <div className="detail-row">
             <span className="labels">Expected response:</span>
             <span className="value">{expectedResponse}</span>
           </div>
+          {link && 
+            <div className="detail-row">
+            <span className="labels">Payment Link:</span>
+            {link.substring(0, 30)}...
+          </div>
+          }
         </div>
 
-        <button className="primary-button" onClick={onFindBenefactor}>Find Benefactor</button>
-        <button className="secondary-button" onClick={onShareRequest}>Share this Request</button>
-        <button className="back-button" onClick={onClose}>Back to Dashboard</button>
+        {link? 
+          <button className="primary-button" onClick={() => {
+            navigator.clipboard.writeText(link)
+            alert('copied!')
+          }}>Copy Link</button>:
+          <button className="primary-button" onClick={() => navigate(`${BASE_URL}/marketplace`)}>Find Benefactor</button>  
+      }
+        <button className="secondary-button" onClick={() => navigate(`${BASE_URL}/`)}>Back to Dashboard</button>
+        </>}
       </div>
     </div>
   );

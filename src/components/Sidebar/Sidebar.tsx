@@ -6,22 +6,22 @@ import {
     RepeatIcon,
     WalletIcon,
     ClipboardList,
-    Heart
-
- } from 'lucide-react';
+    Heart,
+    
+} from 'lucide-react';
 import NavItem from '../NavItem/NavItem';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LOGO from '../../assets/images/icons/Logo-text.png'
 import './Sidebar.css';
 import { useType } from '../../hooks/useType';
 
+
 function Sidebar() {
 const navigate = useNavigate()
-const location = useLocation()
+    const location = useLocation()
 const { BASE_URL } = useType()
 
-
-const handleNavItemClick =  (url: string) => {
+    const handleNavItemClick =  (url: string) => {
     navigate(BASE_URL+url)
 };
 
@@ -93,6 +93,6 @@ return (
     </div>
     </div>
 );
-};
+}
 
 export default Sidebar;

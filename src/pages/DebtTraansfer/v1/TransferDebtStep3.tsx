@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, InformationIcon } from '../../../components/icons/Icon';
 import './TransfeDebtStep3.css';
 import SpecificUserModal from '../Modal/SpecificUsers';
 import ShareLinkModal from '../Modal/ShareLinkModal';
 import SuccessModal from '../Modal/SuccessModal';
+import { uploadDetail } from '../../../services/debtTransfer';
+import { useAuth } from '../../../hooks/useAuth';
 
+type DEBT = {
+  _id: string
+  amount: string
+  link: string
+}
 function TransferDebtStep3() {
   const navigate = useNavigate();
 
@@ -15,20 +22,56 @@ function TransferDebtStep3() {
   const [showShareLinkModal, setShowShareLinkModal] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [selectedUser, setSelectedUser] = useState('');
+  const location = useLocation()
+  const response = location.state? location.state.response: {}
+  const { user } = useAuth()
+  const [debt, setDebt] = useState({} as DEBT)
+  const [isLoading, setIsLoading] = useState(false)
+  // console.log(response)
+
+
 
   // SUBMIT HANDLER
   const handleSubmit = () => {
+    setIsLoading(true)
     if (!agreed) return;
+    let method;
 
     if (showSpecificUserModal && selectedUser) {
       setShowSpecificUserModal(false);
-      setShowSuccess(true);
+      setShowSuccess(true)
+      method = 'specific'
     } else if (showShareLinkModal) {
       setShowShareLinkModal(false);
       setShowSuccess(true);
+      method = 'sharedLink'
     } else {
       setShowSuccess(true); // fallback (e.g. marketplace)
+      method = 'marketplace'
     }
+
+    const request = {
+      ...response,
+      method,
+      ...(method === 'specific' && {selectedUser})
+    }
+    console.log(request)
+    uploadDetail(user?.token, request).then(res => {
+      console.log(res.data)
+        if (res.success) {
+          setIsLoading(false)
+          setDebt({
+            _id: res.data._id,
+            amount: res.data.amount,
+            link: res.data?.paymentLink
+          }) 
+        } else if (res.status === 401) {
+          navigate('/')
+        }
+      }).catch(()=> {
+        setIsLoading(false)
+        console.log('an error occurred')
+      })
   };
 
  React.useEffect(() => {
@@ -92,12 +135,12 @@ function TransferDebtStep3() {
 
           <div className="debt-summary-card">
             <p>Debt Summary</p>
-            <div className="summary-row"><span className="labels">Source</span><span className="value">Fairmoney</span></div>
-            <div className="summary-row"><span className="labels">Debt Amount</span><span className="value">₦50,000</span></div>
-            <div className="summary-row"><span className="labels">Type</span><span className="value">Loan</span></div>
-            <div className="summary-row"><span className="labels">Account Number</span><span className="value">2094294381</span></div>
-            <div className="summary-row"><span className="labels">Due Date</span><span className="value">01/05/2025</span></div>
-            <div className="summary-row"><span className="labels">Incentive</span><span className="value">10% cash bonus</span></div>
+            <div className="summary-row"><span className="labels">Source</span><span className="value">{response.bankName}</span></div>
+            <div className="summary-row"><span className="labels">Debt Amount</span><span className="value">₦{response.amount}</span></div>
+            {/* <div className="summary-row"><span className="labels">Status</span><span className="value"></span></div> */}
+            <div className="summary-row"><span className="labels">Account Number</span><span className="value">{response.accountNumber}</span></div>
+            <div className="summary-row"><span className="labels">Due Date</span><span className="value">{response.dueDate}</span></div>
+            <div className="summary-row"><span className="labels">Incentive</span><span className="value">{response.incentives} Gbese Coins</span></div>
           </div>
         </div>
 
@@ -109,7 +152,7 @@ function TransferDebtStep3() {
           </div>
 
           <div className="transfer-buttons">
-            <button className="btn-method primary">List on marketplace</button>
+            <button className="btn-method active">List on marketplace</button>
             <button className="btn-method primary" onClick={() => setShowSpecificUserModal(true)}>Send to specific users</button>
             <button className="btn-method primary" onClick={() => setShowShareLinkModal(true)}>Share payment link</button>
           </div>
@@ -182,12 +225,14 @@ function TransferDebtStep3() {
       <SuccessModal
         isOpen={showSuccess}
         onClose={() => setShowSuccess(false)}
-        transactionId="TRX-131106"
-        amount="₦50,000"
+        transactionId={debt._id}
+        amount={debt.amount}
         expectedResponse="Within 48 hours"
         onFindBenefactor={handleFind}
         onShareRequest={handleShare}
         onBackToDashboard={handleBack}
+        isLoading={isLoading}
+        link={debt.link}
       />
     </>
   );

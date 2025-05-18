@@ -5,21 +5,57 @@ import './DebtSourceStep.css';
 import '../../../components/Sidebar/Sidebar'
 import '../../../components/NavItem/NavItem'
 import { useType } from '../../../hooks/useType';
-const SOURCES = ['Fairmoney', 'Opay', 'Lendsafe', 'Ikedc', 'Quickcredit'];
+import { getBankList } from '../../../services/debtTransfer';
+import { useAuth } from '../../../hooks/useAuth';
+import { Bank } from '../../../types/helpers';
+// const SOURCES = ['Fairmoney', 'Opay', 'Lendsafe', 'Ikedc', 'Quickcredit'];
 
 const DebtSourceStep: React.FC = () => {
   const navigate = useNavigate();
   const { BASE_URL } = useType()
   const [selectedSource, setSelectedSource] = useState('');
-  const [customSource, setCustomSource] = useState('');
+  const [bank, setBank] = useState([] as Bank[]);
+  const [bankCode, setBankCode] = useState('')
   const [showOptions, setShowOptions] = useState(false);
+  const { user } = useAuth()
+  const token = user?.token
 
   const handleContinue = () => {
-    if (selectedSource || customSource) {
-      console.log('Proceeding with:', selectedSource || customSource);
-      navigate(`${BASE_URL}/debt-transfer/form`);
+    if (selectedSource) {
+      navigate(`${BASE_URL}/debt-transfer/form`, {state: {'bankCode': bankCode, 'bankName': selectedSource}});
     }
   };
+
+  function handleClick(e: React.MouseEvent<HTMLInputElement>) {
+    e.stopPropagation();
+    getBankList(token).then(res => {
+      if (res.success) {
+        setBank(res.data)
+      } else if (res.status === 401) {
+        navigate('/auth/login')
+      }
+    })
+    setShowOptions(true);
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSelectedSource(e.target.value)
+    getBankList(token).then(res => {
+      if (res.success) {
+        setBank(res.data);
+      } else if (res.status === 401) {
+        navigate('/auth/login');
+      }
+    }).then(() => {
+        setBank(prevBank => 
+        prevBank.filter(item => 
+          item.name.toLowerCase().includes(selectedSource.toLowerCase())
+      )
+    );
+    });
+
+    
+  }
 
   return (
     <div className="debt-step-container">
@@ -55,28 +91,25 @@ const DebtSourceStep: React.FC = () => {
           <input
             name="debt-source"
             placeholder="Select source of debt"
-            value={customSource || selectedSource}
-        onChange={(e) => setCustomSource(e.target.value)}
-        onClick={(e) => {
-      e.stopPropagation();
-      setShowOptions(true);
-    }}
+            value={selectedSource}
+        onChange={handleChange}
+        onClick={handleClick}
           />
         <ArrowDownIcon className="dropdown-arrow" />
         </div>
 
         {showOptions && (
           <ul className="dropdown-options">
-            {SOURCES.map((source) => (
+            {bank.map((source) => (
               <li
-                key={source}
+                key={source.code}
                 onClick={() => {
-                  setSelectedSource(source);
-                  setCustomSource('');
+                  setSelectedSource(source.name);
+                  setBankCode(source.code)
                   setShowOptions(false);
                 }}
               >
-                {source}
+                {source.name}
               </li>
             ))}
           </ul>
@@ -84,12 +117,7 @@ const DebtSourceStep: React.FC = () => {
 
         <button
           className="custom-source-btn" onClick={() => {
-           const newSource = prompt('Enter custom source:');
-            if (newSource) {
-              setCustomSource(newSource);
-              setSelectedSource('');
-              setShowOptions(false);
-            }
+           alert('Unable to do that now!')
           }}
         >
 <span className="icon-text"><AddIcon className="add-icon" />
@@ -98,10 +126,10 @@ const DebtSourceStep: React.FC = () => {
         </button>
 
         <div className="action-buttons">
-          <button className="cancel-btn" onClick={() => navigate('/')}>Cancel</button>
+          <button className="cancel-btn" onClick={() => navigate(`${BASE_URL}/`)}>Cancel</button>
           <button
             className="continue-btn"
-            disabled={!selectedSource && !customSource}
+            disabled={!selectedSource}
             onClick={handleContinue}
           >
             Continue
