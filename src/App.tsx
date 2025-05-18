@@ -1,13 +1,10 @@
-import MainRouter from './router'
-import AuthProvider from './components/auth/AuthProvider';
-import './App.css'
 
+import './App.css'
+import SendMoney from './pages/Sendmoney/SendMoneyPage';
 function App() {
     
   return (
-    <AuthProvider>
-      <MainRouter />
-    </AuthProvider>
+  <SendMoney />
   )
 }
 
