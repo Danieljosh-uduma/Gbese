@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from 'react';
 import './FundDetails.css';
-import Nav from './Nav';
 
 
 function FundDetails (props: {amount: number; accountNumber: string}) {
@@ -51,8 +50,7 @@ function FundDetails (props: {amount: number; accountNumber: string}) {
 
     return(
         <div className="container">
-            <Nav
-            coinCount={200}/>
+            
             <div className="review-container">
                 <p className="review-title">Review Funding Details</p>
                 <p className="review-subtext">

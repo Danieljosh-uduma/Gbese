@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './TransactionPage.css';
-import { CalendarIcon,  ArrowLeftIcon,SearchIcon, MobileIconAccepted, MobileIconUpcoming } from '../../components/icons/Icon';
+import { CalendarIcon, SearchIcon, MobileIconAccepted, MobileIconUpcoming } from '../../components/icons/Icon';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TransactionDetails from './Modal/TransactionDetails';
@@ -204,6 +204,7 @@ function TransactionsPage() {
               </div>
 
               <select
+              title='status'
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
                 className="select-dropdown"
@@ -214,7 +215,7 @@ function TransactionsPage() {
                 <option value="Failed">Failed</option>
               </select>
 
-              <select
+              <select title='amount'
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 className="select-dropdown"
@@ -270,14 +271,14 @@ function TransactionsPage() {
         <div className="mobile-view">
           <div className="mobile-transactions-container">
 
-  <div className="mobile-header">
+  {/* <div className="mobile-header">
     <ArrowLeftIcon className="back-icon" />
     <h2 className="mobile-title">Transfer History</h2>
-  </div>
+  </div> */}
     
 
     {/* Mobile Filters - Horizontal */}
-<div className="mobile-filters-row">
+{/* <div className="mobile-filters-row">
   <div className="mobile-search-wrapper">
     <SearchIcon className="search-icon" />
     <input
@@ -289,7 +290,7 @@ function TransactionsPage() {
     />
   </div>
 
-  <select
+  <select title='status'
     value={status}
     onChange={(e) => setStatus(e.target.value)}
     className="mobile-select-dropdown"
@@ -300,7 +301,7 @@ function TransactionsPage() {
     <option value="Failed">Failed</option>
   </select>
 
-  <select
+  <select title='amount'
     value={amount}
     onChange={(e) => setAmount(e.target.value)}
     className="mobile-select-dropdown"
@@ -310,7 +311,7 @@ function TransactionsPage() {
     <option value="15000">₦15,000</option>
     <option value="50000">₦50,000</option>
   </select>
-</div>
+</div> */}
 
    
  
