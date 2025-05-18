@@ -9,7 +9,7 @@ import { useType } from '../../../hooks/useType';
     const Header: React.FC = () => {
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
     const { user, logout } = useAuth()
-    const { BASE_URL, setShowSidebar, showSidebar } = useType()
+    const { BASE_URL, setShowSidebar } = useType()
     
     const toggleProfileDropdown = () => {
         setShowProfileDropdown(!showProfileDropdown);

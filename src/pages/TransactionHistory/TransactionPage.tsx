@@ -9,6 +9,7 @@ import { getTransactionHistory } from '../../services/debtTransfer';
 import { useAuth } from '../../hooks/useAuth';
 
 type Transaction = {
+  [x: string]: { date: string; };
   type: string;
   amount: string;
   date: string;
@@ -183,11 +184,11 @@ function TransactionsPage() {
   </div>
 
   {/* Transaction rows */}
-  {filteredTransactions.map((item, idx) => (
+  {filteredTransactions.map((item: Transaction, idx: number) => (
     <div className="transaction-row" key={idx}>
       <div className="transaction-cell">{item.type}</div>
       <div className="transaction-cell">{item.amount}</div>
-      <div className="transaction-cell">{item.createdAt}</div>
+      <div className="transaction-cell">{typeof item.createdAt === 'string' ? item.createdAt : item.date}</div>
       <div className="transaction-cell">{item.recipient}</div>
       <div className={`transaction-cell ${getStatusClass(item.status)}`}>{item.status}</div>
       <div className="transaction-cell action-cell">

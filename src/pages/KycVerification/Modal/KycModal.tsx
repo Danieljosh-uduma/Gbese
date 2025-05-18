@@ -1,4 +1,3 @@
-import React from 'react';
 import './KycModal.css';
 import { TickCircleIcon } from '../../../components/icons/Icon';
 
