@@ -24,6 +24,10 @@ import ProfilePage from "../pages/profile/Page";
 import TransactionsPage from "../pages/TransactionHistory/Page";
 import FundAccount from "../pages/FundAccount/FundAccount";
 import SendMoney from "../pages/Sendmoney/Page";
+import EditInfo from "../pages/kyc/Page";
+
+
+
 export default function MainRouter() {
 
   return (
@@ -75,6 +79,7 @@ export default function MainRouter() {
                 <Route path="profile" element={<ProfilePage />} />
                 <Route path="send-money" element={<SendMoney />} />
                 <Route path="history" element={<TransactionsPage />} />
+                <Route path="setting" element={<EditInfo />} />
                 <Route path="*" element={<NotFound />} />
               </Route>
 
