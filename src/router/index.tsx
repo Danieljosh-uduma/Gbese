@@ -23,6 +23,7 @@ import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
 import ProfilePage from "../pages/profile/Page";
 import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
 import FundAccount from "../pages/FundAccount/FundAccount";
+import SendMoney from "../pages/Sendmoney/Page";
 export default function MainRouter() {
 
   return (
@@ -72,6 +73,7 @@ export default function MainRouter() {
                 </Route>
 
                 <Route path="profile" element={<ProfilePage />} />
+                <Route path="send-money" element={<SendMoney />} />
                 <Route path="*" element={<NotFound />} />
               </Route>
               <Route path="v2/" element={<BenefactorRoute />}>
