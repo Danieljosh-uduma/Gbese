@@ -1,0 +1,104 @@
+.bvn-form {
+    padding: 20px;
+}
+.kyc-container {
+  display: flex;
+  padding: 20px;
+  background: #f9f9f9;
+}
+.bvn-form-card{
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.form-head  {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #696969;
+  width: 80%;
+}
+.number {
+    color: #696969;
+    margin-top: 20px;
+    font-size: 14px;
+}
+.bvn-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.bvn-form ::placeholder {
+  color: #ccc;
+}
+.bvn-info-box {
+  background: #AE9FE940;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.bvn-info-box ul {
+  color: #696969;
+}
+.bvn-info-box p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.bvn-info-box ul li {
+  margin-bottom: 15px;
+    font-size: 14px;
+
+}
+.bvn-info-box ul {
+  list-style: none; /* remove default bullets */
+  padding-left: 0;
+}
+
+.bvn-info-box li {
+  position: relative;
+  padding-left: 20px; /* space for the dot */
+  margin-bottom: 8px;
+}
+
+.bvn-info-box li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background-color: #5D3FD3; /* purple */
+  border-radius: 50%; /* makes it round */
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.back-btn,
+.nexts-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.back-btn,.next-btn {
+  background: white;
+  border: 1px solid #5D3FD3;
+  color: #5D3FD3;
+}
+.form-buttons :hover {
+  background-color: #5D3FD3;
+  color: white;
+}

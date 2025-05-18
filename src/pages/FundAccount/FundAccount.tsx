@@ -2,8 +2,11 @@ import  { useState } from 'react';
 import './FundAccount.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/layout/Header/Header';
+import AmountModal from './Modal';
 function FundAccount() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false)
+  const [amount, setAmount] = useState('')
 
   const fundingOptions: {
     id: string;
@@ -81,12 +84,14 @@ function FundAccount() {
 
             <div className="button-group">
             <button className="btn-back">Back</button>
-            <button className="btn-continue" disabled={!selected}>Continue</button>
+            <button className="btn-continue" disabled={!selected} onClick={() => setShowModal(true) }>Continue</button>
             </div>
             
             </div>
         </div>
         </section>
+
+        {showModal &&  <AmountModal isOpen={showModal} setAmount={setAmount} amount={amount}/>}
 
 
     </div>

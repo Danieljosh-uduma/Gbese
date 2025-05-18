@@ -1,12 +1,12 @@
 import { BankDetails } from "../types/debtTransfer";
-import { BASE_URL, headers } from "./Auth";
+import { BASE_URL } from "./Auth";
 
 async function getBankList(token: string | undefined) {
     try {
         const res = await fetch(`${BASE_URL}/v3/banks/all`, {
             method: 'GET',
             headers: {
-                ...headers,
+                "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
             credentials: 'include'
@@ -30,8 +30,6 @@ async function getBankList(token: string | undefined) {
 
 async function uploadDetail(token: string | undefined, bankDetail: BankDetails) {
 
-    console.log(bankDetail.bankCode, bankDetail.debtSource, bankDetail.amount, bankDetail.accountNumber, bankDetail.dueDate)
-    console.log(bankDetail.interestRate, bankDetail.incentives, bankDetail.description,  bankDetail.method, bankDetail.selectedUser)
     const formData = new FormData()
     formData.append('bankCode', bankDetail.bankCode)
     formData.append('debtSource', bankDetail.debtSource) // Make sure this matches your backend's expected field
@@ -60,7 +58,92 @@ async function uploadDetail(token: string | undefined, bankDetail: BankDetails) 
         })
 
         const data = res.json()
-        console.log(res)
+        if (!res.ok) {
+            if (res.status === 500){
+                throw new Error('internal server error')
+            } else if (res.status === 400) {
+                console.log(res)
+                throw new Error('client error')
+            } else if (res.status === 401) {
+                return res
+            }
+        }
+        return data
+    } catch {
+        throw new Error("hello")
+    }
+}
+
+async function fundAccount(token: string | undefined, amount: string) {
+    try {
+        const res = await fetch(`${BASE_URL}/v6/fund/account`, {
+            method: 'PATCH',
+            headers: {
+                // ...headers,
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            credentials: 'include',
+            body: JSON.stringify({amount: amount,})
+        })
+
+        const data = await res.json()
+        if (!res.ok) {
+            if (res.status === 500){
+                throw new Error('internal server error')
+            } else if (res.status === 400) {
+                throw new Error('client error')
+            } else if (res.status === 401) {
+                return res
+            }
+        }
+        return data
+    } catch {
+        throw new Error("hello")
+    }
+}
+
+async function getTransactionHistory(token: string | undefined) {
+    try {
+        const res = await fetch(`${BASE_URL}/v6/transactions`, {
+            method: 'GET',
+            headers: {
+                // ...headers,
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            credentials: 'include',
+        })
+
+        const data = await res.json()
+        if (!res.ok) {
+            if (res.status === 500){
+                throw new Error('internal server error')
+            } else if (res.status === 400) {
+                throw new Error('client error')
+            } else if (res.status === 401) {
+                return res
+            }
+        }
+        return data
+    } catch {
+        throw new Error("hello")
+    }
+}
+
+async function sendMoneyInternal(token: string | undefined, accNumber: string, amount: string) {
+    try {
+        const res = await fetch(`${BASE_URL}/v6/send/internal`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            credentials: 'include',
+            body: JSON.stringify({accNumber: accNumber, amount: amount, note: 'note'})
+        })
+
+        const data = await res.json()
         if (!res.ok) {
             if (res.status === 500){
                 throw new Error('internal server error')
@@ -78,7 +161,12 @@ async function uploadDetail(token: string | undefined, bankDetail: BankDetails) 
 }
 
 
+
+
 export {
     getBankList,
     uploadDetail,
+    fundAccount,
+    getTransactionHistory,
+    sendMoneyInternal,
 }

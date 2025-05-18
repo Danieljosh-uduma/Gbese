@@ -4,10 +4,12 @@ import ProfileAvatar from '../../../assets/images/images/db51a0d15a178e33aa72ad6
 import './Header.css';
 import { NotificationIcon } from '../../icons/Icon';
 import { useAuth } from '../../../hooks/useAuth';
+import { useType } from '../../../hooks/useType';
 
     const Header: React.FC = () => {
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
     const { user, logout } = useAuth()
+    const { BASE_URL, setShowSidebar, showSidebar } = useType()
     
     const toggleProfileDropdown = () => {
         setShowProfileDropdown(!showProfileDropdown);
@@ -15,7 +17,9 @@ import { useAuth } from '../../../hooks/useAuth';
     
     return (
         <header className="header">
-        <div id="menu">
+        <div id="menu" onClick={() => {
+            setShowSidebar(prev => !prev)}
+            }>
             <Menu />
         </div>
         <h1 className="greeting">Hello {user?.fullname},👋🏼</h1>
@@ -40,8 +44,8 @@ import { useAuth } from '../../../hooks/useAuth';
             
             {showProfileDropdown && (
                 <div className="dropdown-menu">
-                <a href="#" className="dropdown-item">
-                    My Profile
+                <a href={`${BASE_URL}/setting/edit-profile`} className="dropdown-item">
+                    Edit Profile
                 </a>
                 <a href="#" className="dropdown-item">
                     Account Settings

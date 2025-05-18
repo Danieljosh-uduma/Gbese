@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react"
+
 type benefactorUser = {
     fullname: string
     token: string
@@ -79,6 +81,8 @@ type AuthContextType = {
 type useHook = {
     userType: 'beneficiary' | 'benefactor' | null
     BASE_URL: string
+    showSidebar: boolean
+    setShowSidebar: Dispatch<SetStateAction<boolean>>
 }
 
 export type { 

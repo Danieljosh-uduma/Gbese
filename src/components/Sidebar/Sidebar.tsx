@@ -7,6 +7,7 @@ import {
     WalletIcon,
     ClipboardList,
     Heart,
+    X,
     
 } from 'lucide-react';
 import NavItem from '../NavItem/NavItem';
@@ -19,14 +20,15 @@ import { useType } from '../../hooks/useType';
 function Sidebar() {
 const navigate = useNavigate()
     const location = useLocation()
-const { BASE_URL } = useType()
+const { BASE_URL, showSidebar, setShowSidebar } = useType()
 
     const handleNavItemClick =  (url: string) => {
     navigate(BASE_URL+url)
 };
+const className = showSidebar? 'show-side-bar': 'hide-side-bar'
 
 return (
-    <div className="sidebar">
+    <div className={`sidebar ${className}`}>
     <div className="sidebar-header">
         <div className="logo">
             <Link to={`${BASE_URL}/`}>
@@ -35,7 +37,15 @@ return (
         </div>
     </div>
     
+    
     <nav className="sidebar-nav">
+        {showSidebar && 
+            <div id="menu" onClick={() => {
+            setShowSidebar(prev => !prev)}
+            }>
+            <X /> Close
+            </div>
+        }
         <NavItem 
         icon={<LayoutGrid size={20} />}
         label="Dashboard" 
@@ -50,9 +60,9 @@ return (
         />
         <NavItem 
         icon={<WalletIcon size={20} />} 
-        label="Request" 
+        label="Send Money" 
         active={location.pathname === `${BASE_URL}/request`} 
-        onClick={() => handleNavItemClick('/request')}
+        onClick={() => handleNavItemClick('/send-money')}
         />
         <NavItem 
         icon={<ClipboardList size={20} />} 

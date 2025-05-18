@@ -1,0 +1,36 @@
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px
+
+
+}
+
+.step.active .icon-stepindicator {
+    background-color: #AE9FE940;
+  fill: #5D3FD3;
+  cursor: pointer;
+}
+.icon-stepindicator {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+  border: 1px solid #5D3FD3;
+  border-radius: 50%;
+  padding: 15px;
+  
+}
+.step:not(.active):hover .icon-stepindicator {
+  background-color: #AE9FE940;
+  fill: #5D3FD3;
+}
+
+
