@@ -30,6 +30,8 @@ async function getBankList(token: string | undefined) {
 
 async function uploadDetail(token: string | undefined, bankDetail: BankDetails) {
 
+    console.log(bankDetail.bankCode, bankDetail.debtSource, bankDetail.amount, bankDetail.accountNumber, bankDetail.dueDate)
+    console.log(bankDetail.interestRate, bankDetail.incentives, bankDetail.description,  bankDetail.method, bankDetail.selectedUser)
     const formData = new FormData()
     formData.append('bankCode', bankDetail.bankCode)
     formData.append('debtSource', bankDetail.debtSource) // Make sure this matches your backend's expected field
@@ -39,9 +41,11 @@ async function uploadDetail(token: string | undefined, bankDetail: BankDetails) 
     formData.append('interestRate', String(bankDetail.interestRate))
     formData.append('incentives', bankDetail.incentives)
     formData.append('description', bankDetail.description)
-    if (bankDetail.statementFile) {
-        formData.append('statementFile', bankDetail.statementFile);
-    }
+    formData.append('transferMethod', bankDetail.method)
+    formData.append('statementFile', bankDetail.statementFile);
+    if (bankDetail.method === 'specific') {
+        formData.append('receiverId', bankDetail.selectedUser)
+    } 
 
 
     try {
@@ -56,10 +60,12 @@ async function uploadDetail(token: string | undefined, bankDetail: BankDetails) 
         })
 
         const data = res.json()
+        console.log(res)
         if (!res.ok) {
             if (res.status === 500){
                 throw new Error('internal server error')
             } else if (res.status === 400) {
+                console.log(res)
                 throw new Error('client error')
             } else if (res.status === 401) {
                 return res
@@ -71,45 +77,8 @@ async function uploadDetail(token: string | undefined, bankDetail: BankDetails) 
     }
 }
 
-async function setTransferMethod(token: string | undefined, type: string, debtId: string, userId?: string) {
-    const body = {
-        transferMethod: type,
-        ...(type === 'specific' && {receiverId: userId})
-    };
-     
-    try {
-        // console.log(body, debtId)
-        const res = await fetch(`${BASE_URL}/v4/debt/transfer/68278b15309ee48f6f84f6ee`, {
-            method: 'PATCH',
-            headers: {
-                ...headers,
-                "Authorization": `Bearer ${token}`
-            },
-            credentials: 'include',
-            body: JSON.stringify(body)
-        })
-
-        const data = res.json()
-        if (!res.ok) {
-            if (res.status === 500){
-                throw new Error('internal server error')
-            } else if (res.status === 400) {
-                // console.log(res)
-                throw new Error('client error')
-            } else if (res.status === 401) {
-                return res
-            }
-            
-        }
-        return data
-    } catch {
-        throw new Error("Internet Error")
-    }
-}
-
 
 export {
     getBankList,
     uploadDetail,
-    setTransferMethod,
 }

@@ -9,6 +9,8 @@ type BankDetails = {
     interestRate: string
     incentives: string
     statementFile: File
+    method: 'marketplace' | 'specific' | 'sharedLink'
+    selectedUser: string
 }
 
 export type {

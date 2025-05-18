@@ -23,7 +23,7 @@ import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
 import ProfilePage from "../pages/profile/Page";
 import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
 import FundAccount from "../pages/FundAccount/FundAccount";
-import SendMoney from "../pages/Sendmoney/SendMoneyPage";
+import SendMoney from "../pages/Sendmoney/Page";
 export default function MainRouter() {
 
   return (

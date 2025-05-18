@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import './DebtTransferForm.css';
 import { useType } from '../../../hooks/useType';
-import { BankDetails } from '../../../types/debtTransfer';
 
 function DebtTransferForm() {
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ function DebtTransferForm() {
     dueDate: '',
     description: '',
     incentives: '',
-    interestRate: '',
+    interestRate: '0',
     debtSource: ''
   });
 
@@ -30,24 +29,30 @@ function DebtTransferForm() {
     ...prev,
     [name]: value,
   }));
-};
+}; 
+
+  const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
  const handleContinue = (e: React.MouseEvent<HTMLButtonElement>) => {
   e.preventDefault();
   // console.log('Form submitted:', formValues);
-  const formData: BankDetails = {
+  const formData = {
     bankCode: location.state.bankCode,
     bankName: location.state.bankName,
     statementFile: statementFile as File,
     ...formValues
   }
+  console.log(formData)
   navigate(`${BASE_URL}/debt-transfer/incentives`, {state: {formData: formData}})
 };
 
-  const isFormValid =
-    formValues.amount &&
-    formValues.accountNumber &&
-    formValues.dueDate;
+  const isFormValid = statementFile? true : false
 
   return (
     <div className="form-page">
@@ -133,13 +138,13 @@ function DebtTransferForm() {
                 id="due-date"
                 name="dueDate"
                 value={formValues.dueDate}
-                onChange={handleInputChange}
+                onInput={handleDate}
               />
             </div>
 
             {/* Interest Rate (optional) */}
             <div className="form-group">
-              <label htmlFor="interest-rate">Interest Rate (if applicable)</label>
+              <label htmlFor="interest-rate">Interest Rate</label>
               <input
                 type="number"
                 step="0.01"
@@ -154,7 +159,7 @@ function DebtTransferForm() {
             {/* Attach Bill/Statement */}
            {/* Attach Bill/Statement */}
 <div className="form-group">
-  <label>Attach Bill/Statement (Optional)</label>
+  <label>Attach Bill/Statement (Required)</label>
   <div className="upload-controls">
     <button
       type="button"
@@ -203,7 +208,7 @@ function DebtTransferForm() {
 
             {/* Notes */}
             <div className="form-group">
-              <label htmlFor="notes">Notes (Optional)</label>
+              <label htmlFor="notes">Notes</label>
               <textarea
                 id="notes"
                 name="description"

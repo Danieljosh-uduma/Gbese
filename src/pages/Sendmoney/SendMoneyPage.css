@@ -6,7 +6,7 @@
     /* Main container */
     .send-money-container {
     max-width: 995px;
-    margin: 0 auto;
+    margin: 250px auto;
     padding: 24px;
     background-color: var(--white-text);
     min-height: 100vh;
@@ -63,6 +63,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 6px;
+    }
+
+    .toggle-checkbox img {
+        width: 12px;
+        height: 12px;
     }
 
     .toggle-checkbox.active {
@@ -493,13 +498,16 @@
     }
 
     .continue-button {
-    margin-top: 3rem;
+    margin-top: 70px;
     width: 100%;
-    max-width: 564px;
+    max-width:654px;
+    height: 50px;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    gap: 8px;
+    gap: 12px;
+    font-family: Poppins;
+    font-size: 16px;
     border-radius: 8px;
     padding-top: 16px;
     padding-right: 24px;

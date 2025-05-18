@@ -81,6 +81,7 @@ function SendToSpecificUsersModal({
         <div className="search-users">
           <label htmlFor="user-select">Search Gbese Users</label>
           <select
+            className='specific-user'
             id="user-select"
             value={selectedUser}
             onChange={(e) => setSelectedUser(e.target.value)}
