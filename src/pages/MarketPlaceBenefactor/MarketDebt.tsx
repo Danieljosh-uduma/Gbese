@@ -18,7 +18,7 @@ const DebtGrid = () => {
   return (
     <div className="debt-grid-container">
       {/* Title */}
-      <h3 className="page-title">Help Pay Debts</h3>
+      <p className="page-title">Help Pay Debts</p>
 
       {/* Top Controls */}
       <div className="top-bar">
