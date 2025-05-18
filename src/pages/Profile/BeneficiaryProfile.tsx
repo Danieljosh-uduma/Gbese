@@ -109,7 +109,7 @@ export default function BeneficiaryProfile(){
   return (
     <div className="container">
       {/* Use the imported Sidebar component */}
-      <Sidebar isMobile={isMobile} />
+      <Sidebar />
 
       {/* Main Content */}
       <div className="content">
@@ -144,18 +144,18 @@ export default function BeneficiaryProfile(){
             <div className="badges-header">
               {isMobile ? (
                 <>
-                  <img src='/src/assets/achievement icon.png' className="badge-icon" />
+                  <img alt='' src='/src/assets/achievement icon.png' className="badge-icon" />
                   <span className="badges-title">Achievements</span>
                   <span style={{ flex: 1 }}></span>
-                  <img src='/src/assets/badges/badge icon.png' className="badge-icon" />
+                  <img alt='' src='/src/assets/badges/badge icon.png' className="badge-icon" />
                   <span className="badges-title">Badges</span>
                 </>
               ) : (
                 <>
                   <span className="badges-title">Badges</span>
-                  <img src='/src/assets/images/icons/badges/badge icon.png' className="badge-icon" style={{ marginRight: '20px',  width: '48px', height: '48px'}} />
+                  <img alt='' src='/src/assets/images/icons/badges/badge icon.png' className="badge-icon" style={{ marginRight: '20px',  width: '48px', height: '48px'}} />
                   <span>&</span>
-                  <img  src='/src/assets/images/icons/achievement icon.png' className="badge-icon" style={{ marginLeft: '20px',  width: '48px', height: '48px'}} />
+                  <img alt=''  src='/src/assets/images/icons/achievement icon.png' className="badge-icon" style={{ marginLeft: '20px',  width: '48px', height: '48px'}} />
                   <span className="badges-title">Achievements</span>
                 </>
               )}
@@ -170,18 +170,18 @@ export default function BeneficiaryProfile(){
                 </div>
                 
                 <div className="badges-container">
-                  <BadgeItem icon={<img src='/src/assets/images/icons/badges/Frame (2).png'/>} name="Key Beneficiary" />
-                  <BadgeItem icon={<img src='/src/assets/images/icons/badges/Frame (3).png' />} name="Social Climber" />
+                  <BadgeItem icon={<img alt='' src='/src/assets/images/icons/badges/Frame (2).png'/>} name="Key Beneficiary" />
+                  <BadgeItem icon={<img alt='' src='/src/assets/images/icons/badges/Frame (3).png' />} name="Social Climber" />
                 </div>
               </>
             ) : (
               <>
                 <div className="badges-container">
-                  <BadgeItem icon={<img src='/src/assets/images/icons/badges/Frame (2).png' />} name="Key Beneficiary" />
-                  <BadgeItem icon={<img src='/src/assets/images/icons/badges/Frame (3).png' />} name="Social Climber" />
-                  <BadgeItem icon={<img src='/src/assets/images/icons/badges/Frame (4).png' />} name="Fast Reply" />
-                  <BadgeItem icon={<img src='/src/assets/images/icons/badges/Frame (5).png' />} name="Repeat Beneficiary" />
-                  <BadgeItem icon={<img src='/src/assets/images/icons/badges/Frame (6).png' />} name="100% Success" />
+                  <BadgeItem icon={<img alt='' src='/src/assets/images/icons/badges/Frame (2).png' />} name="Key Beneficiary" />
+                  <BadgeItem icon={<img alt='' src='/src/assets/images/icons/badges/Frame (3).png' />} name="Social Climber" />
+                  <BadgeItem icon={<img alt='' src='/src/assets/images/icons/badges/Frame (4).png' />} name="Fast Reply" />
+                  <BadgeItem icon={<img alt='' src='/src/assets/images/icons/badges/Frame (5).png' />} name="Repeat Beneficiary" />
+                  <BadgeItem icon={<img alt='' src='/src/assets/images/icons/badges/Frame (6).png' />} name="100% Success" />
                 </div>
 
                 <div className="achievements-list">
