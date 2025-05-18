@@ -1,0 +1,235 @@
+.debt-grid-container {
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Top bar: search + toggle buttons */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.search-wrapper {
+  position: relative;
+  max-width: 300px;
+  flex-grow: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.toggle-btn {
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background-color: #5d3fd3;
+  color: white;
+  border-color: #5d3fd3;
+}
+
+/* Grid and List Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Styling */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: #008080;
+  color: white;
+  font-size: 14px;
+}
+
+.card-header-label {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.card-amount {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.time-sensitive-badge {
+  background-color: #DB0000 ;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  align-self: flex-start;
+}
+
+.card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  background-color: #ccc;
+  border-radius: 50%;
+  color: #008080;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-type {
+  font-size: 13px;
+  color: #777;
+}
+
+.card-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.card-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.detail-box {
+  background-color: #F0F0F0;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 10px;
+  flex: 1;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.due-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.calendarr-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.due-on {
+  font-size: 10px;
+  color: #696969;
+}
+
+.view-button {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: white;
+  border: 1px solid #5d3fd3;
+  color: #5d3fd3;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.view-button:hover {
+  background-color: #5d3fd3;
+  color: white;
+}
+
+
+/* Responsive: 2 cards per row on screens <= 768px */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .view-toggle {
+    justify-content: flex-end;
+    margin-top: 0;
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+}
+
+/* Optional: 1 card per row on very small screens */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
