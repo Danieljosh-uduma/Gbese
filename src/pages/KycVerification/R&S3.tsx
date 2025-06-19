@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import StepNavigation from '../../components/Kyc/Navbar/StepNavigation';
 import StepIndicator from '../../components/Kyc/Navbar/StepIndicator';

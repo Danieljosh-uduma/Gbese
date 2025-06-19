@@ -69,7 +69,7 @@ const BalanceCard: React.FC = () => {
         </div>
       </div>
       
-      <div className="credit-limit">Credit Limit : ₦0 of ₦50,000</div>
+      {/* <div className="credit-limit">Credit Limit : ₦0 of ₦50,000</div> */}
       
       <div className="balance-decoration">
       

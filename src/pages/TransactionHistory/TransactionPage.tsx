@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './TransactionPage.css';
-import { CalendarIcon,  ArrowBackLeft, SearchIcon, MobileIconAccepted, MobileIconUpcoming } from '../../components/icons/Icon';
+import { CalendarIcon, SearchIcon, MobileIconAccepted, MobileIconUpcoming } from '../../components/icons/Icon';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TransactionDetails from './Modal/TransactionDetails';
 import { MdError } from 'react-icons/md';
+import { getTransactionHistory } from '../../services/debtTransfer';
+import { useAuth } from '../../hooks/useAuth';
 
 type Transaction = {
   type: string;
   amount: string;
-  date: string;
+  createdAt: string
   recipient: string;
   status: string;
   purpose?: string;
@@ -19,86 +21,7 @@ type Transaction = {
   note?: string;
 };
 
-const transactionsData: Transaction[] = [
-  {
-    type: 'Transfer Debt',
-    amount: '₦30000.00',
-    date: '25/04/25 - 9:55Am',
-    recipient: 'Margaret',
-    status: 'Complete',
-    purpose: 'Rent',
-    transferId: 'TR-123456',
-    debtSource: 'Opay Loan',
-    incentive: '500 Gbese Coins',
-    note: 'Helped Margaret with rent.',
-  },
-  {
-    type: 'Payment',
-    amount: '₦50000.00',
-    date: '24/04/25 - 7:55Am',
-    recipient: 'Ejiro Joy',
-    status: 'Pending',
-  },
-  {
-    type: 'Request Money',
-    amount: '₦15000.00',
-    date: '22/04/25 - 8:55Am',
-    recipient: 'Jamal',
-    status: 'Failed',
-  },
-  {
-    type: 'Transfer Debt',
-    amount: '₦30000.00',
-    date: '25/04/25 - 9:55Am',
-    recipient: 'Margaret',
-    status: 'Complete',
-    purpose: 'Rent',
-    transferId: 'TR-123456',
-    debtSource: 'Opay Loan',
-    incentive: '500 Gbese Coins',
-    note: 'Helped Margaret with rent.',
-  },
-  {
-    type: 'Payment',
-    amount: '₦50000.00',
-    date: '24/04/25 - 7:55Am',
-    recipient: 'Ejiro Joy',
-    status: 'Pending',
-  },
-  {
-    type: 'Request Money',
-    amount: '₦15000.00',
-    date: '22/04/25 - 8:55Am',
-    recipient: 'Jamal',
-    status: 'Failed',
-  },
-  {
-    type: 'Transfer Debt',
-    amount: '₦30000.00',
-    date: '25/04/25 - 9:55Am',
-    recipient: 'Margaret',
-    status: 'Complete',
-    purpose: 'Rent',
-    transferId: 'TR-123456',
-    debtSource: 'Opay Loan',
-    incentive: '500 Gbese Coins',
-    note: 'Helped Margaret with rent.',
-  },
-  {
-    type: 'Payment',
-    amount: '₦50000.00',
-    date: '24/04/25 - 7:55Am',
-    recipient: 'Ejiro Joy',
-    status: 'Pending',
-  },
-  {
-    type: 'Request Money',
-    amount: '₦15000.00',
-    date: '22/04/25 - 8:55Am',
-    recipient: 'Jamal',
-    status: 'Failed',
-  },
-];
+
 
 function TransactionsPage() {
   const [status, setStatus] = useState('');
@@ -107,6 +30,8 @@ function TransactionsPage() {
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
   const [showModal, setShowModal] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [transactionsData, setTransactionData] = useState([] as any)
 
   const [startDate, endDate] = dateRange;
 
@@ -120,7 +45,7 @@ function TransactionsPage() {
 
   const getStatusClass = (status: string): string => {
     switch (status) {
-      case 'Complete':
+      case 'complete':
         return 'status-complete';
       case 'Pending':
         return 'status-pending';
@@ -141,8 +66,8 @@ function TransactionsPage() {
     setShowModal(false);
   };
 
-  const filteredTransactions = transactionsData.filter((item) => {
-    const itemDateStr = item.date.split(' - ')[0];
+  const filteredTransactions = transactionsData.filter((item: Transaction) => {
+    const itemDateStr = item.createdAt.split(' - ')[0];
     const [day, month, year] = itemDateStr.split('/');
     const fullYear = `20${year}`;
     const itemDate = new Date(`${fullYear}-${month}-${day}`);
@@ -157,9 +82,17 @@ function TransactionsPage() {
 
     return isWithinDateRange && matchesSearch && matchesStatus && matchesAmount;
   });
+  const { user, logout } = useAuth()
 
   useEffect(() => {
     document.body.style.overflow = showModal ? 'hidden' : '';
+    getTransactionHistory(user?.token).then(res => {
+      if (res.success) {
+        setTransactionData(res.data)
+      } else if (res.status === 401) {
+        logout()
+      }
+    })
     return () => {
       document.body.style.overflow = '';
     };
@@ -205,25 +138,26 @@ function TransactionsPage() {
               </div>
 
               <select
+              title='status'
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
                 className="select-dropdown"
               >
                 <option value="">Status</option>
-                <option value="Complete">Complete</option>
+                <option value="complete">Complete</option>
                 <option value="Pending">Pending</option>
                 <option value="Failed">Failed</option>
               </select>
 
-              <select
+              <select title='amount'
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 className="select-dropdown"
               >
                 <option value="">Amount range</option>
-                <option value="30000">₦30,000</option>
-                <option value="15000">₦15,000</option>
-                <option value="50000">₦50,000</option>
+                <option value="3000">₦3000</option>
+                <option value="1500">₦1500</option>
+                <option value="5000">₦5000</option>
               </select>
             </div>
 
@@ -249,11 +183,11 @@ function TransactionsPage() {
   </div>
 
   {/* Transaction rows */}
-  {filteredTransactions.map((item, idx) => (
+  {filteredTransactions.map((item: Transaction, idx: number) => (
     <div className="transaction-row" key={idx}>
       <div className="transaction-cell">{item.type}</div>
       <div className="transaction-cell">{item.amount}</div>
-      <div className="transaction-cell">{item.date}</div>
+      <div className="transaction-cell">{item.createdAt}</div>
       <div className="transaction-cell">{item.recipient}</div>
       <div className={`transaction-cell ${getStatusClass(item.status)}`}>{item.status}</div>
       <div className="transaction-cell action-cell">
@@ -268,14 +202,14 @@ function TransactionsPage() {
         <div className="mobile-view">
           <div className="mobile-transactions-container">
 
-  <div className="mobile-header">
-    <ArrowBackLeft className="mobile-back-icon" />
+  {/* <div className="mobile-header">
+    <ArrowLeftIcon className="back-icon" />
     <h2 className="mobile-title">Transfer History</h2>
-  </div>
+  </div> */}
     
 
-<div className="mobile-filters-row">
     {/* Mobile Filters - Horizontal */}
+{/* <div className="mobile-filters-row">
   <div className="mobile-search-wrapper">
     <SearchIcon className="mobile-search-icon" />
     <input
@@ -287,7 +221,7 @@ function TransactionsPage() {
     />
   </div>
 
-  <select
+  <select title='status'
     value={status}
     onChange={(e) => setStatus(e.target.value)}
     className="mobile-select-dropdown"
@@ -298,7 +232,7 @@ function TransactionsPage() {
     <option value="Failed">Failed</option>
   </select>
 
-  <select
+  <select title='amount'
     value={amount}
     onChange={(e) => setAmount(e.target.value)}
     className="mobile-select-dropdown"
@@ -308,14 +242,14 @@ function TransactionsPage() {
     <option value="15000">₦15,000</option>
     <option value="50000">₦50,000</option>
   </select>
-</div>
+</div> */}
 
    
  
   <div className="mobile-transactions">
-    {filteredTransactions.map((item, index) => (
-   <div className="mobile-transaction-card" key={index}>
-  <div className="mobile-icon-section">
+    {filteredTransactions.map((item: Transaction, index: number) => (
+     <div className="mobile-transaction-card" key={index}>
+    <div className="mobile-icon-section">
     {item.status === "Complete" ? (
       <MobileIconAccepted />
     ) : item.status === "Pending" ? (
@@ -323,23 +257,23 @@ function TransactionsPage() {
     ) : item.status === "Failed" ? (
       <MdError color="red" size={40} />
     ) : null}
-  </div>
+    </div>
 
-  <div className="mobile-info-section">
+    <div className="mobile-info-section">
     <div className="mobile-description">
       <div className="mobile-title">Debt from {item.recipient}</div>
-      <div className="mobile-date">{item.date}</div>
+      <div className="mobile-date">{(item as { date?: string }).date}</div>
     </div>
 
     <div className="mobile-right-section">
       <div className="mobile-amount">{item.amount}</div>
       <div className="mobile-bottom-row">
-        <div className={`mobile-status ${item.status.toLowerCase()}`}>{item.status}</div>
-        <button onClick={() => handleViewDetails(item)} className="mobile-view-btn">View</button>
+      <div className={`mobile-status ${item.status.toLowerCase()}`}>{item.status}</div>
+      <button onClick={() => handleViewDetails(item)} className="mobile-view-btn">View</button>
       </div>
     </div>
+    </div>
   </div>
-</div>
 
     ))}
   </div>

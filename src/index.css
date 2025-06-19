@@ -46,11 +46,20 @@
     src: url(/src//assets/fonts/Lato/Lato-Bold.ttf);
 }
 @font-face {
+    font-family: 'Lato';
+    src: url(/src//assets/fonts/Lato/Lato-Regular.ttf) format('truetype');
+    src: url(/src//assets/fonts/Lato/Lato-Bold.ttf);
+}
+@font-face {
     font-family: Poppins;
     src: url(/src/assets/fonts/Poppins/Poppins-Regular.ttf) format('truetype');
     src: url(/src/assets/fonts/Poppins/Poppins-Bold.ttf);
 }
-
+@font-face {
+    font-family: 'Poppins';
+    src: url(/src/assets/fonts/Poppins/Poppins-Regular.ttf) format('truetype');
+    src: url(/src/assets/fonts/Poppins/Poppins-Bold.ttf);
+} 
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;

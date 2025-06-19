@@ -1,4 +1,3 @@
-import React from 'react';
 import StepNavigation from '../../components/Kyc/Navbar/StepNavigation';
 import StepIndicator from '../../components/Kyc/Navbar/StepIndicator';
 import KycSideCard from '../../components/Kyc/Sidebar/KycSideCard';

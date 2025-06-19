@@ -247,9 +247,7 @@ select option.failed {
   color: red;
 }
 
-.action-cell {
-  /* text-align: center; */
-}
+
 
 .view-button {
   background-color: transparent;

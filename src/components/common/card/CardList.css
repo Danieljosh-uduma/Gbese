@@ -26,8 +26,9 @@ margin-bottom: 1rem;
   justify-content: center;
   margin-right: 1rem;
  font-family: 'Poppins';
-font-weight: 700;
-font-size: 1.25rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  cursor: pointer;
 
 }
 

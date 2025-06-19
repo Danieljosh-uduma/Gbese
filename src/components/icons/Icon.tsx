@@ -29,7 +29,7 @@ import add from '../../assets/images/icons/add.svg'
 import send from '../../assets/images/icons/send-sqaure.png'
 import copy from '../../assets/images/icons/copy.svg'
 import ticksquare from '../../assets/images/icons/tick-square.png'
-import vector from '../../assets/images/icons/Vector.svg';
+import vector from '../../assets/images/icons/Vector.png';
 import closecircle from '../../assets/images/icons/close-circle.svg';
 import ticksquareupcoming from '../../assets/images/icons/tick-square-upcomin.svg';
 import ticksquareschedule from '../../assets/images/icons/tick-square-schedule.svg';

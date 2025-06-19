@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router';
 import './CardList.css';
+import { useType } from '../../../hooks/useType';
 
 type CardListProps = {
+  id: string
   initials: string;
   name: string;
   rating: number;
@@ -9,9 +12,11 @@ type CardListProps = {
 };
 
 function CardList(props: CardListProps) {
+  const navigate = useNavigate()
+  const { BASE_URL } = useType()
   return (
     <div className="card-list">
-      <div className="card-header-list">{props.initials}</div>
+      <div className="card-header-list" onClick={() => navigate(`${BASE_URL}/profile`, {state: {id: props.id, name: props.name}})}>{props.initials}</div>
 
       <div className="card-main-list">
         <div className="card-info-list">

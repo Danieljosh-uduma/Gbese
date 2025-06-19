@@ -143,12 +143,17 @@
 .phone-input {
   display: flex;
 }
+.select-sup {
+  width: 80px;
+  height: 95%;
+}
 
 .phone-input select,
 .phone-input input {
   padding: 10px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  height: 50px;
 }
 
 .phone-input select {

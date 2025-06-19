@@ -1,4 +1,4 @@
-import { Route,  BrowserRouter, Routes, Navigate } from "react-router-dom";
+import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import NotFound from "../pages/NotFound/NotFound";
 import SplashManager from "../hooks/SplashManager";
 import AuthRoute from "./authentication";
@@ -18,104 +18,120 @@ import DebtTransferForm from "../pages/DebtTraansfer/v1/DebtTransferForm";
 import DebtTransferStep3 from "../pages/DebtTraansfer/v1/DebtTransferStep3";
 import TransferDebtStep3 from "../pages/DebtTraansfer/v1/TransferDebtStep3";
 import DTRoute from "./debtTransferRoute";
-import NoDebtTransfer from "../pages/DebtTraansfer/v2/NoDebtTransfer";
-import DebtorEmpty from "../pages/Marketplace/v2/DebtorEmpty";
 import ProfilePage from "../pages/profile/Page";
-import TransactionsPage from "../pages/TransactionHistory/TransactionPage";
+import TransactionsPage from "../pages/TransactionHistory/Page";
+import FundAccount from "../pages/FundAccount/FundAccount";
+import SendMoney from "../pages/Sendmoney/Page";
+import EditInfo from "../pages/kyc/EditInfo";
 import BvnVerification from "../pages/KycVerification/BvnVerification";
 import AddressVerification from "../pages/KycVerification/AddressVerification";
-import ReviewAndSubmit from "../pages/KycVerification/ReviewAndSubmit";
+import SettingRoute from "./settingRoute";
 import ReviewAndSubmit2 from "../pages/KycVerification/R&S2";
-import ReviewAndSubmit3 from "../pages/KycVerification/R&S3";
-import DebtGrid from "../pages/MarketPlaceBenefactor/MarketDebt";
-
-
-
-
 export default function MainRouter() {
-
   return (
     <BrowserRouter>
+      <Routes>
+        {/* --- splash screen --- */}
+        <Route path="/" element={<SplashManager />} />
 
-        <Routes>
-           
-            {/*Align later   */}
-             <Route path="nodebt" element={<NoDebtTransfer/>} />
-              <Route path="debtsource" element={<DebtSourceStep/>} />
-              <Route path="debtransfer" element={<DebtTransferForm/>} />
-              <Route path="debtstep3" element={<DebtTransferStep3/>} />
-              <Route path="transdebt3" element={<TransferDebtStep3/>} />
-              <Route path="transpage" element={<TransactionsPage/>} />
-              <Route path="Bvn" element={<BvnVerification/>} />
-              <Route path="address" element={<AddressVerification/>} />
-              <Route path="review" element={<ReviewAndSubmit/>} />
-              <Route path="review2" element={<ReviewAndSubmit2/>} />
-              <Route path="review3" element={<ReviewAndSubmit3/>} />
-              <Route path="debtgrid" element={<DebtGrid/>} />
+        {/* --- authentication --- */}
+        <Route path="/auth/*" element={<AuthRoute />}>
+          {/* login  */}
+          <Route path="login" element={<LoginPage />} />
 
+          {/* sign up  */}
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="signup/verify-otp" element={<Otp />} />
+          <Route path="signup/completeprofile" element={<CompleteProfile />} />
+          <Route path="signup/user-role" element={<Role />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Route>
 
+        {/* dashboards */}
+        <Route path="dashboard/*" element={<DashboardRoute />}>
+          {/* beneficiary dasboard  */}
+          <Route path="v1/" element={<BeneficiaryRoute />}>
+            <Route path="" element={<DashboardBeneficiary />} />
+            <Route path="send-money" element={<SendMoney />} />
+            <Route path="fund-account" element={<FundAccount />} />
 
-            {/* --- splash screen --- */}
-            <Route path="/" element={<SplashManager />} />
-            
-
-            {/* --- authentication --- */}
-            <Route path="/auth/*" element={<AuthRoute />}>
-              {/* login  */}
-              <Route path="login" element={<LoginPage/>} />
-                
-              {/* sign up  */}
-              <Route path="signup" element={<SignUpPage/>} />
-              <Route path="signup/verify-otp" element={<Otp/>} />
-              <Route path="signup/completeprofile" element={<CompleteProfile/>} />
-              <Route path="signup/user-role" element={<Role/>} />
-              <Route path="*" element={<Navigate to='/' />} />
+            {/* Debt transfer  */}
+            <Route path="debt-transfer/*" element={<DTRoute />}>
+              <Route path="" element={<DebtSourceStep />} />
+              <Route path="form" element={<DebtTransferForm />} />
+              <Route path="incentives" element={<DebtTransferStep3 />} />
+              <Route path="payment-method" element={<TransferDebtStep3 />} />
             </Route>
 
+            {/* Request  */}
 
-            {/* dashboards */}
-            <Route path="dashboard/*" element={<DashboardRoute />}>
-              <Route path="v1/" element={<BeneficiaryRoute />}>
-                <Route path="" element={<DashboardBeneficiary />} />
-                <Route path="marketplace" element={<Marketplace />}/>
+            {/* History  */}
+            <Route path="history" element={<TransactionsPage />} />
 
-                <Route path='debt-transfer/*' element={<DTRoute />}>
-                  <Route path='' element={<DebtSourceStep />} />
-                  <Route path='form' element={<DebtTransferForm />} />
-                  <Route path='incentives' element={<DebtTransferStep3 />} />
-                  <Route path='payment-method' element={<TransferDebtStep3 />} />
-                </Route>
+            {/* Market place  */}
+            <Route path="marketplace" element={<Marketplace />} />
 
-                <Route path="profile" element={<ProfilePage />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-              <Route path="v2/" element={<BenefactorRoute />}>
-                <Route path="" element={<DashboardBenefactor />} />
-                <Route path="debt-transfer" element={<NoDebtTransfer />} />
-                <Route path="marketplace" element={<DebtorEmpty />}/>
-             
-              </Route>
-            </Route>  
-       
+            {/* Profile  */}
+            <Route path="profile" element={<ProfilePage />} />
 
+            {/* Setting  */}
+            <Route path="setting/*" element={<SettingRoute />}>
+              <Route path="" element={<BvnVerification />} />
+              <Route path="profile" element={<BvnVerification />} />
+              <Route path="verify-address" element={<AddressVerification />} />
+              <Route path="review-details" element={<ReviewAndSubmit2 />} />
+              <Route path="edit-profile" element={<EditInfo />} />
+            </Route>
 
-            {/* not found  */}
-            <Route path="*" element={<NotFound/>} />
-        </Routes>
+            {/* Not found */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+
+          <Route path="v2/" element={<BenefactorRoute />}>
+            <Route path="" element={<DashboardBenefactor />} />
+            <Route path="send-money" element={<SendMoney />} />
+            <Route path="fund-account" element={<FundAccount />} />
+
+            {/* Debt transfer  */}
+            <Route path="debt-transfer/*" element={<DTRoute />}>
+              <Route path="" element={<DebtSourceStep />} />
+              <Route path="form" element={<DebtTransferForm />} />
+              <Route path="incentives" element={<DebtTransferStep3 />} />
+              <Route path="payment-method" element={<TransferDebtStep3 />} />
+            </Route>
+
+            {/* Request  */}
+
+            {/* History  */}
+            <Route path="history" element={<TransactionsPage />} />
+
+            {/* Market place  */}
+            <Route path="marketplace" element={<Marketplace />} />
+
+            {/* Profile  */}
+            <Route path="profile" element={<ProfilePage />} />
+
+            {/* Setting  */}
+            <Route path="setting/*" element={<SettingRoute />}>
+              <Route path="" element={<BvnVerification />} />
+              <Route path="profile" element={<BvnVerification />} />
+              <Route path="verify-address" element={<AddressVerification />} />
+              <Route path="review-details" element={<ReviewAndSubmit2 />} />
+              <Route path="edit-profile" element={<EditInfo />} />
+            </Route>
+
+            {/* Not found */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+
+          {/* benefactor dashboard  */}
+        </Route>
+
+        {/* benefactor dashboard  */}
+
+        {/* not found  */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
   );
 }
-
-
-{/* <Route path="/dashboard/v1" element={<BeneficiaryRoute/>}>
-              <Route path="" element={<DashboardNewBenefactor />} />
-              <Route path="oldbenefactor" element={<DashboardOldBenefactor />} />
-              {/* <Route path="recentactivity" element={<RecentActivity/>} /> */}
-            // </Route>
-            
-            {/* -- benefactor -- */}
-            // <Route path="/dashboard/v2" element={<BenefactorRoute/>}>
-              {/* <Route path="" element={<DashboardNewBenefactor />} /> */}
-              {/*  */}
-              {/* <Route path="recentactivity" element={<RecentActivity/>} /> */}
-            {/* </Route>  */}

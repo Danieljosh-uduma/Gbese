@@ -3,7 +3,6 @@ import { ProfileType } from "../types/User"
 const BASE_URL = "https://gbese.onrender.com/api"
 const headers = new Headers({
     "Content-Type": "application/json",
-    "Accept": "application/json",
 })
 
 

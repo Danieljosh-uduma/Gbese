@@ -1,0 +1,271 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-container {
+    height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0rem 2rem;
+}
+
+.profile-header h2 {
+  font-size: 24px;
+  color: #fff;
+  background: linear-gradient(225.62deg, #AE9FE9 25.27%, #625983 95.7%);
+  padding: 1.3rem 2rem;
+  margin-bottom: 1.2rem;
+}
+
+
+.profile-body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+}
+
+
+.left-section, .right-section {
+  flex: 1;
+  min-width: 320px;
+}
+.left-section {
+    margin-left: 1rem;
+}
+
+.left-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.left-section form input {
+  display: block;
+  width: 80%;
+  margin-bottom: 0.75rem;
+  padding: 12px;
+  border: 1px solid #CFCFCF;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #FEFEFE;
+
+}
+
+form label {
+    display: block;
+  margin-bottom: 0.2rem;
+
+  font-family: 'Lato';
+font-weight: 400;
+font-size: 1rem;
+color: #696969;
+
+
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  margin-bottom: 1.2rem;
+  border-radius: 6px;
+  border: 1px solid pink;
+  background: #FEFEFE;
+
+}
+
+
+button img {
+    height: 25px;
+    width: 25px;
+}
+
+.toggle-option {
+    width: 80%;
+}
+
+.toggle-option .bio {
+    margin-right: 13rem;
+    font-family: 'Lato';
+font-weight: 400;
+font-size: 1rem;
+color: #696969;
+}
+
+.toggle-option img {
+    height: 25px;
+    width: 25px;
+}
+
+.right-section {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-right:  10rem;
+}
+
+
+.account-settings h3,
+.linked-accounts h3 {
+    width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+
+
+
+.account-settings .btn,
+.linked-accounts .btn {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #f4f4f4;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.r-text {
+    font-family: 'Lato';
+font-weight: 400;
+    font-size: 1rem;
+    color: #696969;
+
+}
+
+
+.toggle-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f4f4f4;
+  padding: 0.8rem 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #6a40c9;
+}
+
+input:checked + .slider::before {
+  transform: translateX(18px);
+}
+
+
+.update-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.update-btn {
+  padding: 0.8rem 12rem;
+  background-color: #6a40c9;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 15rem;
+font-size: 1rem;
+
+}
+
+
+@media (max-width:600px) {
+    .right-section {
+        width: 100%;
+        padding: 0rem;
+    }
+
+    .r-text{
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .toggle-option .bio {
+
+        margin: 0;
+        margin-right: 5rem;
+        font-size: 0.9rem;
+    }
+
+    .update-btn {
+        padding: 0.8rem 10rem;
+        margin: 0rem;
+        margin-bottom: 2rem;
+    }
+
+    
+    
+}

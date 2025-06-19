@@ -21,6 +21,7 @@
     font-family: 'Poppins';
     font-size: 1.25rem;
     color: #5D3FD3;
+    cursor: pointer;
 }
 
 
@@ -39,7 +40,7 @@
     width: 113px;
     height: 24px;
     gap: 5px;
-    font-family: 'Lato';
+    font-family: Lato;
     font-weight: 400;
     font-size: 18px;
     align-items: center;
@@ -112,7 +113,7 @@
 
   
 .button {
-    font-family: 'Poppins';
+    font-family: Poppins;
     background-color: #5D3FD3;
     color: #FEFEFE;
     border: none;
