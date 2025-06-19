@@ -58,6 +58,7 @@ import documentupload from '../../assets/images/icons/document-upload.svg'
 import tickcirclegreen from '../../assets/images/icons/tick-circle-green.svg'  
 import infocirclered from "../../assets/images/icons/info-circle-red.svg";
 
+
 // --- types ---
 type LogoProps = {
   type?: 'white' | 'green';
